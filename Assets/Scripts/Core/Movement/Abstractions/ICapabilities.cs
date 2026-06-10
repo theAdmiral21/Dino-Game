@@ -1,0 +1,145 @@
+using Movement.Core.Inputs;
+using Primitives.Input;
+using Primitives.Physics;
+
+namespace Movement.Core.Abstractions
+{
+    public interface IJumpState
+    {
+
+        public float RemainingJumps { get; }
+        public bool CanCoyoteJump { get; }
+        public bool JumpBuffered { get; }
+        public void DecrementJumps();
+        public void ResetJumps(PhysicsContext physicsContext);
+        public void StartJumpBufferTimer();
+        public void ResetBufferTimer();
+        public void StartCoyoteTimer(PhysicsContext physicsContext);
+    }
+
+    public interface IWallJumpState
+    {
+        public bool WallJumpBuffered { get; }
+        public void StartWallJumpBufferTimer();
+        public void ResetWallJumpBufferTimer();
+    }
+
+    public interface IXInputState
+    {
+        public bool XInputLocked { get; }
+        public void StartBlockXTimer();
+    }
+
+    public interface IGroundedState
+    {
+        public bool GroundedLastFrame { get; }
+        public float UngroundedCounter { get; }
+        public void UpdateGroundedLastFrame(PhysicsContext physicsContext);
+        public void StartUngroundedTimer(PhysicsContext physicsContext);
+    }
+
+    public interface IDirectionState
+    {
+        public float Dir { get; }
+        public void SetDirection(IActorInput input, PhysicsContext physicsContext);
+    }
+
+    public interface IFallState
+    {
+        public FallType FallType { get; }
+        public void SetFallType(FallType fallType);
+    }
+
+    public interface IGravityState
+    {
+        public bool AffectedByGravity { get; }
+        public bool ApplyGravity { get; }
+        public void SetApplyGravity(bool val);
+    }
+    public interface IStunState
+    {
+        public bool IsStunned { get; }
+        public void StartStunnedTimer(float duration);
+    }
+
+
+    public interface IInvincibleState
+    {
+        public bool IsInvincible { get; }
+        public void StartIFrameTimer();
+    }
+
+    public interface ITeleportState
+    {
+        public bool CanTeleport { get; }
+        public void StartTeleportCoolDown();
+    }
+
+    public interface IDisabledState
+    {
+        public bool IsDisabled { get; }
+        public void SetDisabled(bool val);
+    }
+
+    public interface ILandingState
+    {
+        public bool LandingStopRequested { get; set; }
+    }
+
+    public interface IQuickStepState
+    {
+        public float QuickStepDir { get; }
+        public float QuickStepTime { get; }
+        public float QuickStepCounter { get; }
+        public float QuickStepCoolDown { get; }
+        public bool QuickStepActive { get; }
+        public bool QuickStepReady { get; }
+        public bool QuickSteppingLastFrame { get; }
+        public void StartQuickStepTimer();
+        public void StartQuickStepCoolDown();
+
+        public void UpdateQuickSteppingLastFrame();
+        public void SetQuickStepDirection(float dir);
+    }
+
+    public interface ILongJumpState
+    {
+        public bool LongJumpIsActive { get; }
+        public float LongJumpCounter { get; }
+        public bool CanLongJump { get; }
+        public float LongJumpFarWindow { get; }
+        public void StartLongJumpTimer();
+        public void UpdateLongJumpState();
+    }
+
+    public interface IZoomiesState
+    {
+        // How much zoom the player can bank
+        public float ZoomLimit { get; }
+        // How much zoom the player needs in order to get zoomies
+        public float MinimumRequiredZoom { get; }
+        public bool IsZooming { get; }
+        public float ZoomyAmount { get; }
+        public void AddZoomies(float zoomAmount);
+        public void StartZoomiesTimer();
+    }
+
+    public interface IDoggoDashState
+    {
+        public bool IsDashing { get; }
+        public int DashAmount { get; }
+        public float DashTime { get; }
+        public float DashCounter { get; }
+        public InputDirection DashDirection { get; }
+        public void StartDashTimer();
+        public void DecrementDash();
+        public void ResetDash(PhysicsContext physicsContext);
+        public void SetDashDirection(InputDirection direction);
+    }
+
+    public interface ISwitchMovement
+    {
+        public bool DashMode { get; }
+        public void SwitchMovement();
+    }
+}
