@@ -1,0 +1,81 @@
+# =========================
+# Unity generated folders
+# =========================
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ogs/
+[Uu]ser[Ss]ettings/
+[Uu][Ii][Ee]lements[Ss]chema/
+
+# =========================
+# Memory / cache files
+# =========================
+[Mm]emoryCaptures/
+sysinfo.txt
+
+# =========================
+# Unity VS / Rider / IDE
+# =========================
+.vscode/
+.vs/
+.idea/
+*.csproj
+*.lscache
+*.sln
+*.suo
+*.tmp
+*.user
+*.userprefs
+*.pidb
+*.booproj
+*.svd
+*.pdb
+*.opendb
+*.VC.db
+
+# =========================
+# OS generated
+# =========================
+.DS_Store
+Thumbs.db
+
+# =========================
+# Builds (optional but recommended)
+# =========================
+*.apk
+*.unitypackage
+*.app
+*.exe
+*.dll
+*.bin
+*.so
+
+# =========================
+# Crash / logs
+# =========================
+crashlytics-build.properties
+
+# =========================
+# Addressables / build artifacts
+# =========================
+[Aa]ddressables[Bb]uild[Dd]ata/
+
+# =========================
+# JetBrains Rider cache (if used)
+# =========================
+*.DotSettings.user
+
+# =========================
+# Optional: if you use local packages
+# =========================
+# Packages/packages-lock.json   (ONLY ignore if you intentionally manage deps manually)
+
+# =========================
+# Other things to ignore
+# =========================
+[Cc]redentials/
+.plastic
+ignore.conf
