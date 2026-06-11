@@ -27,13 +27,17 @@ namespace PlayerController.Unity.Animations
 
         public void SyncAnimation(IActorInput inputValue, PhysicsContext physicsContext, in IRuleState ruleState)
         {
+            Debug.Log($"input value: {inputValue.Move}");
             // Set the direction of the animator.
             ruleState.TryGet<IDirectionState>(out var dirState);
             _transformCache.x = dirState.Dir;
             _animatorTransform.localScale = _transformCache;
 
+            AnimateCrouch(physicsContext, inputValue);
+            // AnimateCrouchWalk(physicsContext, inputValue);
+            AnimateWalk(physicsContext, inputValue);
             AnimateRun(physicsContext, inputValue);
-            AnimateDoubleJump(ruleState, physicsContext);
+            AnimateDodge(ruleState, physicsContext);
             // Debug.Log($"Animator: Physics context is falling: {physicsContext.IsFalling}");
             AnimateFall(physicsContext);
             AnimateRising(physicsContext);
@@ -41,7 +45,7 @@ namespace PlayerController.Unity.Animations
             // Evaluate the easy state stuff
             _animator.SetBool("isGrounded", physicsContext.IsGrounded || physicsContext.IsOnPlatform);
 
-            _animator.SetBool("isWallsliding", physicsContext.IsWallSliding);
+            // _animator.SetBool("isWallsliding", physicsContext.IsWallSliding);
 
             // evaluate the booleans to determine what is going on
 
@@ -51,7 +55,7 @@ namespace PlayerController.Unity.Animations
         {
             switch (effect)
             {
-                case BarkEffect bark:
+                case DodgeEffect bark:
                     {
                         // Debug.Log("Animating bark");
                         _animator.SetTrigger("barkTrigger");
@@ -116,20 +120,19 @@ namespace PlayerController.Unity.Animations
             }
         }
 
-        private void AnimateDoubleJump(IRuleState ruleState, PhysicsContext physicsContext)
+        private void AnimateDodge(IRuleState ruleState, PhysicsContext physicsContext)
         {
-            if (physicsContext.IsGrounded || physicsContext.IsOnPlatform) return;
-            if (!ruleState.TryGet<IJumpState>(out var jumpState)) return;
+            if (!ruleState.TryGet<IDodgeState>(out var dodgeState)) return;
 
 
-            if (jumpState.RemainingJumps <= 0)
+            if (dodgeState.IsDodging)
             {
-                _animator.SetBool("isDoubleJumping", true);
+                _animator.SetTrigger("isDodging");
             }
-            else
-            {
-                _animator.SetBool("isDoubleJumping", false);
-            }
+            // else
+            // {
+            //     _animator.SetBool("isDoubleJumping", false);
+            // }
         }
 
         private void AnimateFall(PhysicsContext physicsContext)
@@ -160,19 +163,70 @@ namespace PlayerController.Unity.Animations
             }
         }
 
+        private void AnimateWalk(PhysicsContext physicsContext, IActorInput inputValue)
+        {
+            if (inputValue.TryGet<IPlayerInputs>(out var playerInputs))
+            {
+                if ((physicsContext.IsGrounded || physicsContext.IsOnPlatform) && playerInputs.Move.x != 0 && !playerInputs.SprintPressed)
+                {
+                    // Debug.Log("Animating run");
+                    _animator.SetBool("isWalking", true);
+                    // _animator.SetFloat("runSpeed", Mathf.Abs(playerInputs.Move.x) / 1f);
+                }
+                else
+                {
+                    _animator.SetBool("isWalking", false);
+                }
+            }
+        }
+
         private void AnimateRun(PhysicsContext physicsContext, IActorInput inputValue)
         {
             if (inputValue.TryGet<IPlayerInputs>(out var playerInputs))
             {
-                if ((physicsContext.IsGrounded || physicsContext.IsOnPlatform) && playerInputs.Move.x != 0)
+                if ((physicsContext.IsGrounded || physicsContext.IsOnPlatform) && playerInputs.Move.x != 0 && playerInputs.SprintPressed)
                 {
                     // Debug.Log("Animating run");
                     _animator.SetBool("isRunning", true);
-                    _animator.SetFloat("runSpeed", Mathf.Abs(playerInputs.Move.x) / 1f);
+                    // _animator.SetFloat("runSpeed", Mathf.Abs(playerInputs.Move.x) / 1f);
                 }
                 else
                 {
                     _animator.SetBool("isRunning", false);
+                }
+            }
+        }
+
+        private void AnimateCrouch(PhysicsContext physicsContext, IActorInput inputValue)
+        {
+            if (inputValue.TryGet<IPlayerInputs>(out var playerInputs))
+            {
+                if ((physicsContext.IsGrounded || physicsContext.IsOnPlatform) && playerInputs.Move.y < 0)
+                {
+                    // Debug.Log("Animating run");
+                    _animator.SetBool("isCrouching", true);
+                    // _animator.SetFloat("runSpeed", Mathf.Abs(playerInputs.Move.x) / 1f);
+                }
+                else
+                {
+                    _animator.SetBool("isCrouching", false);
+                }
+            }
+        }
+
+        private void AnimateCrouchWalk(PhysicsContext physicsContext, IActorInput inputValue)
+        {
+            if (inputValue.TryGet<IPlayerInputs>(out var playerInputs))
+            {
+                if ((physicsContext.IsGrounded || physicsContext.IsOnPlatform) && playerInputs.Move.x != 0 && playerInputs.Move.y < 0)
+                {
+                    // Debug.Log("Animating run");
+                    _animator.SetBool("isCrouching", true);
+                    // _animator.SetFloat("runSpeed", Mathf.Abs(playerInputs.Move.x) / 1f);
+                }
+                else
+                {
+                    _animator.SetBool("isCrouching", false);
                 }
             }
         }

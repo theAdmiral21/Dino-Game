@@ -21,24 +21,24 @@ namespace Movement.Core.Rules
         public static DoggoDashResult TryDoggoDash(DoggoDashRequest request, PhysicsContext facts, IActorInput inputValues, object ruleState)
         {
             if (!ruleState.TryGet<IDisabledState>(out var disabledState)) return Denied();
-            if (!ruleState.TryGet<IDoggoDashState>(out var doggoDash)) return Denied();
-            if (!ruleState.TryGet<ISwitchMovement>(out var switchMovement)) return Denied();
+            if (!ruleState.TryGet<IDodgeState>(out var doggoDash)) return Denied();
+            // if (!ruleState.TryGet<ISwitchMovement>(out var switchMovement)) return Denied();
 
             // Evaluate the rules
             if (disabledState.IsDisabled) return Denied();
-            if (!switchMovement.DashMode) return Denied();
+            // if (!switchMovement.DashMode) return Denied();
 
             // NOTE I may need to add a buffer window for dashing in case the player ever does have multiple dashes.
             // If a dash is available and we aren't currently dashing
-            if (doggoDash.DashAmount > 0 && !doggoDash.IsDashing)
+            if (doggoDash.DodgeAmount > 0 && !doggoDash.IsDodging)
             {
                 // Start the timer
-                doggoDash.StartDashTimer();
+                doggoDash.StartDodgeTimer();
                 // Eat a dash
-                doggoDash.DecrementDash();
+                doggoDash.DecrementDodge();
                 // Determine the direction
                 InputDirection dir = NormalizeInput(request.Direction);
-                doggoDash.SetDashDirection(dir);
+                doggoDash.SetDodgeDirection(dir);
                 return Approved(dir);
             }
             return Denied();

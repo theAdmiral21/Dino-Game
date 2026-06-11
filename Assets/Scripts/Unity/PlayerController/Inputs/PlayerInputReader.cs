@@ -41,10 +41,10 @@ namespace PlayerController.Unity.Inputs
         private bool _grabPressed =>
                                     (_actions.InGame.Grab.phase == InputActionPhase.Started) ||
                                     (_actions.InGame.Grab.phase == InputActionPhase.Performed);
-        public bool BarkPressed => _barkPressed;
-        private bool _barkPressed => _actions.InGame.Bark.phase == InputActionPhase.Started;
-        public bool BarkHeld => _barkHeld;
-        private bool _barkHeld => _actions.InGame.Bark.phase == InputActionPhase.Performed;
+        public bool DodgePressed => _dodgePressed;
+        private bool _dodgePressed => _actions.InGame.Dodge.phase == InputActionPhase.Started;
+        public bool BarkHeld => _dodgeHeld;
+        private bool _dodgeHeld => _actions.InGame.Dodge.phase == InputActionPhase.Performed;
         public bool JumpPressed => _jumpPressed;
         private bool _jumpPressed => _actions.InGame.Jump.phase == InputActionPhase.Started;
         public bool JumpHeld => _holdingJump;
@@ -121,7 +121,7 @@ namespace PlayerController.Unity.Inputs
         }
         public void OnXInput(InputAction.CallbackContext context)
         {
-            // Debug.Log($"Got x input");
+            Debug.Log($"Got x input");
             if (context.started)
             {
                 float tapDir = Mathf.Sign(context.ReadValue<Vector2>().x);
@@ -140,7 +140,7 @@ namespace PlayerController.Unity.Inputs
             }
             else if (context.performed)
             {
-                // Debug.Log($"Recived run input");
+                Debug.Log($"Received run input");
                 OnMove(context);
             }
             else if (context.canceled)
@@ -160,7 +160,8 @@ namespace PlayerController.Unity.Inputs
             Debug.Log($"Received run stop input");
             // RunStop?.Invoke(new RunStopRequest(true, context.ReadValue<Vector2>()));
             _requestHandler.EnqueueActionRequest(new RunStopRequest(true, context.ReadValue<Vector2>()));
-            _moveInput.x = 0;
+            // _moveInput.x = 0;
+            _moveInput = context.ReadValue<Vector2>();
         }
 
         private void Update()
@@ -171,14 +172,14 @@ namespace PlayerController.Unity.Inputs
                 _requestHandler.EnqueueActionRequest(new RunRequest(true, MoveInput));
             }
         }
-        public void OnBark(InputAction.CallbackContext context)
+        public void OnDodge(InputAction.CallbackContext context)
         {
-            // if (context.started)
-            // {
-            //     // Debug.Log($"Emitted bark request - frame {Time.frameCount}");
-            //     // Bark?.Invoke(new BarkRequest(true));
-            //     _requestHandler.EnqueueActionRequest(new BarkRequest(true));
-            // }
+            if (context.started)
+            {
+                Debug.Log($"Emitted dodge request - frame {Time.frameCount}");
+                // Bark?.Invoke(new BarkRequest(true));
+                _requestHandler.EnqueueActionRequest(new DodgeRequest());
+            }
 
         }
         public void OnScent(InputAction.CallbackContext context)
@@ -277,5 +278,7 @@ namespace PlayerController.Unity.Inputs
         public void OnWallJump(InputAction.CallbackContext context) { }
 
         public void OnSlide(InputAction.CallbackContext context) { }
+
+
     }
 }

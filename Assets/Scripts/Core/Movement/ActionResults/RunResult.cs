@@ -14,14 +14,12 @@ namespace Movement.Core.Movement.DataStructures
         private readonly ActionPhase _phase;
         public RunType Type;
         public readonly Vector2 Value;
-        public bool IsZooming;
         public Type ResultType => typeof(RunResult);
-        public RunResult(bool approved, Vector2 value, RunType type, bool isZooming, ActionPhase phase)
+        public RunResult(bool approved, Vector2 value, RunType type, ActionPhase phase)
         {
             _approved = approved;
             Value = value;
             Type = type;
-            IsZooming = isZooming;
             _phase = phase;
         }
     }

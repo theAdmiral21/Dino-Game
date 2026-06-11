@@ -47,8 +47,8 @@ namespace Physics.Features.Movement
             _calcQuickStepStop = new CalcQuickStepStop();
             _calcQuickStepUpdate = new CalcQuickStepUpdate();
             _calcRotate = new CalcRotate();
-            _calcDoggoDash = new CalcDoggoDash();
-            _calcDoggoDashUpdate = new CalcDoggoDashUpdate();
+            _calcDoggoDash = new CalcDodge();
+            _calcDoggoDashUpdate = new CalcDodgeUpdate();
         }
 
         public KinematicResult Solve(ActorFrameData frameData)
@@ -162,15 +162,15 @@ namespace Physics.Features.Movement
                             frameData.CurrentState = _calcRotate.Calculate(frameData.ActorStats, rotate, ref frameData.CurrentState);
                             break;
                         }
-                    case DoggoDashResult dash:
+                    case DodgeResult dash:
                         {
-                            Debug.Log($"Dash case");
+                            Debug.Log($"Dodge case");
                             frameData.CurrentState = _calcDoggoDash.Calculate(frameData.ActorStats, dash, ref frameData.CurrentState);
                             break;
                         }
-                    case DoggoDashUpdateResult dash:
+                    case DodgeUpdateResult dash:
                         {
-                            Debug.Log($"Dash update case");
+                            Debug.Log($"Dodge update case");
                             frameData.CurrentState = _calcDoggoDashUpdate.Calculate(frameData.ActorStats, dash, ref frameData.CurrentState);
                             break;
                         }

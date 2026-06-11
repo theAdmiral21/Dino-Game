@@ -49,11 +49,9 @@ namespace Movement.Application
             var runStopResult = RunStopRules.TryStopRun(actionContext.InputValues, actionContext.Facts, actionContext.RuleState);
             _actionResults.Add(runStopResult);
 
-            var quickStepUpdate = QuickStepUpdateRules.TryQuickStepUpdate(actionContext.Facts, actionContext.InputValues, actionContext.RuleState);
-            _actionResults.Add(quickStepUpdate);
+            // var quickStepUpdate = QuickStepUpdateRules.TryQuickStepUpdate(actionContext.Facts, actionContext.InputValues, actionContext.RuleState);
+            // _actionResults.Add(quickStepUpdate);
 
-            var zoomieStop = StopZoomiesRules.TryStopZoomies(actionContext.Facts, actionContext.InputValues, actionContext.RuleState);
-            _actionResults.Add(zoomieStop);
 
             // TODO figure out how to blend coming out of the quick step into other movement options.
             // var quickStepStopResult = QuickStepStopRules.TryQuickStepStop(actionContext.InputValues, actionContext.Facts, actionContext.RuleState);
@@ -66,12 +64,12 @@ namespace Movement.Application
                 groundState.UpdateGroundedLastFrame(actionContext.Facts);
             }
 
-            if (actionContext.RuleState.TryGet<IQuickStepState>(out var quickStepState))
-            {
-                quickStepState.UpdateQuickSteppingLastFrame();
-            }
+            // if (actionContext.RuleState.TryGet<IQuickStepState>(out var quickStepState))
+            // {
+            //     quickStepState.UpdateQuickSteppingLastFrame();
+            // }
 
-            var dashUpdate = DoggoDashUpdateRules.TryDoggoDashUpdate(actionContext.Facts, actionContext.InputValues, actionContext.RuleState);
+            var dashUpdate = DodgeUpdateRules.TryDoggoDashUpdate(actionContext.Facts, actionContext.InputValues, actionContext.RuleState);
             _actionResults.Add(dashUpdate);
 
 

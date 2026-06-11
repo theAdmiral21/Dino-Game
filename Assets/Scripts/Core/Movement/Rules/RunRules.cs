@@ -34,11 +34,6 @@ namespace Movement.Core.Movement
             if (!ruleState.TryGet<ILandingState>(out var landingState)) return Denied();
             // Debug.Log($"Passed landing check");
 
-            bool isZooming = false;
-            if (ruleState.TryGet<IZoomiesState>(out var zoomies))
-            {
-                isZooming = zoomies.IsZooming;
-            }
 
             // Basic checks
             if (!request.Requested || disabledState.IsDisabled || stunState.IsStunned) return Denied();
@@ -69,10 +64,10 @@ namespace Movement.Core.Movement
                 {
                     if (actorInput.SprintPressed)
                     {
-                        return Approved(RunType.Sprint, request.Value, isZooming);
+                        return Approved(RunType.Sprint, request.Value);
                     }
                 }
-                return Approved(RunType.Run, request.Value, isZooming);
+                return Approved(RunType.Run, request.Value);
             }
 
             if (!facts.IsGrounded || !facts.IsOnPlatform)
@@ -82,10 +77,10 @@ namespace Movement.Core.Movement
                 {
                     if (actorInput.SprintPressed)
                     {
-                        return Approved(RunType.Sprint, request.Value, isZooming);
+                        return Approved(RunType.Sprint, request.Value);
                     }
                 }
-                return Approved(RunType.Aerial, request.Value, isZooming);
+                return Approved(RunType.Aerial, request.Value);
             }
 
             // Debug.Log($"Nothing passed");
@@ -104,15 +99,15 @@ namespace Movement.Core.Movement
         //         ruleState.SetDirection(-1);
         //     }
         // }
-        private static RunResult Approved(RunType type, Vector2 value, bool isZooming)
+        private static RunResult Approved(RunType type, Vector2 value)
         {
             // Debug.Log("Run approved");
-            return new RunResult(true, value, type, isZooming, ActionPhase.Continuous);
+            return new RunResult(true, value, type, ActionPhase.Continuous);
         }
         private static RunResult Denied()
         {
             // Debug.Log("Run denied");
-            return new RunResult(false, Vector2.zero, RunType.None, false, ActionPhase.Continuous);
+            return new RunResult(false, Vector2.zero, RunType.None, ActionPhase.Continuous);
 
         }
     }

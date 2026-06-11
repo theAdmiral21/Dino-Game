@@ -10,8 +10,7 @@ namespace Infrastructure.Unity.Players
         public SpawnData GetCharacterData(ref SpawnData data)
         {
             data.CharacterInfo = _library.GetCharacter(data.Id);
-            // Override the animator
-            var animator = data.PlayerObject.GetComponentInChildren<Animator>();
+
 
             return data;
         }

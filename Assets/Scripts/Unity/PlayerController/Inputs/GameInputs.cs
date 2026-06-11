@@ -122,7 +122,7 @@ namespace PlayerController.Unity.Inputs
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Bark"",
+                    ""name"": ""Dodge"",
                     ""type"": ""Button"",
                     ""id"": ""c4ecfce7-8dce-4f67-baa5-4a99d40c309b"",
                     ""expectedControlType"": """",
@@ -499,7 +499,7 @@ namespace PlayerController.Unity.Inputs
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad or Keyboard;Gamepad"",
-                    ""action"": ""Bark"",
+                    ""action"": ""Dodge"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -510,7 +510,7 @@ namespace PlayerController.Unity.Inputs
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": "";Keyboard&Mouse"",
-                    ""action"": ""Bark"",
+                    ""action"": ""Dodge"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -2133,7 +2133,7 @@ namespace PlayerController.Unity.Inputs
             m_InGame_XInput = m_InGame.FindAction("XInput", throwIfNotFound: true);
             m_InGame_Jump = m_InGame.FindAction("Jump", throwIfNotFound: true);
             m_InGame_LookUp = m_InGame.FindAction("LookUp", throwIfNotFound: true);
-            m_InGame_Bark = m_InGame.FindAction("Bark", throwIfNotFound: true);
+            m_InGame_Dodge = m_InGame.FindAction("Dodge", throwIfNotFound: true);
             m_InGame_DoggoDash = m_InGame.FindAction("DoggoDash", throwIfNotFound: true);
             m_InGame_Howl = m_InGame.FindAction("Howl", throwIfNotFound: true);
             m_InGame_Pause = m_InGame.FindAction("Pause", throwIfNotFound: true);
@@ -2259,7 +2259,7 @@ namespace PlayerController.Unity.Inputs
         private readonly InputAction m_InGame_XInput;
         private readonly InputAction m_InGame_Jump;
         private readonly InputAction m_InGame_LookUp;
-        private readonly InputAction m_InGame_Bark;
+        private readonly InputAction m_InGame_Dodge;
         private readonly InputAction m_InGame_DoggoDash;
         private readonly InputAction m_InGame_Howl;
         private readonly InputAction m_InGame_Pause;
@@ -2302,9 +2302,9 @@ namespace PlayerController.Unity.Inputs
             /// </summary>
             public InputAction @LookUp => m_Wrapper.m_InGame_LookUp;
             /// <summary>
-            /// Provides access to the underlying input action "InGame/Bark".
+            /// Provides access to the underlying input action "InGame/Dodge".
             /// </summary>
-            public InputAction @Bark => m_Wrapper.m_InGame_Bark;
+            public InputAction @Dodge => m_Wrapper.m_InGame_Dodge;
             /// <summary>
             /// Provides access to the underlying input action "InGame/DoggoDash".
             /// </summary>
@@ -2412,9 +2412,9 @@ namespace PlayerController.Unity.Inputs
                 @LookUp.started += instance.OnLookUp;
                 @LookUp.performed += instance.OnLookUp;
                 @LookUp.canceled += instance.OnLookUp;
-                @Bark.started += instance.OnBark;
-                @Bark.performed += instance.OnBark;
-                @Bark.canceled += instance.OnBark;
+                @Dodge.started += instance.OnDodge;
+                @Dodge.performed += instance.OnDodge;
+                @Dodge.canceled += instance.OnDodge;
                 @DoggoDash.started += instance.OnDoggoDash;
                 @DoggoDash.performed += instance.OnDoggoDash;
                 @DoggoDash.canceled += instance.OnDoggoDash;
@@ -2489,9 +2489,9 @@ namespace PlayerController.Unity.Inputs
                 @LookUp.started -= instance.OnLookUp;
                 @LookUp.performed -= instance.OnLookUp;
                 @LookUp.canceled -= instance.OnLookUp;
-                @Bark.started -= instance.OnBark;
-                @Bark.performed -= instance.OnBark;
-                @Bark.canceled -= instance.OnBark;
+                @Dodge.started -= instance.OnDodge;
+                @Dodge.performed -= instance.OnDodge;
+                @Dodge.canceled -= instance.OnDodge;
                 @DoggoDash.started -= instance.OnDoggoDash;
                 @DoggoDash.performed -= instance.OnDoggoDash;
                 @DoggoDash.canceled -= instance.OnDoggoDash;
@@ -3106,12 +3106,12 @@ namespace PlayerController.Unity.Inputs
             /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
             void OnLookUp(InputAction.CallbackContext context);
             /// <summary>
-            /// Method invoked when associated input action "Bark" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+            /// Method invoked when associated input action "Dodge" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
             /// </summary>
             /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
             /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
             /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-            void OnBark(InputAction.CallbackContext context);
+            void OnDodge(InputAction.CallbackContext context);
             /// <summary>
             /// Method invoked when associated input action "DoggoDash" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
             /// </summary>

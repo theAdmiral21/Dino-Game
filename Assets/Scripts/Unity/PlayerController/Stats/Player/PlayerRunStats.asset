@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06ca2990099f9a14781d27fb76dc0ef3, type: 3}
   m_Name: PlayerRunStats
   m_EditorClassIdentifier: 
-  _runSpeed: 15
-  _runAccel: 80
-  _brakeAccel: 80
+  _runSpeed: 7
+  _runAccel: 20
+  _brakeAccel: 40

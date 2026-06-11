@@ -20,17 +20,17 @@ namespace Movement.Core.Movement
         {
             // Verify the rule state can be evaluated
             if (!ruleState.TryGet<IDisabledState>(out var disabledState)) return Denied();
-            if (!ruleState.TryGet<IInvincibleState>(out var invincibleState)) return Denied();
+            // if (!ruleState.TryGet<IInvincibleState>(out var invincibleState)) return Denied();
 
             // if not request OR we're already stunned, deny
             if (!request.Requested || disabledState.IsDisabled) return Denied();
 
 
-            if (invincibleState.IsInvincible)
-            {
-                // Debug.Log($"We're invincible?");
-                return Denied();
-            }
+            // if (invincibleState.IsInvincible)
+            // {
+            //     // Debug.Log($"We're invincible?");
+            //     return Denied();
+            // }
             return Approved(request.ApexTime, request.Velocity);
         }
 

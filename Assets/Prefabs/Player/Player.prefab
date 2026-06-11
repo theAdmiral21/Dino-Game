@@ -198,7 +198,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0.5}
+  m_Offset: {x: 0, y: 1.05}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -208,7 +208,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1.5, y: 1}
+  m_Size: {x: 1, y: 2.1}
   m_EdgeRadius: 0
 --- !u!114 &6891503663535481657
 MonoBehaviour:
@@ -362,6 +362,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 5e98df3e907bd43448cb6021d5b43cd1, type: 2}
   - {fileID: 11400000, guid: f2c85ddfedaecb24da7aae31a551b110, type: 2}
   - {fileID: 11400000, guid: af8084c29d940a642937458d9a65706b, type: 2}
+  - {fileID: 11400000, guid: 969e3ae706a17344a861fa0a9df745bd, type: 2}
 --- !u!114 &6493847823426899023
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5514,7 +5515,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -876546973899608171, guid: 28a0837cc17992f47a88977f952761d0, type: 3}
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5535,15 +5536,15 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -8556002230141406750, guid: 7b7b6b99bca96ef49b95061074290131, type: 3}
+  m_Sprite: {fileID: 2349112713031206322, guid: 8ad5b6d83ee51b84b90d4e30787802ef, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 2.21875, y: 1.46875}
+  m_Size: {x: 1.71875, y: 3.28125}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!95 &6751786627680976206
@@ -5556,7 +5557,7 @@ Animator:
   m_GameObject: {fileID: 4685837306639165986}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: eaf10ce6172ddd84cbd2c20e0f0d31b0, type: 2}
+  m_Controller: {fileID: 9100000, guid: 0a4b932c50850d7418290dc336df245c, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

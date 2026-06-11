@@ -50,8 +50,6 @@ namespace Physics.Application.Orchestrators
         // Cached Rule states
         private IJumpState _jumpState;
         private bool _hasJumpState;
-        private IWallJumpState _wallState;
-        private bool _hasWallJumpState;
 
         public ActorBrain(IPhysicsActor actor,
                             IActorInput actorInput,
@@ -98,8 +96,6 @@ namespace Physics.Application.Orchestrators
             _hasJumpState = _ruleState.TryGet<IJumpState>(out var jumpState);
             if (_hasJumpState) _jumpState = jumpState;
 
-            _hasWallJumpState = _ruleState.TryGet<IWallJumpState>(out var wallState);
-            if (_hasWallJumpState) _wallState = wallState;
         }
 
 
@@ -208,15 +204,6 @@ namespace Physics.Application.Orchestrators
                     ActionRequests.Add(new JumpRequest(true, JumpType.Ground));
                 }
             }
-
-            if (_hasWallJumpState)
-            {
-                if (_wallState.WallJumpBuffered)
-                {
-                    // Debug.Log($"Buffered walljump dispatched - frame {Time.frameCount}");
-                    ActionRequests.Add(new JumpRequest(true, JumpType.WallJump));
-                }
-            }
         }
 
         private IDispatchRequest[] BuildActionDispatchers()
@@ -226,12 +213,13 @@ namespace Physics.Application.Orchestrators
                 new JumpDispatcher(),
                 new JumpCancelDispatcher(),
                 new RunDispatcher(),
-                // new PauseDispatcher(),
+                new PauseDispatcher(),
                 new StunDispatcher(),
                 new KnockBackDispatcher(),
                 new FlyDispatcher(),
                 new ExternalContinuousDispatcher(),
                 new ExternalImpulseDispatcher(),
+                new DodgeDispatcher(),
         };
 
             return dispatchers;

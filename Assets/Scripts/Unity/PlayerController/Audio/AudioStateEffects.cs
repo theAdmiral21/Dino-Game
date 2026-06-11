@@ -29,9 +29,7 @@ namespace PlayerController.Unity.Audio
         private void EvaluateZoomies(IRuleState ruleState)
         {
             // if (!ruleState.TryGet<IZoomiesState>(out var zoomies)) return;
-            if (!ruleState.TryGet<IZoomiesState>(out var zoomies)) return;
             // Debug.Log("Evaluating zoomies");
-            if (zoomies.IsZooming) _results.Add(new ZoomiesEffect(true, zoomies.ZoomyAmount));
             // bool isZooming = zoomies.IsZooming;
 
             // if (isZooming && !_wasZooming)

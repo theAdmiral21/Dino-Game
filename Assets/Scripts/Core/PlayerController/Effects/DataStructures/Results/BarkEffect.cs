@@ -5,17 +5,17 @@ using Primitives.Audio.Enums;
 
 namespace PlayerController.Core.Effects.DataStructures
 {
-    public struct BarkEffect : IEffectResult
+    public struct DodgeEffect : IEffectResult
     {
         public bool Approved => _approved;
         private bool _approved;
 
-        public Type EffectType => typeof(BarkEffect);
+        public Type EffectType => typeof(DodgeEffect);
 
 
         public PlayerSoundKey SoundKey => PlayerSoundKey.Bark;
 
-        public BarkEffect(bool approved)
+        public DodgeEffect(bool approved)
         {
             _approved = approved;
         }

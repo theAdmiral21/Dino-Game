@@ -8,8 +8,8 @@ namespace Infrastructure.Unity.Players
         public void Build(SpawnData data)
         {
             // Override the animator
-            var animator = data.PlayerObject.GetComponentInChildren<Animator>();
-            animator.runtimeAnimatorController = data.CharacterInfo.characterAnimator;
+            // var animator = data.PlayerObject.GetComponentInChildren<Animator>();
+            // animator.runtimeAnimatorController = data.CharacterInfo.characterAnimator;
 
             data.PlayerObject.SetActive(true);
             data.CameraObject.SetActive(true);

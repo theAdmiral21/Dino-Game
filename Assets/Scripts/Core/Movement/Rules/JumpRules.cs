@@ -134,43 +134,43 @@ namespace Movement.Core.Movement
             return Denied(direction.Dir);
         }
 
-        private static JumpRequest ClassifyJump(JumpRequest jumpRequest, IJumpState jumpState, IWallJumpState wallState, PhysicsContext physicsContext)
-        {
-            JumpContext jumpContext = jumpRequest.Context;
+        // private static JumpRequest ClassifyJump(JumpRequest jumpRequest, IJumpState jumpState, IWallJumpState wallState, PhysicsContext physicsContext)
+        // {
+        //     JumpContext jumpContext = jumpRequest.Context;
 
-            float hitNormalDot = Vector2.Dot(jumpContext.FloorHitNormal, Vector2.up);
-            float wallHitNormalDot = Mathf.Abs(Vector2.Dot(jumpContext.WallHitNormal, Vector2.right));
+        //     float hitNormalDot = Vector2.Dot(jumpContext.FloorHitNormal, Vector2.up);
+        //     float wallHitNormalDot = Mathf.Abs(Vector2.Dot(jumpContext.WallHitNormal, Vector2.right));
 
-            // Debug.Log($"Jump context values. HitNormal: {jumpContext.FloorHitNormal}; MadeContact: {jumpContext.FloorMadeContact}; HitNormalDot: {hitNormalDot}");
+        //     // Debug.Log($"Jump context values. HitNormal: {jumpContext.FloorHitNormal}; MadeContact: {jumpContext.FloorMadeContact}; HitNormalDot: {hitNormalDot}");
 
-            // Debug.Log($"Wall Jump context values. HitNormal: {jumpContext.WallHitNormal}; MadeContact: {jumpContext.WallMadeContact}; HitNormalDot: {wallHitNormalDot}");
+        //     // Debug.Log($"Wall Jump context values. HitNormal: {jumpContext.WallHitNormal}; MadeContact: {jumpContext.WallMadeContact}; HitNormalDot: {wallHitNormalDot}");
 
-            // Buffered jump
-            if (jumpContext.FloorMadeContact && hitNormalDot > 0.7f)
-            {
-                // Start the buffer timer
-                jumpState.StartJumpBufferTimer();
-                jumpRequest.JumpType = JumpType.Ground;
-                return jumpRequest;
-            }
-            // Buffered wall jump
-            else if (jumpContext.WallMadeContact && wallHitNormalDot > 0.7f)
-            {
-                wallState.StartWallJumpBufferTimer();
-                jumpRequest.JumpType = JumpType.WallJump;
-                return jumpRequest;
-            }
-            // Wall jump while sliding
-            else if (physicsContext.IsTouchingWall && !physicsContext.IsGrounded && !physicsContext.IsOnPlatform)
-            {
-                wallState.StartWallJumpBufferTimer();
-                jumpRequest.JumpType = JumpType.WallJump;
-                return jumpRequest;
-            }
-            jumpRequest.JumpType = JumpType.Double;
-            return jumpRequest;
+        //     // Buffered jump
+        //     if (jumpContext.FloorMadeContact && hitNormalDot > 0.7f)
+        //     {
+        //         // Start the buffer timer
+        //         jumpState.StartJumpBufferTimer();
+        //         jumpRequest.JumpType = JumpType.Ground;
+        //         return jumpRequest;
+        //     }
+        //     // Buffered wall jump
+        //     else if (jumpContext.WallMadeContact && wallHitNormalDot > 0.7f)
+        //     {
+        //         wallState.StartWallJumpBufferTimer();
+        //         jumpRequest.JumpType = JumpType.WallJump;
+        //         return jumpRequest;
+        //     }
+        //     // Wall jump while sliding
+        //     else if (physicsContext.IsTouchingWall && !physicsContext.IsGrounded && !physicsContext.IsOnPlatform)
+        //     {
+        //         wallState.StartWallJumpBufferTimer();
+        //         jumpRequest.JumpType = JumpType.WallJump;
+        //         return jumpRequest;
+        //     }
+        //     jumpRequest.JumpType = JumpType.Double;
+        //     return jumpRequest;
 
-        }
+        // }
 
         private static JumpResult Approved(JumpType type, int consumed, float dir)
         {

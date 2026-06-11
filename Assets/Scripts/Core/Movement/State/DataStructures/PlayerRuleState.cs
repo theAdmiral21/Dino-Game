@@ -18,7 +18,8 @@ namespace Movement.Core.State.DataStructures
                                     IGravityState,
                                     IStunState,
                                     IDisabledState,
-                                    ILandingState
+                                    ILandingState,
+                                    IDodgeState
     {
         public float RemainingJumps => _remainingJumps;
         private float _remainingJumps;
@@ -121,16 +122,25 @@ namespace Movement.Core.State.DataStructures
         public float MinimumRequiredZoom { get; private set; }
         public float ZoomLimit { get; private set; }
 
-        // Dashing
-        public bool IsDashing => DashCounter > 0;
-        public int DashAmount { get; private set; }
-        public float DashTime { get; private set; }
-        public float DashCounter { get; private set; }
-        public InputDirection DashDirection { get; private set; }
-        private int _totalDashes;
+        // // Dashing
+        // public bool IsDashing => DashCounter > 0;
+        // public int DashAmount { get; private set; }
+        // public float DashTime { get; private set; }
+        // public float DashCounter { get; private set; }
+        // public InputDirection DashDirection { get; private set; }
+        // private int _totalDashes;
 
         // Debug movement type switch
         public bool DashMode { get; private set; }
+
+        // Dodging
+        public bool IsDodging { get; private set; }
+        public int DodgeAmount { get; private set; }
+        public float DodgeTime { get; private set; }
+        public float DodgeCounter { get; private set; }
+
+        public InputDirection DodgeDirection { get; private set; }
+        private int _totalDodges;
 
         private float _wallJumpTime;
         private float _wallJumpCounter;
@@ -162,6 +172,10 @@ namespace Movement.Core.State.DataStructures
 
             _dt = 0;
             _dir = 1;
+
+            _totalDodges = (int)stats.Get<DodgeStats>().TotalDodges.Value;
+
+            Debug.Log($"Dodge amount: {DodgeAmount}");
         }
 
         public void ResetRuleState()
@@ -184,7 +198,7 @@ namespace Movement.Core.State.DataStructures
             // Reset the jumps
             ResetJumps(physicsContext);
             // Reset the dash
-            ResetDash(physicsContext);
+            ResetDodge(physicsContext);
             // Tick active timers
             TickTimers();
 
@@ -363,9 +377,9 @@ namespace Movement.Core.State.DataStructures
                     ZoomyAmount = 0;
                 }
             }
-            if (DashCounter > 0)
+            if (DodgeCounter > 0)
             {
-                DashCounter -= Dt;
+                DodgeCounter -= Dt;
             }
         }
 
@@ -447,44 +461,32 @@ namespace Movement.Core.State.DataStructures
             IsZooming = true;
         }
 
-        public void DecrementDash()
+        public void DecrementDodge()
         {
-            DashAmount -= 1;
+            DodgeAmount -= 1;
         }
 
-        public void ResetDash(PhysicsContext physicsContext)
+        public void ResetDodge(PhysicsContext physicsContext)
         {
-            if ((physicsContext.IsGrounded || physicsContext.IsOnPlatform) && !IsDashing)
+            if ((physicsContext.IsGrounded || physicsContext.IsOnPlatform) && !IsDodging)
             {
                 // Give the player their dash back when they hit the ground
-                DashAmount = _totalDashes;
+                DodgeAmount = _totalDodges;
             }
 
+
+
         }
 
-        public void SwitchMovement()
+        public void StartDodgeTimer()
         {
-            DashMode = !DashMode;
-
-            if (DashMode)
-            {
-                Debug.Log($"Movement Mode: Dash");
-            }
-            else
-            {
-                Debug.Log($"Movement Mode: Double Jump");
-            }
-
+            DodgeCounter = DodgeTime;
         }
 
-        public void StartDashTimer()
+        public void SetDodgeDirection(InputDirection direction)
         {
-            DashCounter = DashTime;
+            DodgeDirection = direction;
         }
 
-        public void SetDashDirection(InputDirection direction)
-        {
-            DashDirection = direction;
-        }
     }
 }

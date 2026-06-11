@@ -57,7 +57,7 @@ namespace PlayerController.Unity.Physics
 
             switch (audioEffect)
             {
-                case BarkEffect bark:
+                case DodgeEffect bark:
                     {
                         // Debug.Log("Playing bark");
                         _audioBridge.PlayBark();

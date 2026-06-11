@@ -24,19 +24,19 @@ namespace PlayerController.Unity.Audio
         }
         private void EvaluateInvincible(IRuleState ruleState)
         {
-            if (!ruleState.TryGet<IInvincibleState>(out var invincible)) return;
+            // if (!ruleState.TryGet<IInvincibleState>(out var invincible)) return;
             if (!ruleState.TryGet<IStunState>(out var stun)) return;
 
-            if (invincible.IsInvincible || stun.IsStunned)
-            {
-                // trigger i frames
-                _results.Add(new IFrameEffect(true));
-            }
-            else
-            {
-                // stop i frames
-                _results.Add(new IFrameEffect(false));
-            }
+            // if (invincible.IsInvincible || stun.IsStunned)
+            // {
+            //     // trigger i frames
+            //     _results.Add(new IFrameEffect(true));
+            // }
+            // else
+            // {
+            //     // stop i frames
+            //     _results.Add(new IFrameEffect(false));
+            // }
         }
         private void EvaluateZoomies(IRuleState ruleState)
         {

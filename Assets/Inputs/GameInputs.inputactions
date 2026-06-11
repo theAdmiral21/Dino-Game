@@ -34,7 +34,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Bark",
+                    "name": "Dodge",
                     "type": "Button",
                     "id": "c4ecfce7-8dce-4f67-baa5-4a99d40c309b",
                     "expectedControlType": "",
@@ -411,7 +411,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad or Keyboard;Gamepad",
-                    "action": "Bark",
+                    "action": "Dodge",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -422,7 +422,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
-                    "action": "Bark",
+                    "action": "Dodge",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

@@ -97,10 +97,10 @@ namespace PlayerController.Unity.Effects
                         _effectResults.Add(new RunEffect(true, run.Value.x));
                         break;
                     }
-                case BarkResult bark:
+                case DodgeResult bark:
                     {
                         // Debug.Log("Got bark effect");
-                        _effectResults.Add(new BarkEffect(true));
+                        _effectResults.Add(new DodgeEffect(true));
                         break;
                     }
                 case LandingResult land:

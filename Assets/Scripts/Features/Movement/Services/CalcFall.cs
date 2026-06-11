@@ -15,7 +15,7 @@ namespace Movement.Features.Movement.Services
         public KinematicResult Calculate(IStatCollection stats, IActionResult actionResult, ref KinematicResult currentResult)
         {
             stats.TryGet<GravityStats>(out var gravStats);
-            stats.TryGet<WallStats>(out var wallStats);
+            // stats.TryGet<WallStats>(out var wallStats);
             if (actionResult is not FallResult fall) return currentResult;
             // If we can't fall then don't
             if (!fall.Approved)
@@ -29,15 +29,15 @@ namespace Movement.Features.Movement.Services
                 {
                     currentResult.Gravity = gravStats.BaseGravity.Value * gravStats.FastFall.Value;
                 }
-                else if (fall.Type == FallType.Slow)
+                else
                 {
                     currentResult.Gravity = gravStats.BaseGravity.Value * gravStats.SlowFall.Value;
                 }
-                else if (fall.Type == FallType.WallSlide)
-                {
-                    currentResult.Velocity.y = wallStats.WallSlideSpeed.Value;
-                    currentResult.Gravity = 0;
-                }
+                // else if (fall.Type == FallType.WallSlide)
+                // {
+                //     currentResult.Velocity.y = wallStats.WallSlideSpeed.Value;
+                //     currentResult.Gravity = 0;
+                // }
                 // else if (fall.Type == FallType.None)
                 // {
                 //     if (currentResult.Velocity.y < 0)

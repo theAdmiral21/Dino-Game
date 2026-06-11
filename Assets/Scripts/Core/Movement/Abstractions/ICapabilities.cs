@@ -17,12 +17,12 @@ namespace Movement.Core.Abstractions
         public void StartCoyoteTimer(PhysicsContext physicsContext);
     }
 
-    public interface IWallJumpState
-    {
-        public bool WallJumpBuffered { get; }
-        public void StartWallJumpBufferTimer();
-        public void ResetWallJumpBufferTimer();
-    }
+    // public interface IWallJumpState
+    // {
+    //     public bool WallJumpBuffered { get; }
+    //     public void StartWallJumpBufferTimer();
+    //     public void ResetWallJumpBufferTimer();
+    // }
 
     public interface IXInputState
     {
@@ -63,17 +63,17 @@ namespace Movement.Core.Abstractions
     }
 
 
-    public interface IInvincibleState
-    {
-        public bool IsInvincible { get; }
-        public void StartIFrameTimer();
-    }
+    // public interface IInvincibleState
+    // {
+    //     public bool IsInvincible { get; }
+    //     public void StartIFrameTimer();
+    // }
 
-    public interface ITeleportState
-    {
-        public bool CanTeleport { get; }
-        public void StartTeleportCoolDown();
-    }
+    // public interface ITeleportState
+    // {
+    //     public bool CanTeleport { get; }
+    //     public void StartTeleportCoolDown();
+    // }
 
     public interface IDisabledState
     {
@@ -102,44 +102,44 @@ namespace Movement.Core.Abstractions
         public void SetQuickStepDirection(float dir);
     }
 
-    public interface ILongJumpState
+    // public interface ILongJumpState
+    // {
+    //     public bool LongJumpIsActive { get; }
+    //     public float LongJumpCounter { get; }
+    //     public bool CanLongJump { get; }
+    //     public float LongJumpFarWindow { get; }
+    //     public void StartLongJumpTimer();
+    //     public void UpdateLongJumpState();
+    // }
+
+    // public interface IZoomiesState
+    // {
+    //     // How much zoom the player can bank
+    //     public float ZoomLimit { get; }
+    //     // How much zoom the player needs in order to get zoomies
+    //     public float MinimumRequiredZoom { get; }
+    //     public bool IsZooming { get; }
+    //     public float ZoomyAmount { get; }
+    //     public void AddZoomies(float zoomAmount);
+    //     public void StartZoomiesTimer();
+    // }
+
+    public interface IDodgeState
     {
-        public bool LongJumpIsActive { get; }
-        public float LongJumpCounter { get; }
-        public bool CanLongJump { get; }
-        public float LongJumpFarWindow { get; }
-        public void StartLongJumpTimer();
-        public void UpdateLongJumpState();
+        public bool IsDodging { get; }
+        public int DodgeAmount { get; }
+        public float DodgeTime { get; }
+        public float DodgeCounter { get; }
+        public InputDirection DodgeDirection { get; }
+        public void StartDodgeTimer();
+        public void DecrementDodge();
+        public void ResetDodge(PhysicsContext physicsContext);
+        public void SetDodgeDirection(InputDirection direction);
     }
 
-    public interface IZoomiesState
-    {
-        // How much zoom the player can bank
-        public float ZoomLimit { get; }
-        // How much zoom the player needs in order to get zoomies
-        public float MinimumRequiredZoom { get; }
-        public bool IsZooming { get; }
-        public float ZoomyAmount { get; }
-        public void AddZoomies(float zoomAmount);
-        public void StartZoomiesTimer();
-    }
-
-    public interface IDoggoDashState
-    {
-        public bool IsDashing { get; }
-        public int DashAmount { get; }
-        public float DashTime { get; }
-        public float DashCounter { get; }
-        public InputDirection DashDirection { get; }
-        public void StartDashTimer();
-        public void DecrementDash();
-        public void ResetDash(PhysicsContext physicsContext);
-        public void SetDashDirection(InputDirection direction);
-    }
-
-    public interface ISwitchMovement
-    {
-        public bool DashMode { get; }
-        public void SwitchMovement();
-    }
+    // public interface ISwitchMovement
+    // {
+    //     public bool DashMode { get; }
+    //     public void SwitchMovement();
+    // }
 }

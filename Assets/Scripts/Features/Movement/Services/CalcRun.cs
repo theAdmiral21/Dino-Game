@@ -33,21 +33,7 @@ namespace Movement.Features.Movement.Services
             float vDir = currentResult.Velocity.x >= 0 ? 1f : -1f;
 
             float xInput = run.Value.x;
-            if (run.IsZooming)
-            {
-                // Calculate the zoom speed
-                target = zoomStats.ZoomSpeed.Value * xInput;
-                if (dir == vDir)
-                {
-                    if (Mathf.Abs(target) < Mathf.Abs(currentResult.Velocity.x)) target = currentResult.Velocity.x;
-                    accelValue = zoomStats.ZoomAccel.Value;
-                }
-                else
-                {
-                    accelValue = zoomStats.ZoomBrakeAccel.Value;
-                }
-            }
-            else if (run.Type == RunType.Run)
+            if (run.Type == RunType.Run)
             {
                 // Calculate the run speed
                 target = _runStats.RunSpeed.Value * xInput;
