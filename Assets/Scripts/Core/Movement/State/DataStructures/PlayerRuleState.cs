@@ -17,16 +17,8 @@ namespace Movement.Core.State.DataStructures
                                     IFallState,
                                     IGravityState,
                                     IStunState,
-                                    IInvincibleState,
-                                    ITeleportState,
                                     IDisabledState,
-                                    ILandingState,
-                                    IQuickStepState,
-                                    ILongJumpState,
-                                    IWallJumpState,
-                                    IZoomiesState,
-                                    IDoggoDashState,
-                                    ISwitchMovement
+                                    ILandingState
     {
         public float RemainingJumps => _remainingJumps;
         private float _remainingJumps;
@@ -162,38 +154,14 @@ namespace Movement.Core.State.DataStructures
             _jumpBufferCounter = 0;
 
             _stunnedLastFrame = false;
-            _iFrameTimer = stats.Get<InvincibilityStats>().InvincibilityDuration.Value;
             // IsDisabled = false;
             _applyGravity = true;
             _affectedByGravity = true;
             _fallType = FallType.None;
 
-            _blockXTime = stats.Get<WallStats>().WallJumpApexTime.Value;
-            _blockXCounter = 0;
-            //wall jump
-            _wallJumpTime = stats.Get<WallStats>().WallJumpBufferTime.Value;
-            _wallJumpCounter = 0;
 
             _dt = 0;
             _dir = 1;
-            // Teleport
-            _teleportCoolDownTimer = stats.Get<TeleportStats>().TeleportCoolDown.Value;
-
-            // Quick step
-            QuickStepTime = stats.Get<QuickStepStats>().QuickStepDuration.Value;
-            QuickStepCoolDown = stats.Get<QuickStepStats>().QuickStepCoolDown.Value;
-
-            // Long jump
-            LongJumpFarWindow = stats.Get<LongJumpStats>().LongJumpFarWindow.Value;
-
-            // Setup zoomies
-            MinimumRequiredZoom = stats.Get<ZoomiesStats>().ZoomThreshold.Value;
-            ZoomLimit = stats.Get<ZoomiesStats>().ZoomAmountLimit.Value;
-
-            // Setup dashing
-            DashTime = stats.Get<DashStats>().DashTime.Value;
-            _totalDashes = (int)stats.Get<DashStats>().TotalDashes.Value;
-            DashAmount = _totalDashes;
         }
 
         public void ResetRuleState()

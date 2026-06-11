@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c08a3f0d4d21b2f40a15a25b657c5b4b, type: 3}
+  m_Name: DolphinSoundSet
+  m_EditorClassIdentifier: 
+  _enemyType: 4
+  Attack:
+  - {fileID: 8300000, guid: fc4cdf56104eba24e8434415f3dc420d, type: 3}
+  - {fileID: 8300000, guid: dfffbc5c30c56e148b9a083031c1dfd1, type: 3}
+  - {fileID: 8300000, guid: 5c0c13646fcb77e41b76fa8bca7f081a, type: 3}
+  Hurt: []
+  Die:
+  - {fileID: 8300000, guid: 9bea9574e5e68e84ba89712ac536ac8e, type: 3}
+  WarCry:
+  - {fileID: 8300000, guid: 45b9c602d48552647b92f26774223ba9, type: 3}
+  VolumeRange: {x: 0.95, y: 1.05}
+  PitchRange: {x: 1, y: 1}

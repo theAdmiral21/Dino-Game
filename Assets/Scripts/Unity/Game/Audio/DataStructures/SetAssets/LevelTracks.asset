@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7e18b14dcf449146b619add90b0fed8, type: 3}
+  m_Name: LevelTracks
+  m_EditorClassIdentifier: 
+  TrackList:
+  - {fileID: 11400000, guid: b414311c3a283c248b3c85c41218b901, type: 2}
+  - {fileID: 11400000, guid: df13ea5693ecefd49a2b521bdf95da67, type: 2}

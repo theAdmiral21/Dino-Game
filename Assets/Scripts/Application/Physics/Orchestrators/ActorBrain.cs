@@ -10,8 +10,8 @@ using Movement.Application;
 using Movement.Application.Abstractions;
 using Movement.Application.Dispatchers;
 using Physics.Core.Abstractions;
-// using PlayerController.Application.Effects.Dispatchers;
-// using PlayerController.Application.Movement.Dispatchers;
+using PlayerController.Application.Effects.Dispatchers;
+using PlayerController.Application.Movement.Dispatchers;
 using Physics.Core.DataStructures;
 using Movement.Core.Stats;
 using Primitives.Physics;
@@ -71,6 +71,7 @@ namespace Physics.Application.Orchestrators
 
             // Make an event bus
             ActorEventBus = new ActorEventBus();
+            Debug.Log($"Actor event bus configured");
 
             _ruleState = ruleState;
             // Register capabilities

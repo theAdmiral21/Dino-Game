@@ -35,37 +35,37 @@ namespace Movement.Core.Movement
             if (!ruleState.TryGet<IDisabledState>(out var disabled)) return Denied(direction.Dir);
             if (!ruleState.TryGet<IStunState>(out var stunState)) return Denied(direction.Dir);
             if (!ruleState.TryGet<IJumpState>(out var jumpState)) return Denied(direction.Dir);
-            if (!ruleState.TryGet<IWallJumpState>(out var wallJumpState)) return Denied(direction.Dir);
+            // if (!ruleState.TryGet<IWallJumpState>(out var wallJumpState)) return Denied(direction.Dir);
             if (!ruleState.TryGet<IXInputState>(out var xInputState)) return Denied(direction.Dir);
             if (!ruleState.TryGet<IGroundedState>(out var groundedState)) return Denied(direction.Dir);
-            if (!ruleState.TryGet<IQuickStepState>(out var quickStepState)) return Denied(direction.Dir);
-            if (!ruleState.TryGet<ILongJumpState>(out var longJumpState)) return Denied(direction.Dir);
-            if (!ruleState.TryGet<ISwitchMovement>(out var switchMovement)) return Denied(direction.Dir);
+            // if (!ruleState.TryGet<IQuickStepState>(out var quickStepState)) return Denied(direction.Dir);
+            // if (!ruleState.TryGet<ILongJumpState>(out var longJumpState)) return Denied(direction.Dir);
+            // if (!ruleState.TryGet<ISwitchMovement>(out var switchMovement)) return Denied(direction.Dir);
 
             if (!request.Requested || disabled.IsDisabled || stunState.IsStunned) return Denied(direction.Dir);
 
 
-            request = ClassifyJump(request, jumpState, wallJumpState, facts);
+            // request = ClassifyJump(request, jumpState, wallJumpState, facts);
             Debug.Log($"Requested jump type: {request.JumpType}");
 
-            bool canWallJumpNow =
-                wallJumpState.WallJumpBuffered &&
-                facts.IsTouchingWall &&
-                !facts.IsGrounded;
+            // bool canWallJumpNow =
+            //     wallJumpState.WallJumpBuffered &&
+            //     facts.IsTouchingWall &&
+            //     !facts.IsGrounded;
 
-            if (canWallJumpNow)
-            {
-                // Are wall jumps free? I think they are because you jump onto the wall and that eats a jump, but when you wall jump, you should be able to double jump after. So wall jumps are free
+            // if (canWallJumpNow)
+            // {
+            //     // Are wall jumps free? I think they are because you jump onto the wall and that eats a jump, but when you wall jump, you should be able to double jump after. So wall jumps are free
 
-                // Reset the buffer timers
-                jumpState.ResetBufferTimer();
-                wallJumpState.ResetWallJumpBufferTimer();
+            //     // Reset the buffer timers
+            //     jumpState.ResetBufferTimer();
+            //     wallJumpState.ResetWallJumpBufferTimer();
 
-                // Debug.Log("Called block x timer");
-                xInputState.StartBlockXTimer();
+            //     // Debug.Log("Called block x timer");
+            //     xInputState.StartBlockXTimer();
 
-                return Approved(JumpType.WallJump, 0, direction.Dir);
-            }
+            //     return Approved(JumpType.WallJump, 0, direction.Dir);
+            // }
 
             if (facts.IsGrounded || facts.IsOnPlatform)
             {
@@ -74,15 +74,15 @@ namespace Movement.Core.Movement
                 // Eat a jump
                 jumpState.DecrementJumps();
 
-                if (quickStepState.QuickStepActive)
-                {
-                    float elapsedTime = quickStepState.QuickStepTime - longJumpState.LongJumpCounter;
-                    if (elapsedTime < longJumpState.LongJumpFarWindow)
-                    {
-                        return Approved(JumpType.LongJumpFar, 1, direction.Dir);
-                    }
-                    return Approved(JumpType.LongJumpMed, 1, direction.Dir);
-                }
+                // if (quickStepState.QuickStepActive)
+                // {
+                //     float elapsedTime = quickStepState.QuickStepTime - longJumpState.LongJumpCounter;
+                //     if (elapsedTime < longJumpState.LongJumpFarWindow)
+                //     {
+                //         return Approved(JumpType.LongJumpFar, 1, direction.Dir);
+                //     }
+                //     return Approved(JumpType.LongJumpMed, 1, direction.Dir);
+                // }
 
                 // Otherwise do a regular jump
                 return Approved(JumpType.Ground, 1, direction.Dir);
@@ -96,15 +96,15 @@ namespace Movement.Core.Movement
                 // Eat a jump
                 jumpState.DecrementJumps();
 
-                if (quickStepState.QuickStepActive)
-                {
-                    float elapsedTime = quickStepState.QuickStepTime - longJumpState.LongJumpCounter;
-                    if (elapsedTime < longJumpState.LongJumpFarWindow)
-                    {
-                        return Approved(JumpType.LongJumpFar, 1, direction.Dir);
-                    }
-                    return Approved(JumpType.LongJumpMed, 1, direction.Dir);
-                }
+                // if (quickStepState.QuickStepActive)
+                // {
+                //     float elapsedTime = quickStepState.QuickStepTime - longJumpState.LongJumpCounter;
+                //     if (elapsedTime < longJumpState.LongJumpFarWindow)
+                //     {
+                //         return Approved(JumpType.LongJumpFar, 1, direction.Dir);
+                //     }
+                //     return Approved(JumpType.LongJumpMed, 1, direction.Dir);
+                // }
 
                 // Otherwise do a regular jump
                 return Approved(JumpType.Coyote, 1, direction.Dir);
@@ -112,24 +112,24 @@ namespace Movement.Core.Movement
 
             //TODO Figure out if you want dashing or double jumping, default to double jump
 #if UNITY_EDITOR
-            if (switchMovement.DashMode) return Denied(direction.Dir);
+            // if (switchMovement.DashMode) return Denied(direction.Dir);
 #endif
 
-            // Double Jump
-            if (jumpState.RemainingJumps > 0 &&
-                groundedState.UngroundedCounter > .1f &&
-                !jumpState.CanCoyoteJump &&
-                !jumpState.JumpBuffered &&
-                !wallJumpState.WallJumpBuffered
-                )
-            {
-                // Reset the buffer timer
-                jumpState.ResetBufferTimer();
-                // Eat two jump in case you were bounced upwards by something
-                jumpState.DecrementJumps();
-                jumpState.DecrementJumps();
-                return Approved(JumpType.Double, 1, direction.Dir);
-            }
+            // // Double Jump
+            // if (jumpState.RemainingJumps > 0 &&
+            //     groundedState.UngroundedCounter > .1f &&
+            //     !jumpState.CanCoyoteJump &&
+            //     !jumpState.JumpBuffered &&
+            //     !wallJumpState.WallJumpBuffered
+            //     )
+            // {
+            //     // Reset the buffer timer
+            //     jumpState.ResetBufferTimer();
+            //     // Eat two jump in case you were bounced upwards by something
+            //     jumpState.DecrementJumps();
+            //     jumpState.DecrementJumps();
+            //     return Approved(JumpType.Double, 1, direction.Dir);
+            // }
 
             return Denied(direction.Dir);
         }

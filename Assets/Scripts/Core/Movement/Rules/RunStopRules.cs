@@ -20,7 +20,7 @@ namespace Movement.Core.Movement
         {
             // Verify the rule state can be evaluated
             if (!ruleState.TryGet<ILandingState>(out var landing)) return Denied();
-            if (!ruleState.TryGet<IQuickStepState>(out var quickStepState)) return Denied();
+            // if (!ruleState.TryGet<IQuickStepState>(out var quickStepState)) return Denied();
 
             if (Mathf.Abs(inputs.Move.x) < 0.25f)
                 if (facts.IsGrounded || facts.IsOnPlatform)

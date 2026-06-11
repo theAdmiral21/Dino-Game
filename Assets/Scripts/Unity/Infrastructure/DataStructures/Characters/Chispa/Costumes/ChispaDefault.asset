@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a787558dc56fe8946b1aeca363064699, type: 3}
+  m_Name: ChispaDefault
+  m_EditorClassIdentifier: 
+  Portrait: {fileID: 1112166019, guid: f99bec7cbc84e5f429084295569c172c, type: 3}
+  CostumeOverride: {fileID: 22100000, guid: 497c8902d9823954e8e9f5e0c3e2c5d0, type: 2}
+  PortraitDict: {fileID: 11400000, guid: 8c0f7d075c79c5a4d987aec97c31123c, type: 2}
+  Avatar: {fileID: -7194047224762404665, guid: c6a2cc814d9ba3d4fbaa07325fa38ad2, type: 3}
+  unlocked: 1

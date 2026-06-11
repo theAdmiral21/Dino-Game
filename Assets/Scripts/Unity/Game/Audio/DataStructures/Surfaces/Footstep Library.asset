@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8827b7b0b44c23047b116be13b7ee423, type: 3}
+  m_Name: Footstep Library
+  m_EditorClassIdentifier: 
+  DirtyGround: {fileID: 0}
+  Grass: {fileID: 0}
+  Gravel: {fileID: 0}
+  Leaves: {fileID: 0}
+  Metal: {fileID: 11400000, guid: c01c63e7ca92d1a40a6ef00589de40cc, type: 2}
+  Mud: {fileID: 0}
+  Rock: {fileID: 0}
+  Rug: {fileID: 0}
+  Sand: {fileID: 0}
+  Snow: {fileID: 0}
+  Stone: {fileID: 11400000, guid: b81dd27670ead5c4e84e27178f66a3a8, type: 2}
+  Tile: {fileID: 0}
+  Water: {fileID: 0}
+  Wood: {fileID: 0}
+  VolumeRange: {x: 0.9, y: 1.2}
+  PitchRange: {x: 0.95, y: 1.05}

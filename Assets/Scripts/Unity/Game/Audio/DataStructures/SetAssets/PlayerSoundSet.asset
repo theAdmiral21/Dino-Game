@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a9afeaffcd188f46b384ac84671149a, type: 3}
+  m_Name: PlayerSoundSet
+  m_EditorClassIdentifier: 
+  Barks:
+  - {fileID: 8300000, guid: 6b2f36ffe6d3bc848b29a3207da8c78f, type: 3}
+  - {fileID: 8300000, guid: 15353f749f8348145bdbdd8b034f8647, type: 3}
+  - {fileID: 8300000, guid: b510f3b0a47dc81478402d9fbcabf657, type: 3}
+  - {fileID: 8300000, guid: d24e62cc556d3054284f9cb81db31ba9, type: 3}
+  Howls:
+  - {fileID: 8300000, guid: 8c213a9878d571a4c8a28cef55df4871, type: 3}
+  - {fileID: 8300000, guid: d810d0fa74655df4bb3f06e48cef16f0, type: 3}
+  - {fileID: 8300000, guid: 9bf10acdc660cf841a3e77329fb664cd, type: 3}
+  Attack: []
+  Hurt: []
+  Talk: []
+  Scent: []
+  DoubleJump:
+  - {fileID: 8300000, guid: bcf89f842621cf94baee2a4311ad16e7, type: 3}
+  EnterZoomies: {fileID: 8300000, guid: ca3ef67a14694c14285aebf241d111e5, type: 3}
+  ZoomiesTwinkle: {fileID: 8300000, guid: 8621978a68f8c2945950513932648248, type: 3}
+  ExitZoomies: {fileID: 8300000, guid: ef10e9a1bfb0b1645ac7466c03b2fbe6, type: 3}
+  VolumeRange: {x: 0.95, y: 1.05}
+  PitchRange: {x: 0.95, y: 1.05}

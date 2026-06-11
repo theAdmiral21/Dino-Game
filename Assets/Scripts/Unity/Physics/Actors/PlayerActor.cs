@@ -34,7 +34,7 @@ namespace Physics.Unity.Actors
         IActorInput _actorInput => _actorInputMono.Interface;
 
         private BodyType _bodyType = BodyType.Kinematic;
-        private IJumpContextBuilder _jumpContextBuilder;
+        // private IJumpContextBuilder _jumpContextBuilder;
         private IDirectionState _dirState;
 
         [Header("Debug")]
@@ -45,7 +45,7 @@ namespace Physics.Unity.Actors
         {
             base.Awake();
 
-            _jumpContextBuilder = new JumpContextBuilder(_stats);
+            // _jumpContextBuilder = new JumpContextBuilder(_stats);
 
             Debug.Log($"player bounds: {_bounds}");
 
@@ -59,28 +59,28 @@ namespace Physics.Unity.Actors
         {
             if (Brain == null) return;
 
-            switch (newRequest)
-            {
-                case JumpRequest jump:
-                    {
-                        // Update the jump request with the jump context
-                        jump.Context = _jumpContextBuilder.BuildJumpContext(
-                            Body.RayConfig,
-                            Brain.FrameData.CurrentState.Velocity,
-                            Brain.FrameData.CurrentState.Gravity,
-                            _dirState.Dir
-                        );
-                        // Debug.Log($"Adding new jump request. Normal: {jump.Context.HitNormal}Contact: {jump.Context.MadeContact}");
-                        Brain.UpdateRequestList(jump);
-                        return;
-                    }
-                default:
-                    {
-                        // Debug.Log($"Enqueuing {newRequest}");
-                        Brain.UpdateRequestList(newRequest);
-                        return;
-                    }
-            }
+            // switch (newRequest)
+            // {
+            // case JumpRequest jump:
+            //     {
+            //         // Update the jump request with the jump context
+            //         jump.Context = _jumpContextBuilder.BuildJumpContext(
+            //             Body.RayConfig,
+            //             Brain.FrameData.CurrentState.Velocity,
+            //             Brain.FrameData.CurrentState.Gravity,
+            //             _dirState.Dir
+            //         );
+            //         // Debug.Log($"Adding new jump request. Normal: {jump.Context.HitNormal}Contact: {jump.Context.MadeContact}");
+            //         Brain.UpdateRequestList(jump);
+            //         return;
+            //     }
+            // default:
+            //     {
+            // Debug.Log($"Enqueuing {newRequest}");
+            Brain.UpdateRequestList(newRequest);
+            // return;
+            // }
+            // }
         }
 
         public override void Initialize(IGameContext context)

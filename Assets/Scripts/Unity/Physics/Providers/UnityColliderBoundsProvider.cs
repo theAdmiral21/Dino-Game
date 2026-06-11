@@ -9,7 +9,7 @@ namespace Gameplay.Common.Unity
         private readonly Collider2D _collider;
         public UnityColliderBoundsProvider(Collider2D collider)
         {
-            Debug.Log($"Constructing UnityColliderBoundsProvider - Frame {Time.frameCount}");
+            // Debug.Log($"Constructing UnityColliderBoundsProvider - Frame {Time.frameCount}");
             _collider = collider;
         }
         public AABB GetBounds()

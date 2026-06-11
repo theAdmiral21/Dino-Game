@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d558097aeb10c0949bea49c5338d0826, type: 3}
+  m_Name: ChispaCharacterData
+  m_EditorClassIdentifier: 
+  CharacterName: Chispa
+  CharacterId: 0
+  Costume:
+  - {fileID: 11400000, guid: fe6ba37d80c4b9b41a99b32ba42d3210, type: 2}
+  Voice: {fileID: 8300000, guid: d9b118f4a145cf34691f6522c5c681d0, type: 3}
+  oneUp: {fileID: 7781962778382766210, guid: b27017506327a0c4e85b0aebcf8fbe4c, type: 3}
+  characterAnimator: {fileID: 22100000, guid: 497c8902d9823954e8e9f5e0c3e2c5d0, type: 2}
+  portriatAnimator: {fileID: 9100000, guid: 7badfc902b4702b47bf6d73bac4886be, type: 2}

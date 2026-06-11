@@ -35,7 +35,7 @@ namespace Physics.Unity.Actors
 
         public bool IsAsleep { get; private set; }
 
-        public int Priority => 5;
+        public int Priority => 0;
 
         public IActorEventBus ActorEventBus => Brain.ActorEventBus;
 
@@ -53,7 +53,7 @@ namespace Physics.Unity.Actors
             Debug.Log($"[BASE] player bounds: {_bounds}");
             // The collision layer should always be collision
             _collisionLayer = LayerMask.GetMask("Collision");
-            Debug.Assert(_collisionLayer.value == (1 << 7), $"Collision layer mask is using layer {_collisionLayer.value}");
+
 
             Debug.Log($"BasePhysicsActor.Awake() - bounds: {_bounds} collider: {GetComponent<Collider2D>()} - Frame: {Time.frameCount}");
         }

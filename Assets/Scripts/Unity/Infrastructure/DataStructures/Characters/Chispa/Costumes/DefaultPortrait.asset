@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb9ff0c86d7740648aa21976d8585aa8, type: 3}
+  m_Name: DefaultPortrait
+  m_EditorClassIdentifier: 
+  _entries:
+  - MouthClosed: {fileID: 1112166019, guid: f99bec7cbc84e5f429084295569c172c, type: 3}
+    MouthOpen: {fileID: -781611725, guid: f99bec7cbc84e5f429084295569c172c, type: 3}
+    Key: 0
+  - MouthClosed: {fileID: 943726817, guid: f99bec7cbc84e5f429084295569c172c, type: 3}
+    MouthOpen: {fileID: -267171947, guid: f99bec7cbc84e5f429084295569c172c, type: 3}
+    Key: 1
+  - MouthClosed: {fileID: -919522212, guid: f99bec7cbc84e5f429084295569c172c, type: 3}
+    MouthOpen: {fileID: -299630234, guid: f99bec7cbc84e5f429084295569c172c, type: 3}
+    Key: 2
+  - MouthClosed: {fileID: -1444674704, guid: f99bec7cbc84e5f429084295569c172c, type: 3}
+    MouthOpen: {fileID: 1600044765, guid: f99bec7cbc84e5f429084295569c172c, type: 3}
+    Key: 3
+  - MouthClosed: {fileID: 574666392, guid: f99bec7cbc84e5f429084295569c172c, type: 3}
+    MouthOpen: {fileID: 950956623, guid: f99bec7cbc84e5f429084295569c172c, type: 3}
+    Key: 4

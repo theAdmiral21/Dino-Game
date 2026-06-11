@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d558097aeb10c0949bea49c5338d0826, type: 3}
+  m_Name: MermaidOfMendota
+  m_EditorClassIdentifier: 
+  CharacterName: MermaidOfMendota
+  CharacterId: 9
+  Costume:
+  - {fileID: 11400000, guid: 3cce4bb2cbbb6054292dc933230e39e5, type: 2}
+  Voice: {fileID: 8300000, guid: f0a70587319121047b795f4f87859808, type: 3}
+  oneUp: {fileID: 0}
+  characterAnimator: {fileID: 0}
+  portriatAnimator: {fileID: 0}

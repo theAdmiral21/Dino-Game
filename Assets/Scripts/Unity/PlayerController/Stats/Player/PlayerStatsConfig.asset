@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf9557eed061d5c4783b68dd040ad641, type: 3}
+  m_Name: PlayerStatsConfig
+  m_EditorClassIdentifier: 
+  Run: {fileID: 11400000, guid: f2c85ddfedaecb24da7aae31a551b110, type: 2}
+  Sprint: {fileID: 11400000, guid: af8084c29d940a642937458d9a65706b, type: 2}
+  Aerial: {fileID: 11400000, guid: a759aaf62c772434eb0b6a871fe4e08d, type: 2}
+  Jump: {fileID: 11400000, guid: 5e98df3e907bd43448cb6021d5b43cd1, type: 2}
+  DoubleJump: {fileID: 11400000, guid: 261db341b798f1147bbe2e69779407ba, type: 2}
+  Wall: {fileID: 11400000, guid: 5b147ec9cfbf75c4c9158f255b05b9a0, type: 2}
+  Gravity: {fileID: 11400000, guid: 8249156e34cf8924fa16113c19344854, type: 2}
+  LongJump: {fileID: 11400000, guid: cfd8d152ed3857844b976111a8190433, type: 2}
+  QuickStep: {fileID: 11400000, guid: a2b98cc2b9cd64348b60ca2997b0c6b4, type: 2}
+  Teleport: {fileID: 11400000, guid: c9a1fed28ae2423448e13576017b2358, type: 2}
+  Invincibility: {fileID: 11400000, guid: 35d92193ba12b184d86f9db873aa4b87, type: 2}

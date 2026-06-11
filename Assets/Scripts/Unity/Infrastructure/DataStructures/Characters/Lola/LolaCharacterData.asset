@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d558097aeb10c0949bea49c5338d0826, type: 3}
+  m_Name: LolaCharacterData
+  m_EditorClassIdentifier: 
+  CharacterName: Lola
+  CharacterId: 1
+  Costume:
+  - {fileID: 11400000, guid: 541b83ce814be7f47b1d638ecc0e74c2, type: 2}
+  Voice: {fileID: 8300000, guid: f0a70587319121047b795f4f87859808, type: 3}
+  oneUp: {fileID: -3478805184293696994, guid: 93913d2fd2b5bc441a09bf8c1934dc60, type: 3}
+  characterAnimator: {fileID: 22100000, guid: 763ac6792294eaa4ba2c323fce775101, type: 2}
+  portriatAnimator: {fileID: 9100000, guid: 7badfc902b4702b47bf6d73bac4886be, type: 2}

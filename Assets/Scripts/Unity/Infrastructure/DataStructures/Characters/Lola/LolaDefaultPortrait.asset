@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb9ff0c86d7740648aa21976d8585aa8, type: 3}
+  m_Name: LolaDefaultPortrait
+  m_EditorClassIdentifier: 
+  _entries:
+  - MouthClosed: {fileID: -4853458298247113933, guid: e2cb7df24f5a57a489e94fd586a6dff8, type: 3}
+    MouthOpen: {fileID: -8172854664342255539, guid: e2cb7df24f5a57a489e94fd586a6dff8, type: 3}
+    Key: 0
+  - MouthClosed: {fileID: 2196345528336677561, guid: e2cb7df24f5a57a489e94fd586a6dff8, type: 3}
+    MouthOpen: {fileID: 1968515446266756924, guid: e2cb7df24f5a57a489e94fd586a6dff8, type: 3}
+    Key: 1
+  - MouthClosed: {fileID: 5113462155546350990, guid: e2cb7df24f5a57a489e94fd586a6dff8, type: 3}
+    MouthOpen: {fileID: 6492354624544010164, guid: e2cb7df24f5a57a489e94fd586a6dff8, type: 3}
+    Key: 2
+  - MouthClosed: {fileID: -4678101744479009588, guid: e2cb7df24f5a57a489e94fd586a6dff8, type: 3}
+    MouthOpen: {fileID: 4235481024501194332, guid: e2cb7df24f5a57a489e94fd586a6dff8, type: 3}
+    Key: 3
+  - MouthClosed: {fileID: 2375918160267347145, guid: e2cb7df24f5a57a489e94fd586a6dff8, type: 3}
+    MouthOpen: {fileID: 6936438768917762023, guid: e2cb7df24f5a57a489e94fd586a6dff8, type: 3}
+    Key: 4

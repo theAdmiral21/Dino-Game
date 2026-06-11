@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4924fd03d9d142442bfe7ba203625c34, type: 3}
+  m_Name: PlayerWallStats
+  m_EditorClassIdentifier: 
+  _WallSlideSpeed: -5
+  _WallJumpHeight: 4
+  _WallJumpXDuration: 0.3
+  _WallJumpApexTime: 0.3
+  _WallJumpXDistance: 5
+  _WallJumpBufferTime: 0.1

@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a787558dc56fe8946b1aeca363064699, type: 3}
+  m_Name: VelocityTestPlayerDefault
+  m_EditorClassIdentifier: 
+  Portrait: {fileID: -4678249581779479612, guid: 920e7eac7ff715a478a52df0d1b3d89e, type: 3}
+  CostumeOverride: {fileID: 22100000, guid: 8a8e501a3720ac444881ce4583fadae7, type: 2}
+  unlocked: 0
