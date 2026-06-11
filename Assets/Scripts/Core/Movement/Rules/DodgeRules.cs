@@ -15,10 +15,12 @@ namespace Movement.Core.Rules
             if (!ruleState.TryGet<IDisabledState>(out var disabledState)) return Denied();
             if (!ruleState.TryGet<IDodgeState>(out var dodge)) return Denied();
             if (!ruleState.TryGet<IDirectionState>(out var directionState)) return Denied();
+            if (!ruleState.TryGet<IInvincibleState>(out var invincibleState)) return Denied();
 
             Debug.Log($"Not disabled");
             // Evaluate the rules
             if (disabledState.IsDisabled) return Denied();
+            if (!facts.IsGrounded && !facts.IsOnPlatform) return Denied();
 
             // If a dash is available and we aren't currently dashing
             Debug.Log($"dodge amount: {dodge.DodgeAmount}; is not dodging: {!dodge.IsDodging}");
@@ -26,11 +28,15 @@ namespace Movement.Core.Rules
             {
                 // Start the timer
                 dodge.StartDodgeTimer();
-                // Eat a dash
+                // Eat a dodge
                 dodge.DecrementDodge();
                 // Determine the direction
                 InputDirection dir = NormalizeInput(request.Direction, directionState.Dir);
                 dodge.SetDodgeDirection(dir);
+
+                // Update invincibility
+                invincibleState.UpdateDodgeInvincibility();
+
                 return Approved(dir);
             }
             return Denied();

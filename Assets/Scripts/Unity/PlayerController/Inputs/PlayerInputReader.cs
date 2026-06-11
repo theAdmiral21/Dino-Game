@@ -43,13 +43,14 @@ namespace PlayerController.Unity.Inputs
                                     (_actions.InGame.Grab.phase == InputActionPhase.Performed);
         public bool DodgePressed => _dodgePressed;
         private bool _dodgePressed => _actions.InGame.Dodge.phase == InputActionPhase.Started;
-        public bool BarkHeld => _dodgeHeld;
+        public bool DodgeHeld => _dodgeHeld;
         private bool _dodgeHeld => _actions.InGame.Dodge.phase == InputActionPhase.Performed;
         public bool JumpPressed => _jumpPressed;
         private bool _jumpPressed => _actions.InGame.Jump.phase == InputActionPhase.Started;
         public bool JumpHeld => _holdingJump;
         private bool _holdingJump => _actions.InGame.Jump.phase == InputActionPhase.Performed;
-
+        public bool CrouchPressed => _crouchPressed;
+        private bool _crouchPressed => _actions.InGame.Crouch.phase == InputActionPhase.Started;
 
 
 
@@ -182,6 +183,15 @@ namespace PlayerController.Unity.Inputs
             }
 
         }
+
+        public void OnCrouch(InputAction.CallbackContext context)
+        {
+            if (context.started)
+            {
+                Debug.Log($"Crouch requested");
+                _requestHandler.EnqueueActionRequest(new CrouchRequest());
+            }
+        }
         public void OnScent(InputAction.CallbackContext context)
         {
             // if (context.started)
@@ -278,7 +288,5 @@ namespace PlayerController.Unity.Inputs
         public void OnWallJump(InputAction.CallbackContext context) { }
 
         public void OnSlide(InputAction.CallbackContext context) { }
-
-
     }
 }

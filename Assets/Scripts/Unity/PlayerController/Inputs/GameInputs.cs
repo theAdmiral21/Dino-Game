@@ -291,6 +291,15 @@ namespace PlayerController.Unity.Inputs
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Crouch"",
+                    ""type"": ""Button"",
+                    ""id"": ""13983639-5a21-484d-9385-ec6f988e70e7"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -1338,6 +1347,28 @@ namespace PlayerController.Unity.Inputs
                     ""action"": ""ActivateZoomies"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b7fcd55e-a1f0-4886-a43d-e23317c924b2"",
+                    ""path"": ""<Keyboard>/c"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""Crouch"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6af295a0-48b1-4217-b868-ff8f5f768583"",
+                    ""path"": ""<Gamepad>/leftStickPress"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Gamepad"",
+                    ""action"": ""Crouch"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -2152,6 +2183,7 @@ namespace PlayerController.Unity.Inputs
             m_InGame_Teleport = m_InGame.FindAction("Teleport", throwIfNotFound: true);
             m_InGame_Scent = m_InGame.FindAction("Scent", throwIfNotFound: true);
             m_InGame_ActivateZoomies = m_InGame.FindAction("ActivateZoomies", throwIfNotFound: true);
+            m_InGame_Crouch = m_InGame.FindAction("Crouch", throwIfNotFound: true);
             // InCutScene
             m_InCutScene = asset.FindActionMap("InCutScene", throwIfNotFound: true);
             m_InCutScene_SkipCutScene = m_InCutScene.FindAction("SkipCutScene", throwIfNotFound: true);
@@ -2278,6 +2310,7 @@ namespace PlayerController.Unity.Inputs
         private readonly InputAction m_InGame_Teleport;
         private readonly InputAction m_InGame_Scent;
         private readonly InputAction m_InGame_ActivateZoomies;
+        private readonly InputAction m_InGame_Crouch;
         /// <summary>
         /// Provides access to input actions defined in input action map "InGame".
         /// </summary>
@@ -2378,6 +2411,10 @@ namespace PlayerController.Unity.Inputs
             /// </summary>
             public InputAction @ActivateZoomies => m_Wrapper.m_InGame_ActivateZoomies;
             /// <summary>
+            /// Provides access to the underlying input action "InGame/Crouch".
+            /// </summary>
+            public InputAction @Crouch => m_Wrapper.m_InGame_Crouch;
+            /// <summary>
             /// Provides access to the underlying input action map instance.
             /// </summary>
             public InputActionMap Get() { return m_Wrapper.m_InGame; }
@@ -2469,6 +2506,9 @@ namespace PlayerController.Unity.Inputs
                 @ActivateZoomies.started += instance.OnActivateZoomies;
                 @ActivateZoomies.performed += instance.OnActivateZoomies;
                 @ActivateZoomies.canceled += instance.OnActivateZoomies;
+                @Crouch.started += instance.OnCrouch;
+                @Crouch.performed += instance.OnCrouch;
+                @Crouch.canceled += instance.OnCrouch;
             }
 
             /// <summary>
@@ -2546,6 +2586,9 @@ namespace PlayerController.Unity.Inputs
                 @ActivateZoomies.started -= instance.OnActivateZoomies;
                 @ActivateZoomies.performed -= instance.OnActivateZoomies;
                 @ActivateZoomies.canceled -= instance.OnActivateZoomies;
+                @Crouch.started -= instance.OnCrouch;
+                @Crouch.performed -= instance.OnCrouch;
+                @Crouch.canceled -= instance.OnCrouch;
             }
 
             /// <summary>
@@ -3238,6 +3281,13 @@ namespace PlayerController.Unity.Inputs
             /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
             /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
             void OnActivateZoomies(InputAction.CallbackContext context);
+            /// <summary>
+            /// Method invoked when associated input action "Crouch" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+            /// </summary>
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+            void OnCrouch(InputAction.CallbackContext context);
         }
         /// <summary>
         /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "InCutScene" which allows adding and removing callbacks.

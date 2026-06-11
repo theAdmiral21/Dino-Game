@@ -39,7 +39,7 @@ namespace Movement.Features.Movement.Services
                 target = _runStats.RunSpeed.Value * xInput;
                 if (dir == vDir)
                 {
-                    if (Mathf.Abs(target) < Mathf.Abs(currentResult.Velocity.x)) target = currentResult.Velocity.x;
+                    // if (Mathf.Abs(target) < Mathf.Abs(currentResult.Velocity.x)) target = currentResult.Velocity.x;
                     accelValue = _runStats.RunAccel.Value;
                 }
                 else
@@ -74,6 +74,19 @@ namespace Movement.Features.Movement.Services
                 else
                 {
                     accelValue = _runStats.BrakeAccel.Value;
+                }
+            }
+            else if (run.Type == RunType.CrouchWalk)
+            {
+                // Calculate the run speed
+                target = _runStats.CrouchWalkSpeed.Value * xInput;
+                if (dir == vDir)
+                {
+                    accelValue = _runStats.CrouchWalkAccel.Value;
+                }
+                else
+                {
+                    accelValue = _runStats.CrouchWalkBrake.Value;
                 }
             }
 

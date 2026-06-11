@@ -33,11 +33,11 @@ namespace PlayerController.Unity.Animations
             _transformCache.x = dirState.Dir;
             _animatorTransform.localScale = _transformCache;
 
-            AnimateCrouch(physicsContext, inputValue);
+            AnimateCrouch(ruleState);
             // AnimateCrouchWalk(physicsContext, inputValue);
             AnimateWalk(physicsContext, inputValue);
             AnimateRun(physicsContext, inputValue);
-            AnimateDodge(ruleState, physicsContext);
+            // AnimateDodge(ruleState, physicsContext);
             // Debug.Log($"Animator: Physics context is falling: {physicsContext.IsFalling}");
             AnimateFall(physicsContext);
             AnimateRising(physicsContext);
@@ -66,12 +66,12 @@ namespace PlayerController.Unity.Animations
                         // Debug.Log("Animating howl");
                         break;
                     }
-                // case FallEffect fall:
-                //     {
-                //         // Debug.Log("Animating jump");
-                //         _animator.SetTrigger("fallTrigger");
-                //         break;
-                //     }
+                case CrouchEffect crouch:
+                    {
+                        Debug.Log($"Animating crouch value: {crouch.CrouchValue}");
+                        _animator.SetBool("isCrouching", crouch.CrouchValue);
+                        break;
+                    }
                 case JumpEffect jump:
                     {
                         // Debug.Log("Animating jump");
@@ -188,7 +188,6 @@ namespace PlayerController.Unity.Animations
                 {
                     // Debug.Log("Animating run");
                     _animator.SetBool("isRunning", true);
-                    // _animator.SetFloat("runSpeed", Mathf.Abs(playerInputs.Move.x) / 1f);
                 }
                 else
                 {
@@ -197,21 +196,12 @@ namespace PlayerController.Unity.Animations
             }
         }
 
-        private void AnimateCrouch(PhysicsContext physicsContext, IActorInput inputValue)
+        private void AnimateCrouch(IRuleState ruleState)
         {
-            if (inputValue.TryGet<IPlayerInputs>(out var playerInputs))
-            {
-                if ((physicsContext.IsGrounded || physicsContext.IsOnPlatform) && playerInputs.Move.y < 0)
-                {
-                    // Debug.Log("Animating run");
-                    _animator.SetBool("isCrouching", true);
-                    // _animator.SetFloat("runSpeed", Mathf.Abs(playerInputs.Move.x) / 1f);
-                }
-                else
-                {
-                    _animator.SetBool("isCrouching", false);
-                }
-            }
+            if (!ruleState.TryGet<ICrouchState>(out var crouch)) return;
+            // Debug.Log("Animating run");
+            _animator.SetBool("isCrouching", crouch.IsCrouching);
+
         }
 
         private void AnimateCrouchWalk(PhysicsContext physicsContext, IActorInput inputValue)

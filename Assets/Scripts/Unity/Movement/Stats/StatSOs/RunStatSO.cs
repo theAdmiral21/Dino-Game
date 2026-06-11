@@ -24,6 +24,17 @@ namespace Movement.Unity.Stats
         public float BrakeAccel => _brakeAccel;
         [SerializeField] float _brakeAccel;
 
+        public float CrouchWalkSpeed => _crouchWalkSpeed;
+        [SerializeField] float _crouchWalkSpeed;
+
+        public float CrouchWalkAccel => _crouchWalkAccel;
+        [SerializeField] float _crouchWalkAccel;
+
+        public float CrouchWalkBrake => _crouchWalkBrake;
+        [SerializeField] float _crouchWalkBrake;
+
+
+
         public override object BuildRunTime()
         {
             return new RunStats
@@ -31,6 +42,9 @@ namespace Movement.Unity.Stats
                 RunSpeed = new Stat(RunSpeed),
                 RunAccel = new Stat(RunAccel),
                 BrakeAccel = new Stat(BrakeAccel),
+                CrouchWalkSpeed = new Stat(CrouchWalkSpeed),
+                CrouchWalkAccel = new Stat(CrouchWalkAccel),
+                CrouchWalkBrake = new Stat(CrouchWalkBrake),
             };
         }
     }

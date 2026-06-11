@@ -63,11 +63,13 @@ namespace Movement.Core.Abstractions
     }
 
 
-    // public interface IInvincibleState
-    // {
-    //     public bool IsInvincible { get; }
-    //     public void StartIFrameTimer();
-    // }
+    public interface IInvincibleState
+    {
+        public bool IsInvincible { get; }
+        public void StartIFrameTimer();
+
+        public void UpdateDodgeInvincibility();
+    }
 
     // public interface ITeleportState
     // {
@@ -142,4 +144,11 @@ namespace Movement.Core.Abstractions
     //     public bool DashMode { get; }
     //     public void SwitchMovement();
     // }
+
+    public interface ICrouchState
+    {
+        public bool IsCrouching { get; }
+        public void SetCrouchState(bool val);
+        public void UpdateCrouchState(IActorInput inputValues);
+    }
 }

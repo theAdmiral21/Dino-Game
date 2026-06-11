@@ -68,9 +68,9 @@ namespace Game.Unity.Audio
             }
         }
 
-        public void PlayScent(float volume = 1, bool loop = false)
+        public void PlayCrouch(float volume = 1, bool loop = false)
         {
-            throw new System.NotImplementedException();
+            Debug.LogError($"Don't forget to add a crouch sound!");
         }
 
         public void StopScent()

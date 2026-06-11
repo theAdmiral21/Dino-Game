@@ -15,3 +15,6 @@ MonoBehaviour:
   _runSpeed: 7
   _runAccel: 20
   _brakeAccel: 40
+  _crouchWalkSpeed: 2
+  _crouchWalkAccel: 30
+  _crouchWalkBrake: 60

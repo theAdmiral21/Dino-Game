@@ -120,11 +120,17 @@ namespace PlayerController.Unity.Physics
                         _audioBridge.PlayLanding(landing.Surface);
                         break;
                     }
+                case CrouchEffect crouching:
+                    {
+                        // Debug.Log("Playing landing");
+                        _audioBridge.PlayCrouch();
+                        break;
+                    }
                 case ScentEffect scent:
                     {
                         if (scent.Approved)
                         {
-                            _audioBridge.PlayScent();
+                            _audioBridge.PlayCrouch();
                         }
                         else
                         {

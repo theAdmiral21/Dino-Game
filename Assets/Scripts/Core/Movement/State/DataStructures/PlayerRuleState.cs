@@ -5,6 +5,8 @@ using Movement.Core.Inputs;
 using Movement.Core.Stats;
 using Primitives.Stats.DataStructures;
 using Primitives.Input;
+using System;
+using Movement.Core.Rules;
 
 namespace Movement.Core.State.DataStructures
 {
@@ -19,7 +21,9 @@ namespace Movement.Core.State.DataStructures
                                     IStunState,
                                     IDisabledState,
                                     ILandingState,
-                                    IDodgeState
+                                    IDodgeState,
+                                    IInvincibleState,
+                                    ICrouchState
     {
         public float RemainingJumps => _remainingJumps;
         private float _remainingJumps;
@@ -46,7 +50,8 @@ namespace Movement.Core.State.DataStructures
         public bool LandingStopRequested { get; set; }
         public bool GroundedLastFrame => _groundedLastFrame;
         private bool _groundedLastFrame;
-        public bool IsInvincible => _iFrameCounter > 0;
+        public bool IsInvincible => _isInvincible;
+        private bool _isInvincible;
 
 
         /*
@@ -134,12 +139,15 @@ namespace Movement.Core.State.DataStructures
         public bool DashMode { get; private set; }
 
         // Dodging
-        public bool IsDodging { get; private set; }
+        public bool IsDodging => DodgeCounter > 0;
         public int DodgeAmount { get; private set; }
         public float DodgeTime { get; private set; }
         public float DodgeCounter { get; private set; }
 
         public InputDirection DodgeDirection { get; private set; }
+
+        public bool IsCrouching { get; private set; }
+
         private int _totalDodges;
 
         private float _wallJumpTime;
@@ -174,8 +182,8 @@ namespace Movement.Core.State.DataStructures
             _dir = 1;
 
             _totalDodges = (int)stats.Get<DodgeStats>().TotalDodges.Value;
+            DodgeTime = stats.Get<DodgeStats>().DodgeTime.Value;
 
-            Debug.Log($"Dodge amount: {DodgeAmount}");
         }
 
         public void ResetRuleState()
@@ -209,17 +217,20 @@ namespace Movement.Core.State.DataStructures
             // Start or update Ungrounded timer
             StartUngroundedTimer(physicsContext);
 
+            UpdateDodgeInvincibility();
 
             StartIFrameTimer();
 
-            StartQuickStepCoolDown();
+            // StartQuickStepCoolDown();
 
-            StartLongJumpTimer();
+            // StartLongJumpTimer();
 
-            UpdateLongJumpState();
+            // UpdateLongJumpState();
 
             _stunnedLastFrame = IsStunned;
             // _quickSteppingLastFrame = QuickStepActive;
+
+            UpdateCrouchState(inputValues);
 
         }
 
@@ -248,7 +259,11 @@ namespace Movement.Core.State.DataStructures
             _jumpBufferCounter = _jumpBufferTime;
             // Debug.Log("Started jump buffer timer");
         }
-
+        public void UpdateDodgeInvincibility()
+        {
+            _isInvincible = IsDodging;
+            Debug.Log($"Player is invincible: {IsInvincible}");
+        }
         public void StartIFrameTimer()
         {
             if (_stunnedLastFrame && !IsStunned && _iFrameCounter <= 0)
@@ -473,9 +488,6 @@ namespace Movement.Core.State.DataStructures
                 // Give the player their dash back when they hit the ground
                 DodgeAmount = _totalDodges;
             }
-
-
-
         }
 
         public void StartDodgeTimer()
@@ -488,5 +500,25 @@ namespace Movement.Core.State.DataStructures
             DodgeDirection = direction;
         }
 
+        public void SetCrouchState(bool val)
+        {
+            IsCrouching = val;
+        }
+
+        public void UpdateCrouchState(IActorInput inputValues)
+        {
+            inputValues.TryGet<IPlayerInputs>(out var playerInputs);
+
+            if (IsDodging) SetCrouchState(false);
+
+            if (FallType == FallType.Fast || FallType == FallType.Slow)
+            {
+                SetCrouchState(false);
+            }
+
+            if (playerInputs.JumpPressed) SetCrouchState(false);
+
+            if (playerInputs.SprintPressed) SetCrouchState(false);
+        }
     }
 }

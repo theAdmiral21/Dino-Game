@@ -33,7 +33,7 @@ namespace Movement.Core.Movement
             // Debug.Log($"Passed direction check");
             if (!ruleState.TryGet<ILandingState>(out var landingState)) return Denied();
             // Debug.Log($"Passed landing check");
-
+            if (!ruleState.TryGet<ICrouchState>(out var crouch)) return Denied();
 
             // Basic checks
             if (!request.Requested || disabledState.IsDisabled || stunState.IsStunned) return Denied();
@@ -67,6 +67,11 @@ namespace Movement.Core.Movement
                         return Approved(RunType.Sprint, request.Value);
                     }
                 }
+                if (crouch.IsCrouching)
+                {
+                    return Approved(RunType.CrouchWalk, request.Value);
+                }
+
                 return Approved(RunType.Run, request.Value);
             }
 

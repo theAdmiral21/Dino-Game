@@ -115,6 +115,12 @@ namespace PlayerController.Unity.Effects
                         _effectResults.Add(new ScentEffect(true));
                         break;
                     }
+                case CrouchResult crouch:
+                    {
+                        Debug.Log($"Got crouch effect");
+                        _effectResults.Add(new CrouchEffect(true, crouch.CrouchValue));
+                        break;
+                    }
             }
         }
         public void EvaluateStateEffects(IRuleState actorRuleState)

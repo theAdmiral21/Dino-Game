@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _totalDodges: 1
   _dodgeDist: 5
-  _dodgeTime: 0.3
+  _dodgeTime: 0.7
   _dodgeBufferTime: 0.2

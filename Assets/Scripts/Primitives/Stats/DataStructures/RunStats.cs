@@ -9,5 +9,8 @@ namespace Primitives.Stats.DataStructures
         public Stat RunSpeed;
         public Stat RunAccel;
         public Stat BrakeAccel;
+        public Stat CrouchWalkSpeed;
+        public Stat CrouchWalkAccel;
+        public Stat CrouchWalkBrake;
     }
 }

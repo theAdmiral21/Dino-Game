@@ -9,11 +9,14 @@ namespace Primitives.Audio.Enums
         Jump,
         DoubleJump,
         Land,
+        Crouch,
+        None,
+
+
         WallSlide,
         Scent,
         StartedZoomies,
         ZoomiesTwinkle,
         ExitedZoomies,
-        None,
     }
 }

@@ -38,6 +38,7 @@ namespace Movement.Core.Movement
             // if (!ruleState.TryGet<IWallJumpState>(out var wallJumpState)) return Denied(direction.Dir);
             if (!ruleState.TryGet<IXInputState>(out var xInputState)) return Denied(direction.Dir);
             if (!ruleState.TryGet<IGroundedState>(out var groundedState)) return Denied(direction.Dir);
+            if (!ruleState.TryGet<ICrouchState>(out var crouch)) return Denied(direction.Dir);
             // if (!ruleState.TryGet<IQuickStepState>(out var quickStepState)) return Denied(direction.Dir);
             // if (!ruleState.TryGet<ILongJumpState>(out var longJumpState)) return Denied(direction.Dir);
             // if (!ruleState.TryGet<ISwitchMovement>(out var switchMovement)) return Denied(direction.Dir);

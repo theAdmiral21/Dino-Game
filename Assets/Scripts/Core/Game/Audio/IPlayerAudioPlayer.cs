@@ -7,7 +7,7 @@ namespace Game.Core.Audio
     {
         public void PlayBark(float volume = 1f, bool loop = false);
         public void PlayHowl(float volume = 1f, bool loop = false);
-        public void PlayScent(float volume = 1f, bool loop = false);
+        public void PlayCrouch(float volume = 1f, bool loop = false);
         public void PlayDoubleJump(float volume = 1f, bool loop = false);
         public void PlayWalk(SurfaceType surface, float volume = 1f, bool loop = false);
         public void PlayRun(SurfaceType surface, float volume = 1f, bool loop = false);

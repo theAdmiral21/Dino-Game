@@ -9,6 +9,7 @@ namespace Primitives.Physics
         Run,
         Aerial,
         Sprint,
+        CrouchWalk,
 
     }
 }

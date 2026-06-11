@@ -220,6 +220,7 @@ namespace Physics.Application.Orchestrators
                 new ExternalContinuousDispatcher(),
                 new ExternalImpulseDispatcher(),
                 new DodgeDispatcher(),
+                new CrouchDispatcher(),
         };
 
             return dispatchers;
