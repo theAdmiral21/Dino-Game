@@ -99,7 +99,7 @@ namespace PlayerController.Unity.Effects
                     }
                 case DodgeResult bark:
                     {
-                        // Debug.Log("Got bark effect");
+                        Debug.Log("Got dodge effect");
                         _effectResults.Add(new DodgeEffect(true));
                         break;
                     }

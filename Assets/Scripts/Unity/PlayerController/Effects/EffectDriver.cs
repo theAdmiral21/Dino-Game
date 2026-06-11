@@ -59,7 +59,7 @@ namespace PlayerController.Unity.Physics
             {
                 case DodgeEffect bark:
                     {
-                        // Debug.Log("Playing bark");
+                        Debug.Log("Playing dodge sound");
                         _audioBridge.PlayBark();
                         break;
                     }

@@ -57,8 +57,8 @@ namespace PlayerController.Unity.Animations
             {
                 case DodgeEffect bark:
                     {
-                        // Debug.Log("Animating bark");
-                        _animator.SetTrigger("barkTrigger");
+                        Debug.Log("Animating dodge");
+                        _animator.SetTrigger("isDodging");
                         break;
                     }
                 case HowlEffect howl:
