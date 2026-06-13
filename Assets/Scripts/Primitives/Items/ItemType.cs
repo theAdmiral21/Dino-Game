@@ -14,10 +14,12 @@ namespace Primitives.Items
         Canister,
 
         // Utility items
-        Rocks,
+        Rock,
         Flashlight,
         Medkit,
         Flares,
         SmokeGrenade,
+
+        None,
     }
 }

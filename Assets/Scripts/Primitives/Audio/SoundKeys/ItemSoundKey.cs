@@ -2,9 +2,16 @@
 {
     public enum ItemSoundKey
     {
-        HeartPickUp,
-        DairyDelightPickUp,
-        DinoPickUp,
-        DolphinItem,
+        Rock,
+        Shell,
+        Missile,
+        Shotgun,
+        RocketLauncher,
+        NerveGas,
+        Flare,
+        SmokeGrenade,
+        Medkit,
+        Flashlight,
+        Taser,
     }
 }

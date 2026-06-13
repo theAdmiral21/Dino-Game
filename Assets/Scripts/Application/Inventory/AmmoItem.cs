@@ -1,12 +1,13 @@
 using Core.Inventory;
 using Core.Inventory.Requests;
+using Primitives.EventBus.Abstractions;
 using Primitives.Items;
 
 namespace Application.Inventory
 {
     public class AmmoItem : BaseInventoryItem, IAmmoItem
     {
-        public AmmoItem(ItemType item, int maxAllowed) : base(item, maxAllowed) { }
+        public AmmoItem(ItemType item, int maxAllowed, IEventBus inventoryEventBus) : base(item, maxAllowed, inventoryEventBus) { }
 
         public bool HasCorrespondingWeapon { get; private set; }
 

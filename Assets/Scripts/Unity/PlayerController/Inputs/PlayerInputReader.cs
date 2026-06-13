@@ -37,10 +37,10 @@ namespace PlayerController.Unity.Inputs
         private bool _sprintPressed =>
         (_actions.InGame.Sprint.phase == InputActionPhase.Started) ||
         (_actions.InGame.Sprint.phase == InputActionPhase.Performed);
-        public bool GrabPressed => _grabPressed;
-        private bool _grabPressed =>
-                                    (_actions.InGame.Grab.phase == InputActionPhase.Started) ||
-                                    (_actions.InGame.Grab.phase == InputActionPhase.Performed);
+        public bool Aim => _aimPressed;
+        private bool _aimPressed =>
+                                    (_actions.InGame.RaiseWeapon.phase == InputActionPhase.Started) ||
+                                    (_actions.InGame.RaiseWeapon.phase == InputActionPhase.Performed);
         public bool DodgePressed => _dodgePressed;
         private bool _dodgePressed => _actions.InGame.Dodge.phase == InputActionPhase.Started;
         public bool DodgeHeld => _dodgeHeld;
@@ -192,16 +192,6 @@ namespace PlayerController.Unity.Inputs
                 _requestHandler.EnqueueActionRequest(new CrouchRequest());
             }
         }
-        public void OnScent(InputAction.CallbackContext context)
-        {
-            // if (context.started)
-            // {
-            //     Debug.Log("Scent requested");
-            //     // Scent?.Invoke(new ScentRequest());
-            //     _requestHandler.EnqueueActionRequest(new ScentRequest());
-
-            // }
-        }
         public void OnPause(InputAction.CallbackContext context)
         {
             if (context.started)
@@ -210,27 +200,6 @@ namespace PlayerController.Unity.Inputs
                 // Pause?.Invoke(new PauseRequest());
                 _requestHandler.EnqueueActionRequest(new PauseRequest());
             }
-        }
-
-        public void OnTeleport(InputAction.CallbackContext context)
-        {
-            // if (context.started)
-            // {
-            //     Vector2 dest = _moveInput;
-
-            //     Vector2 currentPos = GetPosition();
-
-            //     // Teleport?.Invoke(new TeleportRequest(true, currentPos, dest));
-            //     _requestHandler.EnqueueActionRequest(new TeleportRequest(true, currentPos, dest));
-            // }
-        }
-
-        public void OnActivateZoomies(InputAction.CallbackContext context)
-        {
-            // if (context.started)
-            // {
-            //     _requestHandler.EnqueueActionRequest(new ZoomiesRequest());
-            // }
         }
 
         private Vector2 GetPosition()
@@ -245,48 +214,82 @@ namespace PlayerController.Unity.Inputs
             }
         }
 
-        public void OnDoggoDash(InputAction.CallbackContext context)
+
+
+        public void OnReload(InputAction.CallbackContext context)
         {
-            // if (context.started)
-            // {
-            //     Debug.Log("Dash requested");
-            //     _requestHandler.EnqueueActionRequest(new DoggoDashRequest(_leftStick));
-            // }
+            throw new NotImplementedException();
         }
 
-        public void OnChangeMoveMode(InputAction.CallbackContext context)
+        public void OnRaiseWeapon(InputAction.CallbackContext context)
         {
-            // if (context.started)
-            // {
-            //     _requestHandler.EnqueueActionRequest(new SwitchMovementRequest(true));
-            // }
+            throw new NotImplementedException();
+        }
+
+        public void OnShoot(InputAction.CallbackContext context)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void OnSelectNextItem(InputAction.CallbackContext context)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void OnSelectPrevItem(InputAction.CallbackContext context)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void OnQuickThrowEquip(InputAction.CallbackContext context)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void OnEquipItem1(InputAction.CallbackContext context)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void OnEquipItem2(InputAction.CallbackContext context)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void OnEquipItem3(InputAction.CallbackContext context)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void OnEquipItem4(InputAction.CallbackContext context)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void OnEquipItem5(InputAction.CallbackContext context)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void OnEquipItem6(InputAction.CallbackContext context)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void OnEquipItem7(InputAction.CallbackContext context)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void OnToggleFlashlight(InputAction.CallbackContext context)
+        {
+            throw new NotImplementedException();
         }
 
         public void OnSprint(InputAction.CallbackContext context) { }
 
-        public void OnLookUp(InputAction.CallbackContext context) { }
-
-        public void OnHowl(InputAction.CallbackContext context) { }
-
-
-        public void OnGrab(InputAction.CallbackContext context) { }
-
-        public void OnDrop(InputAction.CallbackContext context) { }
-
         public void OnDebugRespawn(InputAction.CallbackContext context) { }
 
-        public void OnYInput(InputAction.CallbackContext context) { }
-
-        public void OnDown(InputAction.CallbackContext context) { }
-
         public void OnHideDebugInfo(InputAction.CallbackContext context) { }
-
-        public void OnRightTriggerPull(InputAction.CallbackContext context) { }
-
-        public void OnLeftTriggerPull(InputAction.CallbackContext context) { }
-
-        public void OnWallJump(InputAction.CallbackContext context) { }
-
-        public void OnSlide(InputAction.CallbackContext context) { }
     }
 }

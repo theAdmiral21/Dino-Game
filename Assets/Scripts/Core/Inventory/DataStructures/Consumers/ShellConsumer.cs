@@ -4,12 +4,12 @@ using Primitives.Items;
 
 namespace Core.Inventory.DataStructures.Consumers
 {
-    public struct ShellRequest : IItemConsumerRequest
+    public struct ShellConsumer : IItemConsumerRequest
     {
-        public Type ConsumerType => typeof(ShellRequest);
+        public Type ConsumerType => typeof(ShellConsumer);
         public ItemType Item => ItemType.Shell;
         public bool Requested { get; private set; }
 
-        public ShellRequest(bool requested = true) => Requested = requested;
+        public ShellConsumer(bool requested = true) => Requested = requested;
     }
 }

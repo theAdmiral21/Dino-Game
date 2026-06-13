@@ -27,7 +27,7 @@ namespace PlayerController.Unity.Animations
 
         public void SyncAnimation(IActorInput inputValue, PhysicsContext physicsContext, in IRuleState ruleState)
         {
-            Debug.Log($"input value: {inputValue.Move}");
+            // Debug.Log($"input value: {inputValue.Move}");
             // Set the direction of the animator.
             ruleState.TryGet<IDirectionState>(out var dirState);
             _transformCache.x = dirState.Dir;

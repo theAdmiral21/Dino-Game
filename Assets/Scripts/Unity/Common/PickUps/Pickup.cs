@@ -30,7 +30,7 @@ namespace Unity.Common.Pickups
             if (entity != null && entity.CompareTag(_triggerTarget))
             {
                 OnPickup(entity);
-                Destroy(gameObject);
+                // Destroy(gameObject);
             }
         }
 

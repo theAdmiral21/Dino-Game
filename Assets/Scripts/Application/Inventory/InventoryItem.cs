@@ -1,15 +1,12 @@
-using Core.Inventory;
-using Core.Inventory.DataStructures.Providers;
 using Core.Inventory.Requests;
-using Movement.Core.Rules;
+using Primitives.EventBus.Abstractions;
 using Primitives.Items;
-using UnityEngine;
 
 namespace Application.Inventory
 {
     public class InventoryItem : BaseInventoryItem
     {
-        public InventoryItem(ItemType item, int maxAllowed) : base(item, maxAllowed) { }
+        public InventoryItem(ItemType item, int maxAllowed, IEventBus inventoryEventBus) : base(item, maxAllowed, inventoryEventBus) { }
 
         public override bool CanAdd(IItemProviderRequest provider)
         {

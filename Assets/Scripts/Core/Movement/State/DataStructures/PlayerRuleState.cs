@@ -262,7 +262,7 @@ namespace Movement.Core.State.DataStructures
         public void UpdateDodgeInvincibility()
         {
             _isInvincible = IsDodging;
-            Debug.Log($"Player is invincible: {IsInvincible}");
+            // Debug.Log($"Player is invincible: {IsInvincible}");
         }
         public void StartIFrameTimer()
         {

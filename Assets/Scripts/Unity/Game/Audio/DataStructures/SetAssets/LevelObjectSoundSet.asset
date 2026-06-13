@@ -14,54 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _entries:
   - Key: 0
-    ActionKey: 4
+    ActionKey: 10
     ModulatePitch: 1
     ModulateVolume: 1
-    Clip: {fileID: 8300000, guid: b879531c566f0234e9b3ac2f85deeb5e, type: 3}
-  - Key: 2
-    ActionKey: 13
-    ModulatePitch: 0
-    ModulateVolume: 0
-    Clip: {fileID: 8300000, guid: 8164c1239e5ea6044919050aa754d0e0, type: 3}
-  - Key: 1
-    ActionKey: 13
-    ModulatePitch: 0
-    ModulateVolume: 0
-    Clip: {fileID: 8300000, guid: 574751914a2202c43a9fc7f3e312bb82, type: 3}
-  - Key: 3
-    ActionKey: 0
-    ModulatePitch: 1
-    ModulateVolume: 1
-    Clip: {fileID: 8300000, guid: b47de0b1d66619a4b931c09995b31702, type: 3}
-  - Key: 5
-    ActionKey: 14
-    ModulatePitch: 1
-    ModulateVolume: 1
-    Clip: {fileID: 8300000, guid: 99e3f1df5b4fc184e9e61f69d7ccd680, type: 3}
-  - Key: 6
-    ActionKey: 15
-    ModulatePitch: 1
-    ModulateVolume: 1
-    Clip: {fileID: 8300000, guid: 6c77249a48ddaf241aceb9f7f45adec3, type: 3}
-  - Key: 7
-    ActionKey: 15
-    ModulatePitch: 1
-    ModulateVolume: 1
-    Clip: {fileID: 8300000, guid: 81500e6446bf0284d887f8d9a733c576, type: 3}
-  - Key: 8
-    ActionKey: 15
-    ModulatePitch: 1
-    ModulateVolume: 1
-    Clip: {fileID: 8300000, guid: 27f54b3b5fea8774da6f20a81e35915d, type: 3}
-  - Key: 9
-    ActionKey: 16
-    ModulatePitch: 0
-    ModulateVolume: 0
-    Clip: {fileID: 8300000, guid: d132afb8f85f2fb4e96d9a182ac3c792, type: 3}
-  - Key: 10
-    ActionKey: 20
-    ModulatePitch: 0
-    ModulateVolume: 0
-    Clip: {fileID: 8300000, guid: 8838fac20f522ff42ae704ce460257b5, type: 3}
+    Clip: {fileID: 8300000, guid: 785d452c731694940bbb838e59a92be7, type: 3}
   VolumeRange: {x: 0.95, y: 1.05}
   PitchRange: {x: 0.95, y: 1.05}
