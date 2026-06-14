@@ -13,7 +13,7 @@ namespace Core.Inventory
         public IItemProviderRequest ConsumeItem(IItemConsumerRequest consumer);
         public bool CanAdd(IItemProviderRequest provider);
         public bool CanConsume(IItemConsumerRequest consumer);
-        public void EquipItem();
+        // public void EquipItem();
         public IEquipment GetEquipment();
     }
 }

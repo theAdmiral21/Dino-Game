@@ -14,6 +14,9 @@ namespace Movement.Core.Movement.DataStructures
         private readonly bool _approved;
 
         public ActionPhase Phase => _phase;
+
+        public Type EquipmentActionType => ResultType;
+
         private readonly ActionPhase _phase;
 
         public RaiseWeaponResult(bool approved, ActionPhase phase)

@@ -124,7 +124,8 @@ namespace Physics.Unity.Actors
                 context.GameStateServices.GameState,
                 _ruleState,
                 _stats,
-                rayConfig);
+                rayConfig,
+                null);
         }
 
         public override void PostInitialize(IGameContext context)

@@ -149,6 +149,6 @@ namespace Movement.Core.Abstractions
     public interface IAimingState
     {
         public bool IsAiming { get; }
-        public bool SetAiming(bool val);
+        public void SetAiming(bool val);
     }
 }

@@ -21,6 +21,7 @@ using UnityEngine;
 // using DG.Tweening.Core.Enums;
 using System.Text;
 using Physics.Core.PhysicsActors;
+using Core.Equipment;
 
 namespace Physics.Application.Orchestrators
 {
@@ -38,13 +39,12 @@ namespace Physics.Application.Orchestrators
         public PhysicsContext CurrentContext { get; set; } = new();
         public KinematicResult KinematicState => FrameData.CurrentState;
         // private KinematicResult _kinematicState;
-
         private IRuleState _ruleState;
         private IGameStateProvider _gameState;
         private IActorInput _actorInput;
         private Dictionary<Type, object> _capabilities = new();
         private IStatCollection _stats;
-
+        private IEquipmentBridge _equipmentBridge;
         private ActorActionContext _frameContext;
 
         // Cached Rule states
@@ -56,7 +56,8 @@ namespace Physics.Application.Orchestrators
                             IGameStateProvider gameState,
                             IRuleState ruleState,
                             IStatCollection stats,
-                            RaycastConfiguration raycastConfig
+                            RaycastConfiguration raycastConfig,
+                            IEquipmentBridge equipmentBridge
                             )
         {
             _actor = actor;
@@ -67,11 +68,13 @@ namespace Physics.Application.Orchestrators
 
             RaycastConfig = raycastConfig;
 
+            _equipmentBridge = equipmentBridge;
+
             // Make an event bus
             ActorEventBus = new ActorEventBus();
-            Debug.Log($"Actor event bus configured");
 
             _ruleState = ruleState;
+
             // Register capabilities
             RegisterCapability(_ruleState);
 
@@ -140,14 +143,16 @@ namespace Physics.Application.Orchestrators
             FrameData.Results = results;
             foreach (var res in results)
             {
+                // Check if you can cast the result to an equipment result
+                if (res is IEquipmentActionResult)
+                {
+                    Debug.Log($"Got equipment result!");
+                    _equipmentBridge.RouteEquipmentResult(res as IEquipmentActionResult);
+                }
+
                 if (res.Approved)
                 {
                     ActorEventBus.Publish(res);
-                }
-
-                if (res.ResultType == typeof(FallResult) && res.Approved)
-                {
-                    Debug.Log($"Approved fall for: {_actor.Name}; {_actor.GetComponent<Transform>().name}");
                 }
             }
             // Clear action requests
@@ -221,6 +226,8 @@ namespace Physics.Application.Orchestrators
                 new ExternalImpulseDispatcher(),
                 new DodgeDispatcher(),
                 new CrouchDispatcher(),
+                new RaiseWeaponDispatcher(),
+                new ShootDispatcher(),
         };
 
             return dispatchers;

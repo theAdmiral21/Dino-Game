@@ -71,10 +71,10 @@ namespace Application.Inventory
             }
         }
 
-        public void EquipItem()
-        {
-            _inventoryEventBus.Publish(new CurrentEquipmentChanged { NewItem = this });
-        }
+        // public void EquipItem()
+        // {
+        //     // _inventoryEventBus.Publish(new CurrentEquipmentChanged { NewItem = this });
+        // }
 
         private void DecrementQuantity(int amount)
         {

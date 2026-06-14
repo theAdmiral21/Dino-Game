@@ -6,17 +6,22 @@ using Core.Inventory.DataStructures.Consumers;
 using Core.Inventory.DataStructures.Providers;
 using Core.Inventory.Requests;
 using Primitives.Items;
+using Primitives.EventBus.Abstractions;
 
 namespace Application.Inventory
 {
     public class InventorySystem : IInventorySystem
     {
         public Dictionary<ItemType, IInventoryItem> Items => _items;
-        public ItemType CurrentlyEquipped { get; private set; } = ItemType.None;
+        public ItemType CurrentlyEquipped => _currentItem == null ? ItemType.None : _currentItem.Item;
         private Dictionary<ItemType, IInventoryItem> _items = new();
-
-        public InventorySystem(List<IInventoryItem> inventoryItems)
+        private IEventBus _inventoryEventBus;
+        private IInventoryItem _currentItem;
+        public InventorySystem(List<IInventoryItem> inventoryItems, IEventBus inventoryEventBus)
         {
+            _inventoryEventBus = inventoryEventBus;
+            SubToEvents();
+
             foreach (var item in inventoryItems)
             {
                 if (!_items.TryAdd(item.Item, item))
@@ -25,14 +30,15 @@ namespace Application.Inventory
                 }
             }
         }
+        private void SubToEvents()
+        {
+            _inventoryEventBus.Subscribe<CurrentEquipmentChanged>(HandleEquipmentChange);
+        }
 
         public bool AddItem(IItemProviderRequest provider)
         {
             Debug.Log($"Got provider: {provider}");
-            // switch (provider)
-            // {
-            //     case ShellProvider shellProvider:
-            //         {
+
             if (_items[provider.Item].CanAdd(provider))
             {
                 Debug.Log($"Adding {provider}");
@@ -40,22 +46,7 @@ namespace Application.Inventory
                 return true;
             }
             return false;
-            //     }
-            // case RockProvider rockProvider:
-            //     {
-            //         if (_items[provider.Item].CanAdd(rockProvider))
-            //         {
-            //             _items[provider.Item].AddItem(rockProvider);
-            //             return true;
-            //         }
-            //         return false;
-            //     }
-            // default:
-            //     {
-            //         Debug.LogError($"{provider} is not a valid provider request.");
-            //         return false;
-            //     }
-            // }
+
         }
 
 
@@ -92,13 +83,18 @@ namespace Application.Inventory
                 if (inventoryItem.Quantity > 0)
                 {
                     // equip the item
-                    CurrentlyEquipped = item;
-                    inventoryItem.EquipItem();
+                    // inventoryItem.EquipItem();
+                    _currentItem = inventoryItem;
                     return true;
                 }
             }
             return false;
 
         }
+        private void HandleEquipmentChange(CurrentEquipmentChanged evt)
+        {
+            TryEquip(evt.NewItem.Item);
+        }
+
     }
 }

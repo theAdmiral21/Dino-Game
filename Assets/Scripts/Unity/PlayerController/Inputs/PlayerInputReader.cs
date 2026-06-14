@@ -37,8 +37,8 @@ namespace PlayerController.Unity.Inputs
         private bool _sprintPressed =>
         (_actions.InGame.Sprint.phase == InputActionPhase.Started) ||
         (_actions.InGame.Sprint.phase == InputActionPhase.Performed);
-        public bool Aim => _aimPressed;
-        private bool _aimPressed =>
+        public bool RaiseWeapon => _raiseWeaponPressed;
+        private bool _raiseWeaponPressed =>
                                     (_actions.InGame.RaiseWeapon.phase == InputActionPhase.Started) ||
                                     (_actions.InGame.RaiseWeapon.phase == InputActionPhase.Performed);
         public bool DodgePressed => _dodgePressed;
@@ -218,17 +218,37 @@ namespace PlayerController.Unity.Inputs
 
         public void OnReload(InputAction.CallbackContext context)
         {
-            throw new NotImplementedException();
+            if (context.started)
+            {
+                Debug.Log($"Reload weapon requested");
+                // _requestHandler.EnqueueActionRequest(new ReloadRequest());
+            }
         }
 
         public void OnRaiseWeapon(InputAction.CallbackContext context)
         {
-            throw new NotImplementedException();
+            if (context.started)
+            {
+                Debug.Log($"Raise weapon requested");
+                _requestHandler.EnqueueActionRequest(new RaiseWeaponRequest(true));
+            }
+            else if (context.canceled)
+            {
+                Debug.Log($"Lower weapon requested");
+                _requestHandler.EnqueueActionRequest(new RaiseWeaponRequest(false));
+            }
+
         }
 
         public void OnShoot(InputAction.CallbackContext context)
         {
-            throw new NotImplementedException();
+            if (context.started)
+            {
+                Debug.Log($"Shoot weapon requested");
+                _requestHandler.EnqueueActionRequest(new ShootRequest());
+            }
+
+
         }
 
         public void OnSelectNextItem(InputAction.CallbackContext context)

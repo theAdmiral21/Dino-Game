@@ -1,3 +1,4 @@
+using Core.Equipment;
 using Core.Movement.Abstractions;
 using Game.Core.Execution;
 using Movement.Core.Abstractions;
@@ -32,6 +33,9 @@ namespace Physics.Unity.Actors
 
         [SerializeField] private SerializedInterface<IActorInput> _actorInputMono;
         IActorInput _actorInput => _actorInputMono.Interface;
+
+        [SerializeField] private SerializedInterface<IEquipmentBridge> _bridgeMono;
+        IEquipmentBridge _equipmentBridge => _bridgeMono.Interface;
 
         private BodyType _bodyType = BodyType.Kinematic;
         // private IJumpContextBuilder _jumpContextBuilder;
@@ -99,7 +103,8 @@ namespace Physics.Unity.Actors
                 context.GameStateServices.GameState,
                 _ruleState,
                 _stats,
-                rayConfig);
+                rayConfig,
+                _equipmentBridge);
 
             Debug.Assert(_ruleState.TryGet<IDirectionState>(out var dir), $"Failed to get direction state from rule state");
             _dirState = dir;

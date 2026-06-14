@@ -51,7 +51,7 @@ namespace Unity.Inventory
 
 
             // Build the system
-            IInventorySystem system = new InventorySystem(items);
+            IInventorySystem system = new InventorySystem(items, InventoryEventBus);
 
             return system;
         }

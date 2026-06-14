@@ -23,7 +23,8 @@ namespace Movement.Core.State.DataStructures
                                     ILandingState,
                                     IDodgeState,
                                     IInvincibleState,
-                                    ICrouchState
+                                    ICrouchState,
+                                    IAimingState
     {
         public float RemainingJumps => _remainingJumps;
         private float _remainingJumps;
@@ -147,6 +148,8 @@ namespace Movement.Core.State.DataStructures
         public InputDirection DodgeDirection { get; private set; }
 
         public bool IsCrouching { get; private set; }
+
+        public bool IsAiming { get; private set; }
 
         private int _totalDodges;
 
@@ -519,6 +522,11 @@ namespace Movement.Core.State.DataStructures
             if (playerInputs.JumpPressed) SetCrouchState(false);
 
             if (playerInputs.SprintPressed) SetCrouchState(false);
+        }
+
+        public void SetAiming(bool val)
+        {
+            IsAiming = val;
         }
     }
 }

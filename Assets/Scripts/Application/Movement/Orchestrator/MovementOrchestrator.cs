@@ -72,7 +72,6 @@ namespace Movement.Application
             var dashUpdate = DodgeUpdateRules.TryDoggoDashUpdate(actionContext.Facts, actionContext.InputValues, actionContext.RuleState);
             _actionResults.Add(dashUpdate);
 
-
             // sort the action results by phase priority. Impulse happens before continuous actions. ie Jump is calculated before Run.
             var orderedResults = _actionResults.OrderBy(r => r.Phase).ToList();
 
