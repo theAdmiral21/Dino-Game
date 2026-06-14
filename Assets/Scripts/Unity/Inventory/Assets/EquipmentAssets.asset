@@ -15,3 +15,9 @@ MonoBehaviour:
   _assets:
   - Item: 7
     SpriteImage: {fileID: 655555847616907990, guid: 1b34275589a2e6040a0aa0888db4bac7, type: 3}
+  - Item: 12
+    SpriteImage: {fileID: 0}
+  - Item: 1
+    SpriteImage: {fileID: -3225699559323325482, guid: de03ed4b3c3902c46b6e976fb59dbac3, type: 3}
+  - Item: 10
+    SpriteImage: {fileID: -1212878646794591674, guid: 3c981d25d3004e94e889c4c112a1c244, type: 3}

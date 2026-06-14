@@ -73,7 +73,7 @@ namespace PlayerController.Application.Health
                             DecrementHealth(damageInfo.DamageValue);
                             break;
                         }
-                    case DamageType.Kill:
+                    case DamageType.Stun:
                         {
                             // Insta kill
                             Debug.Log($"Was killed - Frame: {Time.frameCount}");

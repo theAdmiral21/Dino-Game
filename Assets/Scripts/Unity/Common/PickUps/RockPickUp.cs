@@ -1,5 +1,7 @@
 using Core.Inventory;
 using Core.Inventory.DataStructures.Providers;
+using Game.Core.Events;
+using Game.Unity.Events;
 using Physics.Core.PhysicsActors;
 using Unity.Common.Pickups;
 using UnityEngine;
@@ -9,6 +11,12 @@ namespace Unity.Common.PickUps
     public class RockPickUp : Pickup
     {
         [SerializeField] private int _quantity;
+        private IEventFeedBack _audio;
+        private void Awake()
+        {
+            base.Awake();
+            _audio = GetComponent<IEventFeedBack>();
+        }
         public override void OnPickup(IPhysicsActor entity)
         {
             Debug.Log($"PickUp called");
@@ -18,6 +26,8 @@ namespace Unity.Common.PickUps
             // Attempt to add yourself
             if (inventory.InventorySystem.AddItem(new RockProvider(_quantity)))
             {
+                // Play a sound
+                if (_audio != null) _audio.React();
                 // Destroy the pick up if you succeeded
                 Destroy(gameObject);
             }

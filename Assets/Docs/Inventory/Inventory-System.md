@@ -199,3 +199,70 @@ public interface IInventoryPresenter
 ```
 
 So the presenter will then have a reference to the actor event bus which raises events for consuming, adding, and changing equipment. 
+
+# 6-14-26
+I am feeling some friction between `IInventoryItem` and `IEquipment`. There isn't a nice way to tie a an equipment class to it's inventory item. I considered having the inventory item return an instance of the equipment class but I'm not sure how I want to construct it. Currently inventory items are all the same. They just have different item types. This is nice and reusable. The problem is if I tell the inventory items to construct the equipment they represent it could wind up building multiple different instances of the equipment class OR each inventory item class winds up with a giant constructor just for its equipment.
+
+I think what I need to do is pass the equipment class as a constructor argument. Then the inventory class will check if the `ItemType`s match. To configure the equipment with the inventory I could make a scriptable object holding all of the constructor details for each type of item/equipment. Then I could just feed everything into a factory method inside of `Inventory` that builds the InventoryItem and stores the equipment with it and puts the result in a list for the inventory system to handle. What would that look like? 
+
+```c#
+public class InventoryConfig : ScriptableObject
+{
+    [SerializeField] private List<InventoryConfigEntry> _entries;
+    private Dictionary<ItemType,InventoryConfigEntry> _entryDict = new();
+
+    private void OnEnable()
+    {
+        BuildDictionary();
+    }
+
+    public void AddNewEntry(InventoryConfigEntry entry)
+    {
+        _entries.Add(entry);
+    }
+
+    public Dictionary<ItemType,InventoryConfigEntry> GetDict()
+    {
+        if (_entryDict.Keys.Count == 0)
+        {
+            BuildDictionary();
+        }
+        return _entryDict;
+    }
+
+    private void BuildDictionary()
+    {
+        _entryDict = new();
+        foreach (var entry in _entries)
+        {
+            if (!_entryDict.ContainsKey(entry.Key))
+            {
+                _entryDict[entry.Key] = entry.Clip;
+            }
+            else
+            {
+                Debug.LogError($"ItemType {entry.Key} is already paired with InventoryConfigEntry {entry} in inventory config dictionary.");
+            }
+        }
+    }
+}
+
+// Entry class
+[Serializable]
+public class InventoryConfigEntry
+{
+public ItemType Key
+public InventoryConfigSO ConfigData;
+}
+
+// Data class
+public class InventoryConfigSO : ScriptableObject
+{
+    public int Capacity;
+    public bool IsEquipable;
+}
+```
+
+...I'm not sure this is working. I think what I need to do is make two config factories. One for equipment and one for inventory then in the inventory class it puts everything together.
+
+TBH none of this *seems* correct. I'm gonna free-ball it with the rocks and see what happens.

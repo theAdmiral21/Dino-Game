@@ -379,6 +379,53 @@ MonoBehaviour:
   _layerMask:
     serializedVersion: 2
     m_Bits: 128
+--- !u!1 &1546334948991769612
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5834370368133972843}
+  - component: {fileID: 996616551983274767}
+  m_Layer: 6
+  m_Name: EquipmentFactory
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5834370368133972843
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1546334948991769612}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4908797685509241682}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &996616551983274767
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1546334948991769612}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d78dee1e6ab96d745875814024a75c4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _mapSO: {fileID: 11400000, guid: 35b5fb4e7c8ff0840aea4248fa6b95a8, type: 2}
+  _inventorySO:
+    _monoScript: {fileID: 3221408626999151277}
 --- !u!1 &1598416908577889231
 GameObject:
   m_ObjectHideFlags: 0
@@ -5709,7 +5756,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 5834370368133972843}
   m_Father: {fileID: 7937856566656044007}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3221408626999151277
@@ -5724,9 +5772,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0951a6e7cd49bca47959eb2f2d339d6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _actorEventBusMono:
-    _monoScript: {fileID: 6891503663535481657}
+  _inventoryLimits: {fileID: 11400000, guid: 7ec61f8d48cbd834285e58d18423aebb, type: 2}
   _debug: 0
+  _equipmentFactory: {fileID: 996616551983274767}
 --- !u!1 &8478692204791979029
 GameObject:
   m_ObjectHideFlags: 0

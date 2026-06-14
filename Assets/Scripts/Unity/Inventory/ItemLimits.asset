@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b3c7c38d1ca6464fb0c8e9e136bd6ea, type: 3}
+  m_Name: ItemLimits
+  m_EditorClassIdentifier: 
+  _taserLimit: 1
+  _shotgunLimit: 1
+  _rocketLauncherLimit: 1
+  _nerveGasLimit: 3
+  _shellLimit: 12
+  _rocketLimit: 3
+  _canisterLimit: 3
+  _rockLimit: 5
+  _flashlightLimit: 1
+  _medkitLimit: 1
+  _flaresLimit: 3
+  _smokeGrenadeLimit: 3

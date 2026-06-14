@@ -18,5 +18,10 @@ MonoBehaviour:
     ModulatePitch: 1
     ModulateVolume: 1
     Clip: {fileID: 8300000, guid: 785d452c731694940bbb838e59a92be7, type: 3}
+  - Key: 1
+    ActionKey: 10
+    ModulatePitch: 0
+    ModulateVolume: 0
+    Clip: {fileID: 8300000, guid: 53d1532db5793a841b65ee58ad1e3221, type: 3}
   VolumeRange: {x: 0.95, y: 1.05}
   PitchRange: {x: 0.95, y: 1.05}

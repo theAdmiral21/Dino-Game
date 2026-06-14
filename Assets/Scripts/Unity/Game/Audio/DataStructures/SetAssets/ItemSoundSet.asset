@@ -14,10 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _entries:
   - Key: 0
-    Clip: {fileID: 8300000, guid: c33e509538c034e4cb5d0633d84b0ffe, type: 3}
-  - Key: 1
-    Clip: {fileID: 8300000, guid: 721dbe758c91f164893cbcdf57ef781b, type: 3}
-  - Key: 2
-    Clip: {fileID: 8300000, guid: bcc3add4d7e01d947a985081cad4e225, type: 3}
+    Clip: {fileID: 8300000, guid: 785d452c731694940bbb838e59a92be7, type: 3}
   - Key: 3
-    Clip: {fileID: 8300000, guid: 26a1ecd063e6f2943a764d4475143e86, type: 3}
+    Clip: {fileID: 8300000, guid: 53d1532db5793a841b65ee58ad1e3221, type: 3}

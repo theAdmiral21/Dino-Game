@@ -17,12 +17,6 @@ namespace Movement.Core.Abstractions
         public void StartCoyoteTimer(PhysicsContext physicsContext);
     }
 
-    // public interface IWallJumpState
-    // {
-    //     public bool WallJumpBuffered { get; }
-    //     public void StartWallJumpBufferTimer();
-    //     public void ResetWallJumpBufferTimer();
-    // }
 
     public interface IXInputState
     {
@@ -150,5 +144,11 @@ namespace Movement.Core.Abstractions
         public bool IsCrouching { get; }
         public void SetCrouchState(bool val);
         public void UpdateCrouchState(IActorInput inputValues);
+    }
+
+    public interface IAimingState
+    {
+        public bool IsAiming { get; }
+        public bool SetAiming(bool val);
     }
 }

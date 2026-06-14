@@ -23,6 +23,11 @@ namespace Unity.Inventory
         private ItemType _currentlyEquipped = ItemType.None;
         private Dictionary<ItemType, Sprite> _itemMap = new();
 
+        private void Awake()
+        {
+            SetInventoryImage(_currentlyEquipped);
+        }
+
         private void OnDestroy()
         {
             UnSubToEvents();
@@ -106,7 +111,18 @@ namespace Unity.Inventory
 
         private void SetInventoryImage(ItemType item)
         {
+            if (item == ItemType.None)
+            {
+                _equippedImage.enabled = false;
+                _equipmentQuantity.enabled = false;
+            }
+            else
+            {
+                _equippedImage.enabled = true;
+                _equipmentQuantity.enabled = true;
+            }
             _equippedImage.sprite = _equipmentAssets.GetSprite(item);
+
         }
     }
 }

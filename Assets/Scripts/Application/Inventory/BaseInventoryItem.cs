@@ -1,3 +1,4 @@
+using Core.Equipment;
 using Core.Inventory;
 using Core.Inventory.DataStructures.Providers;
 using Core.Inventory.Requests;
@@ -18,19 +19,21 @@ namespace Application.Inventory
 
         protected int _maxAllowed;
         protected IEventBus _inventoryEventBus;
+        protected IEquipment _equipment;
 
-        public BaseInventoryItem(ItemType item, int maxAllowed, IEventBus inventoryEventBus)
+        public BaseInventoryItem(ItemType item, int maxAllowed, IEventBus inventoryEventBus, IEquipment equipment)
         {
             Item = item;
             _maxAllowed = maxAllowed;
             _inventoryEventBus = inventoryEventBus;
+            _equipment = equipment;
         }
 
         public void AddItem(IItemProviderRequest provider)
         {
             if (!CanAdd(provider)) return;
 
-            IncrementQuantity();
+            IncrementQuantity(provider.Quantity);
 
             if (!PreviouslyFound)
             {
@@ -44,6 +47,10 @@ namespace Application.Inventory
         public abstract bool CanAdd(IItemProviderRequest provider);
 
         public abstract bool CanConsume(IItemConsumerRequest consumer);
+        public IEquipment GetEquipment()
+        {
+            return _equipment;
+        }
 
         public IItemProviderRequest ConsumeItem(IItemConsumerRequest consumer)
         {
@@ -53,7 +60,7 @@ namespace Application.Inventory
             {
                 case ItemType.Shell:
                     {
-                        DecrementQuantity();
+                        DecrementQuantity(1);
                         return new ShellProvider();
                     }
                 default:
@@ -69,9 +76,9 @@ namespace Application.Inventory
             _inventoryEventBus.Publish(new CurrentEquipmentChanged { NewItem = this });
         }
 
-        private void DecrementQuantity()
+        private void DecrementQuantity(int amount)
         {
-            Quantity -= 1;
+            Quantity -= amount;
             if (Quantity < 0)
             {
                 Quantity = 0;
@@ -80,9 +87,9 @@ namespace Application.Inventory
             EmitQuantityChanged();
         }
 
-        private void IncrementQuantity()
+        private void IncrementQuantity(int amount)
         {
-            Quantity += 1;
+            Quantity += amount;
             if (Quantity > _maxAllowed)
             {
                 Quantity = _maxAllowed;
@@ -100,5 +107,7 @@ namespace Application.Inventory
             });
             Debug.Log($"Emitted quantity changed event");
         }
+
+
     }
 }
