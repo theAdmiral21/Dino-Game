@@ -8,8 +8,10 @@ namespace Core.Inventory.DataStructures.Consumers
     {
         public Type ConsumerType => typeof(ShellConsumer);
         public ItemType Item => ItemType.Shell;
-        public bool Requested { get; private set; }
+        public int WithdrawAmount => _withdrawAmount;
 
-        public ShellConsumer(bool requested = true) => Requested = requested;
+        private int _withdrawAmount;
+
+        public ShellConsumer(int withdrawAmount) => _withdrawAmount = withdrawAmount;
     }
 }

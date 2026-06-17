@@ -9,23 +9,5 @@ namespace Application.Inventory
     {
         public InventoryItem(ItemType item, int maxAllowed, IEventBus inventoryEventBus, IEquipment equipment) : base(item, maxAllowed, inventoryEventBus, equipment) { }
 
-        public override bool CanAdd(IItemProviderRequest provider)
-        {
-            if (Quantity >= _maxAllowed) return false;
-
-            if (provider.Item != Item) return false;
-            // Both of these will need to check if the base item is available when attempting to add/consume ammo.
-
-            return true;
-        }
-
-        public override bool CanConsume(IItemConsumerRequest consumer)
-        {
-            if (Quantity <= 0) return false;
-
-            // Both of these will need to check if the base item is available when attempting to add/consume ammo.
-
-            return true;
-        }
     }
 }

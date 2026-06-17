@@ -8,13 +8,11 @@ namespace Core.Inventory.DataStructures.Providers
     {
         public Type ProviderType => typeof(ShellProvider);
         public ItemType Item => ItemType.Shell;
-        public bool Requested { get; private set; }
         public int Quantity { get; private set; }
 
-        public ShellProvider(int quantity, bool requested = true)
+        public ShellProvider(int quantity)
         {
             Quantity = quantity;
-            Requested = requested;
         }
     }
 }

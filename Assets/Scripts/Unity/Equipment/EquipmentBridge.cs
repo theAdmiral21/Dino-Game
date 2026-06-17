@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Core.Equipment;
 using Core.Inventory;
@@ -12,18 +13,28 @@ namespace Unity.Equipment
     public class EquipmentBridge : MonoBehaviour, IEquipmentBridge
     {
         [SerializeField] private SerializedInterface<IInventory> _inventoryMono;
-        public IEquipment Equipped => _inventorySystem.Items[_inventorySystem.CurrentlyEquipped].GetEquipment();
-        private IInventorySystem _inventorySystem;// => _inventoryMono.Interface.InventorySystem;
+        private IInventory _inventory => _inventoryMono.Interface;
+        public IEquipment Equipped => _equipped;
+        private IEquipment _equipped;
+        private IEventBus _inventoryEventBus;
+
+        [Header("Debug")]
+        [SerializeField] string CurrentWeapon;
         private void Awake()
         {
             var inventory = GetComponent<IInventory>();
-            _inventorySystem = inventory.InventorySystem;
+        }
+
+        private void OnDestroy()
+        {
+            UnsubToEvents();
         }
 
         public void RouteEquipmentResult(IEquipmentActionResult result)
         {
             Debug.Log($"Switching on result: {result}");
-            if (_inventorySystem.CurrentlyEquipped == ItemType.None) return;
+            if (Equipped == null) return;
+
             switch (result)
             {
                 case RaiseWeaponResult raiseWeapon:
@@ -49,6 +60,31 @@ namespace Unity.Equipment
                     //         break;
                     //     }
             }
+        }
+
+        private void LateUpdate()
+        {
+            CurrentWeapon = $"{_equipped.EquipmentType}";
+        }
+
+        public void SetEventBus(IEventBus eventBus)
+        {
+            _inventoryEventBus = eventBus;
+            SubToEvents();
+        }
+
+        private void SubToEvents()
+        {
+            _inventoryEventBus.Subscribe<CurrentEquipmentChanged>(UpdateEquipment);
+        }
+        private void UnsubToEvents()
+        {
+            _inventoryEventBus.Unsubscribe<CurrentEquipmentChanged>(UpdateEquipment);
+        }
+
+        private void UpdateEquipment(CurrentEquipmentChanged changed)
+        {
+            _equipped = changed.NewItem.Equipment;
         }
     }
 }

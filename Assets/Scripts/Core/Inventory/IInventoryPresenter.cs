@@ -10,8 +10,10 @@ namespace Core.Inventory
         public void UpdateEquipped(CurrentEquipmentChanged evt);
         public void UpdateEquippedQuantity(int quantity);
         public void UpdateEquippedQuantity(EquipmentQuantityChanged evt);
+        public void UpdateMagazineQuantity(int quantity);
+        public void UpdateMagazineQuantity(MagazineQuantityChanged evt);
         public void UpdateHealth(OnHealthChanged evt);
-        public void UpdateMedkitQuantity(EquipmentQuantityChanged evt);
+        public void UpdateMedkitQuantity(MedkitQuantityChanged evt);
         public void UpdateFlashlight(FlashlightToggled evt);
     }
 }

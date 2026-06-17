@@ -4,7 +4,7 @@ namespace Core.Inventory
 {
     public record EquipmentQuantityChanged
     {
-        public ItemType Item;
+        // public IInventoryItem InventoryItem;
         public int CurrentQuantity;
     }
 }

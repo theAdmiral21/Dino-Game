@@ -1,6 +1,5 @@
 using Core.Equipment;
 using Core.Inventory;
-using Core.Inventory.DataStructures.Providers;
 using Core.Inventory.Requests;
 using Primitives.EventBus.Abstractions;
 using Primitives.Items;
@@ -13,13 +12,15 @@ namespace Application.Inventory
         public ItemType Item { get; private set; }
 
         public int Quantity { get; private set; }
-        public bool PreviouslyFound { get; protected set; } = false;
         public bool IsEquipable => _isEquipable;
+
+        public IEquipment Equipment => _equipment;
+
         protected bool _isEquipable;
 
         protected int _maxAllowed;
         protected IEventBus _inventoryEventBus;
-        protected IEquipment _equipment;
+        private IEquipment _equipment;
 
         public BaseInventoryItem(ItemType item, int maxAllowed, IEventBus inventoryEventBus, IEquipment equipment)
         {
@@ -29,52 +30,28 @@ namespace Application.Inventory
             _equipment = equipment;
         }
 
-        public void AddItem(IItemProviderRequest provider)
+        public int Deposit(int amount)
         {
-            if (!CanAdd(provider)) return;
-
-            IncrementQuantity(provider.Quantity);
-
-            if (!PreviouslyFound)
+            int availableSpace = _maxAllowed - amount;
+            if (amount <= availableSpace)
             {
-                PreviouslyFound = true;
-                // Auto switch to the new item you just found
-                _inventoryEventBus.Publish(new CurrentEquipmentChanged { NewItem = this, });
+                IncrementQuantity(amount);
+                return amount;
+            }
+            else
+            {
+                IncrementQuantity(availableSpace);
+                return availableSpace;
             }
 
         }
 
-        public abstract bool CanAdd(IItemProviderRequest provider);
-
-        public abstract bool CanConsume(IItemConsumerRequest consumer);
-        public IEquipment GetEquipment()
+        public int Withdraw(int amount)
         {
-            return _equipment;
+            int withdrawn = Quantity - amount;
+            DecrementQuantity(withdrawn);
+            return withdrawn;
         }
-
-        public IItemProviderRequest ConsumeItem(IItemConsumerRequest consumer)
-        {
-            if (!CanConsume(consumer)) return null;
-
-            switch (Item)
-            {
-                case ItemType.Shell:
-                    {
-                        DecrementQuantity(1);
-                        return new ShellProvider();
-                    }
-                default:
-                    {
-                        Debug.LogError($"{consumer} is not a valid consumer request.");
-                        return null;
-                    }
-            }
-        }
-
-        // public void EquipItem()
-        // {
-        //     // _inventoryEventBus.Publish(new CurrentEquipmentChanged { NewItem = this });
-        // }
 
         private void DecrementQuantity(int amount)
         {
@@ -84,7 +61,7 @@ namespace Application.Inventory
                 Quantity = 0;
                 return;
             }
-            EmitQuantityChanged();
+            // EmitQuantityChanged();
         }
 
         private void IncrementQuantity(int amount)
@@ -95,18 +72,18 @@ namespace Application.Inventory
                 Quantity = _maxAllowed;
                 return;
             }
-            EmitQuantityChanged();
+            // EmitQuantityChanged();
         }
 
-        private void EmitQuantityChanged()
-        {
-            _inventoryEventBus.Publish(new EquipmentQuantityChanged
-            {
-                Item = Item,
-                CurrentQuantity = Quantity
-            });
-            Debug.Log($"Emitted quantity changed event");
-        }
+        // private void EmitQuantityChanged()
+        // {
+        //     _inventoryEventBus.Publish(new EquipmentQuantityChanged
+        //     {
+        //         Item = Item,
+        //         CurrentQuantity = Quantity
+        //     });
+        //     Debug.Log($"Emitted quantity changed event");
+        // }
 
 
     }

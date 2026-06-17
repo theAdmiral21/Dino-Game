@@ -98,5 +98,7 @@ namespace Physics.Application.Collisions
                 _resolveDict[actor] = separationVector;
             }
         }
+
+        private void CallCollision
     }
 }

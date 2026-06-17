@@ -15,6 +15,8 @@ namespace Physics.Core.DataStructures
         public KinematicResult CurrentState;
         public IStatCollection ActorStats;
         public RaycastConfiguration RaycastConfig;
+        public bool CollidedThisFrame;
+        public CollisionData Collision;
 
         public void ClearData()
         {

@@ -8,6 +8,9 @@ using Primitives.EventBus.Abstractions;
 using Infrastructure.Application.EventBus;
 using Unity.Inventory.DataStructures;
 using Unity.Equipment;
+using Core.Inventory.Requests;
+using Core.Equipment;
+using PlasticPipe.PlasticProtocol.Messages;
 
 namespace Unity.Inventory
 {
@@ -23,7 +26,7 @@ namespace Unity.Inventory
 
         public IEventBus InventoryEventBus { get; private set; }
         public IInventorySystem InventorySystem { get; private set; }
-        public ItemType CurrentlyEquipped => InventorySystem.CurrentlyEquipped;
+        public IEquipment CurrentlyEquipped => InventorySystem.CurrentlyEquipped.Equipment;
 
         private void Awake()
         {
@@ -31,12 +34,16 @@ namespace Unity.Inventory
             InventoryEventBus = new EventBus();
             InventorySystem = ConfigureInventory();
 
+            // Set the equipment bridge's event bus
+            var bridge = GetComponent<IEquipmentBridge>();
+            bridge.SetEventBus(InventoryEventBus);
+
         }
 
         private IInventorySystem ConfigureInventory()
         {
             // Still on the fence about making this inspector configurable. For now I'm doing this manually
-            List<IInventoryItem> items = new();
+            Dictionary<ItemType, IInventoryItem> itemsDict = new();
             // Build your list of inventory items
             // var rockInventory = new InventoryItem(ItemType.Rock, 5, InventoryEventBus);
             // items.Add(rockInventory);
@@ -46,12 +53,12 @@ namespace Unity.Inventory
             foreach (var key in _limitMap.Keys)
             {
                 InventoryItem newItem = new(key, _limitMap[key], InventoryEventBus, _equipmentFactory.BuildEquipment(key));
-                items.Add(newItem);
+                itemsDict[key] = newItem;
             }
 
 
             // Build the system
-            IInventorySystem system = new InventorySystem(items, InventoryEventBus);
+            IInventorySystem system = new InventorySystem(InventoryEventBus, itemsDict);
 
             return system;
         }
@@ -73,6 +80,11 @@ namespace Unity.Inventory
         public bool TryEquip(ItemType item)
         {
             return InventorySystem.TryEquip(item);
+        }
+
+        public int StockItem(IItemProviderRequest provider)
+        {
+            return InventorySystem.RestockItem(provider);
         }
     }
 }

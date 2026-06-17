@@ -131,7 +131,7 @@ namespace Physics.Unity.Physics
             }
 
             // Check for collision?
-            HandleCollisions(3);
+            Dictionary<IPhysicsActor, Vector2> collisions = HandleCollisions(3);
 
             // Update physics context
             foreach (var actor in ActorRegistry)
@@ -163,17 +163,26 @@ namespace Physics.Unity.Physics
             // Check for trigger overlap
             ResolveTriggers();
 
+            // Reset collisions
+            ResetCollisions(collisions);
+
+        }
+
+        private void ResetCollisions(Dictionary<IPhysicsActor, Vector2> collisions)
+        {
+
         }
 
         /// <summary>
         /// Iterates through and resolves all the collisions in the current frame. Note that resolving collisions can lead to more collisions. Increasing iterations increases stability and increases frame time leading to lag. 
         /// </summary>
         /// <param name="iterations"></param>
-        private void HandleCollisions(int iterations = 1)
+        private Dictionary<IPhysicsActor, Vector2> HandleCollisions(int iterations = 1)
         {
+            Dictionary<IPhysicsActor, Vector2> resolveDict = new();
             for (int i = 0; i < iterations; i++)
             {
-                var resolveDict = _collisionDetection.GetCollisions(ActorRegistry.ToList());
+                resolveDict = _collisionDetection.GetCollisions(ActorRegistry.ToList());
 
                 // If nothing had to be resolved we're already stable
                 if (resolveDict.Count == 0) break;
@@ -197,6 +206,7 @@ namespace Physics.Unity.Physics
                     }
                 }
             }
+            return resolveDict;
         }
 
         private void MoveActor(IPhysicsActor actor)

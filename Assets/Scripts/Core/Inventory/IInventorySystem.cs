@@ -7,9 +7,10 @@ namespace Core.Inventory
     public interface IInventorySystem
     {
         public Dictionary<ItemType, IInventoryItem> Items { get; }
-        public ItemType CurrentlyEquipped { get; }
-        public bool AddItem(IItemProviderRequest provider);
-        public IItemProviderRequest ConsumeItem(IItemConsumerRequest consumer);
+        public IInventoryItem CurrentlyEquipped { get; }
+        public int RestockItem(IItemProviderRequest provider);
+        // public bool AddNewItem(IItemProviderRequest provider);
+        public int ConsumeItem(IItemConsumerRequest consumer);
         public bool TryEquip(ItemType item);
     }
 }

@@ -68,6 +68,12 @@ namespace Physics.Unity.Actors
         public abstract void PostInitialize(IGameContext context);
 
         public abstract void EnqueueActionRequest(IActionRequest newRequest);
+
+        // I think these goes here?
+        public abstract void OnCollisionStarted(IPhysicsActor actor);
+        public abstract void OnCollisionStayed(IPhysicsActor actor);
+        public abstract void OnCollisionEnded(IPhysicsActor actor);
+
         public void MarkForDestruction()
         {
             if (!ReadyToDestroy)

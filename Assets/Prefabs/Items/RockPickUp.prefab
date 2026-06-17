@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 8029624024802653740}
   - component: {fileID: 7619525964984445836}
-  - component: {fileID: 6562102588018013265}
-  - component: {fileID: 5491151759561973871}
+  - component: {fileID: 6057562653565001835}
   - component: {fileID: 4980913453795031083}
+  - component: {fileID: 5491151759561973871}
   m_Layer: 6
   m_Name: RockPickUp
   m_TagString: Untagged
@@ -69,19 +69,19 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.0030492544, y: -0.045737684}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.56}
-    oldSize: {x: 0.8125, y: 0.78125}
+    oldSize: {x: 0.40625, y: 0.390625}
     newSize: {x: 0.26, y: 0.25}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.8292458, y: 0.7987541}
+  m_Size: {x: 0.5, y: 0.5}
   m_EdgeRadius: 0
---- !u!114 &6562102588018013265
+--- !u!114 &6057562653565001835
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -96,7 +96,29 @@ MonoBehaviour:
   _isSingleUse: 0
   _collider: {fileID: 7619525964984445836}
   _triggerTarget: Player
+  Item: 7
   _quantity: 1
+  _audioMono:
+    _monoScript: {fileID: 4980913453795031083}
+  _visualMono:
+    _monoScript: {fileID: 0}
+  _particleMono:
+    _monoScript: {fileID: 0}
+--- !u!114 &4980913453795031083
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3649226777923163161}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 775c107c3fc834c48ae24aca79ca4f42, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _entityKey: 0
+  _actionKey: 10
+  _allowPolyphony: 0
 --- !u!212 &5491151759561973871
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -152,18 +174,3 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &4980913453795031083
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3649226777923163161}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 775c107c3fc834c48ae24aca79ca4f42, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _entityKey: 0
-  _actionKey: 10
-  _allowPolyphony: 0

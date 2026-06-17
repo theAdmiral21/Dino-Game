@@ -1,73 +1,59 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 using Core.Inventory;
-using Core.Inventory.DataStructures.Consumers;
-using Core.Inventory.DataStructures.Providers;
 using Core.Inventory.Requests;
 using Primitives.Items;
 using Primitives.EventBus.Abstractions;
+using Core.Inventory.DataStructures.Providers;
 
 namespace Application.Inventory
 {
     public class InventorySystem : IInventorySystem
     {
         public Dictionary<ItemType, IInventoryItem> Items => _items;
-        public ItemType CurrentlyEquipped => _currentItem == null ? ItemType.None : _currentItem.Item;
         private Dictionary<ItemType, IInventoryItem> _items = new();
-        private IEventBus _inventoryEventBus;
+        private readonly Dictionary<ItemType, IInventoryItem> _refItems = new();
+        public IInventoryItem CurrentlyEquipped => _currentItem;
         private IInventoryItem _currentItem;
-        public InventorySystem(List<IInventoryItem> inventoryItems, IEventBus inventoryEventBus)
+
+        private IEventBus _inventoryEventBus;
+        public InventorySystem(IEventBus inventoryEventBus, Dictionary<ItemType, IInventoryItem> refItems)
         {
             _inventoryEventBus = inventoryEventBus;
+            _refItems = refItems;
             SubToEvents();
 
-            foreach (var item in inventoryItems)
-            {
-                if (!_items.TryAdd(item.Item, item))
-                {
-                    throw new ArgumentException($"Key: {item} already exists in {Items}");
-                }
-            }
+            // Assign a default piece of equipment
+            // RestockItem(new TaserProvider(0));
         }
         private void SubToEvents()
         {
             _inventoryEventBus.Subscribe<CurrentEquipmentChanged>(HandleEquipmentChange);
         }
 
-        public bool AddItem(IItemProviderRequest provider)
+
+
+        public int RestockItem(IItemProviderRequest provider)
         {
-            Debug.Log($"Got provider: {provider}");
-
-            if (_items[provider.Item].CanAdd(provider))
+            // If this is the first time collecting this item, emit an event
+            if (!_items.ContainsKey(provider.Item))
             {
-                Debug.Log($"Adding {provider}");
-                _items[provider.Item].AddItem(provider);
-                return true;
+                // Ugh this should probably be a factory
+                _items[provider.Item] = _refItems[provider.Item];
+                var newItem = _items[provider.Item];
+                _inventoryEventBus.Publish(new CurrentEquipmentChanged { NewItem = newItem });
             }
-            return false;
-
+            int deposited = _items[provider.Item].Deposit(provider.Quantity);
+            EmitEquippedQuantityChanged(deposited);
+            return deposited;
         }
 
 
-        public IItemProviderRequest ConsumeItem(IItemConsumerRequest consumer)
+        public int ConsumeItem(IItemConsumerRequest consumer)
         {
-            switch (consumer)
-            {
-                case ShellConsumer shellRequest:
-                    {
-                        return _items[consumer.Item].ConsumeItem(shellRequest);
-                    }
-                case RockConsumer rockRequest:
-                    {
-                        return _items[consumer.Item].ConsumeItem(rockRequest);
-                    }
-                default:
-                    {
-                        Debug.LogError($"{consumer} is not a valid consumer request.");
-                        return null;
-                    }
-            }
+            int withdrawn = _currentItem.Withdraw(consumer.WithdrawAmount);
+            EmitEquippedQuantityChanged(withdrawn);
+            return withdrawn;
         }
 
         public bool TryEquip(ItemType item)
@@ -80,21 +66,33 @@ namespace Application.Inventory
             else
             {
                 // check the quantity of the item
-                if (inventoryItem.Quantity > 0)
-                {
-                    // equip the item
-                    // inventoryItem.EquipItem();
-                    _currentItem = inventoryItem;
-                    return true;
-                }
+                // if (inventoryItem.Quantity > 0)
+                // {
+                // equip the item
+                // inventoryItem.EquipItem();
+                _currentItem = inventoryItem;
+                return true;
+                // }
             }
-            return false;
+            // return false;
 
         }
         private void HandleEquipmentChange(CurrentEquipmentChanged evt)
         {
-            TryEquip(evt.NewItem.Item);
+            Debug.Log($"Got equipment changed event");
+            bool res = TryEquip(evt.NewItem.Item);
+            Debug.Log($"Equip result: {res}");
         }
 
+        private void EmitEquippedQuantityChanged(int newQuantity)
+        {
+            Debug.Log($"Emitting equipped quantity changed with value {newQuantity}");
+            _inventoryEventBus.Publish(new EquipmentQuantityChanged
+            {
+                // InventoryItem = item,
+                CurrentQuantity = newQuantity
+            });
+            Debug.Log($"Emitted quantity changed event");
+        }
     }
 }

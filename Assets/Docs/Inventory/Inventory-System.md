@@ -266,3 +266,127 @@ public class InventoryConfigSO : ScriptableObject
 ...I'm not sure this is working. I think what I need to do is make two config factories. One for equipment and one for inventory then in the inventory class it puts everything together.
 
 TBH none of this *seems* correct. I'm gonna free-ball it with the rocks and see what happens.
+
+OOF. It went horribly wrong. InventoryItems should NOT know about the inventory system. Everything was actually pretty well scoped except for that.
+
+Still the lingering question of how the equipment and inventory items work together is still there.
+
+I think the equipment needs to be refactored so that it is simpler and then everything will work through the inventory item. I could make an inventory item for all of the different items and on construction they make their own equipment type. The equipment can only be accessed via the inventory item IF it is equipped.
+
+```c#
+public interface IInventoryItem
+{
+    public ItemType Item {get;}
+    public IEquipment Equipment {get;}
+    public int Quantity {get;}
+    public int GetCount();
+    public void AddItem(IItemProviderRequest provider);
+    public IItemProviderRequest ConsumeItem(IItemConsumerRequest consumer);
+    public bool CanAdd();
+    public bool CanConsume();
+}
+```
+```c#
+public interface IEquipment
+{
+    // Equipment stats
+    public EquipmentStats Stats { get; }
+
+    // Equipment state information
+    public readonly IInventoryItem InventoryItem { get; }
+    public int RoundCount { get; }
+
+    // Effect notification
+    public event Action OnFire;
+    public event Action OnReload;
+
+    // Equipment orchestrators
+    public void Aim();
+    public void Reload();
+    public void Fire();
+}
+
+    public interface IMagazine
+    {
+        public int RoundCount { get; }
+        public int Capacity { get; }
+        public bool CanAdd(IItemProviderRequest provider);
+        public bool CanConsume(IItemConsumerRequest consumer);
+        public bool AddItem(IItemProviderRequest provider);
+        public IItemProviderRequest ConsumeItem(IItemConsumerRequest consumer);
+    }
+```
+The problem that I ran into is that the equipment know's too much. It should only know how to do equipment stuff like aim, fire, and reload. The equipment's storage is all handled by the magazine class. So the equipments reload method should give the magazine to the inventory item, have the inventory item refill it, and then return it.
+
+Or the equipment could emit the reload event and the backing inventory could then pass in a stack of ItemProviders to restock the magazine? So the equipment would have a RequestReload() method and a Reload(List<IItemProviderRequest> bullets)
+
+On the equipment side:
+```c#
+private IMagazine _magazine;
+public void RequestReload()
+{
+    OnReload.Invoke();
+}
+public void Reload(List<IItemProviderRequest>bullets)
+{
+    // Handle animations and crap
+
+    _magazine.Replenish(bullets.Count);
+}
+```
+On the inventory item side:
+```c#
+public void OnReload()
+{
+    
+}
+```
+
+Hold up what if the event just gave the magazine to the inventory?
+
+```c#
+public void RequestReload()
+{
+    OnReload.Invoke(_magazine);
+}
+```
+```c#
+public void OnReload(IMagazine magazine)
+{
+    // Calculate how many rounds to add
+    int bulletsNeeded = magazine.Capacity - magazine.RoundCount;
+
+    int bulletsProvided = ConsumeItem(bulletsNeeded);
+
+    magazine.Replenish(bulletsProvided);
+}
+
+private int ConsumeItem(int count)
+{
+    int canProvide = Quantity - count;
+    return canProvide;
+}
+```
+Ugh this would work playing animations and stuff on reload would be a nightmare.
+What needs to happen is that the equipment requests bullets from the inventory, the inventory provides what it can, then the equipment reloads the magazine. That would mean that the equipment would need a reference to the item...
+
+```c#
+public void Reload()
+{
+    // Calculate how many rounds to add
+    int bulletsNeeded = magazine.Capacity - magazine.RoundCount;
+
+    int bulletsProvided = RequestAmmo(bulletsNeeded);
+
+    // dole out the bullets however they need to be doled out. ie animations and shit
+}
+
+private int RequestAmmo(int bullets)
+{
+    return _inventoryItem.Consume(bullets);
+}
+```
+
+I think I like this the best.
+
+Also I'm going to change the pickups to only destroy themselves when they've been fully consumed.

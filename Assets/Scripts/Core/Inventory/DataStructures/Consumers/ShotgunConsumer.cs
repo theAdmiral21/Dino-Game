@@ -8,8 +8,9 @@ namespace Core.Inventory.DataStructures.Consumers
     {
         public Type ConsumerType => typeof(ShotgunConsumer);
         public ItemType Item => ItemType.Shotgun;
-        public bool Requested { get; private set; }
 
-        public ShotgunConsumer(bool requested = true) => Requested = requested;
+        public int WithdrawAmount => _withdrawAmount;
+        private int _withdrawAmount;
+        public ShotgunConsumer(int withdrawAmount) => _withdrawAmount = withdrawAmount;
     }
 }

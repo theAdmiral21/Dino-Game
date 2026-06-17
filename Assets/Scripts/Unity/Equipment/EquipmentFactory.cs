@@ -13,8 +13,8 @@ namespace Unity.Equipment
         [SerializeField] private EquipmentMapSO _mapSO;
         private Dictionary<ItemType, EquipmentStats> _statMap;
 
-        [SerializeField] private SerializedInterface<IInventory> _inventorySO;
-        private IInventorySystem _inventorySystem => _inventorySO.Interface.InventorySystem;
+        // [SerializeField] private SerializedInterface<IInventory> _inventorySO;
+        // private IInventorySystem _inventorySystem => _inventorySO.Interface.InventorySystem;
 
         public IEquipment BuildEquipment(ItemType item)
         {
@@ -24,7 +24,12 @@ namespace Unity.Equipment
             {
                 case ItemType.Rock:
                     {
-                        var rock = new RockEquipment(item, _statMap[item], _inventorySystem);
+                        var rock = new RockEquipment(_statMap[item]);
+                        return rock;
+                    }
+                case ItemType.Taser:
+                    {
+                        var rock = new TaserEquipment(_statMap[item]);
                         return rock;
                     }
                 default:

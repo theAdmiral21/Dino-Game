@@ -8,13 +8,11 @@ namespace Core.Inventory.DataStructures.Providers
     {
         public Type ProviderType => typeof(RockProvider);
         public ItemType Item => ItemType.Rock;
-        public bool Requested { get; private set; }
         public int Quantity { get; private set; }
 
-        public RockProvider(int quantity, bool requested = true)
+        public RockProvider(int quantity)
         {
             Quantity = quantity;
-            Requested = requested;
         }
     }
 }

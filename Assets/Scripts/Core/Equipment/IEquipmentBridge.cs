@@ -1,3 +1,5 @@
+using Primitives.EventBus.Abstractions;
+
 namespace Core.Equipment
 {
     public interface IEquipmentBridge
@@ -5,5 +7,7 @@ namespace Core.Equipment
         public IEquipment Equipped { get; }
 
         public void RouteEquipmentResult(IEquipmentActionResult result);
+
+        public void SetEventBus(IEventBus eventBus);
     }
 }

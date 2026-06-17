@@ -8,8 +8,11 @@ namespace Core.Inventory.DataStructures.Consumers
     {
         public Type ConsumerType => typeof(RockConsumer);
         public ItemType Item => ItemType.Rock;
-        public bool Requested { get; private set; }
 
-        public RockConsumer(bool requested = true) => Requested = requested;
+        public int WithdrawAmount => _withdrawAmount;
+
+        private int _withdrawAmount;
+
+        public RockConsumer(int withdrawAmount) => _withdrawAmount = withdrawAmount;
     }
 }

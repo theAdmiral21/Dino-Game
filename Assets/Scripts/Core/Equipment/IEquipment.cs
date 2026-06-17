@@ -13,11 +13,10 @@ namespace Core.Equipment
         public EquipmentStats Stats { get; }
 
         // Equipment state information
-        public IInventorySystem InventorySystem { get; }
-        public int RoundCount { get; } // This will mean different things for different objects. For example for guns it means rounds left in the magazine. For throwables it is how much you have in your inventory.
+        public int RoundCount { get; }
 
         // Equipment behavior
-        public event Action OnInventoryEmpty;
+
 
         // Effect notification
         public event Action OnFire;

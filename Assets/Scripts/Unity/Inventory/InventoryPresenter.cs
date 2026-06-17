@@ -12,6 +12,7 @@ namespace Unity.Inventory
     public class InventoryPresenter : MonoBehaviour, IInventoryPresenter
     {
         [SerializeField] private Image _equippedImage;
+        [SerializeField] private TextMeshProUGUI _magQuantity;
         [SerializeField] private TextMeshProUGUI _equipmentQuantity;
         [SerializeField] private Image _flashlightImage;
         [SerializeField] private Image _flashlightBattery;
@@ -38,7 +39,10 @@ namespace Unity.Inventory
             _currentlyEquipped = evt.NewItem.Item;
             SetInventoryImage(_currentlyEquipped);
             // Maybe play a sound? 
-            UpdateEquippedQuantity(evt.NewItem.Quantity);
+
+            // Update the magazine and storage
+            _magQuantity.text = $"{evt.NewItem.Equipment.RoundCount}";
+            _equipmentQuantity.text = $"{evt.NewItem.Quantity}";
         }
 
         public void UpdateFlashlight(FlashlightToggled evt)
@@ -51,21 +55,30 @@ namespace Unity.Inventory
             throw new System.NotImplementedException();
         }
 
-        public void UpdateMedkitQuantity(EquipmentQuantityChanged evt)
+        public void UpdateMedkitQuantity(MedkitQuantityChanged evt)
         {
             _medkitQuantity.text = $"x{evt.CurrentQuantity}";
         }
 
         public void UpdateEquippedQuantity(int quantity)
         {
-            _equipmentQuantity.text = $"x{quantity}";
+            // _equipmentQuantity.text = $"{quantity}";
         }
 
         public void UpdateEquippedQuantity(EquipmentQuantityChanged evt)
         {
-            _equipmentQuantity.text = $"x{evt.CurrentQuantity}";
+            Debug.Log($"Got {evt.CurrentQuantity} items");
+            _equipmentQuantity.text = $"{evt.CurrentQuantity}";
+        }
+        public void UpdateMagazineQuantity(int quantity)
+        {
+            _equipmentQuantity.text = $"{quantity}";
         }
 
+        public void UpdateMagazineQuantity(MagazineQuantityChanged evt)
+        {
+            _magQuantity.text = $"{evt.CurrentQuantity}";
+        }
         public void SetEventBus(IEventBus eventBus)
         {
             if (_eventBus == null)
@@ -79,6 +92,8 @@ namespace Unity.Inventory
         {
             _eventBus.Subscribe<CurrentEquipmentChanged>(UpdateEquipped);
             _eventBus.Subscribe<EquipmentQuantityChanged>(HandleQuantityChanged);
+            _eventBus.Subscribe<MagazineQuantityChanged>(HandleMagazineQuantityChanged);
+            _eventBus.Subscribe<MedkitQuantityChanged>(HandleMedkitQuantityChanged);
             _eventBus.Subscribe<FlashlightToggled>(UpdateFlashlight);
             _eventBus.Subscribe<OnHealthChanged>(UpdateHealth);
             Debug.Log($"Inventory presenter subbed to events");
@@ -88,25 +103,26 @@ namespace Unity.Inventory
         {
             _eventBus.Unsubscribe<CurrentEquipmentChanged>(UpdateEquipped);
             _eventBus.Unsubscribe<EquipmentQuantityChanged>(HandleQuantityChanged);
+            _eventBus.Unsubscribe<MagazineQuantityChanged>(HandleMagazineQuantityChanged);
+            _eventBus.Unsubscribe<MedkitQuantityChanged>(HandleMedkitQuantityChanged);
             _eventBus.Unsubscribe<FlashlightToggled>(UpdateFlashlight);
-            _eventBus.Subscribe<OnHealthChanged>(UpdateHealth);
+            _eventBus.Unsubscribe<OnHealthChanged>(UpdateHealth);
         }
-
+        private void HandleMagazineQuantityChanged(MagazineQuantityChanged evt)
+        {
+            UpdateMagazineQuantity(evt);
+        }
         private void HandleQuantityChanged(EquipmentQuantityChanged evt)
         {
-            Debug.Log($"Got quantity changed event");
+            Debug.Log($"Got quantity changed event with {evt.CurrentQuantity} items");
 
-            // if the quantity that changed is our currently equipped item OR a medkit, update the ui
+            // if the quantity that changed is our currently equipped item
+            UpdateEquippedQuantity(evt);
+        }
 
-            if (evt.Item == _currentlyEquipped)
-            {
-                UpdateEquippedQuantity(evt);
-            }
-            else if (evt.Item == ItemType.Medkit)
-            {
-                UpdateMedkitQuantity(evt);
-            }
-
+        private void HandleMedkitQuantityChanged(MedkitQuantityChanged evt)
+        {
+            UpdateMedkitQuantity(evt);
         }
 
         private void SetInventoryImage(ItemType item)
@@ -115,13 +131,15 @@ namespace Unity.Inventory
             {
                 _equippedImage.enabled = false;
                 _equipmentQuantity.enabled = false;
+                _magQuantity.enabled = false;
             }
             else
             {
                 _equippedImage.enabled = true;
                 _equipmentQuantity.enabled = true;
+                _magQuantity.enabled = true;
+                _equippedImage.sprite = _equipmentAssets.GetSprite(item);
             }
-            _equippedImage.sprite = _equipmentAssets.GetSprite(item);
 
         }
     }

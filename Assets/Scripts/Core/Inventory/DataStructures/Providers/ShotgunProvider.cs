@@ -8,13 +8,11 @@ namespace Core.Inventory.DataStructures.Providers
     {
         public Type ProviderType => typeof(ShotgunProvider);
         public ItemType Item => ItemType.Shotgun;
-        public bool Requested { get; private set; }
         public int Quantity { get; private set; }
 
-        public ShotgunProvider(int quantity, bool requested = true)
+        public ShotgunProvider(int quantity)
         {
             Quantity = quantity;
-            Requested = requested;
         }
     }
 }
