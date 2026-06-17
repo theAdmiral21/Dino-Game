@@ -1,4 +1,4 @@
-namespace Physics.Core.DataStructures
+namespace Core.Physics.Collisions
 {
     public enum ColliderFace
     {

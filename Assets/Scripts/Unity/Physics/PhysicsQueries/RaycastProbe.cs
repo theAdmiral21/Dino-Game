@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.ComponentModel;
+using Core.Physics.Collisions;
 using Physics.Core.DataStructures;
 using Physics.Core.PhysicsQueries;
 using UnityEngine;

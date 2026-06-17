@@ -1,4 +1,5 @@
 using System;
+using Core.Physics.Collisions;
 using Game.Core.Execution;
 using Gameplay.Common.Unity;
 using Infrastructure.Unity;
@@ -39,6 +40,8 @@ namespace Physics.Unity.Actors
 
         public IActorEventBus ActorEventBus => Brain.ActorEventBus;
 
+        public ICollisionHandler CollisionHandler { get; private set; }
+
         protected LayerMask _collisionLayer;
         protected IBoundsProvider _bounds;
         protected ITransformProvider _transformProvider;
@@ -53,6 +56,9 @@ namespace Physics.Unity.Actors
             Debug.Log($"[BASE] player bounds: {_bounds}");
             // The collision layer should always be collision
             _collisionLayer = LayerMask.GetMask("Collision");
+
+            // Attempt to get the collision handler, if it's null nothing should happen
+            CollisionHandler = GetComponent<ICollisionHandler>();
 
 
             Debug.Log($"BasePhysicsActor.Awake() - bounds: {_bounds} collider: {GetComponent<Collider2D>()} - Frame: {Time.frameCount}");

@@ -1,7 +1,9 @@
+using System.Collections.Generic;
 using Codice.Client.BaseCommands.BranchExplorer;
 using Physics.Application.Abstractions;
 using Physics.Core.Abstractions;
 using Physics.Core.DataStructures;
+using Physics.Core.PhysicsActors;
 using UnityEngine;
 
 namespace Physics.Unity.Movement
@@ -38,11 +40,20 @@ namespace Physics.Unity.Movement
                 _rayCaster.CornerRayCast(ref velocity, ref rayConfig);
             }
 
+            // Get the collisions for this frame
+            List<IPhysicsActor> collidingActors = _rayCaster.GetCollisions();
+
+
             //NOTE Why do I have this line? To persist state?
             _velocity = velocity;
 
             // Debug.Log($"Total Nudge: {nudge}");
-            return new MovementResolution { FrameDelta = _velocity, CornerNudge = nudge };
+            return new MovementResolution
+            {
+                FrameDelta = _velocity,
+                CornerNudge = nudge,
+                CollidingActors = collidingActors
+            };
         }
     }
 }

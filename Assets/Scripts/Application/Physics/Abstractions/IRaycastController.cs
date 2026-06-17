@@ -1,4 +1,6 @@
+using System.Collections.Generic;
 using Physics.Core.DataStructures;
+using Physics.Core.PhysicsActors;
 using UnityEngine;
 
 namespace Physics.Application.Abstractions
@@ -38,5 +40,11 @@ namespace Physics.Application.Abstractions
         /// <param name="center"></param>
         /// <returns></returns>
         public bool CheckFit(Vector2 center, ref RaycastConfiguration rayConfig);
+
+        /// <summary>
+        /// Method that returns a hash set of all of the collisions gathered this frame. This is meant to be called after Horizontal and Vertical raycast methods have been called.
+        /// </summary>
+        /// <returns></returns>
+        public List<IPhysicsActor> GetCollisions();
     }
 }

@@ -1,7 +1,7 @@
 using System.Collections.Generic;
-using GluonGui.Dialog;
 using Movement.Core.Movement.Abstractions;
 using Movement.Core.Stats;
+using Physics.Core.PhysicsActors;
 using Primitives.Physics;
 
 namespace Physics.Core.DataStructures
@@ -15,8 +15,7 @@ namespace Physics.Core.DataStructures
         public KinematicResult CurrentState;
         public IStatCollection ActorStats;
         public RaycastConfiguration RaycastConfig;
-        public bool CollidedThisFrame;
-        // public CollisionData Collision;
+        public List<IPhysicsActor> CollidingActors;
 
         public void ClearData()
         {
@@ -24,6 +23,7 @@ namespace Physics.Core.DataStructures
             Results.Clear();
             // This might be overkill?
             PhysicsContext.SetVelocity(CurrentState.Velocity);
+            CollidingActors.Clear();
         }
     }
 

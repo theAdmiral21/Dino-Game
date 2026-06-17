@@ -1,6 +1,6 @@
 using Physics.Core.PhysicsActors;
 
-namespace Core.Physics.CollisionCallbacks
+namespace Core.Physics.Collision.Callbacks
 {
     public interface ICollisionStayedEvent
     {

@@ -1,8 +1,8 @@
 using Physics.Core.PhysicsActors;
 
-namespace Core.Physics.CollisionCallbacks
+namespace Core.Physics.Collision.Callbacks
 {
-    public interface ICollisionEnteredEvent
+    public interface ICollisionEnterEvent
     {
         public void OnCollisionEntered(IPhysicsActor actor);
     }

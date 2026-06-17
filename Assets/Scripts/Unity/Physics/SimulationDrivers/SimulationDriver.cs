@@ -1,8 +1,11 @@
+using System.Collections.Generic;
 using System.Text;
+using Core.Physics.Collisions.DataStructures;
 using Physics.Application.Abstractions;
 using Physics.Application.Collisions;
 using Physics.Core.Abstractions;
 using Physics.Core.DataStructures;
+using Physics.Core.PhysicsActors;
 using Physics.Core.PhysicsQueries;
 using Physics.Features;
 using Physics.Features.Movement;
@@ -71,6 +74,8 @@ namespace Physics.Unity.Physics
             MovementResolution resolution = _movementResolver.ResolveMovement(frameData.CurrentState.FrameDelta, frameData.RaycastConfig);
 
             frameData.CurrentState.FrameDelta = resolution.FrameDelta;
+
+            frameData.CollidingActors = resolution.CollidingActors;
 
             // If you're grounded, don't apply corner correction
             if (frameData.PhysicsContext.IsGrounded || frameData.PhysicsContext.IsOnPlatform)

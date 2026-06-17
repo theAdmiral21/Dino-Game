@@ -118,14 +118,28 @@ namespace Physics.Unity.Actors
             Body = new KinematicBody(_bounds, _transformProvider, RayConfig, _bodyType);
 
             // Add the brain
-            Brain = new ActorBrain(
-                this,
-                _actorInput,
-                context.GameStateServices.GameState,
-                _ruleState,
-                _stats,
-                rayConfig,
-                null);
+            if (_bodyType == BodyType.Static)
+            {
+                Brain = new ActorBrain(
+                    this,
+                    null,
+                    null,
+                    null,
+                    null,
+                    rayConfig,
+                    null);
+            }
+            else
+            {
+                Brain = new ActorBrain(
+                    this,
+                    _actorInput,
+                    context.GameStateServices.GameState,
+                    _ruleState,
+                    _stats,
+                    rayConfig,
+                    null);
+            }
         }
 
         public override void PostInitialize(IGameContext context)

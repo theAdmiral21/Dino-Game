@@ -2,7 +2,7 @@ using Physics.Core.PhysicsActors;
 using Primitives.Physics;
 using UnityEngine;
 
-namespace Physics.Core.DataStructures
+namespace Core.Physics.Collisions.DataStructures
 {
     public class CollidingPair
     {
@@ -22,15 +22,6 @@ namespace Physics.Core.DataStructures
             // Calculate overlap
             CalcPenetration();
         }
-
-        // public CollidingPair(IPhysicsActor bodyA, IPhysicsActor bodyB)
-        // {
-        //     BodyA = bodyA;
-        //     BodyB = bodyB;
-
-        //     // Calculate overlap
-        //     CalcPenetration();
-        // }
 
         private void CalcPenetration()
         {

@@ -4,26 +4,38 @@ using Physics.Core.Abstractions;
 using Physics.Core.DataStructures;
 using Primitives.Physics;
 using Physics.Core.PhysicsActors;
+using Core.Physics.Collisions.DataStructures;
+using Core.Physics.Triggers.Callbacks;
+using Core.Physics.Collision.Callbacks;
 
 namespace Physics.Application.Collisions
 {
     public class CollisionDetection : IDetectCollision
     {
-        public HashSet<CollidingPair> Collisions => _collisions;
-        private HashSet<CollidingPair> _collisions = new();
+        public HashSet<CollidingPair> CurrentCollisions => _currentCollisions;
+        private HashSet<CollidingPair> _currentCollisions = new();
+        private HashSet<CollidingPair> _previousCollisions = new();
         private Dictionary<IPhysicsActor, Vector2> _resolveDict = new();
+
+        // Cached values
+        private List<IPhysicsActor> _collidingActors = new();
+
         public Dictionary<IPhysicsActor, Vector2> GetCollisions(List<IPhysicsActor> actors)
         {
-            _collisions.Clear();
+            _currentCollisions.Clear();
             // Compare all of the actors to one another
             for (int i = 0; i < actors.Count; i++)
             {
                 if (actors[i].IsAsleep) continue;
                 for (int j = i + 1; j < actors.Count; j++)
                 {
-                    if (IsColliding(actors[i], actors[j]))
+                    if (GetRaycastCollisions(actors[i]))
                     {
-                        _collisions.Add(new CollidingPair(actors[i], actors[j]));
+                        continue;
+                    }
+                    else if (IsColliding(actors[i], actors[j]))
+                    {
+                        _currentCollisions.Add(new CollidingPair(actors[i], actors[j]));
                         // For now let's see if this works.
                         Debug.Log($"[CollisionDetection] Got collision between {actors[i].Name} and {actors[j].Name}");
                     }
@@ -31,7 +43,8 @@ namespace Physics.Application.Collisions
             }
             return ResolveCollisions();
         }
-
+        // So my raycast is detecting collisions and so is my AABB collision detector. How do I tell them to work together? 
+        // if actor.Brain.FrameData.CollidingActors.Count > 0 -> Colliding = yes, process separately?
         private bool IsColliding(IPhysicsActor actorA, IPhysicsActor actorB)
         {
             // Get the bounds for each actor
@@ -55,12 +68,28 @@ namespace Physics.Application.Collisions
                 );
         }
 
+        private bool GetRaycastCollisions(IPhysicsActor actorA)
+        {
+            // no raycast collisions
+            Debug.Log($"Checking raycast collisions");
+            if (actorA.Brain.FrameData.CollidingActors.Count <= 0) return false;
+            // Debug.Log($"Found ")
+            _collidingActors = actorA.Brain.FrameData.CollidingActors;
+            // Update current collisions with the new colliding pairs
+            for (int i = 0; i < _collidingActors.Count; i++)
+            {
+                IPhysicsActor actorB = _collidingActors[i];
+                _currentCollisions.Add(new CollidingPair(actorA, actorB));
+                Debug.Log($"Got raycast collision between {actorA.Name} and {actorB.Name}");
+            }
+            return true;
+        }
+
         public Dictionary<IPhysicsActor, Vector2> ResolveCollisions()
         {
             _resolveDict.Clear();
-            foreach (var collision in _collisions)
+            foreach (var collision in _currentCollisions)
             {
-                Vector2 sepVector = collision.SeparationVector;
                 // Only move the actor
                 if (collision.ActorA.Body.BodyType == BodyType.Static &&
                     collision.ActorB.Body.BodyType == BodyType.Kinematic)
@@ -84,6 +113,11 @@ namespace Physics.Application.Collisions
                     Debug.LogError("Statics shouldn't collide... right?");
                 }
             }
+
+            // Dispatch collision events
+            DiffAndDispatch();
+            // track previous collisions
+            _previousCollisions = new HashSet<CollidingPair>(_currentCollisions);
             return _resolveDict;
         }
 
@@ -99,6 +133,23 @@ namespace Physics.Application.Collisions
             }
         }
 
-        // private void CallCollision
+        private void DiffAndDispatch()
+        {
+            // Check enter and stay
+            foreach (CollidingPair pair in _currentCollisions)
+            {
+                if (!_previousCollisions.Contains(pair))
+                {
+                    if (pair.ActorA is ICollisionEnterEvent collisionEnterA)
+                    {
+                        collisionEnterA.OnCollisionEntered(pair.ActorA);
+                    }
+                    if (pair.ActorB is ICollisionEnterEvent collisionEnterB)
+                    {
+                        collisionEnterB.OnCollisionEntered(pair.ActorA);
+                    }
+                }
+            }
+        }
     }
 }

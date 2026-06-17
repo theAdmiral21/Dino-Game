@@ -4,6 +4,7 @@ using Codice.CM.Client.Differences;
 using Physics.Application.Abstractions;
 using Physics.Application.DataStructures;
 using Physics.Core.DataStructures;
+using Physics.Core.PhysicsActors;
 using Physics.Core.PhysicsQueries;
 using Physics.Unity.PhysicsQueries;
 using Primitives.Physics.DataStructures;
@@ -16,18 +17,20 @@ namespace Physics.Unity.Movement
     {
         public bool DrawRaycast;
         public bool DrawCollider;
-        public bool PrintCollisions;
-        public CollisionInfo CollisionInfo;
+        // public bool PrintCollisions;
+        // public CollisionInfo CollisionInfo;
 
         protected LayerMask _collisionMask;
 
-        public Collider2D Collider => _collider;
-        protected Collider2D _collider;
+        // public Collider2D Collider => _collider;
+        // protected Collider2D _collider;
         protected float _rayCastLengthX;
         protected float _rayCastLengthY;
 
         private List<RaycastResult> _verticalRaycasts = new();
         private List<RaycastResult> _horizontalRaycasts = new();
+        private HashSet<Collider2D> _verticalHits = new();
+        private HashSet<Collider2D> _horizontalHits = new();
 
         private ICornerResolver _cornerResolver;
 
@@ -40,7 +43,7 @@ namespace Physics.Unity.Movement
 
         public void ResetCollisions()
         {
-            CollisionInfo.Reset();
+            // CollisionInfo.Reset();
         }
 
         public void SetCollisionMask(LayerMask mask)
@@ -53,6 +56,7 @@ namespace Physics.Unity.Movement
             // Calculate the length of the ray
             _rayCastLengthY = Mathf.Abs(velocity.y) + rayConfig.SkinWidth;
             _verticalRaycasts.Clear();
+            _verticalHits.Clear();
             for (int i = 0; i < rayConfig.RaycastCountVertical; i++)
             {
                 Vector2 origin = velocity.y <= 0 ? rayConfig.Origins.BottomLeft + (rayConfig.RaySpacingX * i) : rayConfig.Origins.TopLeft + (rayConfig.RaySpacingX * i);
@@ -63,8 +67,10 @@ namespace Physics.Unity.Movement
                     velocity.y = (hit.distance - rayConfig.SkinWidth) * dir.y;
                     _rayCastLengthY = hit.distance;
                     // Update collision info
-                    CollisionInfo.Below = dir.y == -1;
-                    CollisionInfo.Above = dir.y == 1;
+                    // CollisionInfo.Below = dir.y == -1;
+                    // CollisionInfo.Above = dir.y == 1;
+                    _verticalHits.Add(hit.collider);
+                    Debug.Log($"Got vertical collision with {hit.collider.name}");
                 }
 
                 // Save this frame's result
@@ -111,6 +117,7 @@ namespace Physics.Unity.Movement
             // Calculate the length of the ray
             _rayCastLengthX = Mathf.Abs(velocity.x) + rayConfig.SkinWidth;
             _horizontalRaycasts.Clear();
+            _horizontalHits.Clear();
             for (int i = 0; i < rayConfig.RaycastCountHorizontal; i++)
             {
                 Vector2 origin = velocity.x < 0 ? rayConfig.Origins.BottomLeft + (rayConfig.RaySpacingY * i) : rayConfig.Origins.BottomRight + (rayConfig.RaySpacingY * i);
@@ -123,8 +130,14 @@ namespace Physics.Unity.Movement
                     velocity.x = (hit.distance - rayConfig.SkinWidth) * dir.x;
                     _rayCastLengthX = hit.distance;
                     // Update collision info
-                    CollisionInfo.Left = dir.x == -1;
-                    CollisionInfo.Right = dir.x == 1;
+                    // CollisionInfo.Left = dir.x == -1;
+                    // CollisionInfo.Right = dir.x == 1;
+
+                    // This is where I would track collisions but doing that cleanly is tricky. I'm thinking that I can have a collider2d hash set and just add unique hit.colliders that way when the list is returned you only get the unique collisions. But after that I'm not sure when to look up the actors who collided. I might be able to do something clever but we will see.
+
+                    _horizontalHits.Add(hit.collider);
+                    Debug.Log($"Got horizontal collision with {hit.collider.name}");
+
                 }
 
                 // Save this frame's result
@@ -152,15 +165,26 @@ namespace Physics.Unity.Movement
             Vector2 correction = Vector2.zero;
             if (cornerIndex != -1 && cornerIndex <= _horizontalRaycasts.Count)
             {
-                // Debug.Log($"Found corner at: {_horizontalRaycasts[cornerIndex].Origin}");
-                // here is where we would calculate the nudge
                 correction = _cornerResolver.CalculateHorizontalNudge(_horizontalRaycasts[cornerIndex], rayConfig);
-
-                // Here is where we would apply the nudge, but seeing as how the raycast controller doesn't know about the player's transform, I'm not sure how to move the player
-                // Debug.Log($"Got correction vector: {correction}");
-                // velocity += correction; // so this isn't technically a nudge, but it kind of works
             }
             return correction;
+        }
+
+        public List<IPhysicsActor> GetCollisions()
+        {
+            Debug.Log($"Gathering raycast collisions");
+            // Combine the sets
+            _horizontalHits.UnionWith(_verticalHits);
+            List<IPhysicsActor> actors = new();
+            foreach (var collider in _horizontalHits)
+            {
+                if (collider.TryGetComponent(out IPhysicsActor actor))
+                {
+                    actors.Add(actor);
+                }
+            }
+
+            return actors;
         }
 
         public void CornerRayCast(ref Vector2 velocity, ref RaycastConfiguration rayConfig)

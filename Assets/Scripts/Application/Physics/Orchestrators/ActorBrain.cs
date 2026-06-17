@@ -76,9 +76,12 @@ namespace Physics.Application.Orchestrators
             _ruleState = ruleState;
 
             // Register capabilities
-            RegisterCapability(_ruleState);
+            if (_actor.Body.BodyType == BodyType.Kinematic)
+            {
+                RegisterCapability(_ruleState);
+                _stats = stats;
+            }
 
-            _stats = stats;
             KinematicResult kinematicState = new();
 
             FrameData = new ActorFrameData
@@ -89,6 +92,7 @@ namespace Physics.Application.Orchestrators
                 CurrentState = kinematicState,
                 ActorStats = _stats,
                 RaycastConfig = RaycastConfig,
+                CollidingActors = new(),
             };
 
             CacheStatVals();
@@ -116,6 +120,7 @@ namespace Physics.Application.Orchestrators
 
         public void Tick(float dt)
         {
+            if (_actor.Body.BodyType == BodyType.Static) return;
 
             // Debug.Log($"Request count: {ActionRequests.Count}");
             _frameContext = new ActorActionContext
@@ -131,6 +136,8 @@ namespace Physics.Application.Orchestrators
 
         public void ResolveRequests()
         {
+            if (_actor.Body.BodyType == BodyType.Static) return;
+
             _frameContext.Facts = CurrentContext;
             _frameContext.RuleState = _ruleState;
 

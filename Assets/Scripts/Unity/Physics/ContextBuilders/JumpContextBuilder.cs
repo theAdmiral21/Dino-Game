@@ -1,5 +1,6 @@
 using System;
 using Core.Movement.Abstractions;
+using Core.Physics.Collisions;
 using Movement.Core.Abstractions;
 using Movement.Core.Classifiers;
 using Movement.Core.DataStructures;

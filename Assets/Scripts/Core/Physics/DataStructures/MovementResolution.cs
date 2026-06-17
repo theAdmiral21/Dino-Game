@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using Physics.Core.PhysicsActors;
 using UnityEngine;
 
 namespace Physics.Core.DataStructures
@@ -6,5 +8,7 @@ namespace Physics.Core.DataStructures
     {
         public Vector2 FrameDelta;
         public Vector2 CornerNudge;
+        public bool GotCollision;
+        public List<IPhysicsActor> CollidingActors;
     }
 }
