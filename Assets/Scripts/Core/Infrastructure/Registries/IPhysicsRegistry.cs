@@ -1,6 +1,5 @@
 using System.Collections.Generic;
-using Gameplay.Common.Application.Abstractions;
-using Infrastructure.Core.Registries;
+using Core.Physics.Triggers;
 using Physics.Core.PhysicsActors;
 
 namespace Infrastructure.Unity.Registries

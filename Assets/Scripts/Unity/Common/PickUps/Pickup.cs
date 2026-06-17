@@ -1,14 +1,11 @@
-using Gameplay.Common.Core.Abstractions;
 using Game.Core.Execution;
 using Infrastructure.Unity;
-using Physics.Unity.Physics;
 using UnityEngine;
 using Game.Core.Audio;
-using Physics.Core.Abstractions;
 using Primitives.EventBus.Abstractions;
 using Physics.Core.PhysicsActors;
-using Physics.Unity.Actors;
 using Gameplay.Common.Unity;
+using Core.Physics.Triggers.Callbacks;
 
 namespace Unity.Common.Pickups
 {

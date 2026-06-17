@@ -1,5 +1,5 @@
 using System;
-using Gameplay.Common.Application.Abstractions;
+using Core.Physics.Triggers;
 using Infrastructure.Unity;
 using Physics.Core.Abstractions;
 using UnityEngine;

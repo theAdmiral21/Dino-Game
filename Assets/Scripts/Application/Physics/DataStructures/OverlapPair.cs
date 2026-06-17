@@ -1,7 +1,5 @@
-using Gameplay.Common.Core.Abstractions;
-using Gameplay.Common.Application.Abstractions;
-using Physics.Core.Abstractions;
 using Physics.Core.PhysicsActors;
+using Core.Physics.Triggers;
 
 namespace Gameplay.Common.Application.DataStructures
 {

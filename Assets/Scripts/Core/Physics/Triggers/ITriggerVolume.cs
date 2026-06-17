@@ -1,6 +1,6 @@
 using Physics.Core.Abstractions;
 
-namespace Gameplay.Common.Application.Abstractions
+namespace Core.Physics.Triggers
 {
     public interface ITriggerVolume
     {

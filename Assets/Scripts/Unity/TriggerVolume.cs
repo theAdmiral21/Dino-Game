@@ -1,12 +1,11 @@
 using System;
-using Gameplay.Common.Application.Abstractions;
+using Core.Physics.Triggers;
+using Core.Physics.Triggers.Callbacks;
 using Gameplay.Common.Core.Abstractions;
 using Infrastructure.Unity;
 using Infrastructure.Unity.Registries;
 using Physics.Core.Abstractions;
 using Physics.Core.PhysicsActors;
-using Physics.Unity.Actors;
-using Physics.Unity.Physics;
 using Primitives.Physics;
 
 

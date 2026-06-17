@@ -64,7 +64,14 @@ namespace Unity.Equipment
 
         private void LateUpdate()
         {
-            CurrentWeapon = $"{_equipped.EquipmentType}";
+            try
+            {
+                CurrentWeapon = $"{_equipped.EquipmentType}";
+            }
+            catch
+            {
+                CurrentWeapon = $"None";
+            }
         }
 
         public void SetEventBus(IEventBus eventBus)

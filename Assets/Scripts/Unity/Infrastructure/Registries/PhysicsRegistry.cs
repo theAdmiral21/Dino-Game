@@ -1,6 +1,5 @@
 using System.Collections.Generic;
-using Gameplay.Common.Application.Abstractions;
-using Physics.Core.Abstractions;
+using Core.Physics.Triggers;
 using Physics.Core.PhysicsActors;
 using UnityEngine;
 

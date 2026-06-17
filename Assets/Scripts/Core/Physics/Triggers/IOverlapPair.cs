@@ -1,8 +1,6 @@
-using Gameplay.Common.Application.Abstractions;
-using Physics.Core.Abstractions;
 using Physics.Core.PhysicsActors;
 
-namespace Gameplay.Common.Core.Abstractions
+namespace Core.Physics.Triggers
 {
     public interface IOverlapPair
     {
