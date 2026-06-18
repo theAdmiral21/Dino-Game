@@ -1,6 +1,8 @@
 using System;
 using Core.Inventory;
+using Movement.Core.Movement.DataStructures;
 using Primitives.Items;
+using UnityEngine;
 
 namespace Core.Equipment
 {
@@ -19,13 +21,13 @@ namespace Core.Equipment
 
 
         // Effect notification
-        public event Action OnFire;
-        public event Action OnReload;
+        public event Action<int> OnFire;
+        public event Action<int, Action<int>> OnReload;
 
         // Equipment orchestrators
         public void RaiseWeapon();
-        public void Aim(); // this will probably need some request argument
-        public void Reload();
+        public void Aim(Vector2 mosPos); // this will probably need some request argument
+        public void RequestReload();
         public void Fire();
     }
 }

@@ -15,6 +15,7 @@ namespace Unity.Equipment.DataStructures
         public float KnockBack;
         public float HitStun;
         public DamageType HurtType;
+        public float MuzzleVelocity;
 
         public EquipmentStats BuildRunTime()
         {
@@ -25,7 +26,8 @@ namespace Unity.Equipment.DataStructures
                                 Damage,
                                 KnockBack,
                                 HitStun,
-                                HurtType
+                                HurtType,
+                                MuzzleVelocity
                             );
         }
 

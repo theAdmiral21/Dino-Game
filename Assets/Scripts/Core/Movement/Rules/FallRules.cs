@@ -22,7 +22,7 @@ namespace Movement.Core.Movement
         public static FallResult TryFall(PhysicsContext facts, IActorInput inputs, object ruleState)
         {
             // Verify the rule state can be evaluated
-            if (!ruleState.TryGet<IXInputState>(out var xInput)) return Denied();
+            // if (!ruleState.TryGet<IXInputState>(out var xInput)) return Denied();
             if (!ruleState.TryGet<IGravityState>(out var gravState)) return Denied();
             if (!ruleState.TryGet<IFallState>(out var fallState)) return Denied();
 
@@ -35,7 +35,7 @@ namespace Movement.Core.Movement
             // Debug.Log($"Not WallSliding: {!facts.IsWallSliding}");
             bool isAirborne = !facts.IsGrounded && !facts.IsOnPlatform && !facts.IsRising;
 
-            if (isAirborne && !facts.IsWallSliding)
+            if (isAirborne)
             {
                 gravState.SetApplyGravity(true);
                 if (inputs.Move.y <= -0.5)
@@ -55,19 +55,19 @@ namespace Movement.Core.Movement
             //     return Approved(FallType.None);
             // }
 
-            if (facts.IsTouchingWall && !xInput.XInputLocked && isAirborne)
-            {
-                if (PushingLeft(facts, inputs) || PushingRight(facts, inputs))
-                {
-                    // Debug.Log($"Pushing Left: {PushingLeft(facts, inputs)}; Pushing Right: {PushingRight(facts, inputs)}");
+            // if (facts.IsTouchingWall && !xInput.XInputLocked && isAirborne)
+            // {
+            //     if (PushingLeft(facts, inputs) || PushingRight(facts, inputs))
+            //     {
+            //         // Debug.Log($"Pushing Left: {PushingLeft(facts, inputs)}; Pushing Right: {PushingRight(facts, inputs)}");
 
-                    gravState.SetApplyGravity(false);
-                    fallState.SetFallType(FallType.WallSlide);
-                    return Approved(FallType.WallSlide);
-                }
-                fallState.SetFallType(FallType.Slow);
-                return Approved(FallType.Slow);
-            }
+            //         gravState.SetApplyGravity(false);
+            //         fallState.SetFallType(FallType.WallSlide);
+            //         return Approved(FallType.WallSlide);
+            //     }
+            //     fallState.SetFallType(FallType.Slow);
+            //     return Approved(FallType.Slow);
+            // }
 
             // NOTE Need a way to check input states here for slow and fast fall
 

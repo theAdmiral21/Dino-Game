@@ -1,3 +1,4 @@
+using System;
 using Core.Equipment;
 using Core.Inventory;
 using Core.Inventory.Requests;
@@ -28,7 +29,13 @@ namespace Application.Inventory
             _maxAllowed = maxAllowed;
             _inventoryEventBus = inventoryEventBus;
             _equipment = equipment;
+
+            _equipment.OnFire += HandleFire;
+            _equipment.OnReload += HandleReload;
         }
+
+        public abstract void HandleFire(int amount);
+        public abstract void HandleReload(int requestedAmount, Action<int> replenishCallback);
 
         public int Deposit(int amount)
         {
@@ -48,8 +55,18 @@ namespace Application.Inventory
 
         public int Withdraw(int amount)
         {
-            int withdrawn = Quantity - amount;
-            DecrementQuantity(withdrawn);
+            int withdrawn = 0;
+            if (Quantity >= amount)
+            {
+                withdrawn = amount;
+            }
+            else
+            {
+                withdrawn = Quantity;
+            }
+
+            DecrementQuantity(amount);
+
             return withdrawn;
         }
 
@@ -61,7 +78,7 @@ namespace Application.Inventory
                 Quantity = 0;
                 return;
             }
-            // EmitQuantityChanged();
+            EmitQuantityChanged();
         }
 
         private void IncrementQuantity(int amount)
@@ -72,18 +89,17 @@ namespace Application.Inventory
                 Quantity = _maxAllowed;
                 return;
             }
-            // EmitQuantityChanged();
+            EmitQuantityChanged();
         }
 
-        // private void EmitQuantityChanged()
-        // {
-        //     _inventoryEventBus.Publish(new EquipmentQuantityChanged
-        //     {
-        //         Item = Item,
-        //         CurrentQuantity = Quantity
-        //     });
-        //     Debug.Log($"Emitted quantity changed event");
-        // }
+        private void EmitQuantityChanged()
+        {
+            _inventoryEventBus.Publish(new EquipmentQuantityChanged
+            {
+                CurrentQuantity = Quantity
+            });
+            Debug.Log($"Emitted quantity changed event with amount: {Quantity}");
+        }
 
 
     }

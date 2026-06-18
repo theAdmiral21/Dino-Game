@@ -29,7 +29,12 @@ namespace Physics.Application.Collisions
                 if (actors[i].IsAsleep) continue;
                 for (int j = i + 1; j < actors.Count; j++)
                 {
+                    Debug.Log($"Checking actor: {actors[i]}");
                     if (GetRaycastCollisions(actors[i]))
+                    {
+                        continue;
+                    }
+                    else if (GetRaycastCollisions(actors[j]))
                     {
                         continue;
                     }
@@ -71,7 +76,7 @@ namespace Physics.Application.Collisions
         private bool GetRaycastCollisions(IPhysicsActor actorA)
         {
             // no raycast collisions
-            Debug.Log($"Checking raycast collisions");
+            Debug.Log($"Checking raycast collisions for {actorA.Name}. Count: {actorA.Brain.FrameData.CollidingActors.Count}");
             if (actorA.Brain.FrameData.CollidingActors.Count <= 0) return false;
             // Debug.Log($"Found ")
             _collidingActors = actorA.Brain.FrameData.CollidingActors;
@@ -146,7 +151,33 @@ namespace Physics.Application.Collisions
                     }
                     if (pair.ActorB is ICollisionEnterEvent collisionEnterB)
                     {
-                        collisionEnterB.OnCollisionEntered(pair.ActorA);
+                        collisionEnterB.OnCollisionEntered(pair.ActorB);
+                    }
+                }
+                else
+                {
+                    if (pair.ActorA is ICollisionStayedEvent collisionEnterA)
+                    {
+                        collisionEnterA.OnCollisionStayed(pair.ActorA);
+                    }
+                    if (pair.ActorB is ICollisionStayedEvent collisionEnterB)
+                    {
+                        collisionEnterB.OnCollisionStayed(pair.ActorB);
+                    }
+                }
+            }
+            // collision exit
+            foreach (CollidingPair pair in _currentCollisions)
+            {
+                if (!_currentCollisions.Contains(pair))
+                {
+                    if (pair.ActorA is ICollisionExitEvent collisionEnterA)
+                    {
+                        collisionEnterA.OnCollisionExit(pair.ActorA);
+                    }
+                    if (pair.ActorB is ICollisionExitEvent collisionEnterB)
+                    {
+                        collisionEnterB.OnCollisionExit(pair.ActorB);
                     }
                 }
             }

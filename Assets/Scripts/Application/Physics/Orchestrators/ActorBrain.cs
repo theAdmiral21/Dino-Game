@@ -235,6 +235,8 @@ namespace Physics.Application.Orchestrators
                 new CrouchDispatcher(),
                 new RaiseWeaponDispatcher(),
                 new ShootDispatcher(),
+                new AimDispatcher(),
+                new ReloadDispatcher(),
         };
 
             return dispatchers;

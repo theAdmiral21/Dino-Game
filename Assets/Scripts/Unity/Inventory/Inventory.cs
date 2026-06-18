@@ -11,6 +11,7 @@ using Unity.Equipment;
 using Core.Inventory.Requests;
 using Core.Equipment;
 using PlasticPipe.PlasticProtocol.Messages;
+using Application.Inventory.InventoryItems;
 
 namespace Unity.Inventory
 {
@@ -52,8 +53,15 @@ namespace Unity.Inventory
             // use the limit map to get the first half of the inventory item
             foreach (var key in _limitMap.Keys)
             {
-                InventoryItem newItem = new(key, _limitMap[key], InventoryEventBus, _equipmentFactory.BuildEquipment(key));
-                itemsDict[key] = newItem;
+                switch (key)
+                {
+                    case ItemType.Rock:
+                        {
+                            RockInventory newItem = new(key, _limitMap[key], InventoryEventBus, _equipmentFactory.BuildEquipment(key));
+                            itemsDict[key] = newItem;
+                            break;
+                        }
+                }
             }
 
 

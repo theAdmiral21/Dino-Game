@@ -11,6 +11,7 @@ namespace Primitives.Items
         public readonly float KnockBack;
         public readonly float HitStun;
         public readonly DamageType HurtType;
+        public readonly float MuzzleVelocity;
 
         public EquipmentStats(
                                 int magSize,
@@ -19,7 +20,8 @@ namespace Primitives.Items
                                 int damage,
                                 float knockBack,
                                 float hitStun,
-                                DamageType damageType)
+                                DamageType damageType,
+                                float muzzleVelocity)
         {
             MagazineSize = magSize;
             ReloadTime = reloadTime;
@@ -28,6 +30,7 @@ namespace Primitives.Items
             KnockBack = knockBack;
             HitStun = hitStun;
             HurtType = damageType;
+            MuzzleVelocity = muzzleVelocity;
         }
     }
 }

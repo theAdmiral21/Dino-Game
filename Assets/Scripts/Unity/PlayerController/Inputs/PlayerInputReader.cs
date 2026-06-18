@@ -247,8 +247,13 @@ namespace PlayerController.Unity.Inputs
                 Debug.Log($"Shoot weapon requested");
                 _requestHandler.EnqueueActionRequest(new ShootRequest());
             }
+        }
 
-
+        public void OnAim(InputAction.CallbackContext context)
+        {
+            Vector2 pos = context.ReadValue<Vector2>();
+            // Debug.Log($"Mouse position: {pos}");
+            _requestHandler.EnqueueActionRequest(new AimRequest(pos));
         }
 
         public void OnSelectNextItem(InputAction.CallbackContext context)
@@ -311,5 +316,6 @@ namespace PlayerController.Unity.Inputs
         public void OnDebugRespawn(InputAction.CallbackContext context) { }
 
         public void OnHideDebugInfo(InputAction.CallbackContext context) { }
+
     }
 }

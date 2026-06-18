@@ -43,22 +43,22 @@ namespace Unity.Equipment
                         Equipped.RaiseWeapon();
                         break;
                     }
-                // case AimResult raiseWeapon:
-                //     {
-                //         Equipped.Aim();
-                //         break;
-                //     }
+                case AimResult aim:
+                    {
+                        Equipped.Aim(aim.MousePosition);
+                        break;
+                    }
                 case ShootResult shoot:
                     {
                         Debug.Log($"Asking to shoot weapon");
                         Equipped.Fire();
                         break;
                     }
-                    // case ReloadResult raiseWeapon:
-                    //     {
-                    //         Equipped.Reload();
-                    //         break;
-                    //     }
+                case ReloadResult raiseWeapon:
+                    {
+                        Equipped.RequestReload();
+                        break;
+                    }
             }
         }
 

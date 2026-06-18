@@ -44,7 +44,7 @@ namespace Application.Inventory
                 _inventoryEventBus.Publish(new CurrentEquipmentChanged { NewItem = newItem });
             }
             int deposited = _items[provider.Item].Deposit(provider.Quantity);
-            EmitEquippedQuantityChanged(deposited);
+            // EmitEquippedQuantityChanged(deposited);
             return deposited;
         }
 
@@ -52,7 +52,7 @@ namespace Application.Inventory
         public int ConsumeItem(IItemConsumerRequest consumer)
         {
             int withdrawn = _currentItem.Withdraw(consumer.WithdrawAmount);
-            EmitEquippedQuantityChanged(withdrawn);
+            // EmitEquippedQuantityChanged(withdrawn);
             return withdrawn;
         }
 
@@ -84,15 +84,15 @@ namespace Application.Inventory
             Debug.Log($"Equip result: {res}");
         }
 
-        private void EmitEquippedQuantityChanged(int newQuantity)
-        {
-            Debug.Log($"Emitting equipped quantity changed with value {newQuantity}");
-            _inventoryEventBus.Publish(new EquipmentQuantityChanged
-            {
-                // InventoryItem = item,
-                CurrentQuantity = newQuantity
-            });
-            Debug.Log($"Emitted quantity changed event");
-        }
+        // private void EmitEquippedQuantityChanged(int newQuantity)
+        // {
+        //     Debug.Log($"Emitting equipped quantity changed with value {newQuantity}");
+        //     _inventoryEventBus.Publish(new EquipmentQuantityChanged
+        //     {
+        //         // InventoryItem = item,
+        //         CurrentQuantity = newQuantity
+        //     });
+        //     Debug.Log($"Emitted quantity changed event");
+        // }
     }
 }

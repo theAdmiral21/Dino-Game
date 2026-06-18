@@ -1,14 +1,10 @@
 using System.Collections.Generic;
-using System.Linq;
-using Codice.CM.Client.Differences;
 using Physics.Application.Abstractions;
-using Physics.Application.DataStructures;
 using Physics.Core.DataStructures;
 using Physics.Core.PhysicsActors;
 using Physics.Core.PhysicsQueries;
 using Physics.Unity.PhysicsQueries;
 using Primitives.Physics.DataStructures;
-using Unity.Collections;
 using UnityEngine;
 
 namespace Physics.Unity.Movement
@@ -172,18 +168,20 @@ namespace Physics.Unity.Movement
 
         public List<IPhysicsActor> GetCollisions()
         {
-            Debug.Log($"Gathering raycast collisions");
+            // Debug.Log($"Gathering raycast collisions");
             // Combine the sets
+            // Debug.Log($"horizontal hits: {_horizontalHits.Count}; vertical hits: {_verticalHits.Count}");
             _horizontalHits.UnionWith(_verticalHits);
+            // Debug.Log($"Union hits: {_horizontalHits.Count}");
             List<IPhysicsActor> actors = new();
             foreach (var collider in _horizontalHits)
             {
                 if (collider.TryGetComponent(out IPhysicsActor actor))
                 {
+                    // Debug.Log($"adding actor: {actor}");
                     actors.Add(actor);
                 }
             }
-
             return actors;
         }
 

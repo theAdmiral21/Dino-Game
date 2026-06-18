@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using Primitives.Items;
 using Core.Equipment;
 using Core.Inventory.Requests;
+using UnityEngine;
 
 namespace Application.Inventory
 {
@@ -22,6 +23,7 @@ namespace Application.Inventory
 
         public void ReplenishRounds(int bulletCount)
         {
+            Debug.Log($"Replenished {bulletCount} rounds");
             IncrementQuantity(bulletCount);
         }
 

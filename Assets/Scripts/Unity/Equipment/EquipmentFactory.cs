@@ -13,6 +13,8 @@ namespace Unity.Equipment
         [SerializeField] private EquipmentMapSO _mapSO;
         private Dictionary<ItemType, EquipmentStats> _statMap;
 
+        [SerializeField] private Transform _equipmentTransform;
+        [SerializeField] private GameObject _rockPrefab;
         // [SerializeField] private SerializedInterface<IInventory> _inventorySO;
         // private IInventorySystem _inventorySystem => _inventorySO.Interface.InventorySystem;
 
@@ -22,14 +24,14 @@ namespace Unity.Equipment
 
             switch (item)
             {
+                // case ItemType.Rock:
+                //     {
+                //         GameObject rock = Instantiate(_rockPrefab, _equipmentTransform);
+                //         return rock.GetComponent<IEquipment>();
+                //     }
                 case ItemType.Rock:
                     {
                         var rock = new RockEquipment(_statMap[item]);
-                        return rock;
-                    }
-                case ItemType.Taser:
-                    {
-                        var rock = new TaserEquipment(_statMap[item]);
                         return rock;
                     }
                 default:

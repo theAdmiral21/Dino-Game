@@ -3,12 +3,14 @@ using Application.Inventory;
 using Core.Equipment;
 using Core.Inventory.DataStructures.Consumers;
 using Primitives.Items;
+using UnityEditor;
 using UnityEngine;
 
 namespace Unity.Equipment
 {
     public class RockEquipment : MonoBehaviour, IEquipment
     {
+        [SerializeField] private GameObject _rockPrefab;
         public ItemType EquipmentType => ItemType.Rock;
 
         public EquipmentStats Stats { get; private set; }
@@ -18,8 +20,8 @@ namespace Unity.Equipment
         public int RoundCount => _magazine.RoundCount;
 
 
-        public event Action OnFire;
-        public event Action OnReload;
+        public event Action<int> OnFire;
+        public event Action<int, Action<int>> OnReload;
 
         private IMagazine _magazine;
 
@@ -30,12 +32,16 @@ namespace Unity.Equipment
             _magazine = new Magazine(stats.MagazineSize);
         }
 
-        public void Aim()
+        public void Aim(Vector2 mosPos)
         {
             // Draw a cross hair
 
             // Draw an arc from the player to the cross hair, is that too easy?
             Debug.Log($"Aiming rock!");
+
+            // Draw a line from the equipment to the cursor
+            Debug.DrawLine(Vector2.zero, mosPos);
+
         }
 
         public void Fire()
@@ -45,6 +51,12 @@ namespace Unity.Equipment
             if (_magazine.ConsumeRound())
             {
                 Debug.Log($"Rock fired!");
+                OnFire?.Invoke(_magazine.RoundCount);
+
+            }
+            else
+            {
+                RequestReload();
             }
         }
 
@@ -56,7 +68,7 @@ namespace Unity.Equipment
             // Other wise reload
             if (_magazine.RoundCount == 0)
             {
-                Reload();
+                RequestReload();
             }
 
             // cock your arm back
@@ -64,9 +76,13 @@ namespace Unity.Equipment
             // allow aiming
         }
 
-        public void Reload()
+        public void RequestReload()
         {
-
+            int requestAmount = _magazine.Capacity - _magazine.RoundCount;
+            Debug.Log($"Requesting: {requestAmount} rocks");
+            OnReload?.Invoke(requestAmount, _magazine.ReplenishRounds);
         }
+
+
     }
 }

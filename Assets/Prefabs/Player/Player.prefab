@@ -426,8 +426,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _mapSO: {fileID: 11400000, guid: 35b5fb4e7c8ff0840aea4248fa6b95a8, type: 2}
-  _inventorySO:
-    _monoScript: {fileID: 3221408626999151277}
+  _equipmentTransform: {fileID: 0}
+  _rockPrefab: {fileID: 3242972745631904550, guid: 8ede7822867b4da4d903ac9fbdf4735d, type: 3}
 --- !u!1 &1598416908577889231
 GameObject:
   m_ObjectHideFlags: 0
@@ -5792,6 +5792,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _inventoryMono:
     _monoScript: {fileID: 3221408626999151277}
+  CurrentWeapon: 
 --- !u!1 &8478692204791979029
 GameObject:
   m_ObjectHideFlags: 0

@@ -291,6 +291,15 @@ namespace PlayerController.Unity.Inputs
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Aim"",
+                    ""type"": ""Value"",
+                    ""id"": ""61a73610-532c-45e4-a982-a7f121e30e22"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -863,6 +872,17 @@ namespace PlayerController.Unity.Inputs
                     ""processors"": """",
                     ""groups"": "";Keyboard&Mouse"",
                     ""action"": ""ToggleFlashlight"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8977f0f7-5d51-4842-9aaa-a5cd71d2ec76"",
+                    ""path"": ""<Mouse>/position"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Aim"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -1679,6 +1699,7 @@ namespace PlayerController.Unity.Inputs
             m_InGame_EquipItem6 = m_InGame.FindAction("EquipItem6", throwIfNotFound: true);
             m_InGame_EquipItem7 = m_InGame.FindAction("EquipItem7", throwIfNotFound: true);
             m_InGame_ToggleFlashlight = m_InGame.FindAction("ToggleFlashlight", throwIfNotFound: true);
+            m_InGame_Aim = m_InGame.FindAction("Aim", throwIfNotFound: true);
             // InCutScene
             m_InCutScene = asset.FindActionMap("InCutScene", throwIfNotFound: true);
             m_InCutScene_SkipCutScene = m_InCutScene.FindAction("SkipCutScene", throwIfNotFound: true);
@@ -1805,6 +1826,7 @@ namespace PlayerController.Unity.Inputs
         private readonly InputAction m_InGame_EquipItem6;
         private readonly InputAction m_InGame_EquipItem7;
         private readonly InputAction m_InGame_ToggleFlashlight;
+        private readonly InputAction m_InGame_Aim;
         /// <summary>
         /// Provides access to input actions defined in input action map "InGame".
         /// </summary>
@@ -1905,6 +1927,10 @@ namespace PlayerController.Unity.Inputs
             /// </summary>
             public InputAction @ToggleFlashlight => m_Wrapper.m_InGame_ToggleFlashlight;
             /// <summary>
+            /// Provides access to the underlying input action "InGame/Aim".
+            /// </summary>
+            public InputAction @Aim => m_Wrapper.m_InGame_Aim;
+            /// <summary>
             /// Provides access to the underlying input action map instance.
             /// </summary>
             public InputActionMap Get() { return m_Wrapper.m_InGame; }
@@ -1996,6 +2022,9 @@ namespace PlayerController.Unity.Inputs
                 @ToggleFlashlight.started += instance.OnToggleFlashlight;
                 @ToggleFlashlight.performed += instance.OnToggleFlashlight;
                 @ToggleFlashlight.canceled += instance.OnToggleFlashlight;
+                @Aim.started += instance.OnAim;
+                @Aim.performed += instance.OnAim;
+                @Aim.canceled += instance.OnAim;
             }
 
             /// <summary>
@@ -2073,6 +2102,9 @@ namespace PlayerController.Unity.Inputs
                 @ToggleFlashlight.started -= instance.OnToggleFlashlight;
                 @ToggleFlashlight.performed -= instance.OnToggleFlashlight;
                 @ToggleFlashlight.canceled -= instance.OnToggleFlashlight;
+                @Aim.started -= instance.OnAim;
+                @Aim.performed -= instance.OnAim;
+                @Aim.canceled -= instance.OnAim;
             }
 
             /// <summary>
@@ -2765,6 +2797,13 @@ namespace PlayerController.Unity.Inputs
             /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
             /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
             void OnToggleFlashlight(InputAction.CallbackContext context);
+            /// <summary>
+            /// Method invoked when associated input action "Aim" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+            /// </summary>
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+            void OnAim(InputAction.CallbackContext context);
         }
         /// <summary>
         /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "InCutScene" which allows adding and removing callbacks.
