@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Core.Physics.Collisions.DataStructures;
 using Physics.Core.DataStructures;
 using Physics.Core.PhysicsActors;
 using UnityEngine;
@@ -45,6 +46,6 @@ namespace Physics.Application.Abstractions
         /// Method that returns a hash set of all of the collisions gathered this frame. This is meant to be called after Horizontal and Vertical raycast methods have been called.
         /// </summary>
         /// <returns></returns>
-        public List<IPhysicsActor> GetCollisions();
+        List<RayCollision> GetCollisions();
     }
 }

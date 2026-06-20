@@ -1,4 +1,6 @@
 using System.Collections.Generic;
+using System.Linq;
+using Core.Physics.Collisions.DataStructures;
 using Physics.Application.Abstractions;
 using Physics.Core.DataStructures;
 using Physics.Core.PhysicsActors;
@@ -25,8 +27,8 @@ namespace Physics.Unity.Movement
 
         private List<RaycastResult> _verticalRaycasts = new();
         private List<RaycastResult> _horizontalRaycasts = new();
-        private HashSet<Collider2D> _verticalHits = new();
-        private HashSet<Collider2D> _horizontalHits = new();
+        private HashSet<RayCollision> _verticalHits = new();
+        private HashSet<RayCollision> _horizontalHits = new();
 
         private ICornerResolver _cornerResolver;
 
@@ -62,10 +64,15 @@ namespace Physics.Unity.Movement
                 {
                     velocity.y = (hit.distance - rayConfig.SkinWidth) * dir.y;
                     _rayCastLengthY = hit.distance;
-                    // Update collision info
-                    // CollisionInfo.Below = dir.y == -1;
-                    // CollisionInfo.Above = dir.y == 1;
-                    _verticalHits.Add(hit.collider);
+
+                    hit.collider.TryGetComponent(out IPhysicsActor actor);
+                    _horizontalHits.Add(new RayCollision
+                    {
+                        CollisionPoint = hit.point,
+                        Normal = hit.normal,
+                        OtherActor = actor
+                    });
+
                     Debug.Log($"Got vertical collision with {hit.collider.name}");
                 }
 
@@ -125,13 +132,15 @@ namespace Physics.Unity.Movement
 
                     velocity.x = (hit.distance - rayConfig.SkinWidth) * dir.x;
                     _rayCastLengthX = hit.distance;
-                    // Update collision info
-                    // CollisionInfo.Left = dir.x == -1;
-                    // CollisionInfo.Right = dir.x == 1;
 
-                    // This is where I would track collisions but doing that cleanly is tricky. I'm thinking that I can have a collider2d hash set and just add unique hit.colliders that way when the list is returned you only get the unique collisions. But after that I'm not sure when to look up the actors who collided. I might be able to do something clever but we will see.
+                    hit.collider.TryGetComponent(out IPhysicsActor actor);
+                    _horizontalHits.Add(new RayCollision
+                    {
+                        CollisionPoint = hit.point,
+                        Normal = hit.normal,
+                        OtherActor = actor
+                    });
 
-                    _horizontalHits.Add(hit.collider);
                     Debug.Log($"Got horizontal collision with {hit.collider.name}");
 
                 }
@@ -166,23 +175,14 @@ namespace Physics.Unity.Movement
             return correction;
         }
 
-        public List<IPhysicsActor> GetCollisions()
+        public List<RayCollision> GetCollisions()
         {
             // Debug.Log($"Gathering raycast collisions");
             // Combine the sets
             // Debug.Log($"horizontal hits: {_horizontalHits.Count}; vertical hits: {_verticalHits.Count}");
             _horizontalHits.UnionWith(_verticalHits);
             // Debug.Log($"Union hits: {_horizontalHits.Count}");
-            List<IPhysicsActor> actors = new();
-            foreach (var collider in _horizontalHits)
-            {
-                if (collider.TryGetComponent(out IPhysicsActor actor))
-                {
-                    // Debug.Log($"adding actor: {actor}");
-                    actors.Add(actor);
-                }
-            }
-            return actors;
+            return _horizontalHits.ToList();
         }
 
         public void CornerRayCast(ref Vector2 velocity, ref RaycastConfiguration rayConfig)

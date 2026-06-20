@@ -92,7 +92,7 @@ namespace Physics.Application.Orchestrators
                 CurrentState = kinematicState,
                 ActorStats = _stats,
                 RaycastConfig = RaycastConfig,
-                CollidingActors = new(),
+                RayCollisions = new(),
             };
 
             CacheStatVals();
@@ -150,7 +150,7 @@ namespace Physics.Application.Orchestrators
             FrameData.Results = results;
             foreach (var res in results)
             {
-                Debug.Log($"result: {res}; approved: {res.Approved}");
+                // Debug.Log($"result: {res}; approved: {res.Approved}");
                 // // Check if you can cast the result to an equipment result
                 // if (res is IEquipmentActionResult)
                 // {

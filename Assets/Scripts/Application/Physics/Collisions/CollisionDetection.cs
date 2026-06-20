@@ -17,37 +17,44 @@ namespace Physics.Application.Collisions
         private HashSet<CollidingPair> _previousCollisions = new();
         private Dictionary<IPhysicsActor, Vector2> _resolveDict = new();
 
-        // Cached values
-        private List<IPhysicsActor> _collidingActors = new();
-
         public Dictionary<IPhysicsActor, Vector2> GetCollisions(List<IPhysicsActor> actors)
         {
             _currentCollisions.Clear();
-            // Compare all of the actors to one another
+            // Get all of the raycast collisions
+            for (int i = 0; i < actors.Count; i++)
+            {
+                var actor = actors[i];
+                for (int j = 0; j < actor.Brain.FrameData.RayCollisions.Count; j++)
+                {
+                    var otherActor = actor.Brain.FrameData.RayCollisions[j].OtherActor;
+                    _currentCollisions.Add(new CollidingPair(actor, otherActor));
+
+                }
+            }
+
+            // Now run AABB on everything without a raycast collision
             for (int i = 0; i < actors.Count; i++)
             {
                 if (actors[i].IsAsleep) continue;
                 for (int j = i + 1; j < actors.Count; j++)
                 {
-                    Debug.Log($"Checking actor: {actors[i]}");
-                    if (GetRaycastCollisions(actors[i]))
+                    if (actors[j].IsAsleep) continue;
+
+                    var candidatePair = new CollidingPair(actors[i], actors[j]);
+
+                    if (_currentCollisions.Contains(candidatePair)) continue;
+
+                    // we have a fresh pair, check for a collision
+                    if (IsColliding(actors[i], actors[j]))
                     {
-                        continue;
-                    }
-                    else if (GetRaycastCollisions(actors[j]))
-                    {
-                        continue;
-                    }
-                    else if (IsColliding(actors[i], actors[j]))
-                    {
-                        _currentCollisions.Add(new CollidingPair(actors[i], actors[j]));
-                        // For now let's see if this works.
-                        Debug.Log($"[CollisionDetection] Got collision between {actors[i].Name} and {actors[j].Name}");
+                        _currentCollisions.Add(candidatePair);
                     }
                 }
             }
             return ResolveCollisions();
         }
+
+
         // So my raycast is detecting collisions and so is my AABB collision detector. How do I tell them to work together? 
         // if actor.Brain.FrameData.CollidingActors.Count > 0 -> Colliding = yes, process separately?
         private bool IsColliding(IPhysicsActor actorA, IPhysicsActor actorB)
@@ -73,49 +80,42 @@ namespace Physics.Application.Collisions
                 );
         }
 
-        private bool GetRaycastCollisions(IPhysicsActor actorA)
-        {
-            // no raycast collisions
-            Debug.Log($"Checking raycast collisions for {actorA.Name}. Count: {actorA.Brain.FrameData.CollidingActors.Count}");
-            if (actorA.Brain.FrameData.CollidingActors.Count <= 0) return false;
-            // Debug.Log($"Found ")
-            _collidingActors = actorA.Brain.FrameData.CollidingActors;
-            // Update current collisions with the new colliding pairs
-            for (int i = 0; i < _collidingActors.Count; i++)
-            {
-                IPhysicsActor actorB = _collidingActors[i];
-                _currentCollisions.Add(new CollidingPair(actorA, actorB));
-                Debug.Log($"Got raycast collision between {actorA.Name} and {actorB.Name}");
-            }
-            return true;
-        }
-
         public Dictionary<IPhysicsActor, Vector2> ResolveCollisions()
         {
             _resolveDict.Clear();
+            if (_currentCollisions.Count == 0) Debug.Log($"No collisions to resolve");
             foreach (var collision in _currentCollisions)
             {
+                Debug.Log($"Resolving collision between {collision.ActorA} and {collision.ActorB}");
                 // Only move the actor
-                if (collision.ActorA.Body.BodyType == BodyType.Static &&
-                    collision.ActorB.Body.BodyType == BodyType.Kinematic)
+                if (collision.ActorB != null)
                 {
-                    UpdateDictionary(collision.ActorB, collision.SeparationVector);
-                }
-                else if (collision.ActorA.Body.BodyType == BodyType.Kinematic &&
-                        collision.ActorB.Body.BodyType == BodyType.Static)
-                {
-                    UpdateDictionary(collision.ActorA, -collision.SeparationVector);
-
-                }
-                else if (collision.ActorA.Body.BodyType == BodyType.Kinematic &&
+                    if (collision.ActorA.Body.BodyType == BodyType.Static &&
                         collision.ActorB.Body.BodyType == BodyType.Kinematic)
-                {
-                    UpdateDictionary(collision.ActorA, -collision.SeparationVector / 2);
-                    UpdateDictionary(collision.ActorB, collision.SeparationVector / 2);
+                    {
+                        UpdateDictionary(collision.ActorB, collision.SeparationVector);
+                    }
+                    else if (collision.ActorA.Body.BodyType == BodyType.Kinematic &&
+                            collision.ActorB.Body.BodyType == BodyType.Static)
+                    {
+                        UpdateDictionary(collision.ActorA, -collision.SeparationVector);
+
+                    }
+                    else if (collision.ActorA.Body.BodyType == BodyType.Kinematic &&
+                            collision.ActorB.Body.BodyType == BodyType.Kinematic)
+                    {
+                        UpdateDictionary(collision.ActorA, -collision.SeparationVector / 2);
+                        UpdateDictionary(collision.ActorB, collision.SeparationVector / 2);
+                    }
+                    else
+                    {
+                        Debug.LogError("Statics shouldn't collide... right?");
+                    }
                 }
                 else
                 {
-                    Debug.LogError("Statics shouldn't collide... right?");
+                    // When actorB is null, we've collided with a static object.
+                    UpdateDictionary(collision.ActorA, -collision.SeparationVector);
                 }
             }
 

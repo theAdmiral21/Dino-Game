@@ -75,7 +75,7 @@ namespace Physics.Unity.Physics
 
             frameData.CurrentState.FrameDelta = resolution.FrameDelta;
 
-            frameData.CollidingActors = resolution.CollidingActors;
+            frameData.RayCollisions = resolution.RayCollisions;
 
             // If you're grounded, don't apply corner correction
             if (frameData.PhysicsContext.IsGrounded || frameData.PhysicsContext.IsOnPlatform)

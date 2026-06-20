@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Core.Physics.Collisions.DataStructures;
 using Movement.Core.Movement.Abstractions;
 using Movement.Core.Stats;
 using Physics.Core.PhysicsActors;
@@ -15,7 +16,7 @@ namespace Physics.Core.DataStructures
         public KinematicResult CurrentState;
         public IStatCollection ActorStats;
         public RaycastConfiguration RaycastConfig;
-        public List<IPhysicsActor> CollidingActors;
+        public List<RayCollision> RayCollisions;
 
         public void ClearData()
         {
@@ -23,7 +24,7 @@ namespace Physics.Core.DataStructures
             Results.Clear();
             // This might be overkill?
             PhysicsContext.SetVelocity(CurrentState.Velocity);
-            CollidingActors.Clear();
+            RayCollisions.Clear();
         }
     }
 

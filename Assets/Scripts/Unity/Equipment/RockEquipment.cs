@@ -46,7 +46,7 @@ namespace Unity.Equipment
 
             // Draw a line from the equipment to the cursor
             _aimPos = Camera.main.ScreenToWorldPoint(mosPos);
-            Debug.Log($"mouse position: {mosPos}; mouse world position: {_aimPos}");
+            // Debug.Log($"mouse position: {mosPos}; mouse world position: {_aimPos}");
         }
 
         private void DrawCrossHair()

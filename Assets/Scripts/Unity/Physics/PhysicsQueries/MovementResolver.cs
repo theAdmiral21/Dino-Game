@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Codice.Client.BaseCommands.BranchExplorer;
+using Core.Physics.Collisions.DataStructures;
 using Physics.Application.Abstractions;
 using Physics.Core.Abstractions;
 using Physics.Core.DataStructures;
@@ -41,7 +42,7 @@ namespace Physics.Unity.Movement
             }
 
             // Get the collisions for this frame
-            List<IPhysicsActor> collidingActors = _rayCaster.GetCollisions();
+            List<RayCollision> collidingActors = _rayCaster.GetCollisions();
 
 
             //NOTE Why do I have this line? To persist state?
@@ -52,7 +53,7 @@ namespace Physics.Unity.Movement
             {
                 FrameDelta = _velocity,
                 CornerNudge = nudge,
-                CollidingActors = collidingActors
+                RayCollisions = collidingActors
             };
         }
     }
