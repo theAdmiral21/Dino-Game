@@ -12,26 +12,31 @@ namespace Movement.Core.Rules
         public static RaiseWeaponResult TryRaiseWeapon(RaiseWeaponRequest request, PhysicsContext facts, IActorInput inputValues, object ruleState)
         {
             if (!ruleState.TryGet<IAimingState>(out var aimingState)) return Denied();
-
-            if (facts.IsGrounded || facts.IsOnPlatform)
+            // Did the player ask to aim?
+            if (request.SetAiming && (facts.IsGrounded || facts.IsOnPlatform))
             {
-                aimingState.SetAiming(request.SetAiming);
-                return Approved();
+                aimingState.SetAiming(true);
+                return Approve(true);
             }
+            // lower the weapon
             aimingState.SetAiming(false);
-            return Denied();
+            return Approve(false);
         }
 
-        private static RaiseWeaponResult Approved()
+        private static RaiseWeaponResult Approve(bool isAiming)
         {
             Debug.Log($"Raise weapon approved");
-            return new RaiseWeaponResult(true, Enums.ActionPhase.Continuous);
+            if (isAiming)
+            {
+                return new RaiseWeaponResult(true, true, Enums.ActionPhase.Continuous);
+            }
+            return new RaiseWeaponResult(true, false, Enums.ActionPhase.Continuous);
         }
 
         private static RaiseWeaponResult Denied()
         {
             Debug.Log($"Raise weapon denied");
-            return new RaiseWeaponResult(false, Enums.ActionPhase.Continuous);
+            return new RaiseWeaponResult(false, false, Enums.ActionPhase.Continuous);
         }
 
     }

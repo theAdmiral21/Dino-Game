@@ -1,14 +1,9 @@
-using System;
-using System.Collections.Generic;
 using Core.Equipment;
-using Core.Inventory;
 using Game.Core.Execution;
 using Infrastructure.Unity.Registries;
 using Movement.Core.Movement.Abstractions;
 using Movement.Core.Movement.DataStructures;
 using Physics.Core.PhysicsActors;
-using Primitives.EventBus.Abstractions;
-using Primitives.Items;
 using Unity.Common.Unity;
 using UnityEngine;
 
@@ -50,7 +45,7 @@ namespace Unity.Equipment
             Debug.Assert(_actorEventBus != null, "Failed to set actor event bus");
         }
 
-        public void RouteEquipmentResult(IActionResult result)
+        public void RouteEquipmentResult(IEquipmentActionResult result)
         {
             Debug.Log($"Switching on result: {result}");
             if (Equipped == null) return;
@@ -60,11 +55,12 @@ namespace Unity.Equipment
                 case RaiseWeaponResult raiseWeapon:
                     {
                         Debug.Log($"Asking to raise weapon");
-                        Equipped.RaiseWeapon();
+                        Equipped.RaiseWeapon(raiseWeapon.IsRaising);
                         break;
                     }
                 case AimResult aim:
                     {
+                        Debug.Log($"Asking to aim weapon");
                         Equipped.Aim(aim.MousePosition);
                         break;
                     }
@@ -74,7 +70,7 @@ namespace Unity.Equipment
                         Equipped.Fire();
                         break;
                     }
-                case ReloadResult raiseWeapon:
+                case ReloadResult reload:
                     {
                         Equipped.RequestReload();
                         break;
@@ -96,11 +92,11 @@ namespace Unity.Equipment
 
         private void SubToEvents()
         {
-            _actorEventBus.OnActionApproved += RouteEquipmentResult;
+            _actorEventBus.OnEquipmentActionApproved += RouteEquipmentResult;
         }
         private void UnsubToEvents()
         {
-            _actorEventBus.OnActionApproved -= RouteEquipmentResult;
+            _actorEventBus.OnEquipmentActionApproved -= RouteEquipmentResult;
         }
 
 

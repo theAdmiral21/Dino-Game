@@ -23,7 +23,7 @@ namespace Core.Equipment
         public event Action<int, Action<int>> OnReload;
 
         // Equipment orchestrators
-        public void RaiseWeapon();
+        public void RaiseWeapon(bool raiseWeapon);
         public void Aim(Vector2 mosPos); // this will probably need some request argument
         public void RequestReload();
         public void Fire();

@@ -150,6 +150,7 @@ namespace Physics.Application.Orchestrators
             FrameData.Results = results;
             foreach (var res in results)
             {
+                Debug.Log($"result: {res}; approved: {res.Approved}");
                 // // Check if you can cast the result to an equipment result
                 // if (res is IEquipmentActionResult)
                 // {
@@ -159,7 +160,14 @@ namespace Physics.Application.Orchestrators
 
                 if (res.Approved)
                 {
-                    ActorEventBus.Publish(res);
+                    if (res is IEquipmentActionResult)
+                    {
+                        ActorEventBus.Publish(res as IEquipmentActionResult);
+                    }
+                    else
+                    {
+                        ActorEventBus.Publish(res);
+                    }
                 }
             }
             // Clear action requests

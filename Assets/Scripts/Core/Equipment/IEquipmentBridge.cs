@@ -7,6 +7,6 @@ namespace Core.Equipment
     {
         public IEquipment Equipped { get; }
 
-        public void RouteEquipmentResult(IActionResult result);
+        public void RouteEquipmentResult(IEquipmentActionResult result);
     }
 }

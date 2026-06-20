@@ -14,15 +14,19 @@ namespace Movement.Core.Movement.DataStructures
         private readonly bool _approved;
 
         public ActionPhase Phase => _phase;
+        private readonly ActionPhase _phase;
+
+        public bool IsRaising => _isRaising;
+        private readonly bool _isRaising;
 
         public Type EquipmentActionType => ResultType;
 
-        private readonly ActionPhase _phase;
 
-        public RaiseWeaponResult(bool approved, ActionPhase phase)
+        public RaiseWeaponResult(bool approved, bool isRaising, ActionPhase phase)
         {
             _approved = approved;
             _phase = phase;
+            _isRaising = isRaising;
         }
     }
 }

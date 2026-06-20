@@ -6,6 +6,7 @@ using Core.Inventory.DataStructures.Consumers;
 using Primitives.Items;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 namespace Unity.Equipment
 {
@@ -26,6 +27,9 @@ namespace Unity.Equipment
 
         private IMagazine _magazine;
 
+        private bool _weaponRaised;
+        private Vector2 _aimPos;
+
         public void Init(EquipmentStats stats)
         {
             Stats = stats;
@@ -41,8 +45,21 @@ namespace Unity.Equipment
             Debug.Log($"Aiming rock!");
 
             // Draw a line from the equipment to the cursor
-            Debug.DrawLine(Vector2.zero, mosPos);
+            _aimPos = Camera.main.ScreenToWorldPoint(mosPos);
+            Debug.Log($"mouse position: {mosPos}; mouse world position: {_aimPos}");
+        }
 
+        private void DrawCrossHair()
+        {
+            Debug.DrawLine(transform.position, _aimPos);
+        }
+
+        private void Update()
+        {
+            if (_weaponRaised)
+            {
+                DrawCrossHair();
+            }
         }
 
         public void Fire()
@@ -68,20 +85,29 @@ namespace Unity.Equipment
             RequestReload();
         }
 
-        public void RaiseWeapon()
+        public void RaiseWeapon(bool raiseWeapon)
         {
-            Debug.Log($"Raising rock!");
-            // if you have rocks
-
-            // Other wise reload
-            if (_magazine.RoundCount == 0)
+            _weaponRaised = raiseWeapon;
+            if (_weaponRaised)
             {
-                RequestReload();
+                Debug.Log($"Raising rock!");
+                // if you have rocks
+
+                // Other wise reload
+                if (_magazine.RoundCount == 0)
+                {
+                    RequestReload();
+                }
+
+                // cock your arm back
+
+                // allow aiming
             }
-
-            // cock your arm back
-
-            // allow aiming
+            else
+            {
+                // lower the weapon
+                Debug.Log($"Lowering rock!");
+            }
         }
 
         public void RequestReload()

@@ -23,7 +23,7 @@ namespace Movement.Core.Rules
         private static AimResult Approved(AimRequest request)
         {
             Debug.Log($"Aim approved");
-            return new AimResult(false, request.MousePosition);
+            return new AimResult(true, request.MousePosition);
         }
 
         private static AimResult Denied()
