@@ -12,18 +12,15 @@ namespace Unity.Equipment
 {
     public class EquipmentBridge : MonoBehaviour, IEquipmentBridge
     {
-        [SerializeField] private SerializedInterface<IInventory> _inventoryMono;
-        private IInventory _inventory => _inventoryMono.Interface;
+        [SerializeField] private SerializedInterface<IEquipmentManager> _equipmentManagerMono;
+        private IEquipmentManager _equipmentManager => _equipmentManagerMono.Interface;
+
         public IEquipment Equipped => _equipped;
-        private IEquipment _equipped;
+        private IEquipment _equipped => _equipmentManager.ActiveEquipment;
         private IEventBus _inventoryEventBus;
 
         [Header("Debug")]
         [SerializeField] string CurrentWeapon;
-        private void Awake()
-        {
-            var inventory = GetComponent<IInventory>();
-        }
 
         private void OnDestroy()
         {
@@ -91,7 +88,7 @@ namespace Unity.Equipment
 
         private void UpdateEquipment(CurrentEquipmentChanged changed)
         {
-            _equipped = changed.NewItem.Equipment;
+            // _equipped = 
         }
     }
 }

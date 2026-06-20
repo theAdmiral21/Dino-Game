@@ -10,8 +10,8 @@ using Unity.Inventory.DataStructures;
 using Unity.Equipment;
 using Core.Inventory.Requests;
 using Core.Equipment;
-using PlasticPipe.PlasticProtocol.Messages;
-using Application.Inventory.InventoryItems;
+using System;
+using Unity.Common.Unity;
 
 namespace Unity.Inventory
 {
@@ -20,14 +20,18 @@ namespace Unity.Inventory
         [SerializeField] private InventoryLimitSO _inventoryLimits;
         private Dictionary<ItemType, int> _limitMap = new();
 
+        [SerializeField] private SerializedInterface<IEquipmentManager> _equipmentManagerMono;
+        private IEquipmentManager _equipmentManager => _equipmentManagerMono.Interface;
+
+        [SerializeField] private SerializedInterface<IEquipmentBridge> _equipmentBridgeMono;
+        private IEquipmentBridge _equipmentBridge => _equipmentBridgeMono.Interface;
+
         [SerializeField] private bool _debug;
         private StringBuilder _debugSb = new();
 
-        [SerializeField] private EquipmentFactory _equipmentFactory;
-
         public IEventBus InventoryEventBus { get; private set; }
         public IInventorySystem InventorySystem { get; private set; }
-        public IEquipment CurrentlyEquipped => InventorySystem.CurrentlyEquipped.Equipment;
+        public IEquipment CurrentlyEquipped => _equipmentManager.ActiveEquipment;
 
         private void Awake()
         {
@@ -36,37 +40,15 @@ namespace Unity.Inventory
             InventorySystem = ConfigureInventory();
 
             // Set the equipment bridge's event bus
-            var bridge = GetComponent<IEquipmentBridge>();
-            bridge.SetEventBus(InventoryEventBus);
-
+            _equipmentBridge.SetEventBus(InventoryEventBus);
+            // Init the equipment manager
+            _equipmentManager.Init(InventoryEventBus, InventorySystem);
         }
 
         private IInventorySystem ConfigureInventory()
         {
-            // Still on the fence about making this inspector configurable. For now I'm doing this manually
-            Dictionary<ItemType, IInventoryItem> itemsDict = new();
-            // Build your list of inventory items
-            // var rockInventory = new InventoryItem(ItemType.Rock, 5, InventoryEventBus);
-            // items.Add(rockInventory);
-
-
-            // use the limit map to get the first half of the inventory item
-            foreach (var key in _limitMap.Keys)
-            {
-                switch (key)
-                {
-                    case ItemType.Rock:
-                        {
-                            RockInventory newItem = new(key, _limitMap[key], InventoryEventBus, _equipmentFactory.BuildEquipment(key));
-                            itemsDict[key] = newItem;
-                            break;
-                        }
-                }
-            }
-
-
             // Build the system
-            IInventorySystem system = new InventorySystem(InventoryEventBus, itemsDict);
+            IInventorySystem system = new InventorySystem(InventoryEventBus, _limitMap);
 
             return system;
         }
@@ -85,10 +67,10 @@ namespace Unity.Inventory
             }
         }
 
-        public bool TryEquip(ItemType item)
-        {
-            return InventorySystem.TryEquip(item);
-        }
+        // public bool TryEquip(ItemType item)
+        // {
+        //     return InventorySystem.TryEquip(item);
+        // }
 
         public int StockItem(IItemProviderRequest provider)
         {

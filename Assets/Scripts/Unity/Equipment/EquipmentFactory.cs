@@ -12,27 +12,24 @@ namespace Unity.Equipment
     {
         [SerializeField] private EquipmentMapSO _mapSO;
         private Dictionary<ItemType, EquipmentStats> _statMap;
-
-        [SerializeField] private Transform _equipmentTransform;
         [SerializeField] private GameObject _rockPrefab;
         // [SerializeField] private SerializedInterface<IInventory> _inventorySO;
         // private IInventorySystem _inventorySystem => _inventorySO.Interface.InventorySystem;
 
-        public IEquipment BuildEquipment(ItemType item)
+        public IEquipment BuildEquipment(ItemType item, Transform anchor)
         {
             if (_statMap == null) _statMap = _mapSO.GetStatMap();
 
             switch (item)
             {
-                // case ItemType.Rock:
-                //     {
-                //         GameObject rock = Instantiate(_rockPrefab, _equipmentTransform);
-                //         return rock.GetComponent<IEquipment>();
-                //     }
                 case ItemType.Rock:
                     {
-                        var rock = new RockEquipment(_statMap[item]);
-                        return rock;
+                        GameObject rock = Instantiate(_rockPrefab, anchor);
+                        Debug.Assert(rock != null, "Why is rock null?");
+                        IEquipment equipment = rock.GetComponent<IEquipment>();
+                        equipment.Init(_statMap[item]);
+                        Debug.Assert(equipment != null, "Why is equipment null?");
+                        return equipment;
                     }
                 default:
                     {

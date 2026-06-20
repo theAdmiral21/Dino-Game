@@ -17,8 +17,6 @@ namespace Core.Equipment
         // Equipment state information
         public int RoundCount { get; }
 
-        // Equipment behavior
-
 
         // Effect notification
         public event Action<int> OnFire;
@@ -29,5 +27,10 @@ namespace Core.Equipment
         public void Aim(Vector2 mosPos); // this will probably need some request argument
         public void RequestReload();
         public void Fire();
+        public void Init(EquipmentStats stats);
+
+        // Unity methods that are really helpful
+        public T GetComponent<T>();
+        public T GetComponentInChildren<T>();
     }
 }

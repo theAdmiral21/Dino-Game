@@ -40,8 +40,7 @@ namespace Unity.Inventory
             SetInventoryImage(_currentlyEquipped);
             // Maybe play a sound? 
 
-            // Update the magazine and storage
-            _magQuantity.text = $"{evt.NewItem.Equipment.RoundCount}";
+            // Update the storage
             _equipmentQuantity.text = $"{evt.NewItem.Quantity}";
         }
 

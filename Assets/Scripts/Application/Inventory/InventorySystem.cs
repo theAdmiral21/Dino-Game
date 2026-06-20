@@ -12,15 +12,15 @@ namespace Application.Inventory
     {
         public Dictionary<ItemType, IInventoryItem> Items => _items;
         private Dictionary<ItemType, IInventoryItem> _items = new();
-        private readonly Dictionary<ItemType, IInventoryItem> _refItems = new();
+        private readonly Dictionary<ItemType, int> _itemLimits = new();
         public IInventoryItem CurrentlyEquipped => _currentItem;
         private IInventoryItem _currentItem;
 
         private IEventBus _inventoryEventBus;
-        public InventorySystem(IEventBus inventoryEventBus, Dictionary<ItemType, IInventoryItem> refItems)
+        public InventorySystem(IEventBus inventoryEventBus, Dictionary<ItemType, int> limitMap)
         {
             _inventoryEventBus = inventoryEventBus;
-            _refItems = refItems;
+            _itemLimits = limitMap;
             SubToEvents();
 
             // Assign a default piece of equipment
@@ -38,25 +38,23 @@ namespace Application.Inventory
             // If this is the first time collecting this item, emit an event
             if (!_items.ContainsKey(provider.Item))
             {
-                // Ugh this should probably be a factory
-                _items[provider.Item] = _refItems[provider.Item];
-                var newItem = _items[provider.Item];
+                IInventoryItem newItem = BuildNewInventoryItem(provider.Item);
+                _items[provider.Item] = newItem;
+
                 _inventoryEventBus.Publish(new CurrentEquipmentChanged { NewItem = newItem });
             }
             int deposited = _items[provider.Item].Deposit(provider.Quantity);
-            // EmitEquippedQuantityChanged(deposited);
             return deposited;
         }
 
-
-        public int ConsumeItem(IItemConsumerRequest consumer)
+        private IInventoryItem BuildNewInventoryItem(ItemType item)
         {
-            int withdrawn = _currentItem.Withdraw(consumer.WithdrawAmount);
-            // EmitEquippedQuantityChanged(withdrawn);
-            return withdrawn;
+            int itemLimit = _itemLimits[item];
+
+            return new InventoryItem(item, itemLimit, _inventoryEventBus);
         }
 
-        public bool TryEquip(ItemType item)
+        private bool TryEquip(ItemType item)
         {
             // try to get the proposed item
             if (!Items.TryGetValue(item, out var inventoryItem))

@@ -26,11 +26,11 @@ namespace Unity.Equipment
 
         private IMagazine _magazine;
 
-        public RockEquipment(EquipmentStats stats)
+        public void Init(EquipmentStats stats)
         {
-
             Stats = stats;
             _magazine = new Magazine(stats.MagazineSize);
+            Debug.Log($"Rock initialized");
         }
 
         public void Aim(Vector2 mosPos)

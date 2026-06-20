@@ -3,6 +3,7 @@ using Movement.Core.Movement.DataStructures;
 using Movement.Core.Inputs;
 using Primitives.Physics;
 using Movement.Core.Abstractions;
+using UnityEngine;
 
 namespace Movement.Core.Rules
 {
@@ -20,11 +21,13 @@ namespace Movement.Core.Rules
 
         private static ShootResult Approved()
         {
+            Debug.Log($"Shoot approved");
             return new ShootResult(true, Enums.ActionPhase.Impulse);
         }
 
         private static ShootResult Denied()
         {
+            Debug.Log($"Shoot Denied");
             return new ShootResult(false, Enums.ActionPhase.Impulse);
         }
 

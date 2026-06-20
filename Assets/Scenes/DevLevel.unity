@@ -7560,6 +7560,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: RockEquipment
       objectReference: {fileID: 0}
+    - target: {fileID: 3242972745631904550, guid: 8ede7822867b4da4d903ac9fbdf4735d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7298279545407413656, guid: 8ede7822867b4da4d903ac9fbdf4735d, type: 3}
       propertyPath: _rockStats
       value: 

@@ -9,50 +9,93 @@ namespace Unity.Equipment
 {
     public class EquipmentManager : MonoBehaviour, IEquipmentManager
     {
+        [SerializeField] private Transform _equipmentTransform;
+
         [SerializeField] private SerializedInterface<IEquipmentBridge> _equipmentBridgeMono;
         private IEquipmentBridge _equipmentBridge => _equipmentBridgeMono.Interface;
 
+
         public IEquipment ActiveEquipment { get; private set; }
+        public IInventoryItem ActiveItem { get; private set; }
 
         [SerializeField] private EquipmentFactory _equipmentFactory;
         private IEventBus _inventoryEventBus;
+        private IInventorySystem _inventorySystem;
 
-        public void SwitchEquipment(CurrentEquipmentChanged evt)
+        [Header("Debug")]
+        [SerializeField] private string _currentEquipment;
+        [SerializeField] private string _currentItem;
+
+        private void OnDestroy()
         {
-            Debug.Log($"Equipment got switch  equipment");
-            TearDownActiveEquipment();
-
-            // Instantiate the new equipment
-
-            SetUpActiveEquipment();
+            UnsubToEvents();
         }
 
-        private void SetUpActiveEquipment()
+        public void HandleEquipmentChanged(CurrentEquipmentChanged evt)
         {
+            Debug.Log($"Got switch equipment event");
+            TearDownActiveEquipment();
+
+            SetUpActiveEquipment(evt);
+        }
+
+        private void SetUpActiveEquipment(CurrentEquipmentChanged evt)
+        {
+            Debug.Log($"Setting up new equipment");
+            // Instantiate the new equipment
+            IEquipment equipment = _equipmentFactory.BuildEquipment(evt.NewItem.Item, transform);
+
+            // Assign the equipment and item
+            ActiveEquipment = equipment;
+            ActiveItem = evt.NewItem;
+
+            // Connect events
+            ActiveEquipment.OnFire += ActiveItem.HandleFire;
+            ActiveEquipment.OnReload += ActiveItem.HandleReload;
+
+            // Notify the presenter how much ammo is in the magazine
+            _inventoryEventBus.Publish(new MagazineQuantityChanged
+            {
+                CurrentQuantity = ActiveEquipment.RoundCount
+            });
         }
         private void TearDownActiveEquipment()
         {
             if (ActiveEquipment == null) return;
+
+            // Disconnect events
+            ActiveEquipment.OnFire -= ActiveItem.HandleFire;
+            ActiveEquipment.OnReload -= ActiveItem.HandleReload;
+            // Destroy the equipment game object
+            GameObject equipmentObject = ActiveEquipment.GetComponent<Transform>().gameObject;
+            ActiveEquipment = null;
+            Destroy(equipmentObject);
+
         }
 
-        public void SetEventBus(IEventBus eventBus)
+        public void Init(IEventBus eventBus, IInventorySystem inventorySystem)
         {
+            Debug.Log($"Initializing equipment manager");
             _inventoryEventBus = eventBus;
+            Debug.Assert(_inventoryEventBus != null, "Inventory event bus is null.");
             SubToEvents();
+
+            _inventorySystem = inventorySystem;
         }
 
         private void SubToEvents()
         {
-            _inventoryEventBus.Subscribe<CurrentEquipmentChanged>(UpdateEquipment);
+            _inventoryEventBus.Subscribe<CurrentEquipmentChanged>(HandleEquipmentChanged);
         }
         private void UnsubToEvents()
         {
-            _inventoryEventBus.Unsubscribe<CurrentEquipmentChanged>(UpdateEquipment);
+            _inventoryEventBus.Unsubscribe<CurrentEquipmentChanged>(HandleEquipmentChanged);
         }
 
-        private void UpdateEquipment(CurrentEquipmentChanged changed)
+        private void LateUpdate()
         {
-            ActiveEquipment = changed.NewItem.Equipment;
+            _currentEquipment = ActiveEquipment.ToString();
+            _currentItem = ActiveItem.ToString();
         }
     }
 }

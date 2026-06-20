@@ -28,6 +28,7 @@ namespace Movement.Core.Rules
 
         private static AimResult Denied()
         {
+            Debug.Log($"Aim denied");
             return new AimResult(false, Vector2.zero);
         }
 
