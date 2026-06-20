@@ -1,6 +1,8 @@
 using System.Collections.Generic;
 using Core.Equipment;
 using Core.Inventory;
+using Game.Core.Execution;
+using Infrastructure.Unity.Registries;
 using Primitives.Items;
 using Unity.Common.Unity;
 using Unity.Equipment.DataStructures;
@@ -8,13 +10,15 @@ using UnityEngine;
 
 namespace Unity.Equipment
 {
-    public class EquipmentFactory : MonoBehaviour
+    public class EquipmentFactory : SelfRegister<IInitializable<IGameContext>>, IInitializable<IGameContext>
     {
         [SerializeField] private EquipmentMapSO _mapSO;
         private Dictionary<ItemType, EquipmentStats> _statMap;
         [SerializeField] private GameObject _rockPrefab;
-        // [SerializeField] private SerializedInterface<IInventory> _inventorySO;
-        // private IInventorySystem _inventorySystem => _inventorySO.Interface.InventorySystem;
+
+        public int Priority => 0;
+
+        private IGameContext _gameContext;
 
         public IEquipment BuildEquipment(ItemType item, Transform anchor)
         {
@@ -25,9 +29,10 @@ namespace Unity.Equipment
                 case ItemType.Rock:
                     {
                         GameObject rock = Instantiate(_rockPrefab, anchor);
+                        rock.transform.position = anchor.position;
                         Debug.Assert(rock != null, "Why is rock null?");
                         IEquipment equipment = rock.GetComponent<IEquipment>();
-                        equipment.Init(_statMap[item]);
+                        equipment.Init(_statMap[item], _gameContext);
                         Debug.Assert(equipment != null, "Why is equipment null?");
                         return equipment;
                     }
@@ -37,6 +42,16 @@ namespace Unity.Equipment
                         return null;
                     }
             }
+        }
+
+        public void Initialize(IGameContext context)
+        {
+            _gameContext = context;
+        }
+
+        public void PostInitialize(IGameContext context)
+        {
+            Debug.Assert(_gameContext != null, $"failed to assign _game context");
         }
     }
 }

@@ -3,6 +3,9 @@ using System.Collections;
 using Application.Inventory;
 using Core.Equipment;
 using Core.Inventory.DataStructures.Consumers;
+using Game.Core.Execution;
+using Movement.Core.Movement.DataStructures;
+using Physics.Core.PhysicsActors;
 using Primitives.Items;
 using UnityEditor;
 using UnityEngine;
@@ -29,11 +32,13 @@ namespace Unity.Equipment
 
         private bool _weaponRaised;
         private Vector2 _aimPos;
+        private IGameContext _gameContext;
 
-        public void Init(EquipmentStats stats)
+        public void Init(EquipmentStats stats, IGameContext gameContext)
         {
             Stats = stats;
             _magazine = new Magazine(stats.MagazineSize);
+            _gameContext = gameContext;
             Debug.Log($"Rock initialized");
         }
 
@@ -69,6 +74,22 @@ namespace Unity.Equipment
             if (_magazine.ConsumeRound())
             {
                 Debug.Log($"Rock fired!");
+                var rockObject = Instantiate(_rockPrefab);
+                // hmm I have to initialize this entire thing before doing anything with it..
+                var intializables = rockObject.GetComponentsInChildren<IInitializable<IGameContext>>();
+
+                foreach (var init in intializables)
+                {
+                    init.Initialize(_gameContext);
+
+                    init.PostInitialize(_gameContext);
+                }
+                rockObject.SetActive(false);
+
+                rockObject.transform.position = transform.position;
+                rockObject.TryGetComponent(out IPhysicsActor actor);
+                rockObject.SetActive(true);
+                actor.EnqueueActionRequest(new ExternalImpulseRequest(_aimPos * Stats.MuzzleVelocity, -10));
                 StartCoroutine(FireRoutine());
             }
             else

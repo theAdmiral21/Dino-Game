@@ -1,5 +1,6 @@
 using System;
 using Core.Inventory;
+using Game.Core.Execution;
 using Movement.Core.Movement.DataStructures;
 using Primitives.Items;
 using UnityEngine;
@@ -27,7 +28,7 @@ namespace Core.Equipment
         public void Aim(Vector2 mosPos); // this will probably need some request argument
         public void RequestReload();
         public void Fire();
-        public void Init(EquipmentStats stats);
+        public void Init(EquipmentStats stats, IGameContext gameContext);
 
         // Unity methods that are really helpful
         public T GetComponent<T>();

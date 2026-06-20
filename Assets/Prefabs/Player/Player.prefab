@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8136827835485593910}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: VisualRoot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -45,7 +45,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7542090861757503197}
   - component: {fileID: 3458420072834703630}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Lighting
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -130,7 +130,7 @@ GameObject:
   - component: {fileID: 5462208772707848167}
   - component: {fileID: 2241377017246078206}
   - component: {fileID: 3761351669364046573}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Equipment
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -206,7 +206,7 @@ GameObject:
   - component: {fileID: 625423327090026294}
   - component: {fileID: 8421395927785444546}
   - component: {fileID: 6493847823426899023}
-  m_Layer: 13
+  m_Layer: 6
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -509,7 +509,7 @@ GameObject:
   - component: {fileID: 492414644369986436}
   - component: {fileID: 849152305032268073}
   - component: {fileID: 6119453974469994357}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: TrailEffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5454,7 +5454,7 @@ GameObject:
   - component: {fileID: 7043942589256413278}
   - component: {fileID: 2332003861364235005}
   - component: {fileID: 5367316220842460289}
-  m_Layer: 13
+  m_Layer: 6
   m_Name: Effects
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5589,7 +5589,7 @@ GameObject:
   - component: {fileID: 568040931038755934}
   - component: {fileID: 7101677111063596797}
   - component: {fileID: 6751786627680976206}
-  m_Layer: 13
+  m_Layer: 6
   m_Name: Animator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5698,7 +5698,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8522843873984924901}
   - component: {fileID: 5371980699588755850}
-  m_Layer: 13
+  m_Layer: 6
   m_Name: Interactions
   m_TagString: Untagged
   m_Icon: {fileID: 7866945982896999795, guid: 0000000000000000d000000000000000, type: 0}
@@ -5755,7 +5755,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3443055455942952063}
   - component: {fileID: 4621714224737221443}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: HealthAndDamage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5862,7 +5862,7 @@ GameObject:
   - component: {fileID: 8168095775703450329}
   - component: {fileID: 2018943408405542221}
   - component: {fileID: 7053444242166276677}
-  m_Layer: 13
+  m_Layer: 6
   m_Name: Inputs
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5958,7 +5958,7 @@ GameObject:
   - component: {fileID: 6137451948254331286}
   - component: {fileID: 7321824188406277542}
   - component: {fileID: 6925670813712602826}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ParticleEffects
   m_TagString: Untagged
   m_Icon: {fileID: 0}

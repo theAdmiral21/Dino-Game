@@ -91,7 +91,9 @@ namespace Physics.Unity.Physics
             float dt = Time.fixedDeltaTime;
             // Update intent
             // NOTE eventually I need to get rid of all of these foreach loops and use just for loops. 
-            foreach (IPhysicsActor actor in ActorRegistry)
+
+            IPhysicsActor[] runtimeActors = ActorRegistry.ToArray();
+            foreach (IPhysicsActor actor in runtimeActors)
             // for (int i = 0; i < ActorRegistry.Count; i ++)
             {
                 if (actor.IsAsleep) continue;
@@ -112,7 +114,7 @@ namespace Physics.Unity.Physics
             // }
 
             // Move the platforms first
-            foreach (var actor in ActorRegistry.Where(a => a.Actor == ActorType.Platform))
+            foreach (var actor in runtimeActors.Where(a => a.Actor == ActorType.Platform))
             {
                 if (actor.IsAsleep) continue;
 
@@ -123,7 +125,7 @@ namespace Physics.Unity.Physics
             }
 
             // Update non platform's context
-            foreach (var actor in ActorRegistry.Where(a => a.Actor != ActorType.Platform))
+            foreach (var actor in runtimeActors.Where(a => a.Actor != ActorType.Platform))
             {
 
                 _simDriver.Step(actor.Brain.FrameData, dt);
@@ -137,7 +139,7 @@ namespace Physics.Unity.Physics
             Dictionary<IPhysicsActor, Vector2> collisions = HandleCollisions(3);
 
             // Update physics context
-            foreach (var actor in ActorRegistry)
+            foreach (var actor in runtimeActors)
             {
                 if (actor.IsAsleep) continue;
 
@@ -148,7 +150,7 @@ namespace Physics.Unity.Physics
                     actor.Brain.FrameData.RaycastConfig);
             }
 
-            foreach (var actor in ActorRegistry)
+            foreach (var actor in runtimeActors)
             {
                 if (actor.IsAsleep) continue;
                 actor.Brain.ResolveRequests();

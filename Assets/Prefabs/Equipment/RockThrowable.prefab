@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8521548074278025972}
   - component: {fileID: 1283729961950611957}
   - component: {fileID: 3693287123727940436}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: RockThrowable
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -53,7 +53,7 @@ BoxCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -186,7 +186,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2529513269281292997}
   - component: {fileID: 163057790091618425}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: VisualRoot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
