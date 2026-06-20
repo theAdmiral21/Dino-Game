@@ -39,8 +39,6 @@ namespace Unity.Inventory
             InventoryEventBus = new EventBus();
             InventorySystem = ConfigureInventory();
 
-            // Set the equipment bridge's event bus
-            _equipmentBridge.SetEventBus(InventoryEventBus);
             // Init the equipment manager
             _equipmentManager.Init(InventoryEventBus, InventorySystem);
         }

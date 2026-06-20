@@ -169,6 +169,8 @@ MonoBehaviour:
   _equipmentBridgeMono:
     _monoScript: {fileID: 3761351669364046573}
   _equipmentFactory: {fileID: 996616551983274767}
+  _currentEquipment: 
+  _currentItem: 
 --- !u!114 &3761351669364046573
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -183,6 +185,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _equipmentManagerMono:
     _monoScript: {fileID: 2241377017246078206}
+  _actorEventBusMono:
+    _monoScript: {fileID: 1431672147824395412}
   CurrentWeapon: 
 --- !u!1 &1497200054785741571
 GameObject:

@@ -94,8 +94,15 @@ namespace Unity.Equipment
 
         private void LateUpdate()
         {
-            _currentEquipment = ActiveEquipment.ToString();
-            _currentItem = ActiveItem.ToString();
+            if (ActiveEquipment != null)
+            {
+                _currentEquipment = ActiveEquipment.ToString();
+            }
+
+            if (ActiveItem != null)
+            {
+                _currentItem = ActiveItem.ToString();
+            }
         }
     }
 }

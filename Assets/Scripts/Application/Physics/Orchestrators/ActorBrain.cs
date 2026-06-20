@@ -150,12 +150,12 @@ namespace Physics.Application.Orchestrators
             FrameData.Results = results;
             foreach (var res in results)
             {
-                // Check if you can cast the result to an equipment result
-                if (res is IEquipmentActionResult)
-                {
-                    Debug.Log($"Got equipment result!");
-                    _equipmentBridge.RouteEquipmentResult(res as IEquipmentActionResult);
-                }
+                // // Check if you can cast the result to an equipment result
+                // if (res is IEquipmentActionResult)
+                // {
+                //     Debug.Log($"Got equipment result!");
+                //     _equipmentBridge.RouteEquipmentResult(res as IEquipmentActionResult);
+                // }
 
                 if (res.Approved)
                 {

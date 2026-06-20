@@ -1,4 +1,5 @@
-using Primitives.EventBus.Abstractions;
+using Movement.Core.Movement.Abstractions;
+using Physics.Core.PhysicsActors;
 
 namespace Core.Equipment
 {
@@ -6,8 +7,6 @@ namespace Core.Equipment
     {
         public IEquipment Equipped { get; }
 
-        public void RouteEquipmentResult(IEquipmentActionResult result);
-
-        public void SetEventBus(IEventBus eventBus);
+        public void RouteEquipmentResult(IActionResult result);
     }
 }
