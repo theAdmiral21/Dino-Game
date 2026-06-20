@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using Application.Inventory;
 using Core.Equipment;
 using Core.Inventory.DataStructures.Consumers;
@@ -51,13 +52,20 @@ namespace Unity.Equipment
             if (_magazine.ConsumeRound())
             {
                 Debug.Log($"Rock fired!");
-                OnFire?.Invoke(_magazine.RoundCount);
-
+                StartCoroutine(FireRoutine());
             }
             else
             {
                 RequestReload();
             }
+        }
+
+        private IEnumerator FireRoutine()
+        {
+            OnFire?.Invoke(_magazine.RoundCount);
+            // After firing, wait then reload
+            yield return new WaitForSeconds(Stats.ReloadTime);
+            RequestReload();
         }
 
         public void RaiseWeapon()

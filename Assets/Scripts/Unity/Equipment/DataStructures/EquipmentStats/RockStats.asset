@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: RockStats
   m_EditorClassIdentifier: 
   MagazineSize: 1
-  ReloadTime: 0
+  ReloadTime: 1
   FireRate: 0
   Damage: 0
   KnockBack: 0
