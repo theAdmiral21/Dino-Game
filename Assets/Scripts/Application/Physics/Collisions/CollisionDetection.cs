@@ -83,10 +83,10 @@ namespace Physics.Application.Collisions
         public Dictionary<IPhysicsActor, Vector2> ResolveCollisions()
         {
             _resolveDict.Clear();
-            if (_currentCollisions.Count == 0) Debug.Log($"No collisions to resolve");
+            // if (_currentCollisions.Count == 0) Debug.Log($"No collisions to resolve");
             foreach (var collision in _currentCollisions)
             {
-                Debug.Log($"Resolving collision between {collision.ActorA} and {collision.ActorB}");
+                // Debug.Log($"Resolving collision between {collision.ActorA} and {collision.ActorB}");
                 // Only move the actor
                 if (collision.ActorB != null)
                 {
@@ -112,11 +112,11 @@ namespace Physics.Application.Collisions
                         Debug.LogError("Statics shouldn't collide... right?");
                     }
                 }
-                else
-                {
-                    // When actorB is null, we've collided with a static object.
-                    UpdateDictionary(collision.ActorA, -collision.SeparationVector);
-                }
+                // else
+                // {
+                //     // When actorB is null, we've collided with a static object.
+                //     UpdateDictionary(collision.ActorA, -collision.SeparationVector);
+                // }
             }
 
             // Dispatch collision events

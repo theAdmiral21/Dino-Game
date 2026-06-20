@@ -29,7 +29,7 @@ namespace Movement.Features.Movement.Services
                 {
                     currentResult.Gravity = gravStats.BaseGravity.Value * gravStats.FastFall.Value;
                 }
-                else
+                else if (fall.Type == FallType.Slow)
                 {
                     currentResult.Gravity = gravStats.BaseGravity.Value * gravStats.SlowFall.Value;
                 }
@@ -38,14 +38,14 @@ namespace Movement.Features.Movement.Services
                 //     currentResult.Velocity.y = wallStats.WallSlideSpeed.Value;
                 //     currentResult.Gravity = 0;
                 // }
-                // else if (fall.Type == FallType.None)
-                // {
-                //     if (currentResult.Velocity.y < 0)
-                //     {
-                //         currentResult.Velocity.y = 0;
-                //     }
-                //     currentResult.Gravity = 0;
-                // }
+                else if (fall.Type == FallType.None)
+                {
+                    if (currentResult.Velocity.y < 0)
+                    {
+                        currentResult.Velocity.y = 0;
+                    }
+                    currentResult.Gravity = 0;
+                }
             }
             // Debug.Log($"Fall type: {fall.Type} - Frame: {Time.frameCount}");
             // Debug.Log($"fall result: {currentResult.Velocity} - Frame: {Time.frameCount}");

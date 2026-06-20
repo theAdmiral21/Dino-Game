@@ -103,14 +103,7 @@ namespace Physics.Unity.Movement
             Vector2 correction = Vector2.zero;
             if (cornerIndex != -1 && cornerIndex <= _verticalRaycasts.Count)
             {
-                // Debug.Log($"Vertical count: {_verticalRaycasts.Count}");
-                // Debug.Log($"Found corner at: {_verticalRaycasts[cornerIndex].Origin}");
-                // here is where we would calculate the nudge
                 correction = _cornerResolver.CalculateVerticalNudge(_verticalRaycasts[cornerIndex], rayConfig);
-
-                // Here is where we would apply the nudge, but seeing as how the raycast controller doesn't know about the player's transform, I'm not sure how to move the player
-                // Debug.Log($"Got correction vector: {correction}");
-                // velocity += correction; // so this isn't technically a nudge, but it kind of works
             }
             return correction;
         }
