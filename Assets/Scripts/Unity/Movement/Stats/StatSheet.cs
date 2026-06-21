@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Movement.Application.Stats;
 using Movement.Core.Abstractions;
 using Movement.Core.Stats;
+using Movement.Unity.Abstractions;
 using Movement.Unity.Stats.StatSOs.Abstractions;
 using UnityEngine;
 
@@ -23,6 +24,7 @@ namespace Movement.Unity.Stats
                 return _statCollection;
             }
         }
+
         private IStatCollection _statCollection;
 
         // private void Awake()

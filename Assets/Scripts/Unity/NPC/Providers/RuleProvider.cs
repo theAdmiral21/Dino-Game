@@ -20,9 +20,9 @@ namespace NPC.Unity.Providers
         {
             switch (_ruleSet)
             {
-                case RuleSet.Rock:
+                case RuleSet.Throwable:
                     {
-                        RuleStateView = new RockRules();
+                        RuleStateView = new ThrowableRules();
                         break;
                     }
 

@@ -4,7 +4,7 @@ using Primitives.Physics;
 
 namespace Core.WeaponRules
 {
-    public class RockRules : IRuleState,
+    public class ThrowableRules : IRuleState,
                              IGravityState,
                              IFallState
     {
@@ -15,7 +15,7 @@ namespace Core.WeaponRules
 
         public bool AffectedByGravity => true;
         public bool ApplyGravity => true;
-        public RockRules()
+        public ThrowableRules()
         {
             _fallType = FallType.None;
         }

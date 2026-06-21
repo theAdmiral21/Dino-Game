@@ -29,6 +29,7 @@ namespace Physics.Features.Movement
         private ICalcAction _calcRotate;
         private ICalcAction _calcDoggoDash;
         private ICalcAction _calcDoggoDashUpdate;
+        private ICalcAction _calcFriction;
         public KinematicSolver()
         {
             // Set up your calculation actions
@@ -49,6 +50,7 @@ namespace Physics.Features.Movement
             _calcRotate = new CalcRotate();
             _calcDoggoDash = new CalcDodge();
             _calcDoggoDashUpdate = new CalcDodgeUpdate();
+            _calcFriction = new CalcFriction();
         }
 
         public KinematicResult Solve(ActorFrameData frameData)
@@ -162,16 +164,22 @@ namespace Physics.Features.Movement
                             frameData.CurrentState = _calcRotate.Calculate(frameData.ActorStats, rotate, ref frameData.CurrentState);
                             break;
                         }
-                    case DodgeResult dash:
+                    case DodgeResult dodge:
                         {
                             Debug.Log($"Dodge case");
-                            frameData.CurrentState = _calcDoggoDash.Calculate(frameData.ActorStats, dash, ref frameData.CurrentState);
+                            frameData.CurrentState = _calcDoggoDash.Calculate(frameData.ActorStats, dodge, ref frameData.CurrentState);
                             break;
                         }
-                    case DodgeUpdateResult dash:
+                    case DodgeUpdateResult dodgeUpdate:
                         {
                             Debug.Log($"Dodge update case");
-                            frameData.CurrentState = _calcDoggoDashUpdate.Calculate(frameData.ActorStats, dash, ref frameData.CurrentState);
+                            frameData.CurrentState = _calcDoggoDashUpdate.Calculate(frameData.ActorStats, dodgeUpdate, ref frameData.CurrentState);
+                            break;
+                        }
+                    case FrictionResult friction:
+                        {
+                            Debug.Log($"Dodge update case");
+                            frameData.CurrentState = _calcFriction.Calculate(frameData.ActorStats, friction, ref frameData.CurrentState);
                             break;
                         }
 

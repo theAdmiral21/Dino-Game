@@ -2,6 +2,11 @@ namespace Primitives.Rules
 {
     public enum RuleSet
     {
-        Rock
+        Throwable,
+        Raptor,
+        Rex,
+        Dilo,
+        Compy,
+
     }
 }

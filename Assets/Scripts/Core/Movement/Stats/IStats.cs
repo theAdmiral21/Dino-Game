@@ -101,4 +101,9 @@ namespace Movement.Core.Stats
         public float ZoomAccel { get; }
         public float ZoomBrakeAccel { get; }
     }
+
+    public interface IFrictionStats : IGameStat
+    {
+        public float Friction { get; }
+    }
 }

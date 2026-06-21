@@ -151,4 +151,9 @@ namespace Movement.Core.Abstractions
         public bool IsAiming { get; }
         public void SetAiming(bool val);
     }
+
+    public interface IFrictionState
+    {
+        public float Friction { get; }
+    }
 }

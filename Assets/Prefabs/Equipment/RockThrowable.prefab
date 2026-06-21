@@ -149,6 +149,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _stats:
   - {fileID: 11400000, guid: 53e8a8686ddfc3544a7a7db6d298c8c3, type: 2}
+  - {fileID: 11400000, guid: 62d2e7fa7e7a9554e94bd66dcc53c68f, type: 2}
 --- !u!114 &1283729961950611957
 MonoBehaviour:
   m_ObjectHideFlags: 0

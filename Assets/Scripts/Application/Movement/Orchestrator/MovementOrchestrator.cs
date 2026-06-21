@@ -49,13 +49,9 @@ namespace Movement.Application
             var runStopResult = RunStopRules.TryStopRun(actionContext.InputValues, actionContext.Facts, actionContext.RuleState);
             _actionResults.Add(runStopResult);
 
-            // var quickStepUpdate = QuickStepUpdateRules.TryQuickStepUpdate(actionContext.Facts, actionContext.InputValues, actionContext.RuleState);
-            // _actionResults.Add(quickStepUpdate);
+            var frictionResult = FrictionRules.TryFriction(actionContext.Facts, actionContext.RuleState);
+            _actionResults.Add(frictionResult);
 
-
-            // TODO figure out how to blend coming out of the quick step into other movement options.
-            // var quickStepStopResult = QuickStepStopRules.TryQuickStepStop(actionContext.InputValues, actionContext.Facts, actionContext.RuleState);
-            // _actionResults.Add(quickStepStopResult);
 
             // // After evaluation set values for the previous frame 
             IGroundedState groundState = actionContext.RuleState as IGroundedState;
@@ -63,11 +59,6 @@ namespace Movement.Application
             {
                 groundState.UpdateGroundedLastFrame(actionContext.Facts);
             }
-
-            // if (actionContext.RuleState.TryGet<IQuickStepState>(out var quickStepState))
-            // {
-            //     quickStepState.UpdateQuickSteppingLastFrame();
-            // }
 
             var dashUpdate = DodgeUpdateRules.TryDoggoDashUpdate(actionContext.Facts, actionContext.InputValues, actionContext.RuleState);
             _actionResults.Add(dashUpdate);
