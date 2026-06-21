@@ -161,39 +161,40 @@ namespace Physics.Application.Collisions
             {
                 if (!_previousCollisions.Contains(pair))
                 {
-                    if (pair.ActorA is ICollisionEnterEvent collisionEnterA)
+                    Debug.Log($"Collision entered for {pair.ActorA} and {pair.ActorB}");
+                    if (pair.ActorA.CollisionHandler is ICollisionEnterEvent collisionEnterA)
                     {
-                        collisionEnterA.OnCollisionEntered(pair.ActorA);
+                        collisionEnterA.OnCollisionEntered(pair.ActorB);
                     }
-                    if (pair.ActorB is ICollisionEnterEvent collisionEnterB)
+                    if (pair.ActorB != null && pair.ActorB.CollisionHandler is ICollisionEnterEvent collisionEnterB)
                     {
-                        collisionEnterB.OnCollisionEntered(pair.ActorB);
+                        collisionEnterB.OnCollisionEntered(pair.ActorA);
                     }
                 }
                 else
                 {
-                    if (pair.ActorA is ICollisionStayedEvent collisionEnterA)
+                    if (pair.ActorA.CollisionHandler is ICollisionStayedEvent collisionEnterA)
                     {
-                        collisionEnterA.OnCollisionStayed(pair.ActorA);
+                        collisionEnterA.OnCollisionStayed(pair.ActorB);
                     }
-                    if (pair.ActorB is ICollisionStayedEvent collisionEnterB)
+                    if (pair.ActorB != null && pair.ActorB.CollisionHandler is ICollisionStayedEvent collisionEnterB)
                     {
-                        collisionEnterB.OnCollisionStayed(pair.ActorB);
+                        collisionEnterB.OnCollisionStayed(pair.ActorA);
                     }
                 }
             }
             // collision exit
-            foreach (CollidingPair pair in _currentCollisions)
+            foreach (CollidingPair pair in _previousCollisions)
             {
                 if (!_currentCollisions.Contains(pair))
                 {
-                    if (pair.ActorA is ICollisionExitEvent collisionEnterA)
+                    if (pair.ActorA.CollisionHandler is ICollisionExitEvent collisionEnterA)
                     {
-                        collisionEnterA.OnCollisionExit(pair.ActorA);
+                        collisionEnterA.OnCollisionExit(pair.ActorB);
                     }
-                    if (pair.ActorB is ICollisionExitEvent collisionEnterB)
+                    if (pair.ActorB != null && pair.ActorB.CollisionHandler is ICollisionExitEvent collisionEnterB)
                     {
-                        collisionEnterB.OnCollisionExit(pair.ActorB);
+                        collisionEnterB.OnCollisionExit(pair.ActorA);
                     }
                 }
             }

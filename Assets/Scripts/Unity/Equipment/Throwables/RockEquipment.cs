@@ -7,6 +7,7 @@ using Game.Core.Execution;
 using Movement.Core.Movement.DataStructures;
 using Physics.Core.PhysicsActors;
 using Primitives.Items;
+using TMPro;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Rendering;
@@ -32,6 +33,7 @@ namespace Unity.Equipment
 
         private bool _weaponRaised;
         private Vector2 _aimPos;
+        private Vector2 _playerPos => new Vector2(transform.position.x, transform.position.y);
         private IGameContext _gameContext;
 
         public void Init(EquipmentStats stats, IGameContext gameContext)
@@ -89,8 +91,9 @@ namespace Unity.Equipment
                 rockObject.transform.position = transform.position;
                 rockObject.TryGetComponent(out IPhysicsActor actor);
                 rockObject.SetActive(true);
-                actor.EnqueueActionRequest(new ExternalImpulseRequest(_aimPos.normalized * Stats.MuzzleVelocity, -10));
-                Debug.Log($"Throwing rock with velocity: {_aimPos.normalized * Stats.MuzzleVelocity}");
+                Vector2 throwDirection = (_aimPos - _playerPos).normalized;
+                actor.EnqueueActionRequest(new ExternalImpulseRequest(throwDirection * Stats.MuzzleVelocity, -10));
+                Debug.Log($"Throwing rock with velocity: {throwDirection * Stats.MuzzleVelocity}");
                 StartCoroutine(FireRoutine());
             }
             else
