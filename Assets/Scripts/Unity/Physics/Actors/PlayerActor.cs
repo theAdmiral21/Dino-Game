@@ -91,7 +91,7 @@ namespace Physics.Unity.Actors
         {
             Debug.Log($"PlayerActor.Initialize() - bounds: {_bounds} - Frame: {Time.frameCount}");
             // Debug.Log($"Initializing PlayerActor!");
-            var rayConfig = new RaycastConfiguration(_bounds, _collisionLayer.value);
+            var rayConfig = new RaycastConfiguration(_bounds, _collisionLayer.value, gameObject.layer);
 
             // Add the body
             Body = new KinematicBody(_bounds, _transformProvider, rayConfig, _bodyType);

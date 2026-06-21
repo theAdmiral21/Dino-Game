@@ -55,7 +55,8 @@ namespace Physics.Unity.Actors
             _transformProvider = new UnityTransformProvider(transform);
             Debug.Log($"[BASE] player bounds: {_bounds}");
             // The collision layer should always be collision
-            _collisionLayer = LayerMask.GetMask("Collision");
+            // _collisionLayer = LayerMask.GetMask("Collision");
+            _collisionLayer = Physics2D.GetLayerCollisionMask(gameObject.layer);
 
             // Attempt to get the collision handler, if it's null nothing should happen
             CollisionHandler = GetComponent<ICollisionHandler>();

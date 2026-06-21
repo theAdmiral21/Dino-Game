@@ -28,6 +28,7 @@ using Game.Application.Cameras;
 using Game.Unity.Cameras;
 using Game.Core.Cameras;
 using Game.Unity.Scenes;
+using Physics.Unity.Physics;
 
 namespace Game.Unity
 {
@@ -47,8 +48,7 @@ namespace Game.Unity
         public GameStateManager GetGameStateManager => _gameStateManager;
         private GameStateManager _gameStateManager;
 
-        // public SimManager SimManager => _simManager;
-        // private SimManager _simManager;
+        private PhysicsManager _physicsManager;
 
         private IGameStateServices _gameStateServices;
         private IQuitExecutor _executeQuitService;
@@ -72,6 +72,9 @@ namespace Game.Unity
             }
             Instance = this;
             DontDestroyOnLoad(gameObject);
+
+            _physicsManager = GetComponentInChildren<PhysicsManager>();
+
             Debug.Log($"INSTANTIATED GameSystemsManager {GetInstanceID()}");
         }
 
@@ -142,6 +145,9 @@ namespace Game.Unity
             Debug.Log($"Starting scene as {_sceneServices.CurrentSceneService.CurrentScene}");
             _sceneServices.SceneEvents.RaiseChangeComplete(_sceneServices.CurrentSceneService.CurrentScene);
             Debug.Log($"Actual current scene: {SceneManager.GetActiveScene().name}");
+
+            // _physicsManager.RunSimulation = true;
+            // Debug.Log($"Starting simulation");
         }
 
         private void OnDestroy()

@@ -18,7 +18,7 @@ namespace Physics.Unity.Movement
         // public bool PrintCollisions;
         // public CollisionInfo CollisionInfo;
 
-        protected LayerMask _collisionMask;
+        // protected LayerMask _collisionMask;
 
         // public Collider2D Collider => _collider;
         // protected Collider2D _collider;
@@ -35,7 +35,7 @@ namespace Physics.Unity.Movement
         protected float _wallJumpCheckDist = 0.1f; // pixels I think
         public virtual void Awake()
         {
-            _collisionMask = LayerMask.GetMask("Collision");
+            // _collisionMask = LayerMask.GetMask("Collision");
             _cornerResolver = new CornerCorrection();
         }
 
@@ -44,10 +44,10 @@ namespace Physics.Unity.Movement
             // CollisionInfo.Reset();
         }
 
-        public void SetCollisionMask(LayerMask mask)
-        {
-            _collisionMask = mask;
-        }
+        // public void SetCollisionMask(LayerMask mask)
+        // {
+        //     _collisionMask = mask;
+        // }
 
         public Vector2 VerticalRaycast(ref Vector2 velocity, ref RaycastConfiguration rayConfig)
         {
@@ -59,7 +59,7 @@ namespace Physics.Unity.Movement
             {
                 Vector2 origin = velocity.y <= 0 ? rayConfig.Origins.BottomLeft + (rayConfig.RaySpacingX * i) : rayConfig.Origins.TopLeft + (rayConfig.RaySpacingX * i);
                 Vector2 dir = velocity.y <= 0 ? Vector2.down : Vector2.up;
-                RaycastHit2D hit = Physics2D.Raycast(origin, dir, _rayCastLengthY, _collisionMask);
+                RaycastHit2D hit = Physics2D.Raycast(origin, dir, _rayCastLengthY, rayConfig.CollisionLayer);
                 if (hit)
                 {
                     velocity.y = (hit.distance - rayConfig.SkinWidth) * dir.y;
@@ -119,7 +119,7 @@ namespace Physics.Unity.Movement
                 Vector2 origin = velocity.x < 0 ? rayConfig.Origins.BottomLeft + (rayConfig.RaySpacingY * i) : rayConfig.Origins.BottomRight + (rayConfig.RaySpacingY * i);
                 Vector2 dir = velocity.x < 0 ? Vector2.left : Vector2.right;
                 float castDist = _rayCastLengthX;
-                RaycastHit2D hit = Physics2D.Raycast(origin, dir, castDist, _collisionMask);
+                RaycastHit2D hit = Physics2D.Raycast(origin, dir, castDist, rayConfig.CollisionLayer);
                 if (hit)
                 {
 
@@ -212,7 +212,7 @@ namespace Physics.Unity.Movement
             }
 
             // Check for a collision
-            RaycastHit2D hit = Physics2D.Raycast(origin, velocity.normalized, velocity.magnitude, _collisionMask);
+            RaycastHit2D hit = Physics2D.Raycast(origin, velocity.normalized, velocity.magnitude, rayConfig.CollisionLayer);
             if (hit)
             {
                 // Debug.Log($"Corner collision: {hit.collider.name}");
@@ -237,7 +237,7 @@ namespace Physics.Unity.Movement
                 DrawColliderAtPoint(center, rayConfig);
             }
 
-            Collider2D overlap = Physics2D.OverlapBox(center, rayConfig.Bounds.Size, 0f, _collisionMask);
+            Collider2D overlap = Physics2D.OverlapBox(center, rayConfig.Bounds.Size, 0f, rayConfig.CollisionLayer);
             if (overlap != null)
             {
                 Debug.Log($"Overlapped with: {overlap.name}");

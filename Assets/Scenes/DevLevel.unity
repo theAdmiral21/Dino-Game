@@ -135,7 +135,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &23432273
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -219,8 +219,20 @@ PrefabInstance:
       value: CameraBrain
       objectReference: {fileID: 0}
     - target: {fileID: 2918593199546120762, guid: c9b5af2e600af4042a4556d8fbbcea2a, type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2918593199546120762, guid: c9b5af2e600af4042a4556d8fbbcea2a, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2918593199546120762, guid: c9b5af2e600af4042a4556d8fbbcea2a, type: 3}
       propertyPath: m_TagString
       value: MainCamera
+      objectReference: {fileID: 0}
+    - target: {fileID: 4937023139108469013, guid: c9b5af2e600af4042a4556d8fbbcea2a, type: 3}
+      propertyPath: m_Layer
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6981302665189072424, guid: c9b5af2e600af4042a4556d8fbbcea2a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5544,7 +5556,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &602966097
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5672,7 +5684,7 @@ GameObject:
   m_Component:
   - component: {fileID: 619394802}
   - component: {fileID: 619394801}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Global Light 2D
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5755,7 +5767,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 718601783}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: TileMapHolder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5994,6 +6006,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DebugStartZone
       objectReference: {fileID: 0}
+    - target: {fileID: 4271873116202391552, guid: cbdc44df1e4dd9e4aa9efb46dc6b9c08, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6196,9 +6212,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 558349680886588602, guid: e5a7d9a03f6c2364185f6c250c2a4071, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3414323088077482845, guid: e5a7d9a03f6c2364185f6c250c2a4071, type: 3}
       propertyPath: m_Name
       value: LevelStart
+      objectReference: {fileID: 0}
+    - target: {fileID: 3414323088077482845, guid: e5a7d9a03f6c2364185f6c250c2a4071, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 3414323088077482845, guid: e5a7d9a03f6c2364185f6c250c2a4071, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -7708,6 +7736,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: RockPickUp
       objectReference: {fileID: 0}
+    - target: {fileID: 3649226777923163161, guid: 2cc9d1dff700c29458aa1aa8380fa709, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3649226777923163161, guid: 2cc9d1dff700c29458aa1aa8380fa709, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8029624024802653740, guid: 2cc9d1dff700c29458aa1aa8380fa709, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.19
@@ -7826,6 +7862,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BootStrapper
       objectReference: {fileID: 0}
+    - target: {fileID: 2160671938162221663, guid: a9fbc00a73a30cc4b9d2de6a1d29c592, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 2661143700699149591, guid: a9fbc00a73a30cc4b9d2de6a1d29c592, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -7865,6 +7905,10 @@ PrefabInstance:
     - target: {fileID: 2661143700699149591, guid: a9fbc00a73a30cc4b9d2de6a1d29c592, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8560295147042118345, guid: a9fbc00a73a30cc4b9d2de6a1d29c592, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

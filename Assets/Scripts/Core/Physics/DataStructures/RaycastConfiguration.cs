@@ -17,11 +17,13 @@ namespace Physics.Core.DataStructures
         public int RaycastCountHorizontal { get; set; }
         private IBoundsProvider _boundsProvider;
         public int CollisionLayer;
-        public RaycastConfiguration(IBoundsProvider boundsProvider, int collisionLayer)
+        public int PhysicalLayer;
+        public RaycastConfiguration(IBoundsProvider boundsProvider, int collisionLayer, int physicalLayer)
         {
             Debug.Log($"Constructing new raycast configuration with: {boundsProvider} - frame {Time.frameCount}");
             _boundsProvider = boundsProvider;
             CollisionLayer = collisionLayer;
+            PhysicalLayer = physicalLayer;
             SkinWidth = 0.04f;
             _origins = new RaycastOrigins(_boundsProvider.GetBounds());
             RaySpacingX = Vector2.zero;

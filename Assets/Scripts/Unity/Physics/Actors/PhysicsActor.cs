@@ -112,8 +112,7 @@ namespace Physics.Unity.Actors
 
         public override void Initialize(IGameContext context)
         {
-            var rayConfig = new RaycastConfiguration(_bounds, _collisionLayer.value);
-
+            RayConfig = new RaycastConfiguration(_bounds, _collisionLayer.value, gameObject.layer);
             // Add the body
             Body = new KinematicBody(_bounds, _transformProvider, RayConfig, _bodyType);
 
@@ -126,7 +125,7 @@ namespace Physics.Unity.Actors
                     null,
                     null,
                     null,
-                    rayConfig,
+                    RayConfig,
                     null);
             }
             else
@@ -137,7 +136,7 @@ namespace Physics.Unity.Actors
                     context.GameStateServices.GameState,
                     _ruleState,
                     _stats,
-                    rayConfig,
+                    RayConfig,
                     null);
             }
         }

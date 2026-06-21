@@ -59,6 +59,7 @@ namespace Physics.Application.Collisions
         // if actor.Brain.FrameData.CollidingActors.Count > 0 -> Colliding = yes, process separately?
         private bool IsColliding(IPhysicsActor actorA, IPhysicsActor actorB)
         {
+            if (!CanCollide(actorA, actorB)) return false;
             // Get the bounds for each actor
             AABB A = actorA.Body.Bounds.GetBounds();
             AABB B = actorB.Body.Bounds.GetBounds();
@@ -80,13 +81,28 @@ namespace Physics.Application.Collisions
                 );
         }
 
+        private bool CanCollide(IPhysicsActor actorA, IPhysicsActor actorB)
+        {
+            if (actorA == null || actorB == null) return false;
+            Debug.Log($"Actors are not null");
+            if (actorA.Body == null || actorB.Body == null) return false;
+            Debug.Log($"Actors bodies are not null");
+            if (actorA.Body.RayConfig == null || actorB.Body.RayConfig == null) return false;
+            Debug.Log($"Actors raycast configurations are not null");
+            // Compare mask A against layer B
+            int maskA = actorA.Body.RayConfig.CollisionLayer;
+            int layerB = actorB.Body.RayConfig.PhysicalLayer;
+
+            return (maskA & (1 << layerB)) != 0;
+        }
+
         public Dictionary<IPhysicsActor, Vector2> ResolveCollisions()
         {
             _resolveDict.Clear();
             // if (_currentCollisions.Count == 0) Debug.Log($"No collisions to resolve");
             foreach (var collision in _currentCollisions)
             {
-                // Debug.Log($"Resolving collision between {collision.ActorA} and {collision.ActorB}");
+                Debug.Log($"Resolving collision between {collision.ActorA} and {collision.ActorB}");
                 // Only move the actor
                 if (collision.ActorB != null)
                 {

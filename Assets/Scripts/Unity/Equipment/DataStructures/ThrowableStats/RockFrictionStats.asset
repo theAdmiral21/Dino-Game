@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d7c55c6f3cbfdf47a2505f5be2e8005, type: 3}
   m_Name: RockFrictionStats
   m_EditorClassIdentifier: 
-  _frictionalValue: 0
+  _frictionalValue: 50

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1402902174308289943}
   - component: {fileID: 7655501102146838807}
   - component: {fileID: 5249410121241326152}
-  m_Layer: 13
+  m_Layer: 5
   m_Name: PlayerBackground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 5829892454548295365}
   - component: {fileID: 7743871843389786104}
   - component: {fileID: 4931203310440659942}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Icon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -172,7 +172,7 @@ GameObject:
   - component: {fileID: 4412280966197886469}
   - component: {fileID: 2249799241894330433}
   - component: {fileID: 8378210518390471560}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Separator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -308,7 +308,7 @@ GameObject:
   - component: {fileID: 3426450071909460147}
   - component: {fileID: 8490344689119938566}
   - component: {fileID: 703695757013968363}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Count
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -445,7 +445,7 @@ GameObject:
   - component: {fileID: 8254101805162329223}
   - component: {fileID: 1405072253291167627}
   - component: {fileID: 873359025223351855}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: DolphinTransition
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -537,7 +537,7 @@ GameObject:
   - component: {fileID: 314952880658503192}
   - component: {fileID: 6767322873516382396}
   - component: {fileID: 3340520400644926998}
-  m_Layer: 13
+  m_Layer: 5
   m_Name: Hud
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -669,7 +669,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5880483892209731438}
   - component: {fileID: 2458664017892659372}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: TransitionView
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -722,7 +722,7 @@ GameObject:
   - component: {fileID: 776507021621657102}
   - component: {fileID: 4629787330690884725}
   - component: {fileID: 1170603852264043655}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: BallTransition
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -811,7 +811,7 @@ GameObject:
   - component: {fileID: 8139711702593995239}
   - component: {fileID: 239088675589037584}
   - component: {fileID: 8826680005489469346}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Medkits
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -882,7 +882,7 @@ GameObject:
   - component: {fileID: 3092843018429945012}
   - component: {fileID: 4629755800433331740}
   - component: {fileID: 891242351020381433}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Icon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -956,7 +956,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6589080041605250826}
   - component: {fileID: 5756808771179559087}
-  m_Layer: 13
+  m_Layer: 5
   m_Name: cm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1001,7 +1001,7 @@ GameObject:
   - component: {fileID: 3973424041266724046}
   - component: {fileID: 989866811382884577}
   - component: {fileID: 8087778033166519531}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Equipped
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1076,7 +1076,7 @@ GameObject:
   - component: {fileID: 6130349240558927943}
   - component: {fileID: 3700839497735469584}
   - component: {fileID: 2278181804135991819}
-  m_Layer: 13
+  m_Layer: 5
   m_Name: FlashlightBattery
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1153,7 +1153,7 @@ GameObject:
   - component: {fileID: 5281563656462957556}
   - component: {fileID: 2090964242312355496}
   - component: {fileID: 2410244811183560473}
-  m_Layer: 13
+  m_Layer: 5
   m_Name: PlayerCamera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1296,7 +1296,7 @@ GameObject:
   - component: {fileID: 4278839767339677953}
   - component: {fileID: 5160257813691022348}
   - component: {fileID: 2224107980987038727}
-  m_Layer: 13
+  m_Layer: 5
   m_Name: Health
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1371,7 +1371,7 @@ GameObject:
   - component: {fileID: 690460722662128289}
   - component: {fileID: 217323306551198949}
   - component: {fileID: 8738032510050001022}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: StorageCount
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1507,7 +1507,7 @@ GameObject:
   - component: {fileID: 7742701427606627622}
   - component: {fileID: 3639050710424217786}
   - component: {fileID: 5025071503193534572}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: MagCount
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1723,6 +1723,10 @@ PrefabInstance:
     - target: {fileID: 7223502291765433002, guid: beb5b0dd0fe319947a73315a0cdfa5ed, type: 3}
       propertyPath: m_Name
       value: BoneTransition
+      objectReference: {fileID: 0}
+    - target: {fileID: 7223502291765433002, guid: beb5b0dd0fe319947a73315a0cdfa5ed, type: 3}
+      propertyPath: m_Layer
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

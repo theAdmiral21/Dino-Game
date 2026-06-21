@@ -36,12 +36,12 @@ namespace Physics.Unity.Physics
         [SerializeField] private SerializedInterface<IPhysicsMonitor> _physicsMonitorMono;
         private IPhysicsMonitor _physicsMonitor => _physicsMonitorMono.Interface;
 
-        // private HashSet<OverlapPair> _previousTriggerPairs = new();
-        // private HashSet<OverlapPair> _currentTriggerPairs = new();
+
 
         private IDetectCollision _collisionDetection;
         private IDetectTrigger _triggerDetection;
 
+        // public bool RunSimulation { get; set; }
         public static PhysicsManager Instance { get; private set; }
 
         // private StringBuilder _debugSb = new();
@@ -88,6 +88,8 @@ namespace Physics.Unity.Physics
 
         private void FixedUpdate()
         {
+            // if (!RunSimulation) return;
+
             float dt = Time.fixedDeltaTime;
             // Update intent
             // NOTE eventually I need to get rid of all of these foreach loops and use just for loops. 
