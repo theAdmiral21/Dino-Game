@@ -16,9 +16,9 @@ TagManager:
   - Enemy
   - Projectiles
   - None
-  - 
-  - 
-  - 
+  - SoundDetection
+  - VisualDetection
+  - ScentDetection
   - 
   - 
   - 

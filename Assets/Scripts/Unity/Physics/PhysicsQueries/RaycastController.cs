@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Core.Physics.Collisions.DataStructures;
+using Game.Core.Effects;
 using Physics.Application.Abstractions;
 using Physics.Core.DataStructures;
 using Physics.Core.PhysicsActors;
@@ -65,13 +66,20 @@ namespace Physics.Unity.Movement
                     velocity.y = (hit.distance - rayConfig.SkinWidth) * dir.y;
                     _rayCastLengthY = hit.distance;
 
-                    hit.collider.TryGetComponent(out IPhysicsActor actor);
                     _horizontalHits.Add(new RayCollision
                     {
-                        CollisionPoint = hit.point,
-                        Normal = hit.normal,
-                        OtherActor = actor
+                        HitInfo = hit,
                     });
+
+                    // hit.collider.TryGetComponent(out IPhysicsActor actor);
+                    // hit.collider.TryGetComponent(out ISurfaceTag surface);
+                    // _horizontalHits.Add(new RayCollision
+                    // {
+                    //     CollisionPoint = hit.point,
+                    //     Normal = hit.normal,
+                    //     OtherActor = actor,
+                    //     Surface = surface.Tag,
+                    // });
 
                     Debug.Log($"Got vertical collision with {hit.collider.name}");
                 }
@@ -126,13 +134,20 @@ namespace Physics.Unity.Movement
                     velocity.x = (hit.distance - rayConfig.SkinWidth) * dir.x;
                     _rayCastLengthX = hit.distance;
 
-                    hit.collider.TryGetComponent(out IPhysicsActor actor);
-                    _horizontalHits.Add(new RayCollision
+                    _verticalHits.Add(new RayCollision
                     {
-                        CollisionPoint = hit.point,
-                        Normal = hit.normal,
-                        OtherActor = actor
+                        HitInfo = hit,
                     });
+
+                    // hit.collider.TryGetComponent(out IPhysicsActor actor);
+                    // hit.collider.TryGetComponent(out ISurfaceTag surface);
+                    // _horizontalHits.Add(new RayCollision
+                    // {
+                    //     CollisionPoint = hit.point,
+                    //     Normal = hit.normal,
+                    //     OtherActor = actor,
+                    //     Surface = surface.Tag,
+                    // });
 
                     Debug.Log($"Got horizontal collision with {hit.collider.name}");
 
@@ -170,11 +185,8 @@ namespace Physics.Unity.Movement
 
         public List<RayCollision> GetCollisions()
         {
-            // Debug.Log($"Gathering raycast collisions");
             // Combine the sets
-            // Debug.Log($"horizontal hits: {_horizontalHits.Count}; vertical hits: {_verticalHits.Count}");
             _horizontalHits.UnionWith(_verticalHits);
-            // Debug.Log($"Union hits: {_horizontalHits.Count}");
             return _horizontalHits.ToList();
         }
 

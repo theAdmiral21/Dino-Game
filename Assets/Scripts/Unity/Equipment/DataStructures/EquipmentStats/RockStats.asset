@@ -19,4 +19,4 @@ MonoBehaviour:
   KnockBack: 0
   HitStun: 0
   HurtType: 2
-  MuzzleVelocity: 4
+  MuzzleVelocity: 20

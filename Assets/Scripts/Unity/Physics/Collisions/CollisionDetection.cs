@@ -7,8 +7,9 @@ using Physics.Core.PhysicsActors;
 using Core.Physics.Collisions.DataStructures;
 using Core.Physics.Triggers.Callbacks;
 using Core.Physics.Collision.Callbacks;
+using Movement.Core.Rules;
 
-namespace Physics.Application.Collisions
+namespace Physics.Unity.Collisions
 {
     public class CollisionDetection : IDetectCollision
     {
@@ -26,9 +27,18 @@ namespace Physics.Application.Collisions
                 var actor = actors[i];
                 for (int j = 0; j < actor.Brain.FrameData.RayCollisions.Count; j++)
                 {
-                    var otherActor = actor.Brain.FrameData.RayCollisions[j].OtherActor;
-                    _currentCollisions.Add(new CollidingPair(actor, otherActor));
-
+                    List<RayCollision> collision = actor.Brain.FrameData.RayCollisions;
+                    var otherActor = GetActorHelper(collision[j]);
+                    if (otherActor != null)
+                    {
+                        Debug.Log($"Adding an actor");
+                        _currentCollisions.Add(new CollidingPair(actor, otherActor));
+                    }
+                    else
+                    {
+                        Debug.Log($"Adding a ray collision");
+                        _currentCollisions.Add(new CollidingPair(actor, collision[j]));
+                    }
                 }
             }
 
@@ -52,6 +62,13 @@ namespace Physics.Application.Collisions
                 }
             }
             return ResolveCollisions();
+        }
+
+
+        private IPhysicsActor GetActorHelper(RayCollision rayCollision)
+        {
+            rayCollision.HitInfo.collider.TryGetComponent<IPhysicsActor>(out var actor);
+            return actor;
         }
 
 
@@ -164,12 +181,14 @@ namespace Physics.Application.Collisions
                     Debug.Log($"Collision entered for {pair.ActorA} and {pair.ActorB}");
                     if (pair.ActorA.CollisionHandler is ICollisionEnterEvent collisionEnterA)
                     {
-                        collisionEnterA.OnCollisionEntered(pair.ActorB);
+                        Debug.Log($"Calling collision entered for {pair.ActorA}");
+                        collisionEnterA.OnCollisionEntered(pair.CollisionInfoB());
+
                     }
-                    if (pair.ActorB != null && pair.ActorB.CollisionHandler is ICollisionEnterEvent collisionEnterB)
-                    {
-                        collisionEnterB.OnCollisionEntered(pair.ActorA);
-                    }
+                    // if (pair.ActorB != null && pair.ActorB.CollisionHandler is ICollisionEnterEvent collisionEnterB)
+                    // {
+                    //     collisionEnterB.OnCollisionEntered(pair.CollisionInfoA());
+                    // }
                 }
                 else
                 {

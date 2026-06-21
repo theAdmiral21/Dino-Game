@@ -1,3 +1,5 @@
+using Game.Core.Effects;
+using Physics.Core.DataStructures;
 using Physics.Core.PhysicsActors;
 using Primitives.Physics;
 using UnityEngine;
@@ -23,6 +25,7 @@ namespace Core.Physics.Collisions.DataStructures
 
         // Overlap is with respect to body A
         public Vector2 SeparationVector => CalcPenetration();
+        public RayCollision Collision;
 
         public CollidingPair(IPhysicsActor bodyA, IPhysicsActor bodyB)
         {
@@ -31,6 +34,63 @@ namespace Core.Physics.Collisions.DataStructures
 
             // // Calculate overlap
             // CalcPenetration();
+        }
+
+        public CollidingPair(IPhysicsActor bodyA, RayCollision rayCollision)
+        {
+            ActorA = bodyA;
+            ActorB = null; ;
+            Collision = rayCollision;
+            // // Calculate overlap
+            // CalcPenetration();
+        }
+
+        public CollisionInfo CollisionInfoA()
+        {
+            ISurfaceTag surfaceTag = null;
+            if (Collision.HitInfo)
+            {
+                Collision.HitInfo.collider.TryGetComponent(out surfaceTag);
+            }
+            return new CollisionInfo
+            {
+                CollisionPoint = Vector2.zero,
+                Normal = SeparationVector,
+                Collider = Collision.HitInfo.collider,
+                OtherActor = ActorB,
+                Surface = surfaceTag.Tag,
+            };
+        }
+
+        public CollisionInfo CollisionInfoB()
+        {
+            Debug.Log($"Collision info: {Collision.HitInfo.collider}");
+            ISurfaceTag surfaceTag = null;
+            if (Collision.HitInfo)
+            {
+                Collision.HitInfo.collider.TryGetComponent(out surfaceTag);
+            }
+
+            return new CollisionInfo
+            {
+                CollisionPoint = Collision.HitInfo.point,
+                Normal = Collision.HitInfo.normal,
+                Collider = Collision.HitInfo.collider,
+                OtherActor = ActorA,
+                Surface = surfaceTag.Tag,
+            };
+            // }
+            // else
+            // {
+            //     return new CollisionInfo
+            //     {
+            //         CollisionPoint = Vector2.zero,
+            //         Normal = SeparationVector,
+            //         Collider = null,
+            //         OtherActor = ActorA,
+            //         Surface = Primitives.Audio.SurfaceType.None,
+            //     };
+            // }
         }
 
         private Vector2 CalcPenetration()
