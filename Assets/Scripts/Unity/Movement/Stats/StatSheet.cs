@@ -44,7 +44,7 @@ namespace Movement.Unity.Stats
             }
             _statCollection = new StatCollection(statDict);
             _statsSet = true;
-            Debug.Log($"Stats set: {_statsSet}");
+            // Debug.Log($"Stats set: {_statsSet}");
         }
 
         public T Get<T>()

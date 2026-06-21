@@ -47,7 +47,9 @@ namespace Application.Inventory
 
         public int Deposit(int amount)
         {
-            int availableSpace = _maxAllowed - amount;
+            // Check how much room we have
+            int availableSpace = _maxAllowed - Quantity;
+
             if (amount <= availableSpace)
             {
                 IncrementQuantity(amount);

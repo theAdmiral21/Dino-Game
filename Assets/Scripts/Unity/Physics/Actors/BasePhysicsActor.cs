@@ -53,7 +53,7 @@ namespace Physics.Unity.Actors
             Collider2D collider = GetComponent<Collider2D>();
             _bounds = new UnityColliderBoundsProvider(collider);
             _transformProvider = new UnityTransformProvider(transform);
-            Debug.Log($"[BASE] player bounds: {_bounds}");
+            // Debug.Log($"[BASE] player bounds: {_bounds}");
             // The collision layer should always be collision
             // _collisionLayer = LayerMask.GetMask("Collision");
             _collisionLayer = Physics2D.GetLayerCollisionMask(gameObject.layer);
@@ -62,7 +62,7 @@ namespace Physics.Unity.Actors
             CollisionHandler = GetComponent<ICollisionHandler>();
 
 
-            Debug.Log($"BasePhysicsActor.Awake() - bounds: {_bounds} collider: {GetComponent<Collider2D>()} - Frame: {Time.frameCount}");
+            // Debug.Log($"BasePhysicsActor.Awake() - bounds: {_bounds} collider: {GetComponent<Collider2D>()} - Frame: {Time.frameCount}");
         }
         private new void OnDestroy()
         {

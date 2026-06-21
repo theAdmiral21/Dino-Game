@@ -42,7 +42,7 @@ namespace Unity.Equipment
         }
         public void PostInitialize(IGameContext context)
         {
-            Debug.Assert(_actorEventBus != null, "Failed to set actor event bus");
+            // Debug.Assert(_actorEventBus != null, "Failed to set actor event bus");
         }
 
         public void RouteEquipmentResult(IEquipmentActionResult result)
@@ -54,19 +54,19 @@ namespace Unity.Equipment
             {
                 case RaiseWeaponResult raiseWeapon:
                     {
-                        Debug.Log($"Asking to raise weapon");
+                        // Debug.Log($"Asking to raise weapon");
                         Equipped.RaiseWeapon(raiseWeapon.IsRaising);
                         break;
                     }
                 case AimResult aim:
                     {
-                        Debug.Log($"Asking to aim weapon");
+                        // Debug.Log($"Asking to aim weapon");
                         Equipped.Aim(aim.MousePosition);
                         break;
                     }
                 case ShootResult shoot:
                     {
-                        Debug.Log($"Asking to shoot weapon");
+                        // Debug.Log($"Asking to shoot weapon");
                         Equipped.Fire();
                         break;
                     }

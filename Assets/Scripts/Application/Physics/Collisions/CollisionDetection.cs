@@ -83,12 +83,12 @@ namespace Physics.Application.Collisions
 
         private bool CanCollide(IPhysicsActor actorA, IPhysicsActor actorB)
         {
-            if (actorA == null || actorB == null) return false;
-            Debug.Log($"Actors are not null");
-            if (actorA.Body == null || actorB.Body == null) return false;
-            Debug.Log($"Actors bodies are not null");
-            if (actorA.Body.RayConfig == null || actorB.Body.RayConfig == null) return false;
-            Debug.Log($"Actors raycast configurations are not null");
+            // if (actorA == null || actorB == null) return false;
+            // Debug.Log($"Actors are not null");
+            // if (actorA.Body == null || actorB.Body == null) return false;
+            // Debug.Log($"Actors bodies are not null");
+            // if (actorA.Body.RayConfig == null || actorB.Body.RayConfig == null) return false;
+            // Debug.Log($"Actors raycast configurations are not null");
             // Compare mask A against layer B
             int maskA = actorA.Body.RayConfig.CollisionLayer;
             int layerB = actorB.Body.RayConfig.PhysicalLayer;
@@ -102,7 +102,7 @@ namespace Physics.Application.Collisions
             // if (_currentCollisions.Count == 0) Debug.Log($"No collisions to resolve");
             foreach (var collision in _currentCollisions)
             {
-                Debug.Log($"Resolving collision between {collision.ActorA} and {collision.ActorB}");
+                // Debug.Log($"Resolving collision between {collision.ActorA} and {collision.ActorB}");
                 // Only move the actor
                 if (collision.ActorB != null)
                 {

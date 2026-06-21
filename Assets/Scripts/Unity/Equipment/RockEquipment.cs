@@ -39,7 +39,7 @@ namespace Unity.Equipment
             Stats = stats;
             _magazine = new Magazine(stats.MagazineSize);
             _gameContext = gameContext;
-            Debug.Log($"Rock initialized");
+            // Debug.Log($"Rock initialized");
         }
 
         public void Aim(Vector2 mosPos)
@@ -47,7 +47,7 @@ namespace Unity.Equipment
             // Draw a cross hair
 
             // Draw an arc from the player to the cross hair, is that too easy?
-            Debug.Log($"Aiming rock!");
+            // Debug.Log($"Aiming rock!");
 
             // Draw a line from the equipment to the cursor
             _aimPos = Camera.main.ScreenToWorldPoint(mosPos);
@@ -69,11 +69,11 @@ namespace Unity.Equipment
 
         public void Fire()
         {
-            Debug.Log($"Attempting to throw rock!");
+            // Debug.Log($"Attempting to throw rock!");
             // try to consume a rock
             if (_magazine.ConsumeRound())
             {
-                Debug.Log($"Rock fired!");
+                // Debug.Log($"Rock fired!");
                 var rockObject = Instantiate(_rockPrefab);
                 // hmm I have to initialize this entire thing before doing anything with it..
                 var intializables = rockObject.GetComponentsInChildren<IInitializable<IGameContext>>();
@@ -89,7 +89,8 @@ namespace Unity.Equipment
                 rockObject.transform.position = transform.position;
                 rockObject.TryGetComponent(out IPhysicsActor actor);
                 rockObject.SetActive(true);
-                actor.EnqueueActionRequest(new ExternalImpulseRequest(_aimPos * Stats.MuzzleVelocity, -10));
+                actor.EnqueueActionRequest(new ExternalImpulseRequest(_aimPos.normalized * Stats.MuzzleVelocity, -10));
+                Debug.Log($"Throwing rock with velocity: {_aimPos.normalized * Stats.MuzzleVelocity}");
                 StartCoroutine(FireRoutine());
             }
             else
@@ -111,7 +112,7 @@ namespace Unity.Equipment
             _weaponRaised = raiseWeapon;
             if (_weaponRaised)
             {
-                Debug.Log($"Raising rock!");
+                // Debug.Log($"Raising rock!");
                 // if you have rocks
 
                 // Other wise reload
@@ -134,7 +135,7 @@ namespace Unity.Equipment
         public void RequestReload()
         {
             int requestAmount = _magazine.Capacity - _magazine.RoundCount;
-            Debug.Log($"Requesting: {requestAmount} rocks");
+            // Debug.Log($"Requesting: {requestAmount} rocks");
             OnReload?.Invoke(requestAmount, _magazine.ReplenishRounds);
         }
 
