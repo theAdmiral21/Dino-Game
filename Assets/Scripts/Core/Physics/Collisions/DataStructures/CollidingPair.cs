@@ -64,7 +64,7 @@ namespace Core.Physics.Collisions.DataStructures
 
         public CollisionInfo CollisionInfoB()
         {
-            Debug.Log($"Collision info: {Collision.HitInfo.collider}");
+            // Debug.Log($"Collision info: {Collision.HitInfo.collider}");
             ISurfaceTag surfaceTag = null;
             if (Collision.HitInfo)
             {

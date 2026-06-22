@@ -11,11 +11,10 @@ namespace Unity.Equipment.DataStructures
         public int MagazineSize;
         public float ReloadTime;
         public float FireRate;
-        public int Damage;
-        public float KnockBack;
-        public float HitStun;
         public DamageType HurtType;
         public float MuzzleVelocity;
+        public float SoundRadius;
+        public ProjectileSO ProjectileStats;
 
         public EquipmentStats BuildRunTime()
         {
@@ -23,11 +22,9 @@ namespace Unity.Equipment.DataStructures
                                 MagazineSize,
                                 ReloadTime,
                                 FireRate,
-                                Damage,
-                                KnockBack,
-                                HitStun,
-                                HurtType,
-                                MuzzleVelocity
+                                MuzzleVelocity,
+                                SoundRadius,
+                                ProjectileStats.BuildRunTime()
                             );
         }
 

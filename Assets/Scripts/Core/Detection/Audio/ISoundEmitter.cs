@@ -7,8 +7,6 @@ namespace Core.Detection.Audio
     {
         public Vector2 Origin { get; }
         public float MinRadius { get; }
-        public SurfaceType GetSurface();
-        public float GetSpeed();
-        public void EmitSound(float soundRadius);
+        public void EmitSound();
     }
 }

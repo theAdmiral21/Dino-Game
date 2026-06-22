@@ -2,15 +2,11 @@ using System;
 using System.Collections;
 using Application.Inventory;
 using Core.Equipment;
-using Core.Inventory.DataStructures.Consumers;
 using Game.Core.Execution;
 using Movement.Core.Movement.DataStructures;
 using Physics.Core.PhysicsActors;
 using Primitives.Items;
-using TMPro;
-using UnityEditor;
 using UnityEngine;
-using UnityEngine.Rendering;
 
 namespace Unity.Equipment
 {
@@ -35,13 +31,16 @@ namespace Unity.Equipment
         private Vector2 _aimPos;
         private Vector2 _playerPos => new Vector2(transform.position.x, transform.position.y);
         private IGameContext _gameContext;
+        private ProjectileStats _projectileStats;
 
-        public void Init(EquipmentStats stats, IGameContext gameContext)
+        public void Init(EquipmentStats equipmentStats, IGameContext gameContext)
         {
-            Stats = stats;
-            _magazine = new Magazine(stats.MagazineSize);
+            Stats = equipmentStats;
+            _magazine = new Magazine(equipmentStats.MagazineSize);
+            _projectileStats = Stats.Projectile;
             _gameContext = gameContext;
             // Debug.Log($"Rock initialized");
+
         }
 
         public void Aim(Vector2 mosPos)
@@ -77,6 +76,7 @@ namespace Unity.Equipment
             {
                 // Debug.Log($"Rock fired!");
                 var rockObject = Instantiate(_rockPrefab);
+                rockObject.GetComponentInChildren<IInitThrowable>().Init(_projectileStats);
                 // hmm I have to initialize this entire thing before doing anything with it..
                 var intializables = rockObject.GetComponentsInChildren<IInitializable<IGameContext>>();
 
@@ -131,7 +131,7 @@ namespace Unity.Equipment
             else
             {
                 // lower the weapon
-                Debug.Log($"Lowering rock!");
+                // Debug.Log($"Lowering rock!");
             }
         }
 

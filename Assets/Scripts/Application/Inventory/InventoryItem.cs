@@ -36,7 +36,7 @@ namespace Application.Inventory
         public void HandleReload(int requestedAmount, Action<int> replenishCallback)
         {
             int withdrawn = Withdraw(requestedAmount);
-            Debug.Log($"Withdrew {withdrawn} rocks");
+            // Debug.Log($"Withdrew {withdrawn} rocks");
             replenishCallback?.Invoke(withdrawn);
             _inventoryEventBus.Publish(new MagazineQuantityChanged
             {
@@ -108,7 +108,7 @@ namespace Application.Inventory
             {
                 CurrentQuantity = Quantity
             });
-            Debug.Log($"Emitted quantity changed event with amount: {Quantity}");
+            // Debug.Log($"Emitted quantity changed event with amount: {Quantity}");
         }
 
 

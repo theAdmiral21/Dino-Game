@@ -47,7 +47,7 @@ namespace Unity.Equipment
 
         public void RouteEquipmentResult(IEquipmentActionResult result)
         {
-            Debug.Log($"Switching on result: {result}");
+            // Debug.Log($"Switching on result: {result}");
             if (Equipped == null) return;
 
             switch (result)

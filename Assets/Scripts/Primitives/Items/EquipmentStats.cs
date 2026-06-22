@@ -7,30 +7,24 @@ namespace Primitives.Items
         public readonly int MagazineSize;
         public readonly float ReloadTime;
         public readonly float FireRate;
-        public readonly int Damage;
-        public readonly float KnockBack;
-        public readonly float HitStun;
-        public readonly DamageType HurtType;
         public readonly float MuzzleVelocity;
+        public readonly float SoundRadius;
+        public readonly ProjectileStats Projectile;
 
         public EquipmentStats(
                                 int magSize,
                                 float reloadTime,
                                 float fireRate,
-                                int damage,
-                                float knockBack,
-                                float hitStun,
-                                DamageType damageType,
-                                float muzzleVelocity)
+                                float muzzleVelocity,
+                                float soundRadius,
+                                ProjectileStats projectileStats)
         {
             MagazineSize = magSize;
             ReloadTime = reloadTime;
             FireRate = fireRate;
-            Damage = damage;
-            KnockBack = knockBack;
-            HitStun = hitStun;
-            HurtType = damageType;
             MuzzleVelocity = muzzleVelocity;
+            SoundRadius = soundRadius;
+            Projectile = projectileStats;
         }
     }
 }

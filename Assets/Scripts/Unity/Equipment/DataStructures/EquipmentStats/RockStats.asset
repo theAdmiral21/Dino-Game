@@ -15,8 +15,7 @@ MonoBehaviour:
   MagazineSize: 1
   ReloadTime: 1
   FireRate: 0
-  Damage: 0
-  KnockBack: 0
-  HitStun: 0
   HurtType: 2
   MuzzleVelocity: 20
+  SoundRadius: 0
+  ProjectileStats: {fileID: 11400000, guid: 9def61c6b99efd94586cb4713e314ad6, type: 2}

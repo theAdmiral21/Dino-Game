@@ -81,7 +81,7 @@ namespace Physics.Unity.Movement
                     //     Surface = surface.Tag,
                     // });
 
-                    Debug.Log($"Got vertical collision with {hit.collider.name}");
+                    // Debug.Log($"Got vertical collision with {hit.collider.name}");
                 }
 
                 // Save this frame's result
@@ -149,7 +149,7 @@ namespace Physics.Unity.Movement
                     //     Surface = surface.Tag,
                     // });
 
-                    Debug.Log($"Got horizontal collision with {hit.collider.name}");
+                    // Debug.Log($"Got horizontal collision with {hit.collider.name}");
 
                 }
 

@@ -66,7 +66,7 @@ namespace Unity.Inventory
 
         public void UpdateEquippedQuantity(EquipmentQuantityChanged evt)
         {
-            Debug.Log($"Got {evt.CurrentQuantity} items");
+            // Debug.Log($"Got {evt.CurrentQuantity} items");
             _equipmentQuantity.text = $"{evt.CurrentQuantity}";
         }
         public void UpdateMagazineQuantity(int quantity)
@@ -95,7 +95,7 @@ namespace Unity.Inventory
             _eventBus.Subscribe<MedkitQuantityChanged>(HandleMedkitQuantityChanged);
             _eventBus.Subscribe<FlashlightToggled>(UpdateFlashlight);
             _eventBus.Subscribe<OnHealthChanged>(UpdateHealth);
-            Debug.Log($"Inventory presenter subbed to events");
+            // Debug.Log($"Inventory presenter subbed to events");
         }
 
         private void UnSubToEvents()
@@ -113,7 +113,7 @@ namespace Unity.Inventory
         }
         private void HandleQuantityChanged(EquipmentQuantityChanged evt)
         {
-            Debug.Log($"Got quantity changed event with {evt.CurrentQuantity} items");
+            // Debug.Log($"Got quantity changed event with {evt.CurrentQuantity} items");
 
             // if the quantity that changed is our currently equipped item
             UpdateEquippedQuantity(evt);

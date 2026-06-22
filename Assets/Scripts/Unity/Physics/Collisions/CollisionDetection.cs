@@ -31,12 +31,12 @@ namespace Physics.Unity.Collisions
                     var otherActor = GetActorHelper(collision[j]);
                     if (otherActor != null)
                     {
-                        Debug.Log($"Adding an actor");
+                        // Debug.Log($"Adding an actor");
                         _currentCollisions.Add(new CollidingPair(actor, otherActor));
                     }
                     else
                     {
-                        Debug.Log($"Adding a ray collision");
+                        // Debug.Log($"Adding a ray collision");
                         _currentCollisions.Add(new CollidingPair(actor, collision[j]));
                     }
                 }
@@ -178,10 +178,10 @@ namespace Physics.Unity.Collisions
             {
                 if (!_previousCollisions.Contains(pair))
                 {
-                    Debug.Log($"Collision entered for {pair.ActorA} and {pair.ActorB}");
+                    // Debug.Log($"Collision entered for {pair.ActorA} and {pair.ActorB}");
                     if (pair.ActorA.CollisionHandler is ICollisionEnterEvent collisionEnterA)
                     {
-                        Debug.Log($"Calling collision entered for {pair.ActorA}");
+                        // Debug.Log($"Calling collision entered for {pair.ActorA}");
                         collisionEnterA.OnCollisionEntered(pair.CollisionInfoB());
 
                     }

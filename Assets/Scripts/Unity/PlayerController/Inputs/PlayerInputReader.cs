@@ -220,7 +220,7 @@ namespace PlayerController.Unity.Inputs
         {
             if (context.started)
             {
-                Debug.Log($"Reload weapon requested");
+                // Debug.Log($"Reload weapon requested");
                 // _requestHandler.EnqueueActionRequest(new ReloadRequest());
             }
         }
@@ -229,12 +229,12 @@ namespace PlayerController.Unity.Inputs
         {
             if (context.started)
             {
-                Debug.Log($"Raise weapon requested");
+                // Debug.Log($"Raise weapon requested");
                 _requestHandler.EnqueueActionRequest(new RaiseWeaponRequest(true));
             }
             else if (context.canceled)
             {
-                Debug.Log($"Lower weapon requested");
+                // Debug.Log($"Lower weapon requested");
                 _requestHandler.EnqueueActionRequest(new RaiseWeaponRequest(false));
             }
 
@@ -244,7 +244,7 @@ namespace PlayerController.Unity.Inputs
         {
             if (context.started)
             {
-                Debug.Log($"Shoot weapon requested");
+                // Debug.Log($"Shoot weapon requested");
                 _requestHandler.EnqueueActionRequest(new ShootRequest());
             }
         }
