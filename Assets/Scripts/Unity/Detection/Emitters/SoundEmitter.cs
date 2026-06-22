@@ -1,4 +1,6 @@
+using System.Collections.Generic;
 using Core.Detection.Audio;
+using Core.Detection.Audio.DataStructures;
 using Core.Equipment;
 using Physics.Core.DataStructures;
 using Physics.Core.PhysicsActors;
@@ -10,13 +12,23 @@ namespace Unity.Detection.Emitters
 {
     public class SoundEmitter : MonoBehaviour, ISoundEmitter, IInitThrowable
     {
+        [SerializeField] private LayerMask _soundLayer;
         public Vector2 Origin { get; private set; }
-
         public float MinRadius => _stats.SoundRadius;
+
         [SerializeField] private SerializedInterface<IPhysicsActor> _actorMono;
         private IPhysicsActor _actor => _actorMono.Interface;
+
         private ActorFrameData _frameData => _actor.Brain.FrameData;
         private ProjectileStats _stats;
+        private ContactFilter2D _filter;
+
+        private void Awake()
+        {
+            _filter = new ContactFilter2D();
+            _filter.SetLayerMask(_soundLayer);
+            _filter.useLayerMask = true;
+        }
 
         public void Init(ProjectileStats stats)
         {
@@ -31,7 +43,37 @@ namespace Unity.Detection.Emitters
         {
             float speed = GetSpeed();
             float radius = speed * MinRadius * 1f; // add in surface later this is just a test
+            PingDetectors(new EmittedSound
+            {
+                Origin = transform.parent.position,
+                Radius = radius,
+
+            });
             DrawDebug(radius);
+        }
+
+        private void PingDetectors(EmittedSound sound)
+        {
+            // Get the detectors
+            (int totalFound, List<Collider2D> detectors) = GetDetectors(sound);
+            Debug.Log($"Found {totalFound} detectors");
+            // Notify the detectors
+            for (int i = 0; i < totalFound; i++)
+            {
+                ISoundDetector detector = detectors[i].GetComponentInChildren<ISoundDetector>();
+
+                if (detector != null)
+                {
+                    detector.Detect(sound);
+                }
+            }
+        }
+
+        private (int, List<Collider2D>) GetDetectors(EmittedSound sound)
+        {
+            List<Collider2D> detectors = new();
+            int totalFound = Physics2D.OverlapCircle(sound.Origin, sound.Radius, _filter, detectors);
+            return (totalFound, detectors);
         }
 
         private void DrawDebug(float soundRadius)
