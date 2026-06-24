@@ -1,7 +1,5 @@
 using System;
-using Core.Inventory;
 using Game.Core.Execution;
-using Movement.Core.Movement.DataStructures;
 using Primitives.Items;
 using UnityEngine;
 

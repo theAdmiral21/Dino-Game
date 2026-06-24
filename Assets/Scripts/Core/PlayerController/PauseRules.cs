@@ -4,7 +4,7 @@ using Movement.Core.Movement.DataStructures;
 using Primitives.Physics;
 using Movement.Core.Enums;
 using Primitives.GameState;
-using Movement.Core.Inputs;
+using Core.Movement.Inputs;
 
 namespace PlayerController.Core.Movement
 {

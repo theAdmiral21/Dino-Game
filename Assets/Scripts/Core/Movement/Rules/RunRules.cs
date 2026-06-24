@@ -5,8 +5,7 @@ using Primitives.Physics;
 using Movement.Core.Enums;
 using Movement.Core.Rules;
 using Movement.Core.Abstractions;
-using Movement.Core.Inputs;
-using Movement.Core.Stats;
+using Core.Movement.Inputs;
 
 namespace Movement.Core.Movement
 {

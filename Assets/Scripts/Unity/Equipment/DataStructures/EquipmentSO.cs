@@ -1,7 +1,6 @@
 using Primitives.Damage;
 using Primitives.Items;
 using UnityEngine;
-using UnityEngine.Windows;
 
 namespace Unity.Equipment.DataStructures
 {

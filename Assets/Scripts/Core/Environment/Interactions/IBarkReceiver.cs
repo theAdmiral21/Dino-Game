@@ -1,5 +1,3 @@
-using UnityEngine;
-
 namespace Environment.Core.Interactions
 {
     public interface IBarkReceiver

@@ -3,7 +3,6 @@ using System;
 using Movement.Core.Abstractions;
 using Movement.Core.Enums;
 using Movement.Core.Movement.Abstractions;
-using Primitives.Input;
 
 namespace Movement.Core.Movement.DataStructures
 {

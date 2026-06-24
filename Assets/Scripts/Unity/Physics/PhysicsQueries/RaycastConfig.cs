@@ -1,5 +1,3 @@
-using Gameplay.Common.Unity;
-using Physics.Core.DataStructures;
 using UnityEngine;
 
 namespace Physics.Unity.Physics

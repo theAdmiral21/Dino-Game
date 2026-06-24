@@ -1,6 +1,6 @@
+using Core.Movement.Inputs;
 using Movement.Core.Abstractions;
 using Movement.Core.Enums;
-using Movement.Core.Inputs;
 using Movement.Core.Movement.DataStructures;
 using Primitives.Physics;
 using UnityEngine;

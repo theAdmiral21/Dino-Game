@@ -3,7 +3,6 @@ using UnityEngine;
 using Infrastructure.Unity.Registries;
 using System;
 using Infrastructure.Core.Registries;
-using GluonGui.WorkspaceWindow.Views.WorkspaceExplorer.Explorer;
 
 namespace Infrastructure.Unity
 {

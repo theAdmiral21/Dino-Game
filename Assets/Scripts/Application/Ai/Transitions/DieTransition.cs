@@ -1,8 +1,6 @@
 using System.Collections.Generic;
-using UnityEngine;
 using AI.Core.State;
 using AI.Core.State.Abstractions;
-using Game.Core.Health;
 
 namespace AI.Application.Transitions
 {

@@ -3,7 +3,7 @@ using AI.Core.Behavior;
 using NPC.Application.BehaviorContexts;
 using UnityEngine;
 
-namespace AI.Unity.BehaviorTree
+namespace Unity.AI.BehaviorTree
 {
     [CreateAssetMenu(fileName = "BallRunAwaySO", menuName = "AI/Enemy/Behaviors/Ball Run Away SO")]
     public class BallRunAwaySO : BehaviorNodeSO<BallContext>

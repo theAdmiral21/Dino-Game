@@ -1,8 +1,6 @@
-using System;
 using System.Collections;
 using PlayerController.Core.Events;
 using PlayerController.Core.Info;
-using Primitives.Characters;
 using Primitives.Players;
 using UnityEngine;
 

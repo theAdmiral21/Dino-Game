@@ -1,8 +1,8 @@
 using System.Collections.Generic;
+using Core.Movement.Inputs;
 using Movement.Core.Movement.DataStructures;
 using Primitives.GameState;
 using Primitives.Physics;
-using Movement.Core.Inputs;
 
 namespace Physics.Core.DataStructures
 {

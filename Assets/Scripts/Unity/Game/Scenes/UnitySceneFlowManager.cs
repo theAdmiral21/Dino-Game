@@ -6,7 +6,6 @@ using Game.Core.Execution;
 using Game.Core.Scenes;
 using Primitives.GameState;
 using Game.Core.State.Services;
-using Infrastructure.Unity;
 
 namespace Game.Unity.Scenes
 {

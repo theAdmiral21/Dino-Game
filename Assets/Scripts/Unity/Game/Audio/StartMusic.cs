@@ -3,7 +3,6 @@ using Infrastructure.Unity.Registries;
 using Game.Core.Execution;
 using Game.Core.Audio;
 using Gameplay.Common.Unity;
-using Physics.Core.Abstractions;
 using Game.Application.Audio.DataStructures;
 using Physics.Core.PhysicsActors;
 

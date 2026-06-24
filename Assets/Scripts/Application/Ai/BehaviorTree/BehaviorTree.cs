@@ -1,5 +1,4 @@
 using AI.Core.Behavior;
-using UnityEngine;
 
 namespace AI.Application.BehaviorTree
 {

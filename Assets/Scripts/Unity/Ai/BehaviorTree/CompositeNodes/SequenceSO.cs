@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace AI.Unity.BehaviorTree
+namespace Unity.AI.BehaviorTree
 {
     [CreateAssetMenu(fileName = "SequenceSO", menuName = "AI/Enemy/Composites/Sequence SO")]
     public class SequenceSO : BehaviorNodeSO

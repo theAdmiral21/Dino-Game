@@ -1,7 +1,7 @@
 using System.Collections.Generic;
+using Core.Movement.Inputs;
 using Primitives.GameState;
 using Primitives.Physics;
-using Movement.Core.Inputs;
 
 namespace Core.Equipment.DataStructures
 {

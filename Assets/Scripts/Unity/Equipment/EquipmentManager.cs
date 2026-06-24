@@ -1,7 +1,6 @@
 using Core.Equipment;
 using Core.Inventory;
 using Primitives.EventBus.Abstractions;
-using Primitives.Items;
 using Unity.Common.Unity;
 using UnityEngine;
 

@@ -1,6 +1,4 @@
 using UnityEngine;
-using Enemy.Core.Detectors.Abstractions;
-using Enemy.Core.Detectors;
 using Primitives.Detectors;
 
 namespace Enemy.Application.DataStructures

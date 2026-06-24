@@ -1,6 +1,5 @@
 using Core.Inventory;
 using Infrastructure.Unity.DataStructures;
-using Physics.Core.PhysicsActors;
 using Unity.Cinemachine;
 using UnityEngine;
 

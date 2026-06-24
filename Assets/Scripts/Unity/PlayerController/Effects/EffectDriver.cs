@@ -4,7 +4,6 @@ using Game.Core.Effects;
 using PlayerController.Application.Abstractions;
 using PlayerController.Core.Effects.DataStructures;
 using PlayerController.Unity.Animations;
-using PlayerController.Unity.Effects;
 using Primitives.Audio.Enums;
 using Unity.Common.Unity;
 using UnityEngine;

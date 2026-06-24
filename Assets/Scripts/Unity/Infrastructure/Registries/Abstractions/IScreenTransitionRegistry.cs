@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using Game.Core.UI.Menus.Transitions;
-using Infrastructure.Core.Registries;
 
 namespace Infrastructure.Unity.Registries
 {

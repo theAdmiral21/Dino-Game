@@ -1,7 +1,6 @@
 using Game.Unity.UI.Menus.Presenters.Transitions;
 using Primitives.Easing;
 using Primitives.Effects;
-using UnityEngine;
 
 namespace PlayerController.Unity.Effects.Transition
 {

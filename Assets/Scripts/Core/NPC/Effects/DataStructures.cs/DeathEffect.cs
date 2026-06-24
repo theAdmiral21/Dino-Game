@@ -1,6 +1,5 @@
 using System;
 using Game.Core.Effects;
-using Primitives.Audio.Enums;
 using Primitives.Audio.SoundKeys;
 
 namespace NPC.Core.Effects

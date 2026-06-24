@@ -3,7 +3,6 @@ using AI.Core.State;
 using AI.Core.State.Abstractions;
 using AI.Core.State.Enums;
 using Movement.Core.Movement.DataStructures;
-using UnityEngine.UIElements;
 
 namespace AI.Application.States
 {

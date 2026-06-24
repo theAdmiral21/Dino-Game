@@ -1,13 +1,12 @@
 using System;
 using Movement.Core.Abstractions;
-using Movement.Core.Inputs;
 using Movement.Core.Movement.DataStructures;
-using PlayerController.Core.Movement.DataStructures;
 using Primitives.Input;
 using Unity.Common.Unity;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Primitives.Physics;
+using Core.Movement.Inputs;
 
 /*
 Optional actions to add later:

@@ -1,4 +1,4 @@
-using Movement.Core.Inputs;
+using Core.Movement.Inputs;
 using UnityEngine;
 
 namespace Enemy.Unity.Providers

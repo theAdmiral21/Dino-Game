@@ -1,5 +1,5 @@
 using UnityEngine;
-namespace Movement.Core.Inputs.DataStructures
+namespace Core.Movement.Inputs.DataStructures
 {
     [System.Serializable]
     public struct InputState

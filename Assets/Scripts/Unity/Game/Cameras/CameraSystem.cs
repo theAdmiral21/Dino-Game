@@ -1,4 +1,3 @@
-using Codice.Client.Common.GameUI;
 using Game.Core.Cameras;
 using Unity.Cinemachine;
 using Unity.Common.Unity;

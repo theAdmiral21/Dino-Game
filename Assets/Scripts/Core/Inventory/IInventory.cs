@@ -1,8 +1,6 @@
-using System.Collections.Generic;
 using Core.Equipment;
 using Core.Inventory.Requests;
 using Primitives.EventBus.Abstractions;
-using Primitives.Items;
 
 namespace Core.Inventory
 {

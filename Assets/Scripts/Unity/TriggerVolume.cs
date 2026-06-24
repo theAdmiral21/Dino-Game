@@ -1,7 +1,6 @@
 using System;
 using Core.Physics.Triggers;
 using Core.Physics.Triggers.Callbacks;
-using Gameplay.Common.Core.Abstractions;
 using Infrastructure.Unity;
 using Infrastructure.Unity.Registries;
 using Physics.Core.Abstractions;

@@ -3,7 +3,6 @@ using Environment.Platforms.Primitives;
 using Game.Core.Effects;
 using Movement.Core.Abstractions;
 using Physics.Application.Abstractions;
-using Physics.Core.Abstractions;
 using Physics.Core.DataStructures;
 using Physics.Core.PhysicsActors;
 using Physics.Unity.Movement;

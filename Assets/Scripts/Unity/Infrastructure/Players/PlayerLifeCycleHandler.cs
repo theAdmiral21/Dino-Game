@@ -7,15 +7,12 @@ using Primitives.EventBus.Abstractions;
 using Unity.Common.Unity;
 using UnityEngine;
 using System;
-using Primitives.Characters;
 using PlayerController.Core.Info;
 using System.Collections.Generic;
 using Game.Core.Scenes.Enums;
 using Game.Core.Scenes;
 using Primitives.Common.Scenes;
-using Game.Core.Events;
 using Primitives.Players;
-using PlayerController.Core.Config;
 
 namespace Infrastructure.Unity.Status
 {

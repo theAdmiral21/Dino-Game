@@ -10,18 +10,17 @@ using Physics.Unity.Actors;
 using AI.Unity.StateMachine.BaseClasses;
 using AI.Unity.StateMachine;
 using System.Linq;
-using Movement.Core.Inputs;
 using Enemy.Core.Detectors.Abstractions;
 using Infrastructure.Unity.Registries;
 using Game.Core.Execution;
 using Physics.Core.PhysicsActors;
 using Movement.Core.Abstractions;
-using Primitives.Damage;
 using Movement.Core.Movement.DataStructures;
 using NPC.Unity.Health;
 using NPC.Core.Effects;
 using System.Collections;
 using Movement.Unity.Abstractions;
+using Core.Movement.Inputs;
 
 namespace Enemy.Unity
 {

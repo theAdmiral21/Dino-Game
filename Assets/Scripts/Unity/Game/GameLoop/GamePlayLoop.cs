@@ -4,7 +4,6 @@ using Game.Core.Execution;
 using Game.Core.Scenes;
 using Game.Core.Scenes.Enums;
 using Game.Unity.Scenes.DataStructures;
-using Infrastructure.Unity;
 using Infrastructure.Unity.Registries;
 using Primitives.Common.Scenes;
 using UnityEngine;

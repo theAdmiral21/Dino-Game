@@ -1,6 +1,4 @@
 using System;
-using Core.Equipment;
-using Core.Inventory.Requests;
 using Primitives.Items;
 
 namespace Core.Inventory

@@ -1,4 +1,4 @@
-using Movement.Core.Inputs;
+using Core.Movement.Inputs;
 using Movement.Core.State;
 using Primitives.Physics;
 

@@ -3,8 +3,8 @@ using Movement.Core.Enums;
 using Primitives.Physics;
 using Movement.Core.Rules;
 using Movement.Core.Abstractions;
-using Movement.Core.Inputs;
 using UnityEngine;
+using Core.Movement.Inputs;
 
 namespace Movement.Core.Movement
 {

@@ -6,7 +6,6 @@ using Infrastructure.Unity.Registries;
 using Game.Core.Execution;
 using Primitives.GameState;
 using Game.Core.State.Services;
-using PlayerController.Core.Inputs;
 using Infrastructure.Core.Inputs;
 
 namespace PlayerController.Unity.Inputs

@@ -3,12 +3,11 @@ using AI.Core.PathFinding;
 using AI.Core.State;
 using AI.Core.State.BehaviorContext;
 using AI.Core.Timers;
+using Core.Movement.Inputs;
 using Enemy.Core.Detectors.Abstractions;
 using Movement.Core.Abstractions;
 using Movement.Core.Enums;
-using Movement.Core.Inputs;
 using Movement.Core.Movement.DataStructures;
-using Physics.Core.PhysicsQueries;
 using Primitives.Detectors;
 using UnityEngine;
 

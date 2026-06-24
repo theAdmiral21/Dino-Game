@@ -1,10 +1,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using Core.Physics.Collisions.DataStructures;
-using Game.Core.Effects;
 using Physics.Application.Abstractions;
 using Physics.Core.DataStructures;
-using Physics.Core.PhysicsActors;
 using Physics.Core.PhysicsQueries;
 using Physics.Unity.PhysicsQueries;
 using Primitives.Physics.DataStructures;

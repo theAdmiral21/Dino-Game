@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using Game.Core.Execution;
-using Infrastructure.Core.Services;
 using Primitives.Common.Scenes;
 
 namespace Game.Core.Scenes

@@ -1,4 +1,3 @@
-using DG.Tweening;
 using Game.Core.Cameras;
 using Game.Core.Execution;
 using Infrastructure.Unity.Registries;

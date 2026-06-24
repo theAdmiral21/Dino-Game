@@ -1,5 +1,3 @@
-using AI.Core.State.Enums;
-
 namespace AI.Core.State.Abstractions
 {
     public interface IState<T>

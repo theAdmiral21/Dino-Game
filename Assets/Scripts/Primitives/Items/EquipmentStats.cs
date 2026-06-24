@@ -1,5 +1,3 @@
-using Primitives.Damage;
-
 namespace Primitives.Items
 {
     public struct EquipmentStats

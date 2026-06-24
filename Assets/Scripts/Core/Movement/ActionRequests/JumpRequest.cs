@@ -1,6 +1,5 @@
 using System;
 using Movement.Core.DataStructures;
-using NUnit.Framework.Constraints;
 using Primitives.Physics;
 
 namespace Movement.Core.Movement.DataStructures

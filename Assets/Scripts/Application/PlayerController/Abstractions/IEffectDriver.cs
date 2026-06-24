@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using Game.Core.Effects;
-using PlayerController.Core.Effects.Abstractions;
 
 namespace PlayerController.Application.Abstractions
 {

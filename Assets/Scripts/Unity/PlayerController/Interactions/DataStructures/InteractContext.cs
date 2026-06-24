@@ -1,6 +1,5 @@
 using Game.Core.Interactions;
 using Infrastructure.Core.Inputs;
-using PlayerController.Core.Inputs;
 using Primitives.Characters;
 using UnityEngine;
 

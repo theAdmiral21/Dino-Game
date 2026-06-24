@@ -1,12 +1,11 @@
 using UnityEngine;
 using Primitives.Physics;
 using Movement.Core.Abstractions;
-using Movement.Core.Inputs;
 using Movement.Core.Stats;
 using Primitives.Stats.DataStructures;
 using Primitives.Input;
-using System;
 using Movement.Core.Rules;
+using Core.Movement.Inputs;
 
 namespace Movement.Core.State.DataStructures
 {

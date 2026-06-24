@@ -1,6 +1,3 @@
-using Movement.Core.Movement.Abstractions;
-using Physics.Core.PhysicsActors;
-
 namespace Core.Equipment
 {
     public interface IEquipmentBridge

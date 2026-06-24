@@ -1,4 +1,3 @@
-using System.Diagnostics;
 using Physics.Core.Abstractions;
 using Physics.Core.DataStructures;
 using Primitives.Physics;

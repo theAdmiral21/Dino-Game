@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using Game.Core.UI.Menus.Transitions;
 using Primitives.Effects;
-using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 

@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using AI.Core.State;
 using AI.Core.State.BehaviorContext;
-using Movement.Core.Abstractions;
 using Movement.Core.Enums;
 using Movement.Core.Movement.DataStructures;
 using UnityEngine;

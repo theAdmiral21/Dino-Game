@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using Movement.Core.Abstractions;
 using Movement.Core.Movement.Abstractions;
-using Physics.Core.Buffers;
 using Physics.Core.DataStructures;
 using Primitives.Physics;
 

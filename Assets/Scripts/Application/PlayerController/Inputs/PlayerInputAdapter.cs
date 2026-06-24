@@ -1,5 +1,5 @@
-using Movement.Core.Inputs;
-using Movement.Core.Inputs.DataStructures;
+using Core.Movement.Inputs;
+using Core.Movement.Inputs.DataStructures;
 using UnityEngine;
 
 namespace PlayerController.Application.Inputs

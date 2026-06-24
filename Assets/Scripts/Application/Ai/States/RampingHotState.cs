@@ -1,6 +1,5 @@
 using AI.Core.State.Abstractions;
 using AI.Core.State.Enums;
-using Movement.Core.Movement.DataStructures;
 
 namespace AI.Application.States
 {

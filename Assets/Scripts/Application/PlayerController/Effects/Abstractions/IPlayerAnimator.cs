@@ -1,8 +1,7 @@
+using Core.Movement.Inputs;
 using Game.Core.Effects;
 using Movement.Core.Abstractions;
-using Movement.Core.Inputs;
 using PlayerController.Application.Effects.DataStructures;
-using PlayerController.Core.Effects.Abstractions;
 using Primitives.Physics;
 
 namespace PlayerController.Application.Effects.Abstractions

@@ -1,7 +1,5 @@
 using Movement.Core.Movement.DataStructures;
 using AI.Core.State.Abstractions;
-using AI.Core.State.Enums;
-using AI.Core.State.BehaviorContext;
 using UnityEngine;
 
 namespace AI.Application.States

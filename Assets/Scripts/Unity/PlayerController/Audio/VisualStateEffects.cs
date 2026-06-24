@@ -2,7 +2,6 @@ using System.Collections.Generic;
 using Game.Core.Effects;
 using Movement.Core.Abstractions;
 using Movement.Core.Rules;
-using PlayerController.Core.Effects.DataStructures;
 using Primitives.Physics;
 using UnityEngine;
 

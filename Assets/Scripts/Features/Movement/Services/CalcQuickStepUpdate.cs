@@ -1,4 +1,3 @@
-using UnityEngine;
 using Movement.Core.Movement.Abstractions;
 using Movement.Core.Movement.DataStructures;
 using Movement.Features.Movement.Abstractions;

@@ -11,7 +11,6 @@ using Primitives.Characters;
 using Infrastructure.Unity.Players;
 using Primitives.Common.Scenes;
 using Infrastructure.Core.Services;
-using UnityEngine.UIElements;
 using Primitives.Players;
 
 namespace Game.Unity.GameLoop

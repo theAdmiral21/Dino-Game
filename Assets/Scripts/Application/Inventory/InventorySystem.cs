@@ -4,7 +4,6 @@ using Core.Inventory;
 using Core.Inventory.Requests;
 using Primitives.Items;
 using Primitives.EventBus.Abstractions;
-using Core.Inventory.DataStructures.Providers;
 
 namespace Application.Inventory
 {

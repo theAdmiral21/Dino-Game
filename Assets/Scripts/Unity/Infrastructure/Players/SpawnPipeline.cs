@@ -5,7 +5,6 @@ using Infrastructure.Application.Abstractions;
 using Infrastructure.Unity.DataStructures;
 using PlayerController.Core.Events;
 using PlayerController.Core.Info;
-using Primitives.Characters;
 using Primitives.EventBus.Abstractions;
 using Primitives.Players;
 using UnityEngine;

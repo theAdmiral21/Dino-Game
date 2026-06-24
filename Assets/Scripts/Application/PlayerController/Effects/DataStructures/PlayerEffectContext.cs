@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using PlayerController.Core.Effects.Abstractions;
 using Movement.Core.State.DataStructures;
-using Movement.Core.Inputs.DataStructures;
+using Core.Movement.Inputs.DataStructures;
 
 namespace PlayerController.Application.Effects.DataStructures
 {

@@ -3,7 +3,6 @@ using Movement.Core.Enums;
 using Movement.Core.Movement.DataStructures;
 using Movement.Core.Rules;
 using Primitives.Physics;
-using UnityEngine;
 
 
 namespace Movement.Core.Movement

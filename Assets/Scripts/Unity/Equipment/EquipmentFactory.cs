@@ -1,10 +1,8 @@
 using System.Collections.Generic;
 using Core.Equipment;
-using Core.Inventory;
 using Game.Core.Execution;
 using Infrastructure.Unity.Registries;
 using Primitives.Items;
-using Unity.Common.Unity;
 using Unity.Equipment.DataStructures;
 using UnityEngine;
 

@@ -6,7 +6,6 @@ using Movement.Features.Movement.Abstractions;
 using Primitives.Physics;
 using Primitives.Stats.DataStructures;
 using Primitives.Input;
-using System;
 
 namespace Movement.Features.Movement.Services
 {

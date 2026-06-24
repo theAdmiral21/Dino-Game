@@ -27,7 +27,6 @@ using Infrastructure.Unity.Players;
 using Game.Application.Cameras;
 using Game.Unity.Cameras;
 using Game.Core.Cameras;
-using Game.Unity.Scenes;
 using Physics.Unity.Physics;
 
 namespace Game.Unity

@@ -1,5 +1,6 @@
+using System;
+using Core.Movement.Inputs;
 using Movement.Core.Abstractions;
-using Movement.Core.Inputs;
 using Primitives.Physics;
 using UnityEngine;
 
@@ -43,6 +44,10 @@ namespace Enemy.Core.Rules
 
         public void UpdateRules(IActorInput inputValues, PhysicsContext physicsContext, float dt)
         {
+            if (inputValues is null)
+            {
+                throw new ArgumentNullException(nameof(inputValues));
+            }
             // Update dt
             Dt = dt;
             // Set the direction the actor is facing

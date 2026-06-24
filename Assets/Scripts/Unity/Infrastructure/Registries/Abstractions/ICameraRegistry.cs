@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using Game.Core.Cameras;
-using Infrastructure.Core.Registries;
 
 namespace Infrastructure.Unity.Registries
 {

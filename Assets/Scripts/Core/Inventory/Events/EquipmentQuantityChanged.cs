@@ -1,5 +1,3 @@
-using Primitives.Items;
-
 namespace Core.Inventory
 {
     public record EquipmentQuantityChanged

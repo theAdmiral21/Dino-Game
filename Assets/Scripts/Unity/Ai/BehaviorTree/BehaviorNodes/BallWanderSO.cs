@@ -3,7 +3,7 @@ using AI.Core.Behavior;
 using NPC.Application.BehaviorContexts;
 using UnityEngine;
 
-namespace AI.Unity.BehaviorTree
+namespace Unity.AI.BehaviorTree
 {
     [CreateAssetMenu(fileName = "BallWanderSO", menuName = "AI/Enemy/Behaviors/Ball Wander SO")]
     public class BallWanderSO : BehaviorNodeSO<BallContext>

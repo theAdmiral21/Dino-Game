@@ -1,6 +1,5 @@
 using System;
 using PlayerController.Core.Config;
-using PlayerController.Core.Info;
 using Primitives.Characters;
 using Primitives.Players;
 using UnityEngine;

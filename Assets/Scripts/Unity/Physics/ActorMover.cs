@@ -1,9 +1,6 @@
 using System;
 using Physics.Application.Abstractions;
-using Physics.Core.Abstractions;
 using Physics.Core.PhysicsActors;
-using Physics.Unity.Actors;
-using Physics.Unity.Physics;
 using Unity.Common.Unity;
 using UnityEngine;
 

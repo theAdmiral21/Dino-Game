@@ -5,18 +5,13 @@ using Infrastructure.Unity.Registries;
 using Movement.Core.Abstractions;
 using Movement.Core.Movement.Abstractions;
 using Movement.Core.Movement.DataStructures;
-using Movement.Core.Rules;
-using Physics.Core.Abstractions;
 using Physics.Core.PhysicsActors;
 using PlayerController.Application.Effects;
 using PlayerController.Application.Effects.Abstractions;
-using PlayerController.Core.Effects.Abstractions;
 using PlayerController.Core.Effects.DataStructures;
-using PlayerController.Core.Movement.Abstractions;
 using PlayerController.Core.Movement.DataStructures;
 using PlayerController.Unity.Physics;
 using Primitives.Physics;
-using Primitives.Stats;
 using Unity.Common.Unity;
 using UnityEngine;
 

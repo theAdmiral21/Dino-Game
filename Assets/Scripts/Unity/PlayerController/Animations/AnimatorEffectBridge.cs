@@ -1,11 +1,10 @@
+using Core.Movement.Inputs;
 using Game.Core.Effects;
 using Gameplay.Common.Unity.VisualEffects;
 using Movement.Core.Abstractions;
-using Movement.Core.Inputs;
 using Movement.Core.Rules;
 using PlayerController.Application.Effects.Abstractions;
 using PlayerController.Application.Effects.DataStructures;
-using PlayerController.Core.Effects.Abstractions;
 using PlayerController.Core.Effects.DataStructures;
 using Primitives.Physics;
 using UnityEngine;

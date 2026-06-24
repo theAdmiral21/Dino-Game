@@ -1,5 +1,4 @@
 using Primitives.Detectors;
-using UnityEditor.Search;
 
 namespace Enemy.Core.Detectors.Abstractions
 {

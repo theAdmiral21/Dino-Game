@@ -1,4 +1,3 @@
-using System;
 using Primitives.Items;
 
 namespace Core.Inventory.Requests

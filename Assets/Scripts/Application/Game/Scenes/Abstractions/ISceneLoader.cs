@@ -1,6 +1,5 @@
 using System.Collections;
 using Game.Core.Scenes;
-using Primitives.Common.Scenes;
 
 namespace Game.Scenes.Application
 {

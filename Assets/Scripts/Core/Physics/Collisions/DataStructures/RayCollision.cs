@@ -1,6 +1,4 @@
 using UnityEngine;
-using Physics.Core.PhysicsActors;
-using Primitives.Audio;
 
 namespace Core.Physics.Collisions.DataStructures
 {

@@ -1,4 +1,4 @@
-using Movement.Core.Inputs.DataStructures;
+using Core.Movement.Inputs.DataStructures;
 
 namespace PlayerController.Core.Inputs
 {

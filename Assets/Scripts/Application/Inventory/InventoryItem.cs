@@ -1,9 +1,7 @@
 using System;
-using Core.Equipment;
 using Core.Inventory;
 using Primitives.EventBus.Abstractions;
 using Primitives.Items;
-using UnityEngine;
 
 namespace Application.Inventory
 {

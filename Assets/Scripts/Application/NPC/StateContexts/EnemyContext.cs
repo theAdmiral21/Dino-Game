@@ -5,7 +5,6 @@ using Movement.Core.Movement.DataStructures;
 using Infrastructure.Core.Lifecycle.PhysicsEntities;
 using Movement.Core.Abstractions;
 using AI.Core.State.BehaviorContext;
-using Movement.Core.Inputs;
 using AI.Core.State;
 using Enemy.Core.Detectors.Abstractions;
 using AI.Core.Timers;
@@ -14,9 +13,9 @@ using Movement.Core.Enums;
 using Physics.Core.PhysicsActors;
 using NPC.Core.Effects;
 using Game.Core.Health;
-using System.Linq.Expressions;
 using Movement.Core.Stats;
 using Primitives.Stats.DataStructures;
+using Core.Movement.Inputs;
 
 namespace Enemy.Application.StateContexts
 {

@@ -1,4 +1,3 @@
-using Physics.Core.Abstractions;
 using Physics.Core.PhysicsActors;
 using UnityEngine;
 

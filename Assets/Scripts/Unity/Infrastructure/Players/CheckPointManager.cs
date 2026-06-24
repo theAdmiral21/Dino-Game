@@ -5,8 +5,6 @@ using Environment.Core.Level;
 using Game.Core.Events;
 using Game.Core.Execution;
 using Game.Core.Lifecycle;
-using Game.Core.Scenes;
-using Game.Core.State.Services;
 using Infrastructure.Unity.Registries;
 using Primitives.EventBus.Abstractions;
 using Primitives.Infrastructure;

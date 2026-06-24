@@ -1,5 +1,3 @@
-using Movement.Core.Abstractions;
-
 namespace Game.Core.Effects
 {
     public interface IEffectPlayer

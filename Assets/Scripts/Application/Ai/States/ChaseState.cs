@@ -3,7 +3,6 @@ using AI.Core.State.Abstractions;
 using Movement.Core.Movement.DataStructures;
 using AI.Core.State;
 using Primitives.Detectors;
-using Game.Core.Audio;
 
 namespace AI.Application.States
 {

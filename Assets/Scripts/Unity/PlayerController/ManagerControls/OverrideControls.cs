@@ -1,6 +1,5 @@
 using Game.Core.Execution;
 using Infrastructure.Unity.Registries;
-using Physics.Core.Abstractions;
 using Physics.Core.PhysicsActors;
 using Physics.Core.Services;
 using PlayerController.Core.ManagerControls.Abstractions;

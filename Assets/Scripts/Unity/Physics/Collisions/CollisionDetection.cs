@@ -1,13 +1,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Physics.Core.Abstractions;
-using Physics.Core.DataStructures;
 using Primitives.Physics;
 using Physics.Core.PhysicsActors;
 using Core.Physics.Collisions.DataStructures;
-using Core.Physics.Triggers.Callbacks;
 using Core.Physics.Collision.Callbacks;
-using Movement.Core.Rules;
 
 namespace Physics.Unity.Collisions
 {

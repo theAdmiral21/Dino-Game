@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using Game.Core.Audio;
 using Game.Unity.Audio.Abstractions;
-using Primitives.Audio.SoundKeys;
 using Primitives.Characters;
 using UnityEngine;
 

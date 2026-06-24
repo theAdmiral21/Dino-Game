@@ -1,8 +1,7 @@
-using System.Collections.Generic;
 using AI.Core.Behavior;
 using UnityEngine;
 
-namespace AI.Unity.BehaviorTree
+namespace Unity.AI.BehaviorTree
 {
     public abstract class BehaviorNodeSO : ScriptableObject { }
 

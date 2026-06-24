@@ -1,5 +1,5 @@
+using Core.Movement.Inputs;
 using Movement.Application.Abstractions;
-using Movement.Core.Inputs;
 using Movement.Core.Movement.DataStructures;
 using PlayerController.Core.Movement;
 using PlayerController.Core.Movement.Abstractions;

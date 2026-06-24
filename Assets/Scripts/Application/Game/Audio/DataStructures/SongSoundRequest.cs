@@ -1,8 +1,6 @@
 using System;
 using Game.Core.Audio;
 using Primitives.Audio;
-using Primitives.Audio.EntityKeys;
-using Primitives.Audio.SoundKeys;
 
 namespace Game.Application.Audio.DataStructures
 {

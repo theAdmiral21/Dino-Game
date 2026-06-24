@@ -1,5 +1,4 @@
 using Core.Game;
-using Physics.Core.PhysicsActors;
 using Primitives.EventBus.Abstractions;
 
 namespace Core.Inventory

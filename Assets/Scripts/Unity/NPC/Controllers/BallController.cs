@@ -3,11 +3,10 @@ using AI.Application.BehaviorTree;
 using AI.Application.BehaviorTreeNodes;
 using AI.Core.Behavior;
 using AI.Core.PathFinding;
-using AI.Unity.BehaviorTree;
-using Codice.Client.Common.TreeGrouper;
+using Core.Movement.Inputs;
 using Enemy.Core.Detectors.Abstractions;
-using Movement.Core.Inputs;
 using NPC.Application.BehaviorContexts;
+using Unity.AI.BehaviorTree;
 using Unity.Common.Unity;
 using UnityEngine;
 

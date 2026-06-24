@@ -1,10 +1,7 @@
 using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
 using AI.Core.State;
 using AI.Core.State.Abstractions;
 using Primitives.Detectors;
-using UnityEngine;
 
 namespace AI.Application.Transitions
 {

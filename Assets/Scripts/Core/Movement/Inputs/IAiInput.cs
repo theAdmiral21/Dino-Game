@@ -1,7 +1,6 @@
-using System;
 using UnityEngine;
 
-namespace Movement.Core.Inputs
+namespace Core.Movement.Inputs
 {
     /// <summary>
     /// Abstraction layer for IActorInput that allows NPCs to send input commands to move and what not.

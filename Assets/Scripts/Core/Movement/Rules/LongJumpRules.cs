@@ -1,6 +1,6 @@
 
+using Core.Movement.Inputs;
 using Movement.Core.Movement.DataStructures;
-using Movement.Core.Inputs;
 using Primitives.Physics;
 
 namespace Movement.Core.Rules

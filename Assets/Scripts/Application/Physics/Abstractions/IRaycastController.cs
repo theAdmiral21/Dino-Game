@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using Core.Physics.Collisions.DataStructures;
 using Physics.Core.DataStructures;
-using Physics.Core.PhysicsActors;
 using UnityEngine;
 
 namespace Physics.Application.Abstractions

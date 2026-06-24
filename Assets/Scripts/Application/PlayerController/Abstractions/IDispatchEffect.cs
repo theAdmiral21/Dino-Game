@@ -1,6 +1,6 @@
 using System;
+using Core.Movement.Inputs.DataStructures;
 using Game.Core.Effects;
-using Movement.Core.Inputs.DataStructures;
 using Movement.Core.State.DataStructures;
 using PlayerController.Core.Effects.Abstractions;
 

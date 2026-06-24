@@ -1,11 +1,7 @@
 using Core.Detection.Audio;
-using Core.Equipment;
 using Core.Physics.Collision.Callbacks;
 using Core.Physics.Collisions;
 using Physics.Core.DataStructures;
-using Physics.Core.PhysicsActors;
-using Primitives.Audio;
-using Primitives.Items;
 using Unity.Common.Unity;
 using UnityEngine;
 

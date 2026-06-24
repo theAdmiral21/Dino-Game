@@ -1,5 +1,5 @@
 
-namespace Movement.Core.Inputs
+namespace Core.Movement.Inputs
 {
     public interface IPlayerInputs : IActorInput
     {

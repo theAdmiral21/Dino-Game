@@ -1,5 +1,4 @@
 using Game.Core.Scenes;
-using Game.Scenes.Application;
 using Primitives.Common.Scenes;
 
 namespace Game.Application.Scenes

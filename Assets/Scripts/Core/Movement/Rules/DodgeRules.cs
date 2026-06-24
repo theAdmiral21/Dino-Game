@@ -1,10 +1,10 @@
 
 using Movement.Core.Movement.DataStructures;
-using Movement.Core.Inputs;
 using Primitives.Physics;
 using Movement.Core.Abstractions;
 using Primitives.Input;
 using UnityEngine;
+using Core.Movement.Inputs;
 
 namespace Movement.Core.Rules
 {

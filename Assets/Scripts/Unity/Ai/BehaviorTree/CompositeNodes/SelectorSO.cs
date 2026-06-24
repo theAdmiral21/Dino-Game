@@ -1,9 +1,7 @@
 using System.Collections.Generic;
-using AI.Application.BehaviorTreeNodes;
-using NPC.Application.BehaviorContexts;
 using UnityEngine;
 
-namespace AI.Unity.BehaviorTree
+namespace Unity.AI.BehaviorTree
 {
     [CreateAssetMenu(fileName = "SelectorSO", menuName = "AI/Enemy/Composites/Selector SO")]
     public class SelectorSO : BehaviorNodeSO

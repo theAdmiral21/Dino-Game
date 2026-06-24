@@ -2,7 +2,6 @@ using System.Collections.Generic;
 using Core.Physics.Collisions.DataStructures;
 using Movement.Core.Movement.Abstractions;
 using Movement.Core.Stats;
-using Physics.Core.PhysicsActors;
 using Primitives.Physics;
 
 namespace Physics.Core.DataStructures

@@ -4,10 +4,7 @@ using UnityEngine;
 using Movement.Core.Enums;
 using Movement.Core.Rules;
 using Movement.Core.Abstractions;
-using Movement.Core.Inputs;
-using Movement.Core.DataStructures;
-using NUnit.Framework;
-using Primitives.Stats.DataStructures;
+using Core.Movement.Inputs;
 
 namespace Movement.Core.Movement
 {

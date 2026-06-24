@@ -1,6 +1,5 @@
 using System;
 using Game.Core.Effects;
-using PlayerController.Core.Effects.Abstractions;
 using Primitives.Audio;
 using Primitives.Audio.Enums;
 

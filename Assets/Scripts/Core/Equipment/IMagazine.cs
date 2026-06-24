@@ -1,6 +1,3 @@
-using Primitives.Items;
-using Core.Inventory.Requests;
-
 namespace Core.Equipment
 {
     public interface IMagazine

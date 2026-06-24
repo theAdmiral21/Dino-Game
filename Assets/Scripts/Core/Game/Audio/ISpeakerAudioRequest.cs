@@ -1,5 +1,3 @@
-using Primitives.Audio.EntityKeys;
-using Primitives.Audio.SoundKeys;
 using Primitives.Characters;
 
 namespace Game.Core.Audio

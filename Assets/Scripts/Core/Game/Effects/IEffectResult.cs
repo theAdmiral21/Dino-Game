@@ -1,5 +1,4 @@
 using System;
-using Primitives.Audio.Enums;
 
 namespace Game.Core.Effects
 {

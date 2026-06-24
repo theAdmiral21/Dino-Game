@@ -2,7 +2,6 @@ using Game.Application.Audio.DataStructures;
 using Game.Core.Audio;
 using Game.Unity.Audio.Abstractions;
 using Game.Unity.Audio.DataStructures;
-using Unity.Common.Unity;
 using UnityEngine;
 
 namespace Game.Unity.Audio

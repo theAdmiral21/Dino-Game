@@ -1,11 +1,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using Game.Core.Cameras;
-using Game.Core.Execution;
 using Infrastructure.Unity.Registries;
 using Unity.Common.Unity;
 using UnityEngine;
-using UnityEngine.Rendering.Universal;
 
 namespace Game.Unity.Cameras
 {

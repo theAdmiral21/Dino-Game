@@ -1,6 +1,5 @@
 using Game.Core.Cameras;
 using Unity.Cinemachine;
-using UnityEngine;
 
 namespace Game.Unity.Cameras
 {

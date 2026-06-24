@@ -1,14 +1,11 @@
 using System;
 using System.Collections.Generic;
-using Game.Core.Events;
 using Game.Core.Execution;
-using Game.Core.Scenes;
 using Game.Core.State.Services;
 using Infrastructure.Application.Abstractions;
 using Infrastructure.Core.Lifecycle;
 using Infrastructure.Unity.Registries;
 using Infrastructure.Unity.Status;
-using PlasticPipe.PlasticProtocol.Client.Proxies;
 using PlayerController.Core.Config;
 using PlayerController.Core.Info;
 using Primitives.Characters;

@@ -1,10 +1,6 @@
 using System;
-using Core.Movement.Abstractions;
 using Core.Physics.Collisions;
-using Movement.Core.Abstractions;
-using Movement.Core.Classifiers;
 using Movement.Core.DataStructures;
-using Movement.Core.Rules;
 using Movement.Core.Stats;
 using Physics.Core.DataStructures;
 using Physics.Core.PhysicsQueries;

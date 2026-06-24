@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Movement.Core.Inputs
+namespace Core.Movement.Inputs
 {
     public interface IActorInput
     {

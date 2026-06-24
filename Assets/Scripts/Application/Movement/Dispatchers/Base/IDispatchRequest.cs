@@ -1,5 +1,5 @@
 using System;
-using Movement.Core.Inputs;
+using Core.Movement.Inputs;
 using Movement.Core.Movement.Abstractions;
 using Movement.Core.Movement.DataStructures;
 using Primitives.GameState;

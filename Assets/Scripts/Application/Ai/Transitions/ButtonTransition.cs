@@ -1,4 +1,3 @@
-using UnityEngine;
 using AI.Core.State.Abstractions;
 using AI.Core.State.BehaviorContext;
 using System.Collections.Generic;

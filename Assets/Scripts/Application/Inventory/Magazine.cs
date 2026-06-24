@@ -1,7 +1,4 @@
-using System.Collections.Generic;
-using Primitives.Items;
 using Core.Equipment;
-using Core.Inventory.Requests;
 using UnityEngine;
 
 namespace Application.Inventory

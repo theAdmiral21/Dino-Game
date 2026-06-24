@@ -1,5 +1,5 @@
+using Core.Movement.Inputs;
 using Movement.Core.Abstractions;
-using Movement.Core.Inputs;
 using Movement.Core.Stats;
 using Primitives.Physics;
 using Primitives.Stats.DataStructures;

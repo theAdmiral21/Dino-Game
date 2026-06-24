@@ -1,7 +1,6 @@
 using Core.Equipment;
 using Game.Core.Execution;
 using Infrastructure.Unity.Registries;
-using Movement.Core.Movement.Abstractions;
 using Movement.Core.Movement.DataStructures;
 using Physics.Core.PhysicsActors;
 using Unity.Common.Unity;

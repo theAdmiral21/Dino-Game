@@ -7,10 +7,8 @@ using System.Text;
 using Primitives.EventBus.Abstractions;
 using Infrastructure.Application.EventBus;
 using Unity.Inventory.DataStructures;
-using Unity.Equipment;
 using Core.Inventory.Requests;
 using Core.Equipment;
-using System;
 using Unity.Common.Unity;
 
 namespace Unity.Inventory

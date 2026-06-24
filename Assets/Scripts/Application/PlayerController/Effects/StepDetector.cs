@@ -3,7 +3,6 @@ using PlayerController.Core.Effects.DataStructures;
 using Primitives.Audio;
 using Primitives.Audio.Enums;
 using Primitives.Physics;
-using UnityEngine;
 
 namespace PlayerController.Application.Effects
 {
