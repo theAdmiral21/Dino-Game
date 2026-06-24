@@ -61,7 +61,8 @@ namespace Unity.Detection.Detectors
                     // Debug.Log($"target light data value: {targetLightData.AmbientLight}; source: {targetLightData.LightSource}");
                     if (targetLightData.LightSource == null) continue;
                     float perceived = CalcVisualScore(hits[i], targetLightData);
-                    Debug.Log($"Detected {hits[i].collider.name}; VisualScore: {perceived}");
+                    if (_drawDebug)
+                        Debug.Log($"Detected {hits[i].collider.name}; VisualScore: {perceived}");
                     return perceived;
                 }
             }

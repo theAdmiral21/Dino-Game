@@ -1,5 +1,6 @@
 using Core.Movement.Abstractions;
 using Core.WeaponRules;
+using Enemy.Core.Rules;
 using Movement.Core.Abstractions;
 using Movement.Unity.Abstractions;
 using Primitives.Rules;
@@ -23,6 +24,11 @@ namespace NPC.Unity.Providers
                 case RuleSet.Throwable:
                     {
                         RuleStateView = new ThrowableRules();
+                        break;
+                    }
+                case RuleSet.Raptor:
+                    {
+                        RuleStateView = new EnemyRules();
                         break;
                     }
 
