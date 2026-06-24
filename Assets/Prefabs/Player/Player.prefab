@@ -206,6 +206,7 @@ GameObject:
   - component: {fileID: 625423327090026294}
   - component: {fileID: 8421395927785444546}
   - component: {fileID: 6493847823426899023}
+  - component: {fileID: 3572267405284978120}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -451,6 +452,21 @@ MonoBehaviour:
   _layerMask:
     serializedVersion: 2
     m_Bits: 128
+--- !u!114 &3572267405284978120
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1497200054785741571}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b29509c540066e42b9cd85c3c153901, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _lightLayer:
+    serializedVersion: 2
+    m_Bits: 8192
 --- !u!1 &1546334948991769612
 GameObject:
   m_ObjectHideFlags: 0
@@ -5634,7 +5650,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

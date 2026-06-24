@@ -178,7 +178,7 @@ namespace Physics.Features.Movement
                         }
                     case FrictionResult friction:
                         {
-                            Debug.Log($"Dodge update case");
+                            Debug.Log($"Friction update case");
                             frameData.CurrentState = _calcFriction.Calculate(frameData.ActorStats, friction, ref frameData.CurrentState);
                             break;
                         }

@@ -8,6 +8,7 @@ namespace Unity.Detection.Detectors.DataStructures
     {
         public float AudioAcuity;
         public float VisualAcuity;
+        public float SightDistance;
         public float NightVision;
         public float OlfactoryAcuity;
 
@@ -17,6 +18,7 @@ namespace Unity.Detection.Detectors.DataStructures
             return new DetectorStats(
                 AudioAcuity,
                 VisualAcuity,
+                SightDistance,
                 NightVision,
                 OlfactoryAcuity
             );

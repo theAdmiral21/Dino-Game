@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AudioAcuity: 1
   VisualAcuity: 1
+  SightDistance: 30
   NightVision: 1
   OlfactoryAcuity: 1
