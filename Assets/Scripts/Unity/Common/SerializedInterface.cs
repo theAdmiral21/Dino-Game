@@ -25,5 +25,11 @@ namespace Unity.Common.Unity
         {
             return wrapper?.Interface;
         }
+
+        // WAIT BETTER YET I SHOULD JUST DESTROY THIS
+        public void Destroy()
+        {
+            GameObject.Destroy(_monoScript.gameObject);
+        }
     }
 }

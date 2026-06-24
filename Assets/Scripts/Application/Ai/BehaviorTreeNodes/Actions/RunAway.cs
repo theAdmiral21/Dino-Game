@@ -1,0 +1,75 @@
+using UnityEngine;
+using AI.Core.Behavior;
+using AI.Core.State;
+using AI.Core.State.BehaviorContext;
+using AI.Core.PathFinding;
+using Movement.Core.Abstractions;
+
+namespace AI.Application.BehaviorTreeNodes
+{
+    public class RunAway<T> : IBehaviorNode<T> where T : IDetectPlayerContext, IPositionContext, IPathFindContext, IInputContext
+    {
+        public float MinSafeDistance => _minSafeDistance;
+        private float _minSafeDistance;
+        public RunAway(float minSafeDistance)
+        {
+            _minSafeDistance = minSafeDistance;
+        }
+        public NodeResult Tick(T context)
+        {
+            var res = Flee(context);
+            // flee
+            Debug.Log($"Node result for run away result: {res}");
+            return res;
+        }
+
+        private NodeResult Flee(T context)
+        {
+            float dist = Vector2.Distance(context.CurrentPosition, context.LastKnownLocation);
+            if (dist > _minSafeDistance)
+            {
+                // Stop moving
+                context.AiInput.SetMove(Vector2.zero);
+                context.AiInput.SetJumpPressed(false);
+                Debug.Log($"Escaped!");
+                return NodeResult.Success;
+            }
+            else
+            {
+                // Calculate escape vectors
+                IPathData path = PlotEscape(context);
+                // Choose one at random
+                Debug.Log($"Escaping along vector: {path.Bearing}");
+                // Send the input
+                context.AiInput.SetMove(path.Bearing);
+
+                // Add a jump?
+                if (path.Bearing.y > 0)
+                {
+                    context.AiInput.SetJumpPressed(true);
+                }
+                else
+                {
+                    context.AiInput.SetJumpPressed(false);
+                }
+
+                // Execute
+                return NodeResult.Running;
+            }
+        }
+
+        private IPathData PlotEscape(T context)
+        {
+            // Calculate the escape vector
+            IPathData pathData = context.FindPath(context.CurrentPosition);
+            return pathData;
+        }
+
+        public void Reset(T context)
+        {
+            Debug.Log($"Reset run away node");
+            context.AiInput.SetMove(Vector2.zero);
+            context.AiInput.SetJumpPressed(false);
+        }
+    }
+}

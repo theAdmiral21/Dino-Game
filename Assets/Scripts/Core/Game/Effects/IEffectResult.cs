@@ -7,6 +7,6 @@ namespace Game.Core.Effects
     {
         public bool Approved { get; }
         public Type EffectType { get; }
-        public PlayerSoundKey SoundKey { get; }
+        // public PlayerSoundKey SoundKey { get; }
     }
 }

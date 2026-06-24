@@ -165,7 +165,7 @@ namespace Enemy.Unity
             receiver.ReceiveImpulse(CalcPounceBounce());
 
             // Receive damage
-            _healthObject.ReceiveDamage(new DamageInfo(DamageType.Kill, Vector2.zero, 0, 0, 5));
+            // _healthObject.ReceiveDamage(new DamageInfo(DamageType.Kill, Vector2.zero, 0, 0, 5));
         }
 
         private void OnPlayerTouched(IPhysicsActor player)
