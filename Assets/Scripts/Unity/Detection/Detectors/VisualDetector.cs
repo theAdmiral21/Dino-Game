@@ -52,7 +52,7 @@ namespace Unity.Detection.Detectors
             // Debug.Log($"Got {hits.Count} hits");
             for (int i = 0; i < hits.Count; i++)
             {
-                Debug.Log($"Checking {hits[i].collider.name}");
+                // Debug.Log($"Checking {hits[i].collider.name}");
                 if (hits[i].collider.TryGetComponent<ILightContext>(out var lightContext))
                 {
                     // Debug.Log($"Found light context: {lightContext != null}");

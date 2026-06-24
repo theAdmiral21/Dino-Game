@@ -85,6 +85,7 @@ namespace AI.Application.BehaviorTreeNodes
             else
             {
                 float posError = CalcPositionError(context);
+                Debug.Log($"Position error: {posError}");
                 if (posError < 0.2f)
                 {
                     Debug.Log($"Wander status: {NodeResult.Success}");

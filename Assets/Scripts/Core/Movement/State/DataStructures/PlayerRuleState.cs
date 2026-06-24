@@ -319,6 +319,16 @@ namespace Movement.Core.State.DataStructures
                 }
             }
         }
+        public void ForceDirection(bool left)
+        {
+            if (left)
+            {
+                _dir = -1;
+                return;
+            }
+            _dir = 1;
+            return;
+        }
         public void ResetJumps(PhysicsContext physicsContext)
         {
             if ((physicsContext.IsGrounded || physicsContext.IsOnPlatform) && !GroundedLastFrame)

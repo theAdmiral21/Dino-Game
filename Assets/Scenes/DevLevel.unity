@@ -5719,9 +5719,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 566184174}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d302a62e62865f54b9e62e170b5c4775, type: 3}
+  m_Script: {fileID: 11500000, guid: cb998a92beb597a4790a59708f71b246, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _requestSinkMono:
+    _monoScript: {fileID: 602966097}
 --- !u!1 &598743084
 GameObject:
   m_ObjectHideFlags: 0
@@ -5765,6 +5767,7 @@ GameObject:
   - component: {fileID: 602966099}
   - component: {fileID: 602966098}
   - component: {fileID: 602966097}
+  - component: {fileID: 602966100}
   m_Layer: 7
   m_Name: Raptor
   m_TagString: Untagged
@@ -5891,6 +5894,22 @@ Transform:
   - {fileID: 343404061}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &602966100
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 602966093}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ba6102f6cd76db468b4a5a932b81fef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _parentTransform: {fileID: 602966099}
+  _rootSO: {fileID: 11400000, guid: b85bcc6d0af239b4289b1f2f4b124db7, type: 2}
+  _aiInputMono:
+    _monoScript: {fileID: 566184179}
 --- !u!1 &619394800
 GameObject:
   m_ObjectHideFlags: 0
@@ -6413,6 +6432,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1305387605}
+  - component: {fileID: 1305387606}
   m_Layer: 7
   m_Name: Health
   m_TagString: Untagged
@@ -6435,6 +6455,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 602966099}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1305387606
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1305387604}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d30f9c47651add347aa01b4412753ffc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MaxHealth: 1
 --- !u!1 &1322659678
 GameObject:
   m_ObjectHideFlags: 0

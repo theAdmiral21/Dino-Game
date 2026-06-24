@@ -36,6 +36,7 @@ namespace Movement.Core.Abstractions
     {
         public float Dir { get; }
         public void SetDirection(IActorInput input, PhysicsContext physicsContext);
+        public void ForceDirection(bool left);
     }
 
     public interface IFallState

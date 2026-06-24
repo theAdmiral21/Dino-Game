@@ -22,13 +22,13 @@ namespace Movement.Core.Rules
 
         private static AimResult Approved(AimRequest request)
         {
-            Debug.Log($"Aim approved");
+            // Debug.Log($"Aim approved");
             return new AimResult(true, request.MousePosition);
         }
 
         private static AimResult Denied()
         {
-            Debug.Log($"Aim denied");
+            // Debug.Log($"Aim denied");
             return new AimResult(false, Vector2.zero);
         }
 
