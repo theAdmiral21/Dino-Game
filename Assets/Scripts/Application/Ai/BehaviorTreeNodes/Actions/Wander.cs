@@ -9,7 +9,7 @@ namespace AI.Application.BehaviorTreeNodes
 {
     public class Wander<T> : IBehaviorNode<T> where T : IMoveToContext, ITickTimerContext, IGameTimerContext
     {
-        private float _maxWanderRadius = 5f;
+        private float _maxWanderRadius = 10f;
 
         private float _wanderTime;
         public ITimerContext Timer { get; private set; }
@@ -53,13 +53,13 @@ namespace AI.Application.BehaviorTreeNodes
         private void PickDestination(T context)
         {
             // Get a random radius to pick
-            float radius = Random.Range(0f, _maxWanderRadius);
+            float radius = Random.Range(5f, _maxWanderRadius);
             // Get a random angle
             float angle = Random.Range(0f, 2 * Mathf.PI);
             // Calculate the destination
             float x = radius * Mathf.Cos(angle);
-            float y = radius * Mathf.Sin(angle);
-            context.SetDestination(context.CurrentPosition + new Vector2(x, y));
+            // float y = radius * Mathf.Sin(angle);
+            context.SetDestination(context.CurrentPosition + new Vector2(x, 0));
         }
 
         private void Move(T context)
