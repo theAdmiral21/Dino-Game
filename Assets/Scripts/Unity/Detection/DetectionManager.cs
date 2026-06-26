@@ -1,4 +1,6 @@
+using Codice.Utils;
 using Core.Detection;
+using Core.Detection.Olfactory;
 using Unity.Common.Unity;
 using UnityEngine;
 
@@ -6,8 +8,10 @@ namespace Unity.Detection.DetectionManager.cs
 {
     public class DetectionManager : MonoBehaviour, IDetectionManager
     {
-        public IDetectionRegistry Detectors => _detectors.Interface;
-        [SerializeField] private SerializedInterface<IDetectionRegistry> _detectors;
+        // Why do I have these?
+        // public IDetectionRegistry Detectors => _detectors.Interface;
+        // [SerializeField] private SerializedInterface<IDetectionRegistry> _detectors;
+        public IScentMap ScentMap { get; private set; }
 
         public static DetectionManager Instance { get; private set; }
         private void Awake()
@@ -21,6 +25,8 @@ namespace Unity.Detection.DetectionManager.cs
 
             DontDestroyOnLoad(gameObject);
             Debug.Log($"INSTANTIATED DetectionManager {GetInstanceID()}");
+
+            ConfigManager();
         }
 
         private void OnDestroy()
@@ -30,6 +36,16 @@ namespace Unity.Detection.DetectionManager.cs
             {
                 Instance = null;
             }
+        }
+
+        private void ConfigManager()
+        {
+            ScentMap = new ScentMap();
+        }
+
+        private void FixedUpdate()
+        {
+            ScentMap.Decay(Time.fixedDeltaTime);
         }
     }
 }

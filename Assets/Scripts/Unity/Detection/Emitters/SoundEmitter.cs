@@ -64,7 +64,7 @@ namespace Unity.Detection.Emitters
 
                 if (detector != null)
                 {
-                    detector.Detect(sound);
+                    detector.Listen(sound);
                 }
             }
         }

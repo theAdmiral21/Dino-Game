@@ -2,6 +2,7 @@ using System;
 using Game.Core.Health;
 using Primitives.Damage;
 using Primitives.EventBus.Abstractions;
+using Primitives.Health;
 using UnityEngine;
 
 namespace NPC.Application.Health
@@ -12,6 +13,9 @@ namespace NPC.Application.Health
         public int CurrentHealth { get; private set; }
         public bool IsAlive => CurrentHealth > 0;
         public bool Respawning { get; private set; }
+
+        public HealthState StateOfHealth { get; private set; }
+
         public event Action OnDeath;
         public event Action OnHealed;
         public event Action OnDamaged;
@@ -80,9 +84,16 @@ namespace NPC.Application.Health
             }
         }
 
+        public void ResetHealth()
+        {
+            CurrentHealth = MaxHealth;
+            SetHealthState();
+            OnHealed?.Invoke();
+        }
         private void DecrementHealth(int damage)
         {
             CurrentHealth -= damage;
+            SetHealthState();
             OnDamaged?.Invoke();
         }
 
@@ -90,13 +101,33 @@ namespace NPC.Application.Health
         {
             if (CurrentHealth == MaxHealth) return;
             CurrentHealth += healing;
+            SetHealthState();
             OnHealed?.Invoke();
         }
 
-        public void ResetHealth()
+
+        private void SetHealthState()
         {
-            CurrentHealth = MaxHealth;
-            OnHealed?.Invoke();
+            if (CurrentHealth >= MaxHealth * 0.75f)
+            {
+                StateOfHealth = HealthState.Fine;
+            }
+            else if (CurrentHealth < MaxHealth * 0.75f && CurrentHealth >= MaxHealth * 0.5f)
+            {
+                StateOfHealth = HealthState.Wounded;
+            }
+            else if (CurrentHealth < MaxHealth * 0.5f && CurrentHealth >= MaxHealth * 0.25f)
+            {
+                StateOfHealth = HealthState.Injured;
+            }
+            else if (CurrentHealth < MaxHealth * 0.25f && CurrentHealth > 0)
+            {
+                StateOfHealth = HealthState.CriticallyInjured;
+            }
+            else
+            {
+                StateOfHealth = HealthState.Dead;
+            }
         }
     }
 }

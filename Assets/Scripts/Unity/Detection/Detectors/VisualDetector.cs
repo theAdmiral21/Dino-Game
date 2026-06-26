@@ -1,8 +1,11 @@
 using System.Collections.Generic;
 using Core.Detection.Visual;
+using Core.Detection.Visual.DataStructures;
 using Core.Light;
+using Primitives.Health;
 using Unity.Common.Unity;
 using Unity.Detection.Detectors.DataStructures;
+using UnityEditor;
 using UnityEngine;
 
 namespace Unity.Detection.Detectors
@@ -15,7 +18,7 @@ namespace Unity.Detection.Detectors
         [SerializeField] private SerializedInterface<ILightContext> _lightContextMono;
         private ILightContext _lightContext => _lightContextMono.Interface;
 
-        public float Distance { get; private set; }
+        public float VisualDistance { get; private set; }
 
         public float Acuity { get; private set; }
 
@@ -33,11 +36,19 @@ namespace Unity.Detection.Detectors
 
         private float _facing => Mathf.Sign(_parentTransform.localScale.x);
 
+        private bool _isTracking;
+
+        // Visual Data returned from target
+        private Vector2 _targetLastKnown;
+        private Vector2 _targetFacing;
+        private Vector2 _targetVelocity;
+        private HealthState _targetHealthState;
+
         private void Awake()
         {
             var temp = _statsSO.BuildRunTime();
             Acuity = temp.VisualAcuity;
-            Distance = temp.SightDistance;
+            VisualDistance = temp.SightDistance;
             NightVision = temp.NightVision;
         }
 
@@ -45,7 +56,18 @@ namespace Unity.Detection.Detectors
         {
             Look();
         }
-        public float Look()
+        public VisualData? Search()
+        {
+            if (!_isTracking)
+            {
+                return Look();
+            }
+            else
+            {
+                return Track();
+            }
+        }
+        public VisualData? Look()
         {
             // Scan the area from origin a set distance using a ray cast
             List<RaycastHit2D> hits = Scan();
@@ -60,13 +82,52 @@ namespace Unity.Detection.Detectors
                     LightData targetLightData = lightContext.GetAmbientLight();
                     // Debug.Log($"target light data value: {targetLightData.AmbientLight}; source: {targetLightData.LightSource}");
                     if (targetLightData.LightSource == null) continue;
+
                     float perceived = CalcVisualScore(hits[i], targetLightData);
+
                     if (_drawDebug)
+                    {
                         Debug.Log($"Detected {hits[i].collider.name}; VisualScore: {perceived}");
-                    return perceived;
+                    }
+                    if (perceived > Acuity)
+                    {
+                        _targetLastKnown = hits[i].collider.transform.position;
+                        _isTracking = true;
+                        return Track();
+                    }
                 }
             }
-            return 0f;
+            return null;
+        }
+
+        public VisualData? Track()
+        {
+            // Maintain a visual lock on the target and start providing data
+            RaycastHit2D hit = Physics2D.Raycast(transform.position,
+                                                _targetLastKnown.normalized,
+                                                VisualDistance,
+                                                _obstacleMask);
+
+            if (hit)
+            {
+                if (hit.collider.CompareTag("Player"))
+                {
+                    _targetLastKnown = hit.transform.position;
+                    float targetDistance = Vector2.Distance(transform.position, _targetLastKnown);
+                    // _targetFacing = hit.transform
+                    // _targetVelocity
+                    // _targetHealthState
+                    Debug.LogError($"Implement getting the rest of this data from the player!");
+
+                    return new VisualData
+                    {
+                        DetectionTime = Time.fixedTime,
+                        DistanceFraction = targetDistance / VisualDistance,
+                        TargetPosition = _targetLastKnown,
+                    };
+                }
+            }
+            return null;
         }
 
         private float CalcVisualScore(RaycastHit2D hit, LightData targetLightData)
@@ -76,7 +137,7 @@ namespace Unity.Detection.Detectors
             float lighting = targetLightData.AmbientLight;
 
             // Normalize distance — 0 means at max range, 1 means right next to observer
-            float normalizedDistance = 1f - Mathf.Clamp01(hit.distance / Distance);
+            float normalizedDistance = 1f - Mathf.Clamp01(hit.distance / VisualDistance);
 
             // Movement contribution — you don't have this yet, placeholder 0
             float movement = 0f;
@@ -116,7 +177,7 @@ namespace Unity.Detection.Detectors
                 RaycastHit2D hit = Physics2D.Raycast(
                         transform.position,
                         scanDir,
-                        Distance * _facing,
+                        VisualDistance * _facing,
                         _obstacleMask);
 
                 // Dinos only care about the player... except for the rex. She likes flares.

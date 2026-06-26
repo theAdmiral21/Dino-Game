@@ -9,10 +9,11 @@ using PlayerController.Core.ManagerControls.Abstractions;
 using Game.Core.Health;
 using PlayerController.Core.Info;
 using Movement.Core.Abstractions;
+using Core.Game.HealthSystem.Health;
 
 namespace PlayerController.Unity.Health
 {
-    public class PlayerHealth : MonoBehaviour, IDamageable, IHealable, IInitializable<IGameContext>
+    public class PlayerHealth : MonoBehaviour, IDamageable, IHealable, IHealthComponentProvider, IInitializable<IGameContext>
     {
         [SerializeField] SerializedInterface<IPlayerView> _playerView;
         [SerializeField] SerializedInterface<IOverrideControls> _overrideControls;
@@ -25,8 +26,8 @@ namespace PlayerController.Unity.Health
         public IStunnable Stun => _stun;
         private IStunnable _stun => _stunMono.Interface;
 
-        public PlayerHealthComponent HealthComponent => _healthComponent;
-        private PlayerHealthComponent _healthComponent;
+        public IHealthComponent HealthComponent => _healthComponent;
+        private IHealthComponent _healthComponent;
         public int CurrentHealth => _healthComponent.CurrentHealth;
         public bool IsAlive => _healthComponent.IsAlive;
         [SerializeField] private int _maxHealth;

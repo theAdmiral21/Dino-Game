@@ -84,14 +84,14 @@ namespace NPC.Application.BehaviorContexts
 
             float bearingY = Destination.y - CurrentPosition.y;
             moveVector.y = MathF.Sign(bearingY);
-            Debug.Log($"Calc'd move input: {moveVector}");
+            // Debug.Log($"Calc'd move input: {moveVector}");
             _aiInput.SetMove(moveVector);
         }
 
         public void SetDestination(Vector2 dest)
         {
             Destination = dest;
-            Debug.Log($"Set destination to: {Destination}");
+            // Debug.Log($"Set destination to: {Destination}");
         }
 
         public void SetFoundPlayer(bool val)

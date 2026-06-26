@@ -28,6 +28,10 @@ using Game.Application.Cameras;
 using Game.Unity.Cameras;
 using Game.Core.Cameras;
 using Physics.Unity.Physics;
+using Core.Detection.Services;
+using Application.Detection.Services;
+using Core.Detection.Olfactory;
+using Unity.Detection.DetectionManager.cs;
 
 namespace Game.Unity
 {
@@ -59,6 +63,7 @@ namespace Game.Unity
         private ICameraService _cameraService;
         private IPlayerServices _playerServices;
         private ISceneContextService _sceneContextService;
+        private IDetectionServices _detectionServices;
         private IGameContext _gameContext;
 
 
@@ -124,6 +129,10 @@ namespace Game.Unity
             // Scene context service
             _sceneContextService = new SceneContextService();
 
+            // Detection services
+            IScentMap scentMap = DetectionManager.Instance.ScentMap;
+            _detectionServices = new DetectionServices(scentMap);
+
             _gameContext = new GameContext(
                             _gameStateServices,
                             _quitServices,
@@ -133,7 +142,8 @@ namespace Game.Unity
                             _cameraService,
                             _physicsServices,
                             _playerServices,
-                            _sceneContextService
+                            _sceneContextService,
+                            _detectionServices
 );
 
             GameContextRegistry.Set(_gameContext);

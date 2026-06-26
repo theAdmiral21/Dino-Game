@@ -1,3 +1,4 @@
+using Core.Detection.Services;
 using Game.Core.Audio;
 using Game.Core.Cameras;
 // using Game.Core.Quests;
@@ -39,6 +40,7 @@ namespace Game.Core.Execution
         public ISceneContextService SceneContextService { get; }
 
         // public IChoreStatusProvider ChoreStatusProvider { get; }
+        public IDetectionServices DetectionServices { get; }
 
     }
 }

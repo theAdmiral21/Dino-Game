@@ -1,3 +1,4 @@
+using Core.Detection.Services;
 using Game.Core.Audio;
 using Game.Core.Cameras;
 using Game.Core.Execution;
@@ -17,13 +18,11 @@ namespace Game.Application.DataStructures
         public IAudioService AudioService { get; }
         public IEventBus EventBus { get; }
         public ICameraService CameraService { get; }
-
         public IPhysicsServices PhysicsServices { get; }
-
         public IPlayerServices PlayerServices { get; }
-
-
         public ISceneContextService SceneContextService { get; }
+        public IDetectionServices DetectionServices { get; }
+
 
 
         public GameContext(
@@ -35,7 +34,8 @@ namespace Game.Application.DataStructures
             ICameraService cameraServices,
             IPhysicsServices physicsServices,
             IPlayerServices playerServices,
-            ISceneContextService sceneContextService
+            ISceneContextService sceneContextService,
+            IDetectionServices detectionServices
         )
         {
             GameStateServices = gameStateServices;
@@ -47,6 +47,7 @@ namespace Game.Application.DataStructures
             PhysicsServices = physicsServices;
             PlayerServices = playerServices;
             SceneContextService = sceneContextService;
+            DetectionServices = detectionServices;
         }
     }
 }

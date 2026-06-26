@@ -1,3 +1,4 @@
+using System;
 using Core.Detection.Audio;
 using Core.Detection.Audio.DataStructures;
 using Unity.Detection.Detectors.DataStructures;
@@ -10,6 +11,8 @@ namespace Unity.Detection.Detectors
         [SerializeField] private DetectorStatsSO _statsSO;
         public float Sensitivity => _sensitivity;
         private float _sensitivity;
+        private Vector2 _currentPosition => transform.position;
+        public event Action<AudioData> AudioEvent;
 
         private void Awake()
         {
@@ -20,12 +23,12 @@ namespace Unity.Detection.Detectors
         {
             _sensitivity = audioAcuity;
         }
-        public void Detect(EmittedSound sound)
+        public void Listen(EmittedSound sound)
         {
             // Calc fall off 
             float fallOff = CalcFallOff(sound);
             // Calc attenuation
-            float dist = Vector2.Distance(sound.Origin, transform.position);
+            float dist = Vector2.Distance(sound.Origin, _currentPosition);
             float attenuation = CalcAttenuation(dist);
             // Calc perceived intensity
             float perceivedIntensity = fallOff * attenuation * _sensitivity;
@@ -34,7 +37,14 @@ namespace Unity.Detection.Detectors
             float threshold = 5f;
             if (perceivedIntensity > threshold)
             {
-                // React();
+                AudioData data = new AudioData
+                {
+                    DetectionTime = Time.fixedTime,
+                    SoundIntensity = perceivedIntensity,
+                    Type = sound.Type,
+                    SoundDirection = (sound.Origin - _currentPosition).normalized
+                };
+                AudioEvent?.Invoke(data);
                 Debug.Log($"Reacting to sound!");
             }
         }
