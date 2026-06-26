@@ -59,6 +59,7 @@ namespace Unity.Detection.Emitters
 
                 if (detector != null)
                 {
+                    Debug.Log($"Pinging {detectors[i].name}");
                     detector.Listen(sound);
                     DrawDebugCircle(detectors[i].transform.position, .5f, Color.purple);
                 }

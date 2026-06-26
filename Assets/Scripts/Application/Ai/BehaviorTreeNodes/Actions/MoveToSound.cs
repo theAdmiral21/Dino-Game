@@ -16,16 +16,19 @@ namespace Application.Ai.BehaviorTreeNodes.Actions
 
         public NodeResult Tick(T context)
         {
+            Debug.Log($"MoveToSound status: {NodeResult.Failure}, Perception is null?");
             if (context.Perception == null) return NodeResult.Failure;
             // Check for audio data
             if (context.Perception.TimeOfAudio != 0)
             {
                 // path towards it
                 Move(context);
+                Debug.Log($"MoveToSound status: {NodeResult.Running}");
                 return NodeResult.Running;
             }
             else
             {
+                Debug.Log($"MoveToSound status: {NodeResult.Failure}");
                 return NodeResult.Failure;
             }
         }

@@ -79,7 +79,7 @@ namespace AI.Application.BehaviorTreeNodes
         {
             if (Timer.IsActive)
             {
-                // Debug.Log($"Wander status: {NodeResult.Running}");
+                Debug.Log($"Wander status: {NodeResult.Running}");
                 return NodeResult.Running;
             }
             else
@@ -88,10 +88,10 @@ namespace AI.Application.BehaviorTreeNodes
                 // Debug.Log($"Position error: {posError}");
                 if (posError < 0.2f)
                 {
-                    // Debug.Log($"Wander status: {NodeResult.Success}");
+                    Debug.Log($"Wander status: {NodeResult.Success}");
                     return NodeResult.Success;
                 }
-                // Debug.Log($"Wander status: {NodeResult.Failure}");
+                Debug.Log($"Wander status: {NodeResult.Failure}");
                 return NodeResult.Failure;
             }
         }

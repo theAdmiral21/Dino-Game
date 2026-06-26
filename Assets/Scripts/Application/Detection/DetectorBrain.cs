@@ -42,19 +42,25 @@ namespace Application.Detection
         {
 
             _visualData = _visualDetector.Look();
-
+            _perceptionContext.UpdatePerception(DrawConclusions());
             TickTimers(dt);
 
         }
         public PerceptionState DrawConclusions()
         {
+            Debug.Log($"Drawing conclusions!");
             return new PerceptionState
             {
+                // How confident is the brain in what is has perceived?
                 ConfidenceLevel = CalcConfidence(),
-                // I only care about audio right now
-                AudioDirection = _audioData.Value.SoundDirection,
-                TimeOfAudio = _audioData.Value.DetectionTime,
-                AudioIntensity = _audioData.Value.SoundIntensity,
+
+                // Visual data
+
+
+                // Audio data
+                AudioDirection = _audioData.HasValue ? _audioData?.SoundDirection : null,
+                TimeOfAudio = _audioData.HasValue ? _audioData.Value.DetectionTime : 0,
+                AudioIntensity = _audioData.HasValue ? _audioData.Value.SoundIntensity : 0,
             };
         }
 
@@ -119,6 +125,7 @@ namespace Application.Detection
             if (_audioInterestCounter > 0)
             {
                 _audioInterestCounter -= dt;
+                Debug.Log($"Ticking audio interest timer");
             }
             else
             {

@@ -119,6 +119,7 @@ namespace NPC.Application.BehaviorContexts
 
         public void UpdatePerception(PerceptionState state)
         {
+            Debug.Log($"Updating perception state");
             Perception = state;
         }
     }
