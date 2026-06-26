@@ -2,6 +2,7 @@ using System.Linq;
 using AI.Application.BehaviorTree;
 using AI.Application.BehaviorTreeNodes;
 using AI.Core.Behavior;
+using Core.Detection;
 using Core.Movement.Inputs;
 using NPC.Application.BehaviorContexts;
 using Unity.AI.BehaviorTree;
@@ -19,11 +20,8 @@ namespace Unity.NPC.Controllers
         [SerializeField] private SerializedInterface<IAiInput> _aiInputMono;
         private IAiInput _aiInput => _aiInputMono.Interface;
 
-        // [SerializeField] private SerializedInterface<IPlayerDetector> _detectorMono;
-        // private IPlayerDetector _detector => _detectorMono.Interface;
-
-        // [SerializeField] private SerializedInterface<IPathAwayFrom> _pathAwayMono;
-        // private IPathAwayFrom _pathAway => _pathAwayMono.Interface;
+        [SerializeField] private SerializedInterface<IDetectorOrchestrator> _detectorOrchestratorMono;
+        private IDetectorOrchestrator _detectorOrchestrator => _detectorOrchestratorMono.Interface;
 
         private IBehaviorTree<RaptorContext> _behaviorTree;
         private RaptorContext _context;
@@ -38,6 +36,9 @@ namespace Unity.NPC.Controllers
 
             // build the tree
             _behaviorTree = new BehaviorTree<RaptorContext>(ballRoot);
+
+            // Init the detector brain
+            _detectorOrchestrator.InitBrain(_context);
         }
 
         private void Update()

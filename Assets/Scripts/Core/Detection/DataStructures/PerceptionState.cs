@@ -1,4 +1,4 @@
-using System.Numerics;
+using UnityEngine;
 using Primitives.Health;
 
 namespace Core.Detection.DataStructures

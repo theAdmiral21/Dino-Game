@@ -1,4 +1,5 @@
 using Application.Detection;
+using Core.Ai.State.BehaviorContext;
 using Core.Detection;
 using Core.Detection.Audio;
 using Core.Detection.Olfactory;
@@ -35,6 +36,10 @@ namespace Unity.Detection
             _scentDetector.ScentEvent += _brain.OnScentEvent;
         }
 
+        public void InitBrain(IPerceptionContext context)
+        {
+            _brain.SetPerceptionContext(context);
+        }
         private void FixedUpdate()
         {
             _brain.Tick(Time.fixedDeltaTime);

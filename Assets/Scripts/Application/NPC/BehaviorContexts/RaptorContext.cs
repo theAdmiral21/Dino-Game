@@ -3,6 +3,8 @@ using AI.Core.PathFinding;
 using AI.Core.State;
 using AI.Core.State.BehaviorContext;
 using AI.Core.Timers;
+using Core.Ai.State.BehaviorContext;
+using Core.Detection.DataStructures;
 using Core.Movement.Inputs;
 using Enemy.Core.Detectors.Abstractions;
 using Movement.Core.Abstractions;
@@ -19,7 +21,8 @@ namespace NPC.Application.BehaviorContexts
                                IPathFindContext,
                                ITickTimerContext,
                                IGameTimerContext,
-                               IInputContext
+                               IInputContext,
+                               IPerceptionContext
     {
         public MovementType MoveType => MovementType.Run;
 
@@ -35,9 +38,11 @@ namespace NPC.Application.BehaviorContexts
 
         public float Dt { get; set; }
 
-        public ITimerContext Timer => throw new NotImplementedException();
-
         public IAiInput AiInput => _aiInput;
+
+        public PerceptionState Perception { get; private set; }
+
+        public ITimerContext Timer => throw new NotImplementedException();
 
         private IAiInput _aiInput;
         private IPlayerDetector _detector;
@@ -45,12 +50,10 @@ namespace NPC.Application.BehaviorContexts
         private float _runSlowDownRadius;
         private float _flySlowDownRadius;
         public RaptorContext(IAiInput aiInput)
-        //    IPlayerDetector detector,
-        //    IPathAwayFrom pathFinder)
+
         {
             _aiInput = aiInput;
-            // _detector = detector;
-            // _pathFinder = pathFinder;
+
         }
 
         public IDetectionData DetectPlayer()
@@ -112,6 +115,11 @@ namespace NPC.Application.BehaviorContexts
         public IPathData FindPath(Vector2 relevantPosition)
         {
             return _pathFinder.PathAwayFrom(CurrentPosition, LastKnownLocation);
+        }
+
+        public void UpdatePerception(PerceptionState state)
+        {
+            Perception = state;
         }
     }
 }

@@ -1,4 +1,5 @@
 using System;
+using Core.Ai.State.BehaviorContext;
 using Core.Detection;
 using Core.Detection.Audio.DataStructures;
 using Core.Detection.DataStructures;
@@ -15,19 +16,34 @@ namespace Application.Detection
         private float _scentWeight = 1f;
 
         private IVisualDetector _visualDetector;
+        private IPerceptionContext _perceptionContext;
+
+        // Interest timers, this eventually needs to be scriptable object
+        private float _audioInterestTime = 5f;
+        private float _audioInterestCounter;
+
+        private float _scentInterestTime = 5f;
+        private float _scentInterestCounter;
 
         // Data classes for this frame
         VisualData? _visualData;
         AudioData? _audioData;
         OlfactoryData? _scentData;
+
         public DetectorBrain(IVisualDetector visualDetector)
         {
             _visualDetector = visualDetector;
+        }
+        public void SetPerceptionContext(IPerceptionContext context)
+        {
+            _perceptionContext = context;
         }
         public void Tick(float dt)
         {
 
             _visualData = _visualDetector.Look();
+
+            TickTimers(dt);
 
         }
         public PerceptionState DrawConclusions()
@@ -35,18 +51,26 @@ namespace Application.Detection
             return new PerceptionState
             {
                 ConfidenceLevel = CalcConfidence(),
-                // TargetPosition = _visualData.
+                // I only care about audio right now
+                AudioDirection = _audioData.Value.SoundDirection,
+                TimeOfAudio = _audioData.Value.DetectionTime,
+                AudioIntensity = _audioData.Value.SoundIntensity,
             };
         }
 
         public void OnAudioEvent(AudioData data)
         {
             _audioData = data;
+            // This is where we would decide if the audio event was interesting or not, for now everything is interesting.
+            Debug.Log($"Remember to gate audio interest in the future");
+            SetAudioInterestTimer();
         }
 
         public void OnScentEvent(OlfactoryData data)
         {
             _scentData = data;
+            Debug.Log($"Remember to gate scent interest in the future");
+            SetScentInterestTimer();
         }
 
         private float CalcConfidence()
@@ -79,5 +103,43 @@ namespace Application.Detection
 
             return totalWeight > 0f ? confidence / totalWeight : 0f;
         }
+
+        private void SetAudioInterestTimer()
+        {
+            _audioInterestCounter = _audioInterestTime;
+        }
+
+        private void SetScentInterestTimer()
+        {
+            _scentInterestCounter = _scentInterestTime;
+        }
+
+        private void TickTimers(float dt)
+        {
+            if (_audioInterestCounter > 0)
+            {
+                _audioInterestCounter -= dt;
+            }
+            else
+            {
+                if (_audioData != null)
+                {
+                    _audioData = null;
+                }
+            }
+
+            if (_scentInterestCounter > 0)
+            {
+                _scentInterestCounter -= dt;
+            }
+            else
+            {
+                if (_scentData != null)
+                {
+                    _scentData = null;
+                }
+            }
+        }
+
     }
 }
