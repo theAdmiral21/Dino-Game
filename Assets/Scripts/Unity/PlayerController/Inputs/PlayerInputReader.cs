@@ -157,7 +157,7 @@ namespace PlayerController.Unity.Inputs
         }
         private void OnStopMove(InputAction.CallbackContext context)
         {
-            Debug.Log($"Received run stop input");
+            // Debug.Log($"Received run stop input");
             // RunStop?.Invoke(new RunStopRequest(true, context.ReadValue<Vector2>()));
             _requestHandler.EnqueueActionRequest(new RunStopRequest(true, context.ReadValue<Vector2>()));
             // _moveInput.x = 0;

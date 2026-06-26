@@ -9,9 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c90f5e74b564e644c93dab31c86367fa, type: 3}
-  m_Name: RaptorSequenceSO
+  m_Script: {fileID: 11500000, guid: b251a034275cfb04283a180cd9d998bf, type: 3}
+  m_Name: PelletStats
   m_EditorClassIdentifier: 
-  Children:
-  - {fileID: 11400000, guid: b85bcc6d0af239b4289b1f2f4b124db7, type: 2}
-  - {fileID: 11400000, guid: fa8691d9bccfa8645bff489439bdee7b, type: 2}
+  Damage: 80
+  KnockBack: 45
+  HitStun: 0
+  HurtType: 0
+  SoundRadius: 1

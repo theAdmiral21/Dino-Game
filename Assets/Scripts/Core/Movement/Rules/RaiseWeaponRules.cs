@@ -25,7 +25,7 @@ namespace Movement.Core.Rules
 
         private static RaiseWeaponResult Approve(bool isAiming)
         {
-            Debug.Log($"Raise weapon approved");
+            // Debug.Log($"Raise weapon approved");
             if (isAiming)
             {
                 return new RaiseWeaponResult(true, true, Enums.ActionPhase.Continuous);
@@ -35,7 +35,7 @@ namespace Movement.Core.Rules
 
         private static RaiseWeaponResult Denied()
         {
-            Debug.Log($"Raise weapon denied");
+            // Debug.Log($"Raise weapon denied");
             return new RaiseWeaponResult(false, false, Enums.ActionPhase.Continuous);
         }
 

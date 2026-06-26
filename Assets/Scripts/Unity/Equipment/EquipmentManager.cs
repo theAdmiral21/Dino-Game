@@ -40,7 +40,7 @@ namespace Unity.Equipment
 
         private void SetUpActiveEquipment(CurrentEquipmentChanged evt)
         {
-            Debug.Log($"Setting up new equipment");
+            Debug.Log($"Setting up new equipment: {evt.NewItem.Item}");
             // Instantiate the new equipment
             IEquipment equipment = _equipmentFactory.BuildEquipment(evt.NewItem.Item, transform);
 

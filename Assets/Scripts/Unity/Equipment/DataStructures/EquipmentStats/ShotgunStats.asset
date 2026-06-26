@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MagazineSize: 6
   ReloadTime: 0.5
-  FireRate: 1
-  Damage: 0
-  KnockBack: 0
-  HitStun: 0
+  FireRate: 0.25
   HurtType: 0
+  MuzzleVelocity: 45
+  SoundRadius: 15
+  ProjectileStats: {fileID: 11400000, guid: c2f4f399fdd1fbb4cb0a4116dce1f2f8, type: 2}

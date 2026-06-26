@@ -514,6 +514,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _mapSO: {fileID: 11400000, guid: 35b5fb4e7c8ff0840aea4248fa6b95a8, type: 2}
   _rockPrefab: {fileID: 3242972745631904550, guid: 8ede7822867b4da4d903ac9fbdf4735d, type: 3}
+  _shotgunPrefab: {fileID: 4435548448812343753, guid: f7fcd973c058488408fcfbc0685e9f4f, type: 3}
 --- !u!1 &1598416908577889231
 GameObject:
   m_ObjectHideFlags: 0
@@ -5911,7 +5912,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _directionTransform: {fileID: 8136827835485593910}
-  _entity: 0
   _healthComponentMono:
     _monoScript: {fileID: 4621714224737221443}
 --- !u!114 &5551349247117847951

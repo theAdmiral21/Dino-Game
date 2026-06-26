@@ -76,7 +76,7 @@ namespace Unity.Equipment
             {
                 // Debug.Log($"Rock fired!");
                 var rockObject = Instantiate(_rockPrefab);
-                rockObject.GetComponentInChildren<IInitThrowable>().Init(_projectileStats);
+                rockObject.GetComponentInChildren<IInitProjectile>().Init(_projectileStats);
                 // hmm I have to initialize this entire thing before doing anything with it..
                 var intializables = rockObject.GetComponentsInChildren<IInitializable<IGameContext>>();
 

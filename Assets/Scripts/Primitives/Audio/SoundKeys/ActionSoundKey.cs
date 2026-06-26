@@ -24,5 +24,6 @@ namespace Primitives.Audio.SoundKeys
         EndZoomies,
         ZoomiesTwinkle,
         MermaidAppears,
+        Pump,
     }
 }

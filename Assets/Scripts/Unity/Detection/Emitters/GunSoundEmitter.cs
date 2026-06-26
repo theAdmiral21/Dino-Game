@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Codice.Client.Common.GameUI;
 using Core.Detection.Audio;
 using Core.Detection.Audio.DataStructures;
 using Core.Equipment;
@@ -10,17 +11,14 @@ using UnityEngine;
 
 namespace Unity.Detection.Emitters
 {
-    public class SoundEmitter : MonoBehaviour, ISoundEmitter, IInitThrowable
+    public class GunSoundEmitter : MonoBehaviour, ISoundEmitter, IInitStats<EquipmentStats>
     {
         [SerializeField] private LayerMask _soundLayer;
-        public Vector2 Origin { get; private set; }
-        public float MinRadius => _stats.SoundRadius;
+        public Vector2 Origin => transform.position;
+        public float MinRadius => _minRadius;
+        private float _minRadius;
 
-        [SerializeField] private SerializedInterface<IPhysicsActor> _actorMono;
-        private IPhysicsActor _actor => _actorMono.Interface;
-
-        private ActorFrameData _frameData => _actor.Brain.FrameData;
-        private ProjectileStats _stats;
+        private EquipmentStats _stats;
         private ContactFilter2D _filter;
 
         private void Awake()
@@ -30,19 +28,16 @@ namespace Unity.Detection.Emitters
             _filter.useLayerMask = true;
         }
 
-        public void Init(ProjectileStats stats)
+        public void Init(EquipmentStats stats)
         {
             _stats = stats;
+            Debug.Log($"Got stats: {stats}");
+            _minRadius = _stats.SoundRadius;
         }
-        public float GetSpeed()
-        {
-            return _frameData.CurrentState.Velocity.magnitude;
-        }
-
         public void EmitSound()
         {
-            float speed = GetSpeed();
-            float radius = speed * MinRadius * 1f; // add in surface later this is just a test
+            Debug.Log($"MinRadius: {MinRadius}");
+            float radius = MinRadius * 1f; // add in surface later this is just a test
             PingDetectors(new EmittedSound
             {
                 Origin = transform.parent.position,
@@ -65,10 +60,10 @@ namespace Unity.Detection.Emitters
                 if (detector != null)
                 {
                     detector.Listen(sound);
+                    DrawDebugCircle(detectors[i].transform.position, .5f, Color.purple);
                 }
             }
         }
-
         private (int, List<Collider2D>) GetDetectors(EmittedSound sound)
         {
             List<Collider2D> detectors = new();
@@ -96,5 +91,6 @@ namespace Unity.Detection.Emitters
                 prevPoint = nextPoint;
             }
         }
+
     }
 }

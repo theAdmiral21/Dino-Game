@@ -5,6 +5,7 @@ using Primitives.Audio.SoundKeys;
 
 namespace Game.Application.Audio.DataStructures
 {
+
     public class ItemSoundRequest : IItemAudioRequest
     {
         public ItemSoundKey ActionKey { get; private set; }

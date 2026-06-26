@@ -13,6 +13,7 @@ namespace Unity.Equipment
         [SerializeField] private EquipmentMapSO _mapSO;
         private Dictionary<ItemType, EquipmentStats> _statMap;
         [SerializeField] private GameObject _rockPrefab;
+        [SerializeField] private GameObject _shotgunPrefab;
 
         public int Priority => 0;
 
@@ -30,6 +31,16 @@ namespace Unity.Equipment
                         rock.transform.position = anchor.position;
                         Debug.Assert(rock != null, "Why is rock null?");
                         IEquipment equipment = rock.GetComponent<IEquipment>();
+                        equipment.Init(_statMap[item], _gameContext);
+                        Debug.Assert(equipment != null, "Why is equipment null?");
+                        return equipment;
+                    }
+                case ItemType.Shotgun:
+                    {
+                        GameObject shotgun = Instantiate(_shotgunPrefab, anchor);
+                        shotgun.transform.position = anchor.position;
+                        Debug.Assert(shotgun != null, "Why is shotgun null?");
+                        IEquipment equipment = shotgun.GetComponent<IEquipment>();
                         equipment.Init(_statMap[item], _gameContext);
                         Debug.Assert(equipment != null, "Why is equipment null?");
                         return equipment;

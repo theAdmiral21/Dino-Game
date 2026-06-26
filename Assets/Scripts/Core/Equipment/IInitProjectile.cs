@@ -2,7 +2,7 @@ using Primitives.Items;
 
 namespace Core.Equipment
 {
-    public interface IInitThrowable
+    public interface IInitProjectile
     {
         public void Init(ProjectileStats stats);
     }

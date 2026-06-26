@@ -1,7 +1,9 @@
+using System;
 using System.Collections.Generic;
 using Game.Core.Audio;
 using Game.Unity.Audio.Abstractions;
 using Primitives.Audio.EntityKeys;
+using Primitives.Audio.SoundKeys;
 using UnityEngine;
 
 namespace Game.Unity.Audio.DataStructures
@@ -11,7 +13,7 @@ namespace Game.Unity.Audio.DataStructures
     public class LevelObjectSoundSet : ScriptableObject, ISoundSet<ILevelObjectAudioRequest>
     {
         [SerializeField] private List<LevelObjectSoundEntry> _entries = new();
-        private Dictionary<LevelObjectEntityKey, LevelObjectSoundEntry> _audioDict = new();
+        private Dictionary<ValueTuple<LevelObjectEntityKey, ActionSoundKey>, LevelObjectSoundEntry> _audioDict = new();
         public Vector2 VolumeRange = new Vector2(0.95f, 1.05f);
         public Vector2 PitchRange = new Vector2(0.95f, 1.05f);
         private void OnEnable()
@@ -21,7 +23,7 @@ namespace Game.Unity.Audio.DataStructures
 
         public AudioClipSettings GetClip(ILevelObjectAudioRequest request)
         {
-            var entry = _audioDict[request.EntityKey];
+            var entry = _audioDict[(request.EntityKey, request.ActionKey)];
 
             Vector2 pitchRange = PitchRange;
             Vector2 volumeRange = VolumeRange;
@@ -42,13 +44,13 @@ namespace Game.Unity.Audio.DataStructures
             _audioDict = new();
             foreach (var entry in _entries)
             {
-                if (!_audioDict.ContainsKey(entry.Key))
+                if (!_audioDict.ContainsKey((entry.Key, entry.ActionKey)))
                 {
-                    _audioDict[entry.Key] = entry;
+                    _audioDict[(entry.Key, entry.ActionKey)] = entry;
                 }
                 else
                 {
-                    Debug.LogError($"ItemSoundKey {entry.Key} is already paired with audio clip {entry.Clip} in the item sound key dictionary.");
+                    Debug.LogError($"ItemSoundKey {(entry.Key, entry.ActionKey)} is already paired with audio clip {entry.Clip} in the item sound key dictionary.");
                 }
             }
         }
