@@ -12,4 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbc7188003f9b3e4c9fc5e28124d71a9, type: 3}
   m_Name: RaptorSelectorSO
   m_EditorClassIdentifier: 
-  Children: []
+  Children:
+  - {fileID: 11400000, guid: 5c6e201dc04bed74e9a107f7028f3dd7, type: 2}
+  - {fileID: 11400000, guid: fa8691d9bccfa8645bff489439bdee7b, type: 2}
+  - {fileID: 11400000, guid: b85bcc6d0af239b4289b1f2f4b124db7, type: 2}

@@ -40,7 +40,7 @@ namespace Unity.Detection.Detectors
 
         // Visual Data returned from target
         private Vector2 _targetLastKnown;
-        private Vector2 _targetFacing;
+        private float _targetFacing;
         private Vector2 _targetVelocity;
         private HealthState _targetHealthState;
 
@@ -89,12 +89,13 @@ namespace Unity.Detection.Detectors
                     {
                         Debug.Log($"Detected {hits[i].collider.name}; VisualScore: {perceived}");
                     }
-                    if (perceived > Acuity)
-                    {
-                        _targetLastKnown = hits[i].collider.transform.position;
-                        _isTracking = true;
-                        return Track();
-                    }
+                    // if (perceived > Acuity)
+                    // {
+                    float yOffset = hits[i].collider.bounds.extents.y;
+                    _targetLastKnown = hits[i].collider.transform.position + new Vector3(0, yOffset, 0);
+                    _isTracking = true;
+                    return Track();
+                    // }
                 }
             }
             return null;
@@ -103,27 +104,36 @@ namespace Unity.Detection.Detectors
         public VisualData? Track()
         {
             // Maintain a visual lock on the target and start providing data
+            Vector2 dir = (_targetLastKnown - (Vector2)transform.position).normalized;
             RaycastHit2D hit = Physics2D.Raycast(transform.position,
-                                                _targetLastKnown.normalized,
+                                                dir,
                                                 VisualDistance,
                                                 _obstacleMask);
+
+            if (_drawDebug)
+            {
+                Debug.DrawRay(transform.position, dir * hit.distance, Color.green);
+            }
 
             if (hit)
             {
                 if (hit.collider.CompareTag("Player"))
                 {
+                    hit.collider.TryGetComponent<IVisualDataProvider>(out var visualDataProvider);
+
+                    if (visualDataProvider == null) return null;
+
                     _targetLastKnown = hit.transform.position;
                     float targetDistance = Vector2.Distance(transform.position, _targetLastKnown);
-                    // _targetFacing = hit.transform
-                    // _targetVelocity
-                    // _targetHealthState
-                    Debug.LogError($"Implement getting the rest of this data from the player!");
 
                     return new VisualData
                     {
                         DetectionTime = Time.fixedTime,
                         DistanceFraction = targetDistance / VisualDistance,
                         TargetPosition = _targetLastKnown,
+                        TargetFacing = visualDataProvider.Facing,
+                        TargetVelocity = visualDataProvider.Velocity,
+                        Health = visualDataProvider.Health,
                     };
                 }
             }

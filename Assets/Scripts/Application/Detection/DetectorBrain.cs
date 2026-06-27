@@ -6,6 +6,7 @@ using Core.Detection.DataStructures;
 using Core.Detection.Olfactory.DataStructures;
 using Core.Detection.Visual;
 using Core.Detection.Visual.DataStructures;
+using Primitives.Health;
 using UnityEngine;
 
 namespace Application.Detection
@@ -49,13 +50,21 @@ namespace Application.Detection
         public PerceptionState DrawConclusions()
         {
             Debug.Log($"Drawing conclusions!");
+
+            // if the raptor sees you it shouldn't care about any sounds it heard
+            if (_visualData.HasValue) _audioInterestCounter = 0;
+
             return new PerceptionState
             {
                 // How confident is the brain in what is has perceived?
                 ConfidenceLevel = CalcConfidence(),
 
                 // Visual data
-
+                TargetPosition = _visualData.HasValue ? _visualData?.TargetPosition : null,
+                TargetVelocity = _visualData.HasValue ? _visualData?.TargetVelocity : null,
+                TargetHealth = _visualData.HasValue ? _visualData.Value.Health : HealthState.Unknown,
+                TimeOfVisual = _visualData.HasValue ? _visualData.Value.DetectionTime : 0f,
+                VisualIntensity = _visualData.HasValue ? _visualData.Value.DistanceFraction : 0f,
 
                 // Audio data
                 AudioDirection = _audioData.HasValue ? _audioData?.SoundDirection : null,

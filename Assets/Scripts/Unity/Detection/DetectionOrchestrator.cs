@@ -21,6 +21,8 @@ namespace Unity.Detection
         private IScentDetector _scentDetector => _scentDetectorMono.Interface;
 
         private IDetectorBrain _brain;
+        // private bool _contextSet = false;
+        private IPerceptionContext _perceptionContext;
 
         private void Awake()
         {
@@ -34,15 +36,29 @@ namespace Unity.Detection
             // Sub to the events
             _soundDetector.AudioEvent += _brain.OnAudioEvent;
             _scentDetector.ScentEvent += _brain.OnScentEvent;
+
+            // Handle timing issues
+            if (_perceptionContext != null)
+            {
+                _brain.SetPerceptionContext(_perceptionContext);
+            }
         }
 
         public void InitBrain(IPerceptionContext context)
         {
-            _brain.SetPerceptionContext(context);
+            _perceptionContext = context;
+            if (_brain != null)
+            {
+                _brain.SetPerceptionContext(_perceptionContext);
+                // _contextSet = true;
+            }
         }
         private void FixedUpdate()
         {
+            // if (_contextSet)
+            // {
             _brain.Tick(Time.fixedDeltaTime);
+            // }
         }
 
     }

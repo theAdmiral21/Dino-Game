@@ -304,7 +304,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &33780127
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5951,7 +5951,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _parentTransform: {fileID: 602966099}
-  _rootSO: {fileID: 11400000, guid: 5149162e94563084e8b820021bb0bf7c, type: 2}
+  _rootSO: {fileID: 11400000, guid: 84f54b2f7486e2948806dfe0f7f9c38f, type: 2}
   _aiInputMono:
     _monoScript: {fileID: 566184179}
   _detectorOrchestratorMono:
@@ -7072,7 +7072,7 @@ MonoBehaviour:
   FOV: 30
   RaycastCount: 5
   _parentTransform: {fileID: 1322659679}
-  _drawDebug: 0
+  _drawDebug: 1
 --- !u!1 &2009802368
 GameObject:
   m_ObjectHideFlags: 0
