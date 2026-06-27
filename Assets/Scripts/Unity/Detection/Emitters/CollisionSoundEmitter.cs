@@ -56,7 +56,7 @@ namespace Unity.Detection.Emitters
         {
             // Get the detectors
             (int totalFound, List<Collider2D> detectors) = GetDetectors(sound);
-            Debug.Log($"Found {totalFound} detectors");
+            // Debug.Log($"Found {totalFound} detectors");
             // Notify the detectors
             for (int i = 0; i < totalFound; i++)
             {
@@ -84,7 +84,7 @@ namespace Unity.Detection.Emitters
 
         private void DrawDebugCircle(Vector2 center, float radius, Color color, int segments = 32)
         {
-            Debug.Log($"Drawing circle at {center} with radius {radius}");
+            // Debug.Log($"Drawing circle at {center} with radius {radius}");
             float angleStep = 360f / segments;
             Vector2 prevPoint = center + new Vector2(radius, 0);
 

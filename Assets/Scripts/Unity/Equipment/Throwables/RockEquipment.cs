@@ -93,7 +93,7 @@ namespace Unity.Equipment
                 rockObject.SetActive(true);
                 Vector2 throwDirection = (_aimPos - _playerPos).normalized;
                 actor.EnqueueActionRequest(new ExternalImpulseRequest(throwDirection * Stats.MuzzleVelocity, -10));
-                Debug.Log($"Throwing rock with velocity: {throwDirection * Stats.MuzzleVelocity}");
+                // Debug.Log($"Throwing rock with velocity: {throwDirection * Stats.MuzzleVelocity}");
                 StartCoroutine(FireRoutine());
             }
             else

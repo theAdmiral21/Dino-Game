@@ -29,25 +29,38 @@ namespace AI.Application.BehaviorTreeNodes
                 PickDestination(context);
                 // Restart the timer
                 Timer.StartTimer();
-
             }
-            // The timer is incomplete and active
-            else if (!Timer.TimerComplete && Timer.IsActive)
+
+            // Only move while the timer is running
+            if (Timer.IsActive)
             {
-                // Move in that direction
-                Debug.Log($"Ticking wander timer");
                 Move(context);
                 // Tick the timer 
                 Timer.TickTimer(context.Dt);
+                return NodeResult.Running;
+            }
 
-            }
-            // The timer is complete and inactive
-            else if (Timer.TimerComplete && !Timer.IsActive)
-            {
-                // reset the timer
-                Timer.ResetTimer();
-            }
-            return EvaluateStatus(context);
+            // When the timer is complete
+            Timer.ResetTimer();
+            return CalcPositionError(context) < 0.2f ? NodeResult.Success : NodeResult.Failure;
+
+            // // The timer is incomplete and active
+            // else if (!Timer.TimerComplete && Timer.IsActive)
+            // {
+            //     // Move in that direction
+            //     Debug.Log($"Ticking wander timer");
+            // Move(context);
+            // // Tick the timer 
+            // Timer.TickTimer(context.Dt);
+
+            // }
+            // // The timer is complete and inactive
+            // else if (Timer.TimerComplete && !Timer.IsActive)
+            // {
+            //     // reset the timer
+            //     Timer.ResetTimer();
+            // }
+            // return EvaluateStatus(context);
         }
 
         private void PickDestination(T context)

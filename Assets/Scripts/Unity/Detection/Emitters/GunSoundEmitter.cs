@@ -36,7 +36,7 @@ namespace Unity.Detection.Emitters
         }
         public void EmitSound()
         {
-            Debug.Log($"MinRadius: {MinRadius}");
+            // Debug.Log($"MinRadius: {MinRadius}");
             float radius = MinRadius * 1f; // add in surface later this is just a test
             PingDetectors(new EmittedSound
             {

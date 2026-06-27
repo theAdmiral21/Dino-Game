@@ -92,7 +92,7 @@ namespace PlayerController.Unity.Animations
                     }
                 case LandEffect landing:
                     {
-                        Debug.Log("Animating landing");
+                        // Debug.Log("Animating landing");
                         _fallTriggered = false;
                         _jumpTriggered = false;
                         break;

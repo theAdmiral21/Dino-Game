@@ -87,7 +87,7 @@ namespace Physics.Features.Movement
                         }
                     case FallResult fall:
                         {
-                            Debug.Log($"Fall case for {frameData.DebugName}");
+                            // Debug.Log($"Fall case for {frameData.DebugName}");
                             frameData.CurrentState = _calcFall.Calculate(frameData.ActorStats, fall, ref frameData.CurrentState);
                             break;
                         }
@@ -160,25 +160,25 @@ namespace Physics.Features.Movement
                         }
                     case RotateResult rotate:
                         {
-                            Debug.Log("Rotate case");
+                            // Debug.Log("Rotate case");
                             frameData.CurrentState = _calcRotate.Calculate(frameData.ActorStats, rotate, ref frameData.CurrentState);
                             break;
                         }
                     case DodgeResult dodge:
                         {
-                            Debug.Log($"Dodge case");
+                            // Debug.Log($"Dodge case");
                             frameData.CurrentState = _calcDoggoDash.Calculate(frameData.ActorStats, dodge, ref frameData.CurrentState);
                             break;
                         }
                     case DodgeUpdateResult dodgeUpdate:
                         {
-                            Debug.Log($"Dodge update case");
+                            // Debug.Log($"Dodge update case");
                             frameData.CurrentState = _calcDoggoDashUpdate.Calculate(frameData.ActorStats, dodgeUpdate, ref frameData.CurrentState);
                             break;
                         }
                     case FrictionResult friction:
                         {
-                            Debug.Log($"Friction update case");
+                            // Debug.Log($"Friction update case");
                             frameData.CurrentState = _calcFriction.Calculate(frameData.ActorStats, friction, ref frameData.CurrentState);
                             break;
                         }
