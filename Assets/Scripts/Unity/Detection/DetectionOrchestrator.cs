@@ -20,6 +20,7 @@ namespace Unity.Detection
         [SerializeField] private SerializedInterface<IScentDetector> _scentDetectorMono;
         private IScentDetector _scentDetector => _scentDetectorMono.Interface;
 
+        public IDetectorBrain Brain => _brain;
         private IDetectorBrain _brain;
         // private bool _contextSet = false;
         private IPerceptionContext _perceptionContext;

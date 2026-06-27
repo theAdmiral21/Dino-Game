@@ -4,7 +4,7 @@ namespace Core.Detection
 {
     public interface IDetectorOrchestrator
     {
-        // ¯\_(ツ)_/¯
+        public IDetectorBrain Brain { get; }
         public void InitBrain(IPerceptionContext context);
     }
 }

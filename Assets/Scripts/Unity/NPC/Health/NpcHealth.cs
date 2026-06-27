@@ -1,3 +1,4 @@
+using Core.Game.HealthSystem.Health;
 using Game.Core.Execution;
 using Game.Core.Health;
 using Infrastructure.Unity.Registries;
@@ -7,7 +8,7 @@ using UnityEngine;
 
 namespace NPC.Unity.Health
 {
-    public class NpcHealth : SelfRegister<IInitializable<IGameContext>>, IDamageable, IHealable, IInitializable<IGameContext>
+    public class NpcHealth : SelfRegister<IInitializable<IGameContext>>, IDamageable, IHealable, IInitializable<IGameContext>, IHealthComponentProvider
     {
         public int MaxHealth = 1;
         public int Priority => 0;

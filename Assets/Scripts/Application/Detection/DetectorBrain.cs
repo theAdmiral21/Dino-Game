@@ -1,4 +1,6 @@
 using System;
+using System.Runtime.CompilerServices;
+using Core.Ai.BlackBoard;
 using Core.Ai.State.BehaviorContext;
 using Core.Detection;
 using Core.Detection.Audio.DataStructures;
@@ -30,6 +32,8 @@ namespace Application.Detection
         VisualData? _visualData;
         AudioData? _audioData;
         OlfactoryData? _scentData;
+
+        public AlertLevel Alertness { get; private set; }
 
         public DetectorBrain(IVisualDetector visualDetector)
         {
@@ -87,7 +91,10 @@ namespace Application.Detection
             Debug.Log($"Remember to gate scent interest in the future");
             SetScentInterestTimer();
         }
-
+        public void UpdateMemberStatus()
+        {
+            throw new NotImplementedException();
+        }
         private float CalcConfidence()
         {
             // Sight is a hard confirmation of the data
@@ -156,6 +163,5 @@ namespace Application.Detection
                 }
             }
         }
-
     }
 }

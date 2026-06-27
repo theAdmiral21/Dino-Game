@@ -2,7 +2,9 @@ using System.Linq;
 using AI.Application.BehaviorTree;
 using AI.Application.BehaviorTreeNodes;
 using AI.Core.Behavior;
+using Core.Ai.BlackBoard;
 using Core.Detection;
+using Core.Game.HealthSystem.Health;
 using Core.Movement.Inputs;
 using NPC.Application.BehaviorContexts;
 using Unity.AI.BehaviorTree;
@@ -11,7 +13,7 @@ using UnityEngine;
 
 namespace Unity.NPC.Controllers
 {
-    public class RaptorController : MonoBehaviour
+    public class RaptorController : MonoBehaviour, IRaptorController
     {
         [SerializeField] private Transform _parentTransform;
 
@@ -23,25 +25,36 @@ namespace Unity.NPC.Controllers
         [SerializeField] private SerializedInterface<IDetectorOrchestrator> _detectorOrchestratorMono;
         private IDetectorOrchestrator _detectorOrchestrator => _detectorOrchestratorMono.Interface;
 
+        // [SerializeField] private SerializedInterface<IHealthComponentProvider> _healthComponentMono;
+        // private IHealthComponentProvider _healthComponent => _healthComponentMono.Interface;
+
+
+
         private IBehaviorTree<RaptorContext> _behaviorTree;
+
+        public RaptorContext Context => _context;
         private RaptorContext _context;
+
+        [Header("Debug")]
+        [SerializeField] private string _currentNode;
+
         private void Awake()
         {
+
             // build the context
             _context = new RaptorContext(_aiInput);
-            // _context = new RaptorContext(_aiInput, _detector, _pathAway);
 
             // Build the nodes
-            IBehaviorNode<RaptorContext> ballRoot = BuildNode(_rootSO);
+            IBehaviorNode<RaptorContext> root = BuildNode(_rootSO);
 
             // build the tree
-            _behaviorTree = new BehaviorTree<RaptorContext>(ballRoot);
+            _behaviorTree = new BehaviorTree<RaptorContext>(root);
 
             // Init the detector brain
             _detectorOrchestrator.InitBrain(_context);
         }
 
-        private void Update()
+        public void TickBehaviorTree(float dt)
         {
             // Update your context
             _context.Dt = Time.deltaTime;
@@ -72,6 +85,14 @@ namespace Unity.NPC.Controllers
                         return ((BehaviorNodeSO<RaptorContext>)node).BuildRunTime();
                     }
             }
+        }
+
+        private void LateUpdate()
+        {
+            var node = _behaviorTree.Root as SelectorNode<RaptorContext>;
+            string[] temp = node.CurrentNode.Split("`");
+            string nodeName = temp[0].Split(".")[^1];
+            _currentNode = nodeName;
         }
     }
 }

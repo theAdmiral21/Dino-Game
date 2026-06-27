@@ -3,6 +3,7 @@ using AI.Core.PathFinding;
 using AI.Core.State;
 using AI.Core.State.BehaviorContext;
 using AI.Core.Timers;
+using Core.Ai.BlackBoard;
 using Core.Ai.State.BehaviorContext;
 using Core.Detection.DataStructures;
 using Core.Movement.Inputs;
@@ -22,7 +23,8 @@ namespace NPC.Application.BehaviorContexts
                                ITickTimerContext,
                                IGameTimerContext,
                                IInputContext,
-                               IPerceptionContext
+                               IPerceptionContext,
+                               IStatusContext
     {
         public MovementType MoveType => MovementType.Run;
 
@@ -44,13 +46,14 @@ namespace NPC.Application.BehaviorContexts
 
         public ITimerContext Timer => throw new NotImplementedException();
 
+        public Status CurrentStatus { get; private set; }
+
         private IAiInput _aiInput;
         private IPlayerDetector _detector;
         private IPathAwayFrom _pathFinder;
         private float _runSlowDownRadius;
         private float _flySlowDownRadius;
         public RaptorContext(IAiInput aiInput)
-
         {
             _aiInput = aiInput;
 
@@ -121,6 +124,11 @@ namespace NPC.Application.BehaviorContexts
         {
             Debug.Log($"Updating perception state");
             Perception = state;
+        }
+
+        public void SetStatus(Status status)
+        {
+            CurrentStatus = status;
         }
     }
 }

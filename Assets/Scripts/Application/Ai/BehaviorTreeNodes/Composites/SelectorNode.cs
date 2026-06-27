@@ -5,6 +5,8 @@ namespace AI.Application.BehaviorTreeNodes
 {
     public class SelectorNode<T> : IBehaviorNode<T>
     {
+        public string CurrentNode => _currentNode;
+        private string _currentNode;
         private List<IBehaviorNode<T>> _children;
         public SelectorNode(List<IBehaviorNode<T>> children)
         {
@@ -22,6 +24,8 @@ namespace AI.Application.BehaviorTreeNodes
             for (int i = 0; i < _children.Count; i++)
             {
                 var child = _children[i];
+
+                _currentNode = $"{child}";
 
                 NodeResult result = child.Tick(context);
 
