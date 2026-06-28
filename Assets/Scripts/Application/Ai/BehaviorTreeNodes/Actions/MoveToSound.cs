@@ -3,11 +3,11 @@ using AI.Core.Behavior;
 using Core.Ai.State.BehaviorContext;
 using Movement.Core.Movement.DataStructures;
 using Movement.Core.Abstractions;
-using System.Net.Mime;
+using Core.Ai.BlackBoard;
 
 namespace Application.Ai.BehaviorTreeNodes.Actions
 {
-    public class MoveToSound<T> : IBehaviorNode<T> where T : IInputContext, IPerceptionContext
+    public class MoveToSound<T> : IBehaviorNode<T> where T : IInputContext, IPerceptionContext, IStatusContext
     {
         public void Reset(T context)
         {
@@ -16,6 +16,7 @@ namespace Application.Ai.BehaviorTreeNodes.Actions
 
         public NodeResult Tick(T context)
         {
+            context.SetStatus(Status.Tracking);
             Debug.Log($"MoveToSound status: {NodeResult.Failure}, Perception is null?");
             if (context.Perception == null) return NodeResult.Failure;
             // Check for audio data

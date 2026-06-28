@@ -4,10 +4,12 @@ using Movement.Core.Movement.DataStructures;
 using AI.Core.State.BehaviorContext;
 using AI.Core.Timers;
 using AI.Application.Timers;
+using Core.Ai.State.BehaviorContext;
+using Core.Ai.BlackBoard;
 
 namespace AI.Application.BehaviorTreeNodes
 {
-    public class Wander<T> : IBehaviorNode<T> where T : IMoveToContext, ITickTimerContext, IGameTimerContext
+    public class Wander<T> : IBehaviorNode<T> where T : IMoveToContext, ITickTimerContext, IGameTimerContext, IStatusContext
     {
         private float _maxWanderRadius = 10f;
 
@@ -21,6 +23,7 @@ namespace AI.Application.BehaviorTreeNodes
         }
         public NodeResult Tick(T context)
         {
+            context.SetStatus(Status.Searching);
             // If the timer is incomplete and inactive
             if (!Timer.TimerComplete && !Timer.IsActive)
             {

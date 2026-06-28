@@ -2,6 +2,7 @@ using UnityEngine;
 
 namespace Core.Ai.BlackBoard.DataStructures
 {
+    [System.Serializable]
     public struct Observation<T>
     {
         public float TimeOfObservation;

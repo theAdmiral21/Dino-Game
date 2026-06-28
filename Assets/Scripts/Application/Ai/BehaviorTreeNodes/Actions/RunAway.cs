@@ -4,10 +4,12 @@ using AI.Core.State;
 using AI.Core.State.BehaviorContext;
 using AI.Core.PathFinding;
 using Movement.Core.Abstractions;
+using Core.Ai.State.BehaviorContext;
+using Core.Ai.BlackBoard;
 
 namespace AI.Application.BehaviorTreeNodes
 {
-    public class RunAway<T> : IBehaviorNode<T> where T : IDetectPlayerContext, IPositionContext, IPathFindContext, IInputContext
+    public class RunAway<T> : IBehaviorNode<T> where T : IDetectPlayerContext, IPositionContext, IPathFindContext, IInputContext, IStatusContext
     {
         public float MinSafeDistance => _minSafeDistance;
         private float _minSafeDistance;
@@ -25,6 +27,7 @@ namespace AI.Application.BehaviorTreeNodes
 
         private NodeResult Flee(T context)
         {
+            context.SetStatus(Status.Retreating);
             float dist = Vector2.Distance(context.CurrentPosition, context.LastKnownLocation);
             if (dist > _minSafeDistance)
             {

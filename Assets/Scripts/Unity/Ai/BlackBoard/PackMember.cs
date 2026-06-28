@@ -25,12 +25,21 @@ namespace Unity.Ai.BlackBoard
         [SerializeField] private SerializedInterface<IRaptorController> _raptorControllerMono;
         public IRaptorController RaptorController => _raptorControllerMono.Interface;
 
+        [Header("Debug")]
+        [SerializeField] private bool _debugMemberStatus;
+        [SerializeField] private MemberStatus _debugStatus;
         public void UpdateMemberStatus()
         {
             Status.Health = _healthComponent.HealthComponent.StateOfHealth;
             Status.Position = transform.position;
             Status.CurrentStatus = _context.CurrentStatus;
             Status.Alertness = _detectorOrchestrator.Brain.Alertness;
+            Status.Perception = _context.Perception;
+
+            if (_debugMemberStatus)
+            {
+                _debugStatus = Status;
+            }
         }
     }
 }

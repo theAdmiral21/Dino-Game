@@ -4,6 +4,7 @@ using AI.Core.State;
 using AI.Core.State.BehaviorContext;
 using AI.Core.Timers;
 using Core.Ai.BlackBoard;
+using Core.Ai.BlackBoard.DataStructures;
 using Core.Ai.State.BehaviorContext;
 using Core.Detection.DataStructures;
 using Core.Movement.Inputs;
@@ -24,7 +25,8 @@ namespace NPC.Application.BehaviorContexts
                                IGameTimerContext,
                                IInputContext,
                                IPerceptionContext,
-                               IStatusContext
+                               IStatusContext,
+                               IPackDataContext
     {
         public MovementType MoveType => MovementType.Run;
 
@@ -48,15 +50,16 @@ namespace NPC.Application.BehaviorContexts
 
         public Status CurrentStatus { get; private set; }
 
+        public PackData PackData => _packDataProvider.PackData;
+        private IPackDataProvider _packDataProvider;
+
         private IAiInput _aiInput;
         private IPlayerDetector _detector;
         private IPathAwayFrom _pathFinder;
-        private float _runSlowDownRadius;
-        private float _flySlowDownRadius;
-        public RaptorContext(IAiInput aiInput)
+        public RaptorContext(IAiInput aiInput, IPackDataProvider packDataProvider)
         {
             _aiInput = aiInput;
-
+            _packDataProvider = packDataProvider;
         }
 
         public IDetectionData DetectPlayer()

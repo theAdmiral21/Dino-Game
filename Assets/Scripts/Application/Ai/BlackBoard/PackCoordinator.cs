@@ -29,7 +29,19 @@ namespace Application.Ai.BlackBoard
 
         public void EvaluateBlackBoard()
         {
-            Debug.Log($"Evaluating the blackboard!");
+            for (int i = 0; i < PackMembers.Count; i++)
+            {
+                var member = PackMembers[i];
+                if (member.Status.CurrentStatus == Status.Attacking)
+                {
+                    // Only add fresh data
+                    Data.LastKnownLocation = new Observation<Vector2>
+                    {
+                        Data = member.Status.Perception.TargetPosition != null ? member.Status.Perception.TargetPosition.Value : Data.LastKnownLocation.Data,
+                        TimeOfObservation = Time.time,
+                    };
+                }
+            }
         }
         public void Triangulate()
         {

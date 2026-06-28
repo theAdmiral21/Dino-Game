@@ -1,14 +1,20 @@
 using System.Collections.Generic;
 using Application.Ai.BlackBoard;
 using Core.Ai.BlackBoard;
+using Core.Ai.BlackBoard.DataStructures;
 using UnityEngine;
 
 namespace Unity.Ai.BlackBoard
 {
-    public class PackManager : MonoBehaviour, IPackManager
+    public class PackManager : MonoBehaviour, IPackManager, IPackDataProvider
     {
         public IPackCoordinator Coordinator { get; private set; }
 
+        public PackData PackData => Coordinator.Data;
+
+        [Header("Debug")]
+        [SerializeField] private bool _debug;
+        [SerializeField] private PackData _debugPackData;
 
         private void Awake()
         {
@@ -46,6 +52,14 @@ namespace Unity.Ai.BlackBoard
             Coordinator.Triangulate();
             // Update the behavior
             Coordinator.UpdateMemberBehavior(Time.fixedDeltaTime);
+        }
+
+        private void LateUpdate()
+        {
+            if (_debug)
+            {
+                _debugPackData = Coordinator.Data;
+            }
         }
     }
 }

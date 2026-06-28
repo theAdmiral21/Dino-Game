@@ -4,6 +4,7 @@ using UnityEngine;
 
 namespace Core.Ai.BlackBoard.DataStructures
 {
+    [System.Serializable]
     public class PackData
     {
         public Observation<Vector2> LastKnownLocation;

@@ -25,10 +25,8 @@ namespace Unity.NPC.Controllers
         [SerializeField] private SerializedInterface<IDetectorOrchestrator> _detectorOrchestratorMono;
         private IDetectorOrchestrator _detectorOrchestrator => _detectorOrchestratorMono.Interface;
 
-        // [SerializeField] private SerializedInterface<IHealthComponentProvider> _healthComponentMono;
-        // private IHealthComponentProvider _healthComponent => _healthComponentMono.Interface;
-
-
+        [SerializeField] private SerializedInterface<IPackDataProvider> _packDataProviderMono;
+        private IPackDataProvider _packDataProvider => _packDataProviderMono.Interface;
 
         private IBehaviorTree<RaptorContext> _behaviorTree;
 
@@ -37,12 +35,13 @@ namespace Unity.NPC.Controllers
 
         [Header("Debug")]
         [SerializeField] private string _currentNode;
+        [SerializeField] private string _currentStatus;
 
         private void Awake()
         {
 
             // build the context
-            _context = new RaptorContext(_aiInput);
+            _context = new RaptorContext(_aiInput, _packDataProvider);
 
             // Build the nodes
             IBehaviorNode<RaptorContext> root = BuildNode(_rootSO);
@@ -89,10 +88,12 @@ namespace Unity.NPC.Controllers
 
         private void LateUpdate()
         {
-            var node = _behaviorTree.Root as SelectorNode<RaptorContext>;
-            string[] temp = node.CurrentNode.Split("`");
-            string nodeName = temp[0].Split(".")[^1];
-            _currentNode = nodeName;
+            // var node = _behaviorTree.Root as SelectorNode<RaptorContext>;
+            // string[] temp = node.CurrentNode.Split("`");
+            // string nodeName = temp[0].Split(".")[^1];
+            // _currentNode = nodeName;
+
+            _currentStatus = $"{Context.CurrentStatus}";
         }
     }
 }
