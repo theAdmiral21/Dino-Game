@@ -12,10 +12,6 @@ namespace Unity.Ai.BlackBoard
 
         public PackData PackData => Coordinator.Data;
 
-        [Header("Debug")]
-        [SerializeField] private bool _debug;
-        [SerializeField] private PackData _debugPackData;
-
         private void Awake()
         {
             // Build the coordinator
@@ -52,14 +48,6 @@ namespace Unity.Ai.BlackBoard
             Coordinator.Triangulate();
             // Update the behavior
             Coordinator.UpdateMemberBehavior(Time.fixedDeltaTime);
-        }
-
-        private void LateUpdate()
-        {
-            if (_debug)
-            {
-                _debugPackData = Coordinator.Data;
-            }
         }
     }
 }

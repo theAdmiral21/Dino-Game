@@ -32,11 +32,7 @@ namespace Unity.Detection.Detectors
             float attenuation = CalcAttenuation(dist);
             // Calc perceived intensity
             float perceivedIntensity = fallOff * attenuation * _sensitivity;
-            // Debug.Log($"Perceived intensity: {perceivedIntensity}");
-            // Threshold and react will be governed by a different class that handle behavior
-            // float threshold = 5f;
-            // if (perceivedIntensity > threshold)
-            // {
+
             AudioData data = new AudioData
             {
                 DetectionTime = Time.fixedTime,
@@ -45,8 +41,6 @@ namespace Unity.Detection.Detectors
                 SoundDirection = (sound.Origin - _currentPosition).normalized
             };
             AudioEvent?.Invoke(data);
-            // Debug.Log($"Reacting to sound!");
-            // }
         }
 
         private float CalcFallOff(EmittedSound sound)

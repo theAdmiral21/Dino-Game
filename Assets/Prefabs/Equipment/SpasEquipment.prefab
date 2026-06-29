@@ -172,7 +172,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4200760087796582016}
   - component: {fileID: 7716908759620587731}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: VisualEmitter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -208,7 +208,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _lightLayer:
     serializedVersion: 2
-    m_Bits: 2048
+    m_Bits: 8192
 --- !u!1 &6923665748343436745
 GameObject:
   m_ObjectHideFlags: 0

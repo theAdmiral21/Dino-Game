@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using UnityEngine;
 using AI.Core.Behavior;
 
 namespace AI.Application.BehaviorTreeNodes
@@ -15,7 +16,7 @@ namespace AI.Application.BehaviorTreeNodes
 
         public void Reset(T context)
         {
-            throw new System.NotImplementedException();
+            Debug.LogError($"What should this reset?");
         }
 
         public NodeResult Tick(T context)

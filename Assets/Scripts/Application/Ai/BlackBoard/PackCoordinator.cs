@@ -12,6 +12,8 @@ namespace Application.Ai.BlackBoard
 
         public List<IPackMember> PackMembers => Data.Members.Values.ToList();
 
+        private float _lostTrailTime = 15f;
+
         public void AddMember(IPackMember member)
         {
             if (!Data.Members.TryAdd(member.MemberId, member))
@@ -29,23 +31,28 @@ namespace Application.Ai.BlackBoard
 
         public void EvaluateBlackBoard()
         {
-            for (int i = 0; i < PackMembers.Count; i++)
+            bool anyAttacking = PackMembers.Any(m => m.Status.CurrentStatus == Status.Attacking);
+
+            if (anyAttacking)
             {
-                var member = PackMembers[i];
-                if (member.Status.CurrentStatus == Status.Attacking)
-                {
-                    // Only add fresh data
-                    Data.LastKnownLocation = new Observation<Vector2>
-                    {
-                        Data = member.Status.Perception.TargetPosition != null ? member.Status.Perception.TargetPosition.Value : Data.LastKnownLocation.Data,
-                        TimeOfObservation = Time.time,
-                    };
-                }
+                // Escalate the whole pack
+                Data.PackAlertLevel = AlertLevel.Engrossed;
             }
+
+            // Clear stale data so the pack can genuinely lose the trail
+            if (Data.LastKnownLocation.HasValue &&
+                Data.LastKnownLocation.Value.IsStale(_lostTrailTime) &&
+                !anyAttacking)
+            {
+                Data.LastKnownLocation = null;
+            }
+
+            // Aggregate confidence
+            Data.BestGuessConfidence = PackMembers.Max(m => m.Status.Perception.ConfidenceLevel);
         }
         public void Triangulate()
         {
-            Debug.Log($"Triangulating the player's location!");
+            // Debug.Log($"Triangulating the player's location!");
         }
 
         public void UpdateMemberStatus()

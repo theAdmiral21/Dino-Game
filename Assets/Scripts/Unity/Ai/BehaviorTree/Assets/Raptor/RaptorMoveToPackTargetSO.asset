@@ -9,12 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 06ca2990099f9a14781d27fb76dc0ef3, type: 3}
-  m_Name: RaptorRunStats
+  m_Script: {fileID: 11500000, guid: 16e5c2633cbb60044926d435d766721f, type: 3}
+  m_Name: RaptorMoveToPackTargetSO
   m_EditorClassIdentifier: 
-  _runSpeed: 10
-  _runAccel: 80
-  _brakeAccel: 80
-  _crouchWalkSpeed: 7
-  _crouchWalkAccel: 80
-  _crouchWalkBrake: 80

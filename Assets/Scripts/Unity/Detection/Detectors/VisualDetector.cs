@@ -40,9 +40,9 @@ namespace Unity.Detection.Detectors
 
         // Visual Data returned from target
         private Vector2 _targetLastKnown;
-        private float _targetFacing;
-        private Vector2 _targetVelocity;
-        private HealthState _targetHealthState;
+        // private float _targetFacing;
+        // private Vector2 _targetVelocity;
+        // private HealthState _targetHealthState;
 
         private void Awake()
         {
@@ -54,18 +54,21 @@ namespace Unity.Detection.Detectors
 
         private void FixedUpdate()
         {
-            Look();
+            Search();
         }
         public VisualData? Search()
         {
+            VisualData? res;
             if (!_isTracking)
             {
-                return Look();
+                res = Look();
             }
             else
             {
-                return Track();
+                res = Track();
             }
+            Debug.Log($"Visual Data was null: {res == null}");
+            return res;
         }
         public VisualData? Look()
         {
@@ -74,29 +77,30 @@ namespace Unity.Detection.Detectors
             // Debug.Log($"Got {hits.Count} hits");
             for (int i = 0; i < hits.Count; i++)
             {
+                bool hasLightContext = hits[i].collider.TryGetComponent<ILightContext>(out var lc);
+                // Debug.Log($"Hit: {hits[i].collider.name} | HasLightContext: {hasLightContext} | LightSource null: {lc?.GetAmbientLight().LightSource == null}");
+
                 // Debug.Log($"Checking {hits[i].collider.name}");
-                if (hits[i].collider.TryGetComponent<ILightContext>(out var lightContext))
-                {
-                    // Debug.Log($"Found light context: {lightContext != null}");
+                // if (hits[i].collider.TryGetComponent<ILightContext>(out var lightContext))
+                // {
+                //     // Debug.Log($"Found light context: {lightContext != null}");
 
-                    LightData targetLightData = lightContext.GetAmbientLight();
-                    // Debug.Log($"target light data value: {targetLightData.AmbientLight}; source: {targetLightData.LightSource}");
-                    if (targetLightData.LightSource == null) continue;
+                //     LightData targetLightData = lightContext.GetAmbientLight();
+                //     // Debug.Log($"target light data value: {targetLightData.AmbientLight}; source: {targetLightData.LightSource}");
+                //     if (targetLightData.LightSource == null) continue;
 
-                    float perceived = CalcVisualScore(hits[i], targetLightData);
+                //     float perceived = CalcVisualScore(hits[i], targetLightData);
 
-                    if (_drawDebug)
-                    {
-                        Debug.Log($"Detected {hits[i].collider.name}; VisualScore: {perceived}");
-                    }
-                    // if (perceived > Acuity)
-                    // {
-                    float yOffset = hits[i].collider.bounds.extents.y;
-                    _targetLastKnown = hits[i].collider.transform.position + new Vector3(0, yOffset, 0);
-                    _isTracking = true;
-                    return Track();
-                    // }
-                }
+                //     if (_drawDebug)
+                //     {
+                //         Debug.Log($"Detected {hits[i].collider.name}; VisualScore: {perceived}");
+                //     }
+
+                float yOffset = hits[i].collider.bounds.extents.y;
+                _targetLastKnown = hits[i].collider.transform.position + new Vector3(0, yOffset, 0);
+                _isTracking = true;
+                return Track();
+                // }
             }
             return null;
         }
@@ -137,6 +141,7 @@ namespace Unity.Detection.Detectors
                     };
                 }
             }
+            _isTracking = false;
             return null;
         }
 
@@ -178,16 +183,15 @@ namespace Unity.Detection.Detectors
             {
                 float angle = i * (FOV / RaycastCount) - (FOV / 2);
                 angle *= Mathf.Deg2Rad;
-                // Debug.Log($"angle: {angle * Mathf.Rad2Deg}");
                 float x = Mathf.Cos(angle);
                 float y = Mathf.Sin(angle);
-                Vector3 dir = new Vector3(x, y, 0);
+                Vector3 dir = new Vector3(x * _facing, y, 0);
                 Vector3 scanDir = transform.TransformDirection(dir);
 
                 RaycastHit2D hit = Physics2D.Raycast(
                         transform.position,
                         scanDir,
-                        VisualDistance * _facing,
+                        VisualDistance,
                         _obstacleMask);
 
                 // Dinos only care about the player... except for the rex. She likes flares.
@@ -199,7 +203,7 @@ namespace Unity.Detection.Detectors
 
                 if (_drawDebug)
                 {
-                    Debug.DrawRay(transform.position, scanDir * hit.distance * _facing, Color.red);
+                    Debug.DrawRay(transform.position, scanDir * hit.distance, Color.red);
                 }
             }
             return hits;

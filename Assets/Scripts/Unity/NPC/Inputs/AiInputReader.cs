@@ -32,7 +32,7 @@ namespace NPC.Unity.Inputs
         public void SetMove(Vector2 input)
         {
             _move = input;
-            // Debug.Log($"AI sent new run request");
+            Debug.Log($"[Run] Ai move request: {_move}");
             SendRequest(new RunRequest(true, _move));
         }
 

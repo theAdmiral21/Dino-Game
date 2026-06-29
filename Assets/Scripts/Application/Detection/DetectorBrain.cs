@@ -47,13 +47,13 @@ namespace Application.Detection
         {
 
             _visualData = _visualDetector.Look();
+            Debug.Log($"Brain ticking - visual data: {_visualData.HasValue}");
             _perceptionContext.UpdatePerception(DrawConclusions());
             TickTimers(dt);
-
         }
         public PerceptionState DrawConclusions()
         {
-            Debug.Log($"Drawing conclusions!");
+            // Debug.Log($"Drawing conclusions!");
 
             // if the raptor sees you it shouldn't care about any sounds it heard
             if (_visualData.HasValue) _audioInterestCounter = 0;
@@ -82,6 +82,8 @@ namespace Application.Detection
             _audioData = data;
             // This is where we would decide if the audio event was interesting or not, for now everything is interesting.
             Debug.Log($"Remember to gate audio interest in the future");
+
+            Debug.Log($"Heard something in the {_audioData.Value.SoundDirection} direction");
             SetAudioInterestTimer();
         }
 

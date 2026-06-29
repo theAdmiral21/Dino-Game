@@ -10,5 +10,6 @@ namespace Core.Ai.BlackBoard
         Startled, // Something has happened, you don't know what, fight or flight time
         Flushing, // Charging the target with no intent to attack, trying to get them to run
         Flanking, // Moving to cut off escape routes anything else?
+        Reinforcing, // Moving to support a pack mate
     }
 }

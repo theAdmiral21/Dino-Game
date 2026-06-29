@@ -389,6 +389,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Raptor (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 614233289889581336, guid: bbb0bfd250f06fe4b80725695ddc694f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 662974438042230840, guid: bbb0bfd250f06fe4b80725695ddc694f, type: 3}
+      propertyPath: _debugMemberStatus
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6036390399141617228, guid: bbb0bfd250f06fe4b80725695ddc694f, type: 3}
       propertyPath: _rootSO
       value: 
@@ -5466,6 +5474,7 @@ GameObject:
   m_Component:
   - component: {fileID: 317080528}
   - component: {fileID: 317080527}
+  - component: {fileID: 317080529}
   m_Layer: 0
   m_Name: PackManager
   m_TagString: Untagged
@@ -5503,6 +5512,30 @@ Transform:
   - {fileID: 2065674868}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &317080529
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 317080526}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ffa5799cb1751347aca8f8832e4359a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _debugMembers: []
+  _packManager: {fileID: 317080527}
+  _lastKnownDebug: {x: 0, y: 0}
+  _lastKnownTime: 0
+  _bestGuessDebug: {x: 0, y: 0}
+  _bestGuessTime: 0
+  _bestGuessConfidenceDebug: 0
+  _facingDebug: 0
+  _facingTimeDebug: 0
+  _healthDebug: 0
+  _alertDebug: 0
+  _healthTimeDebug: 0
 --- !u!1 &351725902
 GameObject:
   m_ObjectHideFlags: 0
@@ -7881,6 +7914,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Raptor (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 614233289889581336, guid: bbb0bfd250f06fe4b80725695ddc694f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 662974438042230840, guid: bbb0bfd250f06fe4b80725695ddc694f, type: 3}
+      propertyPath: _debugMemberStatus
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6036390399141617228, guid: bbb0bfd250f06fe4b80725695ddc694f, type: 3}
       propertyPath: _rootSO
       value: 
@@ -8045,6 +8086,10 @@ PrefabInstance:
     - target: {fileID: 1840631447713052738, guid: e35785a2a3642334a82ee50d7d78f0e9, type: 3}
       propertyPath: m_Name
       value: LightVolumeDark
+      objectReference: {fileID: 0}
+    - target: {fileID: 1840631447713052738, guid: e35785a2a3642334a82ee50d7d78f0e9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3334426367401244159, guid: e35785a2a3642334a82ee50d7d78f0e9, type: 3}
       propertyPath: _lightRange
@@ -8230,7 +8275,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6176800590870850319, guid: e35785a2a3642334a82ee50d7d78f0e9, type: 3}
       propertyPath: m_Size.x
-      value: 44.60633
+      value: 66.445496
       objectReference: {fileID: 0}
     - target: {fileID: 6176800590870850319, guid: e35785a2a3642334a82ee50d7d78f0e9, type: 3}
       propertyPath: m_Size.y
@@ -8238,7 +8283,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6176800590870850319, guid: e35785a2a3642334a82ee50d7d78f0e9, type: 3}
       propertyPath: m_Offset.x
-      value: 7.3031693
+      value: -2.9983215
       objectReference: {fileID: 0}
     - target: {fileID: 6176800590870850319, guid: e35785a2a3642334a82ee50d7d78f0e9, type: 3}
       propertyPath: m_IsTrigger
@@ -8267,7 +8312,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3649226777923163161, guid: 2cc9d1dff700c29458aa1aa8380fa709, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6057562653565001835, guid: 2cc9d1dff700c29458aa1aa8380fa709, type: 3}
       propertyPath: _quantity
@@ -8391,6 +8436,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Raptor
       objectReference: {fileID: 0}
+    - target: {fileID: 662974438042230840, guid: bbb0bfd250f06fe4b80725695ddc694f, type: 3}
+      propertyPath: _debugMemberStatus
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6036390399141617228, guid: bbb0bfd250f06fe4b80725695ddc694f, type: 3}
       propertyPath: _rootSO
       value: 
@@ -8438,6 +8487,10 @@ PrefabInstance:
     - target: {fileID: 6757668930858048360, guid: bbb0bfd250f06fe4b80725695ddc694f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7916745349292568355, guid: bbb0bfd250f06fe4b80725695ddc694f, type: 3}
+      propertyPath: _drawDebug
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

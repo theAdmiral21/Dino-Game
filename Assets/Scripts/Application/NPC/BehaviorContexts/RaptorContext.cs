@@ -26,6 +26,7 @@ namespace NPC.Application.BehaviorContexts
                                IInputContext,
                                IPerceptionContext,
                                IStatusContext,
+                               IAlertContext,
                                IPackDataContext
     {
         public MovementType MoveType => MovementType.Run;
@@ -51,6 +52,9 @@ namespace NPC.Application.BehaviorContexts
         public Status CurrentStatus { get; private set; }
 
         public PackData PackData => _packDataProvider.PackData;
+
+        public AlertLevel Alertness { get; private set; }
+
         private IPackDataProvider _packDataProvider;
 
         private IAiInput _aiInput;
@@ -93,7 +97,7 @@ namespace NPC.Application.BehaviorContexts
 
             float bearingY = Destination.y - CurrentPosition.y;
             moveVector.y = MathF.Sign(bearingY);
-            // Debug.Log($"Calc'd move input: {moveVector}");
+            Debug.Log($"Calc'd move input: {moveVector}");
             _aiInput.SetMove(moveVector);
         }
 
@@ -125,13 +129,18 @@ namespace NPC.Application.BehaviorContexts
 
         public void UpdatePerception(PerceptionState state)
         {
-            Debug.Log($"Updating perception state");
+            // Debug.Log($"Updating perception state");
             Perception = state;
         }
 
         public void SetStatus(Status status)
         {
             CurrentStatus = status;
+        }
+
+        public void SetAlertLevel(AlertLevel alertness)
+        {
+            Alertness = alertness;
         }
     }
 }

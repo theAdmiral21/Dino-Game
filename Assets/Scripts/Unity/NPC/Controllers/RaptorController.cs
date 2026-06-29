@@ -9,6 +9,7 @@ using Core.Movement.Inputs;
 using NPC.Application.BehaviorContexts;
 using Unity.AI.BehaviorTree;
 using Unity.Common.Unity;
+using Unity.Tools.DrawingTools;
 using UnityEngine;
 
 namespace Unity.NPC.Controllers
@@ -88,12 +89,24 @@ namespace Unity.NPC.Controllers
 
         private void LateUpdate()
         {
-            // var node = _behaviorTree.Root as SelectorNode<RaptorContext>;
-            // string[] temp = node.CurrentNode.Split("`");
-            // string nodeName = temp[0].Split(".")[^1];
-            // _currentNode = nodeName;
+            try
+            {
+                var node = _behaviorTree.Root as SelectorNode<RaptorContext>;
+                string[] temp = node.CurrentNode.Split("`");
+                string nodeName = temp[0].Split(".")[^1];
+                _currentNode = nodeName;
+            }
+            catch
+            {
+                _currentNode = "None";
+            }
 
             _currentStatus = $"{Context.CurrentStatus}";
+
+            // Draw where the raptor is trying to go
+            DrawUtil.DrawDebugCircle(_context.Destination, 2, Color.yellow);
+
+            Debug.Log($"[Run] input dir: {_context.AiInput.Move.x}");
         }
     }
 }

@@ -28,12 +28,12 @@ namespace Physics.Unity.Collisions
                     var otherActor = GetActorHelper(collision[j]);
                     if (otherActor != null)
                     {
-                        // Debug.Log($"Adding an actor");
+                        // Debug.Log($"Adding an actor {actor.Name}");
                         _currentCollisions.Add(new CollidingPair(actor, otherActor));
                     }
                     else
                     {
-                        // Debug.Log($"Adding a ray collision");
+                        // Debug.Log($"Adding a ray collision {actor.Name}");
                         _currentCollisions.Add(new CollidingPair(actor, collision[j]));
                     }
                 }

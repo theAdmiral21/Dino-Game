@@ -4,10 +4,11 @@ using Core.Ai.State.BehaviorContext;
 using Movement.Core.Movement.DataStructures;
 using Movement.Core.Abstractions;
 using Core.Ai.BlackBoard;
+using Core.Ai.BlackBoard.DataStructures;
 
 namespace Application.Ai.BehaviorTreeNodes.Actions
 {
-    public class Chase<T> : IBehaviorNode<T> where T : IInputContext, IPerceptionContext, IMoveToContext, IStatusContext
+    public class Chase<T> : IBehaviorNode<T> where T : IInputContext, IPerceptionContext, IMoveToContext, IStatusContext, IPackDataContext
     {
         public void Reset(T context)
         {
@@ -17,14 +18,20 @@ namespace Application.Ai.BehaviorTreeNodes.Actions
         public NodeResult Tick(T context)
         {
             Debug.Assert(context.Perception != null, "Failed to set perception state");
-            if (context.Perception == null) return NodeResult.Failure;
+            if (!context.Perception.TargetPosition.HasValue) return NodeResult.Failure;
             // We have spotted the player
-            // Debug.Log($"Knows target position: {context.Perception.TargetPosition.HasValue}");
+            Debug.Log($"Chase ticking - TargetPosition: {context.Perception.TargetPosition}");
             if (context.Perception.TargetPosition.HasValue)
             {
-                Debug.Log($"Target found");
+
                 // You're really only attacking if you have a target
                 context.SetStatus(Status.Attacking);
+                // Update the pack data
+                context.PackData.LastKnownLocation = new Observation<Vector2>
+                {
+                    Data = context.Perception.TargetPosition.Value,
+                    TimeOfObservation = Time.time,
+                };
                 // pursue the player
                 var chaseDir = (context.Perception.TargetPosition.Value - context.CurrentPosition).normalized;
 
@@ -33,7 +40,7 @@ namespace Application.Ai.BehaviorTreeNodes.Actions
             }
             else
             {
-                Debug.Log($"Target lost");
+                context.SetStatus(Status.Searching);
                 return NodeResult.Failure;
             }
         }

@@ -17,8 +17,6 @@ namespace Movement.Core.Movement
     /// </summary>
     public static class RunRules
     {
-
-
         public static RunResult TryRun(RunRequest request, PhysicsContext facts, IActorInput inputs, object ruleState)
         {
             // Verify the rule state can be evaluated
@@ -38,20 +36,20 @@ namespace Movement.Core.Movement
             if (!request.Requested || disabledState.IsDisabled || stunState.IsStunned) return Denied();
             // If the player is wall jumping, block x input
             if (xInputState.XInputLocked) return Denied();
-
+            Debug.Log($"[Run rules] inputs: {inputs.Move}");
             dirState.SetDirection(inputs, facts);
 
             float inputDir = Mathf.Sign(inputs.Move.x);
 
             if (inputDir == 1 && facts.WallContactType == WallContact.Right)
             {
-                // Debug.Log($"[Run rules] input direction: {inputDir}; Wall contact: {facts.WallContactType}");
+                Debug.Log($"[Run rules] input direction: {inputDir}; Wall contact: {facts.WallContactType}");
                 return Denied();
             }
 
             if (inputDir == -1 && facts.WallContactType == WallContact.Left)
             {
-                // Debug.Log($"[Run rules] input direction: {inputDir}; Wall contact: {facts.WallContactType}");
+                Debug.Log($"[Run rules] input direction: {inputDir}; Wall contact: {facts.WallContactType}");
                 return Denied();
             }
 
