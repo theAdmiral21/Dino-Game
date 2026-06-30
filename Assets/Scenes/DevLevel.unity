@@ -6128,11 +6128,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 468984793859189365, guid: cbdc44df1e4dd9e4aa9efb46dc6b9c08, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -15.814773
+      value: -3.73
       objectReference: {fileID: 0}
     - target: {fileID: 468984793859189365, guid: cbdc44df1e4dd9e4aa9efb46dc6b9c08, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.2934248
+      value: 4.62
       objectReference: {fileID: 0}
     - target: {fileID: 468984793859189365, guid: cbdc44df1e4dd9e4aa9efb46dc6b9c08, type: 3}
       propertyPath: m_LocalPosition.z
@@ -8443,7 +8443,7 @@ PrefabInstance:
     - target: {fileID: 6036390399141617228, guid: bbb0bfd250f06fe4b80725695ddc694f, type: 3}
       propertyPath: _rootSO
       value: 
-      objectReference: {fileID: 11400000, guid: 84f54b2f7486e2948806dfe0f7f9c38f, type: 2}
+      objectReference: {fileID: 11400000, guid: 5149162e94563084e8b820021bb0bf7c, type: 2}
     - target: {fileID: 6036390399141617228, guid: bbb0bfd250f06fe4b80725695ddc694f, type: 3}
       propertyPath: _packDataProviderMono._monoScript
       value: 

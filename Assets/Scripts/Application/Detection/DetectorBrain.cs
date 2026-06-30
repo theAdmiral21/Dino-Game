@@ -47,7 +47,7 @@ namespace Application.Detection
         {
 
             _visualData = _visualDetector.Look();
-            Debug.Log($"Brain ticking - visual data: {_visualData.HasValue}");
+            // Debug.Log($"Brain ticking - visual data: {_visualData.HasValue}");
             _perceptionContext.UpdatePerception(DrawConclusions());
             TickTimers(dt);
         }

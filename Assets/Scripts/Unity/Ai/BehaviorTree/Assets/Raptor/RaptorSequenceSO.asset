@@ -13,5 +13,4 @@ MonoBehaviour:
   m_Name: RaptorSequenceSO
   m_EditorClassIdentifier: 
   Children:
-  - {fileID: 11400000, guid: fa8691d9bccfa8645bff489439bdee7b, type: 2}
-  - {fileID: 11400000, guid: 5c6e201dc04bed74e9a107f7028f3dd7, type: 2}
+  - {fileID: 11400000, guid: 84f54b2f7486e2948806dfe0f7f9c38f, type: 2}

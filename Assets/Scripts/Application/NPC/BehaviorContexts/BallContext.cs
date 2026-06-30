@@ -3,6 +3,7 @@ using AI.Core.PathFinding;
 using AI.Core.State;
 using AI.Core.State.BehaviorContext;
 using AI.Core.Timers;
+using Core.Ai.Behavior;
 using Core.Movement.Inputs;
 using Enemy.Core.Detectors.Abstractions;
 using Movement.Core.Abstractions;
@@ -13,7 +14,8 @@ using UnityEngine;
 
 namespace NPC.Application.BehaviorContexts
 {
-    public class BallContext : IMoveToContext,
+    public class BallContext : IBehaviorContext,
+                               IMoveToContext,
                                IPositionContext,
                                IDetectPlayerContext,
                                IPathFindContext,

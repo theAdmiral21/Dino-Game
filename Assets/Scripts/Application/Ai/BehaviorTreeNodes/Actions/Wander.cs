@@ -8,6 +8,7 @@ using Core.Ai.State.BehaviorContext;
 using Core.Ai.BlackBoard;
 using Application.Utility;
 using Movement.Core.Abstractions;
+using Core.Ai.BlackBoard.DataStructures;
 
 namespace AI.Application.BehaviorTreeNodes
 {

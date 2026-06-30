@@ -3,6 +3,7 @@ using AI.Core.PathFinding;
 using AI.Core.State;
 using AI.Core.State.BehaviorContext;
 using AI.Core.Timers;
+using Core.Ai.Behavior;
 using Core.Ai.BlackBoard;
 using Core.Ai.BlackBoard.DataStructures;
 using Core.Ai.State.BehaviorContext;
@@ -17,17 +18,18 @@ using UnityEngine;
 
 namespace NPC.Application.BehaviorContexts
 {
-    public class RaptorContext : IMoveToContext,
-                               IPositionContext,
-                               IDetectPlayerContext,
-                               IPathFindContext,
-                               ITickTimerContext,
-                               IGameTimerContext,
-                               IInputContext,
-                               IPerceptionContext,
-                               IStatusContext,
-                               IAlertContext,
-                               IPackDataContext
+    public class RaptorContext : IBehaviorContext,
+                                 IMoveToContext,
+                                 IPositionContext,
+                                 IDetectPlayerContext,
+                                 IPathFindContext,
+                                 ITickTimerContext,
+                                 IGameTimerContext,
+                                 IInputContext,
+                                 IPerceptionContext,
+                                 IStatusContext,
+                                 IAlertContext,
+                                 IPackDataContext
     {
         public MovementType MoveType => MovementType.Run;
 
