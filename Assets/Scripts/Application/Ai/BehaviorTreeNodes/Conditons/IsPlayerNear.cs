@@ -3,11 +3,21 @@ using AI.Core.Behavior;
 using AI.Core.State;
 using AI.Core.State.BehaviorContext;
 using Primitives.Detectors;
+using System.Collections.Generic;
+using Core.Ai.Behavior.Visualization;
+using System;
 
 namespace AI.Application.BehaviorTreeNodes
 {
     public class IsPlayerNear<T> : IBehaviorNode<T> where T : IDetectPlayerContext, IPositionContext
     {
+
+        public string DisplayName => "IsPlayerNear";
+        public float LastTickTime { get; private set; }
+
+        public NodeResult LastResult { get; private set; }
+        public IReadOnlyList<IInspectableNode> Children => Array.Empty<IInspectableNode>();
+
         public float MinSafeDistance => _minSafeDistance;
         private float _minSafeDistance;
         private IDetectionData _trackingData;
@@ -22,6 +32,13 @@ namespace AI.Application.BehaviorTreeNodes
         }
         public NodeResult Tick(T context)
         {
+            LastResult = TickInternal(context);
+            return LastResult;
+        }
+        private NodeResult TickInternal(T context)
+        {
+            LastTickTime = Time.time;
+
             // Returns Success or Failure
             var res = SearchForPlayer(context);
             Debug.Log($"Node result for player near: {res}");

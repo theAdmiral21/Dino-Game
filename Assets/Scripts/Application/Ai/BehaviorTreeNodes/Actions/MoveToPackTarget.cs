@@ -6,11 +6,20 @@ using Core.Ai.BlackBoard;
 using Movement.Core.Movement.DataStructures;
 using Core.Ai.BlackBoard.DataStructures;
 using AI.Core.State.BehaviorContext;
+using System.Collections.Generic;
+using Core.Ai.Behavior.Visualization;
+using System;
 
 namespace Application.Ai.BehaviorTreeNodes.Actions
 {
     public class MoveToPackTarget<T> : IBehaviorNode<T> where T : IInputContext, IPackDataContext, IStatusContext, IMoveToContext, ITickTimerContext
     {
+        public string DisplayName => "MoveToPackTarget";
+        public float LastTickTime { get; private set; }
+        public NodeResult LastResult { get; private set; }
+        public IReadOnlyList<IInspectableNode> Children => Array.Empty<IInspectableNode>();
+
+
         private float _supportRadius = 7f;
         private float _staleAge = 3; // seconds
         private Vector2 _lastPosition;
@@ -26,6 +35,13 @@ namespace Application.Ai.BehaviorTreeNodes.Actions
 
         public NodeResult Tick(T context)
         {
+            LastResult = TickInternal(context);
+            return LastResult;
+        }
+        private NodeResult TickInternal(T context)
+        {
+            LastTickTime = Time.time;
+
             if (!context.PackData.LastKnownLocation.HasValue) return NodeResult.Failure;
             if (context.PackData.LastKnownLocation.Value.IsStale(_staleAge)) return NodeResult.Failure;
 

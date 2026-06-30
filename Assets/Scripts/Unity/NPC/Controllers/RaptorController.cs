@@ -2,6 +2,7 @@ using System.Linq;
 using AI.Application.BehaviorTree;
 using AI.Application.BehaviorTreeNodes;
 using AI.Core.Behavior;
+using Core.Ai.Behavior.Visualization;
 using Core.Ai.BlackBoard;
 using Core.Detection;
 using Core.Game.HealthSystem.Health;
@@ -29,6 +30,7 @@ namespace Unity.NPC.Controllers
         [SerializeField] private SerializedInterface<IPackDataProvider> _packDataProviderMono;
         private IPackDataProvider _packDataProvider => _packDataProviderMono.Interface;
 
+        public IInspectableNode RootNode => _behaviorTree.Root;
         private IBehaviorTree<RaptorContext> _behaviorTree;
 
         public RaptorContext Context => _context;

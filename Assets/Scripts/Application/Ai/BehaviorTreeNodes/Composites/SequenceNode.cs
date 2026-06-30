@@ -1,10 +1,20 @@
 using System.Collections.Generic;
+using System.Linq;
 using AI.Core.Behavior;
+using Core.Ai.Behavior.Visualization;
+using UnityEngine;
 
 namespace AI.Application.BehaviorTreeNodes
 {
     public class SequenceNode<T> : IBehaviorNode<T>
     {
+        public string DisplayName => "Sequence";
+        public float LastTickTime { get; private set; }
+
+        public NodeResult LastResult { get; private set; }
+
+        public IReadOnlyList<IInspectableNode> Children => _children.Cast<IInspectableNode>().ToList();
+
         private List<IBehaviorNode<T>> _children;
         public SequenceNode(List<IBehaviorNode<T>> children)
         {
@@ -22,6 +32,8 @@ namespace AI.Application.BehaviorTreeNodes
 
         public NodeResult Tick(T context)
         {
+            LastTickTime = Time.time;
+
             // Check if anything passes
             for (int i = 0; i < _children.Count; i++)
             {

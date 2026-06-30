@@ -5,18 +5,31 @@ using Movement.Core.Movement.DataStructures;
 using Movement.Core.Abstractions;
 using Core.Ai.BlackBoard;
 using Core.Ai.BlackBoard.DataStructures;
+using System.Collections.Generic;
+using Core.Ai.Behavior.Visualization;
+using System;
 
 namespace Application.Ai.BehaviorTreeNodes.Actions
 {
     public class Chase<T> : IBehaviorNode<T> where T : IInputContext, IPerceptionContext, IMoveToContext, IStatusContext, IPackDataContext
     {
+        public string DisplayName => "Chase";
+        public float LastTickTime { get; private set; }
+        public NodeResult LastResult { get; private set; }
+        public IReadOnlyList<IInspectableNode> Children => Array.Empty<IInspectableNode>();
+
         public void Reset(T context)
         {
             Debug.Log($"Resetting Chase behavior");
         }
-
         public NodeResult Tick(T context)
         {
+            LastResult = TickInternal(context);
+            return LastResult;
+        }
+        private NodeResult TickInternal(T context)
+        {
+            LastTickTime = Time.time;
             Debug.Assert(context.Perception != null, "Failed to set perception state");
             if (!context.Perception.TargetPosition.HasValue) return NodeResult.Failure;
             // We have spotted the player

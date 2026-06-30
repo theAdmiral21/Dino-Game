@@ -6,11 +6,19 @@ using Movement.Core.Abstractions;
 using Core.Ai.BlackBoard;
 using AI.Core.Timers;
 using AI.Core.State.BehaviorContext;
+using System;
+using Core.Ai.Behavior.Visualization;
+using System.Collections.Generic;
 
 namespace Application.Ai.BehaviorTreeNodes.Actions
 {
     public class MoveToSound<T> : IBehaviorNode<T> where T : IInputContext, IPerceptionContext, IStatusContext, IMoveToContext, ITickTimerContext
     {
+        public string DisplayName => "MoveToSound";
+        public float LastTickTime { get; private set; }
+        public NodeResult LastResult { get; private set; }
+        public IReadOnlyList<IInspectableNode> Children => Array.Empty<IInspectableNode>();
+
         private Vector2 _lastPosition;
         private float _stuckCounter;
         private float _stuckTimer = 1f; // seconds before declaring stuck
@@ -20,9 +28,15 @@ namespace Application.Ai.BehaviorTreeNodes.Actions
             _stuckCounter = 0;
             _lastPosition = Vector2.zero;
         }
-
         public NodeResult Tick(T context)
         {
+            LastResult = TickInternal(context);
+            return LastResult;
+        }
+        private NodeResult TickInternal(T context)
+        {
+            LastTickTime = Time.time;
+
             context.SetStatus(Status.Tracking);
             Debug.Log($"MoveToSound status: {NodeResult.Failure}, Perception is null?");
             if (context.Perception == null) return NodeResult.Failure;

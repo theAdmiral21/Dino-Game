@@ -9,11 +9,20 @@ using Core.Ai.BlackBoard;
 using Application.Utility;
 using Movement.Core.Abstractions;
 using Core.Ai.BlackBoard.DataStructures;
+using System.Collections.Generic;
+using Core.Ai.Behavior.Visualization;
+using System;
 
 namespace AI.Application.BehaviorTreeNodes
 {
     public class Wander<T> : IBehaviorNode<T> where T : IMoveToContext, ITickTimerContext, IGameTimerContext, IStatusContext, IAlertContext, IInputContext
     {
+        public string DisplayName => "Wander";
+        public float LastTickTime { get; private set; }
+        public NodeResult LastResult { get; private set; }
+        public IReadOnlyList<IInspectableNode> Children => Array.Empty<IInspectableNode>();
+
+
         private float _maxWanderRadius = 10f;
 
         private float _wanderTime;
@@ -28,10 +37,16 @@ namespace AI.Application.BehaviorTreeNodes
             _wanderTime = wanderTime;
             Timer = new TimerContext(_wanderTime);
         }
+
         public NodeResult Tick(T context)
         {
+            LastResult = TickInternal(context);
+            return LastResult;
+        }
+        private NodeResult TickInternal(T context)
+        {
+            LastTickTime = Time.time;
             context.SetStatus(Status.Searching);
-
             // If the timer is incomplete and inactive
             if (!Timer.TimerComplete && !Timer.IsActive)
             {

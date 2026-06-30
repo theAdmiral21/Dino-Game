@@ -6,11 +6,19 @@ using AI.Core.PathFinding;
 using Movement.Core.Abstractions;
 using Core.Ai.State.BehaviorContext;
 using Core.Ai.BlackBoard;
+using System.Collections.Generic;
+using Core.Ai.Behavior.Visualization;
+using System;
 
 namespace AI.Application.BehaviorTreeNodes
 {
     public class RunAway<T> : IBehaviorNode<T> where T : IDetectPlayerContext, IPositionContext, IPathFindContext, IInputContext, IStatusContext
     {
+        public string DisplayName => "RunAway";
+        public float LastTickTime { get; private set; }
+        public NodeResult LastResult { get; private set; }
+        public IReadOnlyList<IInspectableNode> Children => Array.Empty<IInspectableNode>();
+
         public float MinSafeDistance => _minSafeDistance;
         private float _minSafeDistance;
         public RunAway(float minSafeDistance)
@@ -19,6 +27,13 @@ namespace AI.Application.BehaviorTreeNodes
         }
         public NodeResult Tick(T context)
         {
+            LastResult = TickInternal(context);
+            return LastResult;
+        }
+        private NodeResult TickInternal(T context)
+        {
+            LastTickTime = Time.time;
+
             var res = Flee(context);
             // flee
             Debug.Log($"Node result for run away result: {res}");

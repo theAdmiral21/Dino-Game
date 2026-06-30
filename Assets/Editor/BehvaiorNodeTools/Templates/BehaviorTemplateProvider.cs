@@ -19,14 +19,26 @@ namespace AI.Application.BehaviorTreeNodes
 {{
     public class {behaviorName}<T> : IBehaviorNode<T>
     {{
+        public string DisplayName => ""{behaviorName}"";
+        public NodeResult LastResult {{ get; private set; }}
+        public float LastTickTime {{ get; private set; }}
+        public IReadOnlyList<IInspectableNode> Children => Array.Empty<IInspectableNode>();
+
         public NodeResult Tick(T context)
+        {{
+            LastResult = TickInternal(context);
+            LastTickTime = Time.time;
+            return LastResult;
+        }}
+
+        private NodeResult TickInternal(T context)
         {{
             return NodeResult.Success;
         }}
 
         public void Reset(T context)
         {{
-        
+            Debug.Log($""Resetting {behaviorName}"");
         }}
     }}
 }}";
