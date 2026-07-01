@@ -6,6 +6,7 @@ using Codice.Client.Common.TreeGrouper;
 using Core.Ai.Behavior.Visualization;
 using Core.Ai.BlackBoard;
 using Core.Ai.BlackBoard.DataStructures;
+using Game.Application.UI.Menus.UICommands;
 using Unity.Ai.BlackBoard;
 using UnityEditor;
 using UnityEngine;
@@ -15,11 +16,14 @@ namespace Editor
     public class PackVisualizerWindow : EditorWindow
     {
         private IPackManager _selectedPack;
+        List<IPackManager> _packManagers = new();
+        private List<string> _managerNames = new();
         private IPackMember _selectedMember;
         private List<IPackMember> _packMembers = new();
-        private PackData _packData;
         private List<string> _memberNames = new();
-        private int _ndx;
+        private PackData _packData;
+        private int _memberNdx;
+        private int _managerNdx;
 
         [MenuItem("Tools/Behavior/Pack Visualizer")]
         public static void Open()
@@ -42,6 +46,7 @@ namespace Editor
             if (UnityEngine.Application.isPlaying)
             {
                 Repaint();
+                GetManagers();
             }
         }
 
@@ -53,28 +58,41 @@ namespace Editor
                 return;
             }
 
-            // 1. Find and select a pack
-            var selectedObject = Selection.activeGameObject;
-            // if (selectedObject == null) return;
-            IPackManager potentialManager = selectedObject.GetComponentInChildren<IPackManager>();
-            // Once a manager is set, don't forget it until a new one is selected
-            if (potentialManager != null)
-            {
-                _selectedPack = potentialManager;
-            }
-
+            // // 1. Find and select a pack
+            // var selectedObject = Selection.activeGameObject;
+            // // if (selectedObject == null) return;
+            // IPackManager potentialManager = selectedObject.GetComponentInChildren<IPackManager>();
+            // // Once a manager is set, don't forget it until a new one is selected
+            // if (potentialManager != null)
+            // {
+            //     _selectedPack = potentialManager;
+            // }
 
             // 2. List members of selected pack, click to select one
-            GetPackMembers();
+
 
             // Set up the view
             EditorGUILayout.BeginHorizontal();
 
-            // Dino list on the left
+            // Add a space for selecting managers
             EditorGUILayout.BeginVertical(GUILayout.Width(200));
+            EditorGUILayout.LabelField("Pack Managers", EditorStyles.boldLabel);
+            if (GUILayout.Button("Refresh Managers"))
+            {
+                GetManagers();
+            }
+            if (_packManagers.Count == 0) return;
+            _managerNdx = GUILayout.SelectionGrid(_managerNdx, _managerNames.ToArray(), 1, EditorStyles.radioButton);
+            _selectedPack = _packManagers[_managerNdx];
+            // EditorGUILayout.EndVertical();
+
+            GetPackMembers();
+
+            // Dino list on the left
+            // EditorGUILayout.BeginVertical(GUILayout.Width(200));
             EditorGUILayout.LabelField("Pack Members", EditorStyles.boldLabel);
-            _ndx = GUILayout.SelectionGrid(_ndx, _memberNames.ToArray(), 1, EditorStyles.radioButton);
-            _selectedMember = _packMembers[_ndx];
+            _memberNdx = GUILayout.SelectionGrid(_memberNdx, _memberNames.ToArray(), 1, EditorStyles.radioButton);
+            _selectedMember = _packMembers[_memberNdx];
             EditorGUILayout.EndVertical();
 
             // Divider
@@ -86,6 +104,21 @@ namespace Editor
             EditorGUILayout.EndVertical();
 
             EditorGUILayout.EndHorizontal();
+        }
+
+        private void GetManagers()
+        {
+            PackManager[] managers = FindObjectsByType<PackManager>(FindObjectsSortMode.None);
+            _packManagers.Clear();
+            _managerNames.Clear();
+            foreach (var manager in managers)
+            {
+                var temp = manager.gameObject.GetComponentInChildren<IPackManager>();
+                if (temp == null) continue;
+
+                _packManagers.Add(temp);
+                _managerNames.Add($"Manager {manager.GetInstanceID()}");
+            }
         }
 
         private void GetPackMembers()
