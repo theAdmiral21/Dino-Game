@@ -169,7 +169,7 @@ namespace PlayerController.Unity.Inputs
             if (MoveInput != Vector2.zero)
             {
                 // Run?.Invoke(new RunRequest(true, MoveInput));
-                _requestHandler.EnqueueActionRequest(new RunRequest(true, MoveInput));
+                _requestHandler.EnqueueActionRequest(new RunRequest(false, MoveInput));
             }
         }
         public void OnDodge(InputAction.CallbackContext context)

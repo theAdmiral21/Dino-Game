@@ -7,6 +7,7 @@ namespace Core.Movement.Inputs
     /// </summary>
     public interface IAiInput : IActorInput
     {
+        public void SetBackUp(Vector2 input);
         public void SetMove(Vector2 input);
         public void SetJumpPressed(bool input);
         public void SetJumpHeld(bool input);

@@ -33,9 +33,14 @@ namespace NPC.Unity.Inputs
         {
             _move = input;
             Debug.Log($"[Run] Ai move request: {_move}");
+            SendRequest(new RunRequest(false, _move));
+        }
+        public void SetBackUp(Vector2 input)
+        {
+            _move = input;
+            Debug.Log($"[Run] Ai move request: {_move}");
             SendRequest(new RunRequest(true, _move));
         }
-
         public void SetJumpPressed(bool input)
         {
             _jumpPressed = input;

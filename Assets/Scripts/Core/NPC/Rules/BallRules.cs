@@ -82,6 +82,9 @@ namespace NPC.Core.Rules
         private float _jumpBufferCounter;
 
         public bool WallJumpBuffered => _wallJumpCounter > 0;
+
+        public bool IsLocked => throw new System.NotImplementedException();
+
         private float _wallJumpTime;
         private float _wallJumpCounter;
 
@@ -252,6 +255,11 @@ namespace NPC.Core.Rules
         public void ResetWallJumpBufferTimer()
         {
             _wallJumpCounter = 0;
+        }
+
+        public void LockDirection(bool locked)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

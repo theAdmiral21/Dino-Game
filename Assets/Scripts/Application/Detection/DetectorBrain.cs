@@ -8,6 +8,7 @@ using Core.Detection.DataStructures;
 using Core.Detection.Olfactory.DataStructures;
 using Core.Detection.Visual;
 using Core.Detection.Visual.DataStructures;
+using Primitives.Detection;
 using Primitives.Health;
 using UnityEngine;
 
@@ -67,6 +68,8 @@ namespace Application.Detection
                 TargetPosition = _visualData.HasValue ? _visualData?.TargetPosition : null,
                 TargetVelocity = _visualData.HasValue ? _visualData?.TargetVelocity : null,
                 TargetHealth = _visualData.HasValue ? _visualData.Value.Health : HealthState.Unknown,
+                TargetFacing = _visualData.HasValue ? _visualData?.TargetFacing : null,
+                TargetStatus = _visualData.HasValue ? _visualData.Value.Status : PlayerStatus.Unknown,
                 TimeOfVisual = _visualData.HasValue ? _visualData.Value.DetectionTime : 0f,
                 VisualIntensity = _visualData.HasValue ? _visualData.Value.DistanceFraction : 0f,
 

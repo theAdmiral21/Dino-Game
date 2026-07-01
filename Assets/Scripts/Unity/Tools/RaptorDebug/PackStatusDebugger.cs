@@ -23,7 +23,7 @@ namespace Unity.Tools.RaptorDebug
         [SerializeField] Vector2 _bestGuessDebug;
         [SerializeField] float _bestGuessTime;
         [SerializeField] float _bestGuessConfidenceDebug;
-        [SerializeField] float _facingDebug;
+        [SerializeField] Vector2 _facingDebug;
         [SerializeField] float _facingTimeDebug;
         [SerializeField] HealthState _healthDebug;
         [SerializeField] AlertLevel _alertDebug;

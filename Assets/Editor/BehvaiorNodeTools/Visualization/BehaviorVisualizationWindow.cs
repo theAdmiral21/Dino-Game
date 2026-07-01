@@ -58,19 +58,6 @@ namespace Editor
                 return;
             }
 
-            // // 1. Find and select a pack
-            // var selectedObject = Selection.activeGameObject;
-            // // if (selectedObject == null) return;
-            // IPackManager potentialManager = selectedObject.GetComponentInChildren<IPackManager>();
-            // // Once a manager is set, don't forget it until a new one is selected
-            // if (potentialManager != null)
-            // {
-            //     _selectedPack = potentialManager;
-            // }
-
-            // 2. List members of selected pack, click to select one
-
-
             // Set up the view
             EditorGUILayout.BeginHorizontal();
 
@@ -84,12 +71,11 @@ namespace Editor
             if (_packManagers.Count == 0) return;
             _managerNdx = GUILayout.SelectionGrid(_managerNdx, _managerNames.ToArray(), 1, EditorStyles.radioButton);
             _selectedPack = _packManagers[_managerNdx];
-            // EditorGUILayout.EndVertical();
+            EditorGUILayout.LabelField("", GUI.skin.horizontalSlider);
 
             GetPackMembers();
 
             // Dino list on the left
-            // EditorGUILayout.BeginVertical(GUILayout.Width(200));
             EditorGUILayout.LabelField("Pack Members", EditorStyles.boldLabel);
             _memberNdx = GUILayout.SelectionGrid(_memberNdx, _memberNames.ToArray(), 1, EditorStyles.radioButton);
             _selectedMember = _packMembers[_memberNdx];

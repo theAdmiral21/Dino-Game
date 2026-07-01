@@ -10,6 +10,7 @@ using Core.Movement.Inputs;
 using NPC.Application.BehaviorContexts;
 using Unity.AI.BehaviorTree;
 using Unity.Common.Unity;
+using Unity.Detection.Detectors.DataStructures;
 using Unity.Tools.DrawingTools;
 using UnityEngine;
 
@@ -20,6 +21,7 @@ namespace Unity.NPC.Controllers
         [SerializeField] private Transform _parentTransform;
 
         [SerializeField] private BehaviorNodeSO _rootSO;
+        [SerializeField] private DetectorStatsSO _statsSO;
 
         [SerializeField] private SerializedInterface<IAiInput> _aiInputMono;
         private IAiInput _aiInput => _aiInputMono.Interface;
@@ -44,7 +46,7 @@ namespace Unity.NPC.Controllers
         {
 
             // build the context
-            _context = new RaptorContext(_aiInput, _packDataProvider);
+            _context = new RaptorContext(_aiInput, _packDataProvider, _statsSO.BuildRunTime());
 
             // Build the nodes
             IBehaviorNode<RaptorContext> root = BuildNode(_rootSO);

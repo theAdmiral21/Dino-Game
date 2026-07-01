@@ -11,5 +11,6 @@ namespace Core.Ai.BlackBoard
         Flushing, // Charging the target with no intent to attack, trying to get them to run
         Flanking, // Moving to cut off escape routes anything else?
         Reinforcing, // Moving to support a pack mate
+        Waiting, // Staying in one spot for a set time
     }
 }

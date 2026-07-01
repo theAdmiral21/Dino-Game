@@ -9,9 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fbc7188003f9b3e4c9fc5e28124d71a9, type: 3}
-  m_Name: RaptorSelectorSO
+  m_Script: {fileID: 11500000, guid: 6bff69f9c5728374c9f6172b80da8477, type: 3}
+  m_Name: RaptorPounceSO
   m_EditorClassIdentifier: 
-  Children:
-  - {fileID: 11400000, guid: fb9e4e3ced87fbf4c99754df8b96a67a, type: 2}
-  - {fileID: 11400000, guid: f9d97954e7eaef245ba80ecf0c5f6539, type: 2}

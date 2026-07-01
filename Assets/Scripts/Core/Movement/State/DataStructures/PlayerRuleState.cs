@@ -150,6 +150,8 @@ namespace Movement.Core.State.DataStructures
 
         public bool IsAiming { get; private set; }
 
+        public bool IsLocked { get; private set; }
+
         private int _totalDodges;
 
         private float _wallJumpTime;
@@ -204,7 +206,7 @@ namespace Movement.Core.State.DataStructures
             // Update dt
             _dt = dt;
             // Set the direction the player is facing
-            SetDirection(inputValues, physicsContext);
+            // SetDirection(inputValues, physicsContext);
             // Reset the jumps
             ResetJumps(physicsContext);
             // Reset the dash
@@ -298,14 +300,13 @@ namespace Movement.Core.State.DataStructures
         {
             _stunCounter = duration;
         }
-        public void SetDirection(float dir)
-        {
-            _dir = dir;
-        }
+        // public void SetDirection(float dir)
+        // {
+        //     _dir = dir;
+        // }
         public void SetDirection(IActorInput input, PhysicsContext physicsContext)
         {
-            // float inputSign = Mathf.Sign(input.Move.x);
-
+            if (IsLocked) return;
             float velX = physicsContext.Velocity.x;
             float velSign = Mathf.Sign(velX);
 
@@ -314,8 +315,6 @@ namespace Movement.Core.State.DataStructures
                 if (velSign != 0f)
                 {
                     _dir = velSign;
-                    // Debug.Log($"_dir = {_dir}");
-
                 }
             }
         }
@@ -328,6 +327,10 @@ namespace Movement.Core.State.DataStructures
             }
             _dir = 1;
             return;
+        }
+        public void LockDirection(bool locked)
+        {
+            IsLocked = locked;
         }
         public void ResetJumps(PhysicsContext physicsContext)
         {
@@ -537,5 +540,6 @@ namespace Movement.Core.State.DataStructures
         {
             IsAiming = val;
         }
+
     }
 }

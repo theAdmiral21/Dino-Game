@@ -10,9 +10,11 @@ namespace Movement.Core.Movement.DataStructures
     {
         public Type RequestType => typeof(RunRequest);
         public readonly bool Requested;
+        public readonly bool BackUp;
         public readonly Vector2 Value;
-        public RunRequest(bool request, Vector2 value)
+        public RunRequest(bool backUp, Vector2 value, bool request = true)
         {
+            BackUp = backUp;
             Requested = request;
             Value = value;
         }

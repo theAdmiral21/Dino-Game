@@ -13,6 +13,7 @@ using Enemy.Core.Detectors.Abstractions;
 using Movement.Core.Abstractions;
 using Movement.Core.Enums;
 using Movement.Core.Movement.DataStructures;
+using Primitives.Detection;
 using Primitives.Detectors;
 using UnityEngine;
 
@@ -29,7 +30,9 @@ namespace NPC.Application.BehaviorContexts
                                  IPerceptionContext,
                                  IStatusContext,
                                  IAlertContext,
-                                 IPackDataContext
+                                 IPackDataContext,
+                                 IDetectorContext,
+                                 ISearchAreaContext
     {
         public MovementType MoveType => MovementType.Run;
 
@@ -57,15 +60,18 @@ namespace NPC.Application.BehaviorContexts
 
         public AlertLevel Alertness { get; private set; }
 
+        public DetectorStats DetectionStats { get; private set; }
+
         private IPackDataProvider _packDataProvider;
 
         private IAiInput _aiInput;
         private IPlayerDetector _detector;
         private IPathAwayFrom _pathFinder;
-        public RaptorContext(IAiInput aiInput, IPackDataProvider packDataProvider)
+        public RaptorContext(IAiInput aiInput, IPackDataProvider packDataProvider, DetectorStats detectionStats)
         {
             _aiInput = aiInput;
             _packDataProvider = packDataProvider;
+            DetectionStats = detectionStats;
         }
 
         public IDetectionData DetectPlayer()
@@ -143,6 +149,23 @@ namespace NPC.Application.BehaviorContexts
         public void SetAlertLevel(AlertLevel alertness)
         {
             Alertness = alertness;
+        }
+
+        public void FaceLeft()
+        {
+            // Debug.Log($"Face left");
+            _aiInput.FaceLeft(true);
+        }
+
+        public void FaceRight()
+        {
+            // Debug.Log($"Face right");
+            _aiInput.FaceLeft(false);
+        }
+
+        public void SearchArea()
+        {
+            throw new NotImplementedException();
         }
     }
 }

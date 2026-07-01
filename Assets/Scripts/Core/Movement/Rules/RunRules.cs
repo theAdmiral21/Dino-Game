@@ -36,8 +36,11 @@ namespace Movement.Core.Movement
             if (!request.Requested || disabledState.IsDisabled || stunState.IsStunned) return Denied();
             // If the player is wall jumping, block x input
             if (xInputState.XInputLocked) return Denied();
-            Debug.Log($"[Run rules] inputs: {inputs.Move}");
-            dirState.SetDirection(inputs, facts);
+            // Debug.Log($"[Run rules] inputs: {inputs.Move}");
+            if (!request.BackUp)
+            {
+                dirState.SetDirection(inputs, facts);
+            }
 
             float inputDir = Mathf.Sign(inputs.Move.x);
 

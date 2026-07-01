@@ -42,6 +42,8 @@ namespace Enemy.Core.Rules
 
         public bool IsStunned => false;
 
+        public bool IsLocked { get; private set; }
+
         public void UpdateRules(IActorInput inputValues, PhysicsContext physicsContext, float dt)
         {
             if (inputValues is null)
@@ -51,7 +53,7 @@ namespace Enemy.Core.Rules
             // Update dt
             Dt = dt;
             // Set the direction the actor is facing
-            SetDirection(inputValues, physicsContext);
+            // SetDirection(inputValues, physicsContext);
             // Start or update Ungrounded timer
             StartUngroundedTimer(physicsContext);
         }
@@ -66,6 +68,7 @@ namespace Enemy.Core.Rules
 
         public void SetDirection(IActorInput input, PhysicsContext physicsContext)
         {
+            if (IsLocked) return;
             float velX = physicsContext.Velocity.x;
             float velSign = Mathf.Sign(velX);
 
@@ -92,7 +95,10 @@ namespace Enemy.Core.Rules
             // Debug.Log($"Set direction to: {_dir} with input: {left}");
             return;
         }
-
+        public void LockDirection(bool locked)
+        {
+            IsLocked = locked;
+        }
         public void StartUngroundedTimer(PhysicsContext physicsContext)
         {
             if (!physicsContext.IsGrounded && !physicsContext.IsOnPlatform)
@@ -121,5 +127,6 @@ namespace Enemy.Core.Rules
         {
 
         }
+
     }
 }

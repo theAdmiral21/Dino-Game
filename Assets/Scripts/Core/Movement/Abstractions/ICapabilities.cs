@@ -34,9 +34,11 @@ namespace Movement.Core.Abstractions
 
     public interface IDirectionState
     {
+        public bool IsLocked { get; }
         public float Dir { get; }
         public void SetDirection(IActorInput input, PhysicsContext physicsContext);
         public void ForceDirection(bool left);
+        public void LockDirection(bool locked);
     }
 
     public interface IFallState

@@ -37,11 +37,11 @@ namespace Movement.Core.Movement
             var reqDir = Mathf.Sign(request.Value.x);
             if (reqDir == 1)
             {
-                ruleState.SetDirection(1);
+                // ruleState.SetDirection(1);
             }
             else if (reqDir == -1)
             {
-                ruleState.SetDirection(-1);
+                // ruleState.SetDirection(-1);
             }
         }
         private static FlyResult Approved(Vector2 value)
