@@ -21,9 +21,6 @@ namespace Editor
         private List<string> _memberNames = new();
         private int _ndx;
 
-        // UI stuff
-        private Rect _subWindowRect = new Rect(20, 20, 200, 150);
-
         [MenuItem("Tools/Behavior/Pack Visualizer")]
         public static void Open()
         {
@@ -58,9 +55,14 @@ namespace Editor
 
             // 1. Find and select a pack
             var selectedObject = Selection.activeGameObject;
-            if (selectedObject == null) return;
-            _selectedPack = selectedObject.GetComponentInChildren<IPackManager>();
-            if (_selectedPack == null) return;
+            // if (selectedObject == null) return;
+            IPackManager potentialManager = selectedObject.GetComponentInChildren<IPackManager>();
+            // Once a manager is set, don't forget it until a new one is selected
+            if (potentialManager != null)
+            {
+                _selectedPack = potentialManager;
+            }
+
 
             // 2. List members of selected pack, click to select one
             GetPackMembers();
