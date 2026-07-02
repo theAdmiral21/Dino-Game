@@ -49,7 +49,7 @@ namespace Application.Ai.BehaviorTreeNodes.Actions
                 var chaseDir = (context.Perception.TargetPosition.Value - context.CurrentPosition).normalized;
 
                 Move(context, chaseDir);
-                return NodeResult.Running;
+                return NodeResult.Success;
             }
             else
             {

@@ -52,30 +52,13 @@ namespace AI.Application.BehaviorTreeNodes
             // get target data
             Vector2 targetPos = context.Perception.TargetPosition.Value;
             Vector2 targetDir = (targetPos - context.CurrentPosition).normalized;
+            // pounce my girl
+            context.RaptorInput.Lunge(targetDir);
+            Debug.Log($"Lunging!");
 
-            // evaluate distance
-            float targetDistance = Vector2.Distance(targetPos, context.CurrentPosition);
+            return NodeResult.Running;
 
-            // if close enough, pounce
-            context.StatCollection.TryGet<LungeStats>(out var lungeStats);
-            float lungeDist = lungeStats.LungeDistance.Value;
-            if (targetDistance <= lungeDist)
-            {
-                // pounce my girl
-                context.RaptorInput.Lunge(targetDir);
-                Debug.Log($"Lunging!");
-            }
-            else
-            {
-                // else keep charging
-                float sign = Mathf.Sign(targetDir.x);
-                // Go full tilt
-                context.RaptorInput.SetMove(sign * Vector2.right);
-                return NodeResult.Running;
-            }
-            // maybe some sort of timeout?
-
-            return NodeResult.Failure;
+            // making contact results in success, missing results in failure
         }
     }
 }
