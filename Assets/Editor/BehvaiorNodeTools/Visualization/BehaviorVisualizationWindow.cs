@@ -128,7 +128,6 @@ namespace Editor
                 IInspectableNode root = _selectedMember.RaptorController.RootNode;
                 if (root == null) return;
 
-                // EditorGUILayout.LabelField("Behavior Tree", EditorStyles.boldLabel);
                 DrawNode(root, 0);
             }
         }

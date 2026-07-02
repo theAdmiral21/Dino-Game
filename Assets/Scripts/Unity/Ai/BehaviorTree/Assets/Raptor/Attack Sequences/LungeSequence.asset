@@ -12,4 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c90f5e74b564e644c93dab31c86367fa, type: 3}
   m_Name: LungeSequence
   m_EditorClassIdentifier: 
-  Children: []
+  Children:
+  - {fileID: 11400000, guid: ea4427b425039f04aab2ded6caffa674, type: 2}
+  - {fileID: 11400000, guid: 7f508bb653da0b84080fa31fdb5f3423, type: 2}
