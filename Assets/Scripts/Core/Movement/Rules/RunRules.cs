@@ -64,18 +64,18 @@ namespace Movement.Core.Movement
                 {
                     if (actorInput.SprintPressed)
                     {
-                        return Approved(RunType.Sprint, request.Value);
+                        return Approved(RunType.Sprint, false, request.Value);
                     }
                 }
                 if (ruleState.TryGet<ICrouchState>(out var crouch))
                 {
                     if (crouch.IsCrouching)
                     {
-                        return Approved(RunType.CrouchWalk, request.Value);
+                        return Approved(RunType.CrouchWalk, request.BackUp, request.Value);
                     }
                 }
 
-                return Approved(RunType.Run, request.Value);
+                return Approved(RunType.Run, request.BackUp, request.Value);
             }
 
             if (!facts.IsGrounded || !facts.IsOnPlatform)
@@ -85,25 +85,25 @@ namespace Movement.Core.Movement
                 {
                     if (actorInput.SprintPressed)
                     {
-                        return Approved(RunType.Sprint, request.Value);
+                        return Approved(RunType.Sprint, false, request.Value);
                     }
                 }
-                return Approved(RunType.Aerial, request.Value);
+                return Approved(RunType.Aerial, false, request.Value);
             }
 
             // Debug.Log($"Nothing passed");
             return Denied();
         }
 
-        private static RunResult Approved(RunType type, Vector2 value)
+        private static RunResult Approved(RunType type, bool isBackingUp, Vector2 value)
         {
             // Debug.Log("Run approved");
-            return new RunResult(true, value, type, ActionPhase.Continuous);
+            return new RunResult(true, isBackingUp, value, type, ActionPhase.Continuous);
         }
         private static RunResult Denied()
         {
             // Debug.Log("Run denied");
-            return new RunResult(false, Vector2.zero, RunType.None, ActionPhase.Continuous);
+            return new RunResult(false, false, Vector2.zero, RunType.None, ActionPhase.Continuous);
 
         }
     }

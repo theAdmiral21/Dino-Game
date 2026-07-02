@@ -106,4 +106,13 @@ namespace Movement.Core.Stats
     {
         public float Friction { get; }
     }
+
+    public interface ILungeStats : IGameStat
+    {
+        public int TotalLunges { get; }
+        public float LungeDistance { get; }
+        public float LungeHeight { get; }
+        public float LungeApexTime { get; }
+        public float LungeDamage { get; }
+    }
 }

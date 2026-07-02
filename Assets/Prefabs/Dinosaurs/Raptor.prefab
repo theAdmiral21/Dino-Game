@@ -56,7 +56,7 @@ GameObject:
   - component: {fileID: 6447594941416932160}
   - component: {fileID: 3890522784345501913}
   - component: {fileID: 982088953569660740}
-  - component: {fileID: 8445217396127001341}
+  - component: {fileID: 5123753718159855905}
   m_Layer: 7
   m_Name: Controller
   m_TagString: Untagged
@@ -111,7 +111,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 7e92bbe456c23614ab8826f6e4b86381, type: 2}
   - {fileID: 11400000, guid: 04cf3d6d836e2a64ab9fbf41a060ede3, type: 2}
   - {fileID: 11400000, guid: befcf4c685cf2c747add375a5669545c, type: 2}
---- !u!114 &8445217396127001341
+  - {fileID: 11400000, guid: 7dae715ac7b08b34f92e10df59a06437, type: 2}
+--- !u!114 &5123753718159855905
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -120,11 +121,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 563262318572726992}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb998a92beb597a4790a59708f71b246, type: 3}
+  m_Script: {fileID: 11500000, guid: 776ae01ebc2b0774aaa77d0fa02a3fd4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _requestSinkMono:
     _monoScript: {fileID: 7516074191666959453}
+  _printDebug: 0
 --- !u!1 &614233289889581336
 GameObject:
   m_ObjectHideFlags: 0
@@ -233,7 +235,7 @@ MonoBehaviour:
   _ruleStateMono:
     _monoScript: {fileID: 3890522784345501913}
   _actorInputMono:
-    _monoScript: {fileID: 8445217396127001341}
+    _monoScript: {fileID: 5123753718159855905}
   _debugState:
     CurrentPosition: {x: 0, y: 0}
     Velocity: {x: 0, y: 0}
@@ -279,10 +281,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _parentTransform: {fileID: 6757668930858048360}
   _rootSO: {fileID: 11400000, guid: b85bcc6d0af239b4289b1f2f4b124db7, type: 2}
-  _aiInputMono:
-    _monoScript: {fileID: 8445217396127001341}
+  _statsSO: {fileID: 11400000, guid: cf8f3ec021ea1894c8c0d97b0518c254, type: 2}
+  _statSheetMono:
+    _monoScript: {fileID: 982088953569660740}
+  _raptorInputMono:
+    _monoScript: {fileID: 5123753718159855905}
   _detectorOrchestratorMono:
     _monoScript: {fileID: 3528326029578573184}
+  _packDataProviderMono:
+    _monoScript: {fileID: 0}
+  _currentNode: 
+  _currentStatus: 
 --- !u!114 &6994846599287633704
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -317,6 +326,12 @@ MonoBehaviour:
   _raptorController: {fileID: 6036390399141617228}
   _raptorControllerMono:
     _monoScript: {fileID: 6036390399141617228}
+  _debugMemberStatus: 0
+  _debugStatus:
+    Health: 0
+    Position: {x: 0, y: 0}
+    CurrentStatus: 0
+    Alertness: 0
 --- !u!1 &2296628177421767192
 GameObject:
   m_ObjectHideFlags: 0
@@ -663,7 +678,7 @@ MonoBehaviour:
   _ruleStateViewMono:
     _monoScript: {fileID: 3890522784345501913}
   _actorInputMono:
-    _monoScript: {fileID: 8445217396127001341}
+    _monoScript: {fileID: 5123753718159855905}
 --- !u!114 &2313714383482377182
 MonoBehaviour:
   m_ObjectHideFlags: 0

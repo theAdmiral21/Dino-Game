@@ -239,6 +239,7 @@ namespace Physics.Application.Orchestrators
                 new ShootDispatcher(),
                 new AimDispatcher(),
                 new ReloadDispatcher(),
+                new LungeDispatcher(),
         };
 
             return dispatchers;

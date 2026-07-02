@@ -6,6 +6,7 @@ using Movement.Features.Movement.Services;
 using Physics.Core.Abstractions;
 using Primitives.Physics;
 using Physics.Core.DataStructures;
+using Features.Movement.Services;
 
 namespace Physics.Features.Movement
 {
@@ -30,6 +31,7 @@ namespace Physics.Features.Movement
         private ICalcAction _calcDoggoDash;
         private ICalcAction _calcDoggoDashUpdate;
         private ICalcAction _calcFriction;
+        private ICalcAction _calcLunge;
         public KinematicSolver()
         {
             // Set up your calculation actions
@@ -51,6 +53,7 @@ namespace Physics.Features.Movement
             _calcDoggoDash = new CalcDodge();
             _calcDoggoDashUpdate = new CalcDodgeUpdate();
             _calcFriction = new CalcFriction();
+            _calcLunge = new CalcLunge();
         }
 
         public KinematicResult Solve(ActorFrameData frameData)
@@ -180,6 +183,12 @@ namespace Physics.Features.Movement
                         {
                             // Debug.Log($"Friction update case");
                             frameData.CurrentState = _calcFriction.Calculate(frameData.ActorStats, friction, ref frameData.CurrentState);
+                            break;
+                        }
+                    case LungeResult lunge:
+                        {
+                            // Debug.Log($"Friction update case");
+                            frameData.CurrentState = _calcLunge.Calculate(frameData.ActorStats, lunge, ref frameData.CurrentState);
                             break;
                         }
 

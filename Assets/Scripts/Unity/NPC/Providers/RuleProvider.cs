@@ -3,6 +3,7 @@ using Core.WeaponRules;
 using Enemy.Core.Rules;
 using Movement.Core.Abstractions;
 using Movement.Unity.Abstractions;
+using NPC.Core.Rules;
 using Primitives.Rules;
 using Unity.Common.Unity;
 using UnityEngine;
@@ -28,7 +29,7 @@ namespace NPC.Unity.Providers
                     }
                 case RuleSet.Raptor:
                     {
-                        RuleStateView = new EnemyRules();
+                        RuleStateView = new RaptorRules(StatSheet.StatCollection);
                         break;
                     }
 

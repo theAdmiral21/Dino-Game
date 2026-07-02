@@ -13,6 +13,7 @@ using Enemy.Core.Detectors.Abstractions;
 using Movement.Core.Abstractions;
 using Movement.Core.Enums;
 using Movement.Core.Movement.DataStructures;
+using Movement.Core.Stats;
 using Primitives.Detection;
 using Primitives.Detectors;
 using UnityEngine;
@@ -27,12 +28,14 @@ namespace NPC.Application.BehaviorContexts
                                  ITickTimerContext,
                                  IGameTimerContext,
                                  IInputContext,
+                                 IRaptorInputContext,
                                  IPerceptionContext,
                                  IStatusContext,
                                  IAlertContext,
                                  IPackDataContext,
                                  IDetectorContext,
-                                 ISearchAreaContext
+                                 ISearchAreaContext,
+                                 IStatSheet
     {
         public MovementType MoveType => MovementType.Run;
 
@@ -48,7 +51,7 @@ namespace NPC.Application.BehaviorContexts
 
         public float Dt { get; set; }
 
-        public IAiInput AiInput => _aiInput;
+        // public IAiInput AiInput => _aiInput;
 
         public PerceptionState Perception { get; private set; }
 
@@ -62,16 +65,22 @@ namespace NPC.Application.BehaviorContexts
 
         public DetectorStats DetectionStats { get; private set; }
 
+        public IStatCollection StatCollection { get; private set; }
+
+        public IRaptorInput RaptorInput { get; set; }
+
+        public IAiInput AiInput => RaptorInput;
+
         private IPackDataProvider _packDataProvider;
 
-        private IAiInput _aiInput;
         private IPlayerDetector _detector;
         private IPathAwayFrom _pathFinder;
-        public RaptorContext(IAiInput aiInput, IPackDataProvider packDataProvider, DetectorStats detectionStats)
+        public RaptorContext(IRaptorInput raptorInput, IPackDataProvider packDataProvider, DetectorStats detectionStats, IStatCollection stats)
         {
-            _aiInput = aiInput;
+            RaptorInput = raptorInput;
             _packDataProvider = packDataProvider;
             DetectionStats = detectionStats;
+            StatCollection = stats;
         }
 
         public IDetectionData DetectPlayer()
@@ -106,7 +115,7 @@ namespace NPC.Application.BehaviorContexts
             float bearingY = Destination.y - CurrentPosition.y;
             moveVector.y = MathF.Sign(bearingY);
             Debug.Log($"Calc'd move input: {moveVector}");
-            _aiInput.SetMove(moveVector);
+            RaptorInput.SetMove(moveVector);
         }
 
         public void SetDestination(Vector2 dest)
@@ -127,7 +136,7 @@ namespace NPC.Application.BehaviorContexts
 
         public void Stop()
         {
-            _aiInput.SetMove(Vector2.zero);
+            RaptorInput.SetMove(Vector2.zero);
         }
 
         public IPathData FindPath(Vector2 relevantPosition)
@@ -154,13 +163,13 @@ namespace NPC.Application.BehaviorContexts
         public void FaceLeft()
         {
             // Debug.Log($"Face left");
-            _aiInput.FaceLeft(true);
+            RaptorInput.FaceLeft(true);
         }
 
         public void FaceRight()
         {
             // Debug.Log($"Face right");
-            _aiInput.FaceLeft(false);
+            RaptorInput.FaceLeft(false);
         }
 
         public void SearchArea()

@@ -1,17 +1,18 @@
+using Core.Movement.Inputs;
 using Movement.Core.Abstractions;
 using Movement.Core.Movement.DataStructures;
-using NPC.Core.Inputs;
+using NPC.Unity.Inputs;
 using Primitives.Physics;
 using Unity.Common.Unity;
 using UnityEngine;
 
-namespace NPC.Unity.Inputs
+namespace Unity.NPC.Inputs
 {
-    public class AiInputReader : MonoBehaviour, IAiInputReader
+    public class RaptorInputReader : MonoBehaviour, IRaptorInput
     {
         [SerializeField] private SerializedInterface<IActionRequestSink> _requestSinkMono;
         private IActionRequestSink _requestSink => _requestSinkMono.Interface;
-
+        [SerializeField] private bool _printDebug;
         public Vector2 Move => _move;
         private Vector2 _move;
 
@@ -22,13 +23,16 @@ namespace NPC.Unity.Inputs
         private bool _jumpHeld;
 
         public bool FaceLeftHeld => _faceLeftHeld;
+
+        public bool LungePressed { get; private set; }
+
         private bool _faceLeftHeld;
 
-        private void Awake()
+        public void Lunge(Vector2 direction)
         {
-
+            SendRequest(new LungeRequest(direction));
         }
-        // This will get funky because some npc's fly...
+
         public void SetMove(Vector2 input)
         {
             _move = input;
@@ -65,9 +69,9 @@ namespace NPC.Unity.Inputs
 
         private void SendRequest(IActionRequest request)
         {
-            // Debug.Log($"Ai sent request: {request}");
+            if (_printDebug) Debug.Log($"Ai sent request: {request}");
+
             _requestSink.EnqueueActionRequest(request);
         }
-
     }
 }

@@ -9,9 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fbc7188003f9b3e4c9fc5e28124d71a9, type: 3}
-  m_Name: RaptorSelectorSO
+  m_Script: {fileID: 11500000, guid: 174c0c9ddda41d8458a45c6f3635e1e9, type: 3}
+  m_Name: RaptorLungeStats
   m_EditorClassIdentifier: 
-  Children:
-  - {fileID: 11400000, guid: 7f508bb653da0b84080fa31fdb5f3423, type: 2}
-  - {fileID: 11400000, guid: f9d97954e7eaef245ba80ecf0c5f6539, type: 2}
+  _totalLunges: 1
+  _lungeDistance: 8
+  _LungeHeight: 1.5
+  _LungeApexTime: 0.25
+  _lungeDuration: 0.3
+  _LungeDamage: 80

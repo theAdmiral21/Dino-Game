@@ -159,4 +159,17 @@ namespace Movement.Core.Abstractions
     {
         public float Friction { get; }
     }
+
+    public interface ILungeState
+    {
+        public bool IsLunging { get; }
+        public int LungeAmount { get; }
+        public float LungeTime { get; }
+        public float LungeCounter { get; }
+        public InputDirection LungeDirection { get; }
+        public void StartLungeTimer();
+        public void DecrementLunge();
+        public void ResetLunge(PhysicsContext physicsContext);
+        public void SetLungeDirection(InputDirection direction);
+    }
 }

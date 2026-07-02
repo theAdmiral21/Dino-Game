@@ -44,6 +44,7 @@ namespace AI.Application.BehaviorTreeNodes
                 Debug.Log($"Starting idle timer");
                 // Restart the timer
                 Timer.StartTimer();
+                context.AiInput.SetMove(Vector2.zero);
             }
 
             // Only move while the timer is running
@@ -55,7 +56,7 @@ namespace AI.Application.BehaviorTreeNodes
                 Timer.TickTimer(context.Dt);
                 return NodeResult.Running;
             }
-
+            context.AiInput.SetMove(Vector2.zero);
             return NodeResult.Success;
         }
 

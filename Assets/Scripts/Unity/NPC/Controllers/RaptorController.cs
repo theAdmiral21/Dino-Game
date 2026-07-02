@@ -7,6 +7,8 @@ using Core.Ai.BlackBoard;
 using Core.Detection;
 using Core.Game.HealthSystem.Health;
 using Core.Movement.Inputs;
+using Movement.Core.Abstractions;
+using Movement.Unity.Stats;
 using NPC.Application.BehaviorContexts;
 using Unity.AI.BehaviorTree;
 using Unity.Common.Unity;
@@ -23,8 +25,11 @@ namespace Unity.NPC.Controllers
         [SerializeField] private BehaviorNodeSO _rootSO;
         [SerializeField] private DetectorStatsSO _statsSO;
 
-        [SerializeField] private SerializedInterface<IAiInput> _aiInputMono;
-        private IAiInput _aiInput => _aiInputMono.Interface;
+        [SerializeField] private SerializedInterface<IStatSheet> _statSheetMono;
+        private IStatSheet _statSheet => _statSheetMono.Interface;
+
+        [SerializeField] private SerializedInterface<IRaptorInput> _raptorInputMono;
+        private IRaptorInput _raptorInput => _raptorInputMono.Interface;
 
         [SerializeField] private SerializedInterface<IDetectorOrchestrator> _detectorOrchestratorMono;
         private IDetectorOrchestrator _detectorOrchestrator => _detectorOrchestratorMono.Interface;
@@ -46,7 +51,7 @@ namespace Unity.NPC.Controllers
         {
 
             // build the context
-            _context = new RaptorContext(_aiInput, _packDataProvider, _statsSO.BuildRunTime());
+            _context = new RaptorContext(_raptorInput, _packDataProvider, _statsSO.BuildRunTime(), _statSheet.StatCollection);
 
             // Build the nodes
             IBehaviorNode<RaptorContext> root = BuildNode(_rootSO);
