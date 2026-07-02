@@ -8,6 +8,7 @@ using System.Drawing;
 using Unity.AI.BehaviorTree;
 using NPC.Application.BehaviorContexts;
 using System.Linq;
+using Core.Ai.Behavior.Visualization;
 
 namespace Editor.BehaviorNodeTools.BehaviorView
 {
@@ -16,7 +17,8 @@ namespace Editor.BehaviorNodeTools.BehaviorView
         private const float HorizontalSpacing = 175f;
         private const float VerticalSpacing = 150f;
         private float _nextLeafSlot; // ticks forward every time we place a leaf
-        public BehaviorNodeSO RootNode;
+        public BehaviorNodeSO RootSO;
+        public BaseNode RootNode;
         private List<BaseNode> _nodes = new();
         public BehaviorGraph()
         {
@@ -31,9 +33,10 @@ namespace Editor.BehaviorNodeTools.BehaviorView
             _nodes.Clear();
 
             // Setup the graph with the new data
-            RootNode = data;
+            RootSO = data;
             _nextLeafSlot = 0f;
             BuildTree(data, 0, null);
+            RootNode = _nodes[0];
         }
         private BaseNode BuildTree(BehaviorNodeSO node, int depth, BaseNode parent)
         {
@@ -70,66 +73,14 @@ namespace Editor.BehaviorNodeTools.BehaviorView
 
             return created;
         }
-        // private BaseNode BuildTree(BehaviorNodeSO node, int depth, BaseNode parent)
-        // {
-        //     BaseNode created;
 
-        //     switch (node)
-        //     {
-        //         case SequenceSO sequence:
-        //             created = AddSequencerNode(sequence, parent);
-        //             _nodes.Add(created);
-        //             LayoutChildrenAndPosition(created, sequence.Children, depth);
-        //             break;
 
-        //         case SelectorSO selector:
-        //             created = AddSelectorNode(selector, parent);
-        //             _nodes.Add(created);
-        //             LayoutChildrenAndPosition(created, selector.Children, depth);
-        //             break;
 
-        //         default:
-        //             created = AddBehaviorNode(node, parent);
-        //             _nodes.Add(created);
-        //             float leafY = _nextLeafSlot * VerticalSpacing;
-        //             _nextLeafSlot += 1f;
-        //             created.SetPosition(new Rect(depth * HorizontalSpacing, leafY, 160, 80));
-        //             break;
-        //     }
-
-        //     return created;
-        // }
-
-        // private void LayoutChildrenAndPosition(BaseNode compositeNode, List<BehaviorNodeSO> children, int depth)
-        // {
-        //     if (children == null || children.Count == 0)
-        //     {
-        //         float y = _nextLeafSlot * VerticalSpacing;
-        //         _nextLeafSlot += 1f;
-        //         compositeNode.SetPosition(new Rect(depth * HorizontalSpacing, y, 160, 80));
-        //         return;
-        //     }
-
-        //     float firstChildY = -1f;
-        //     float lastChildY = -1f;
-
-        //     foreach (var childData in children)
-        //     {
-        //         BaseNode childNode = BuildTree(childData, depth + 1, compositeNode);
-        //         float childY = childNode.GetPosition().y;
-
-        //         if (firstChildY < 0f) firstChildY = childY;
-        //         lastChildY = childY;
-        //     }
-
-        //     float centeredY = (firstChildY + lastChildY) / 2f;
-        //     compositeNode.SetPosition(new Rect(depth * HorizontalSpacing, centeredY, 160, 80));
-        // }
         private void AddManipulators()
         {
             this.AddManipulator(new ContentDragger());
             this.AddManipulator(new ContentZoomer());
-            this.AddManipulator(new SelectionDragger());
+            // this.AddManipulator(new SelectionDragger());
         }
 
         private void AddGrid()
