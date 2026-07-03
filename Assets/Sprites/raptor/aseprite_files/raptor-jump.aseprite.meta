@@ -2,7 +2,12 @@ fileFormatVersion: 2
 guid: f148ce17fac04a74ea3ccfd2b1097300
 ScriptedImporter:
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:AnimationClip
+      assembly: UnityEngine.AnimationModule
+      name: raptor-jump_Clip
+    second: {fileID: 7400000, guid: 459afd1504230ea478928bf1fc7a18b5, type: 2}
   serializedVersion: 2
   userData: 
   assetBundleName: 
@@ -102,7 +107,7 @@ ScriptedImporter:
     generateIndividualEvents: 1
     generateSpriteAtlas: 1
   importFileNodeState: 1
-  platformSettingsDirtyTick: 639179066855731819
+  platformSettingsDirtyTick: 639186149914811165
   textureAssetName: 
   singleSpriteImportData:
   - name: 
@@ -148,6 +153,27 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 4, y: 4}
+  - name: Frame_1
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 65
+      width: 37
+      height: 53
+    spriteID: b1d95e28bac2ae7409fac25dfc913bad
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 65}
   spriteSheetImportData: []
   tileSetImportData: []
   asepriteLayers:
@@ -163,7 +189,7 @@ ScriptedImporter:
     layerType: 0
     blendMode: 0
     cells:
-    - name: raptor-jump
+    - name: Frame_0
       frameIndex: 0
       additiveSortOrder: 0
       cellRect:
@@ -172,6 +198,15 @@ ScriptedImporter:
         width: 37
         height: 53
       spriteId: 6cce6177d856c5443b310843dadb1477
+    - name: Frame_1
+      frameIndex: 1
+      additiveSortOrder: 0
+      cellRect:
+        x: 47
+        y: -1
+        width: 37
+        height: 53
+      spriteId: b1d95e28bac2ae7409fac25dfc913bad
     linkedCells: []
     tileCells: []
     tileSetIndex: 0
@@ -206,4 +241,4 @@ ScriptedImporter:
   secondarySpriteTextures: []
   spritePackingTag: 
   canvasSize: {x: 128, y: 64}
-  previousTextureSize: {x: 64, y: 64}
+  previousTextureSize: {x: 64, y: 128}

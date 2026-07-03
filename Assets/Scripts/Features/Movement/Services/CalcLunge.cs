@@ -14,7 +14,7 @@ namespace Features.Movement.Services
         {
             stats.TryGet<LungeStats>(out var lungeStats);
 
-            if (actionResult is not LungeResult jump || !actionResult.Approved) return currentResult;
+            if (actionResult is not LungeResult lunge || !actionResult.Approved) return currentResult;
 
             // Calculate the jump variables
             float gravity = -2 * lungeStats.LungeHeight.Value / Mathf.Pow(lungeStats.LungeApexTime.Value, 2);
@@ -23,9 +23,9 @@ namespace Features.Movement.Services
 
             currentResult.Velocity.y = Mathf.Abs(gravity) * lungeStats.LungeApexTime.Value;
 
-            currentResult.Velocity.x = lungeStats.LungeDistance.Value / lungeStats.LungeDuration.Value;
+            currentResult.Velocity.x = lunge.Direction.x * (lungeStats.LungeDistance.Value / lungeStats.LungeDuration.Value);
 
-            Debug.Log($"Lunge velocity: {currentResult.Velocity}");
+            // Debug.Log($"Lunge velocity: {currentResult.Velocity}");
 
             return currentResult;
         }

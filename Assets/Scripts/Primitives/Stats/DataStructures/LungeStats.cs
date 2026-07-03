@@ -13,5 +13,6 @@ namespace Primitives.Stats.DataStructures
         public Stat LungeApexTime;
         public Stat LungeDuration;
         public Stat LungeDamage;
+        public Stat LungeCoolDown;
     }
 }

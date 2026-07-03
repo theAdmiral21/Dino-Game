@@ -33,6 +33,9 @@ namespace Movement.Unity.Stats
         public float LungeDamage => _LungeDamage;
         [SerializeField] float _LungeDamage;
 
+        public float LungeCoolDown => _LungeCoolDown;
+        [SerializeField] float _LungeCoolDown;
+
         public override object BuildRunTime()
         {
             return new LungeStats
@@ -43,7 +46,7 @@ namespace Movement.Unity.Stats
                 LungeDistance = new Stat(LungeDistance),
                 LungeDuration = new Stat(LungeDuration),
                 LungeDamage = new Stat(LungeDamage),
-
+                LungeCoolDown = new Stat(LungeCoolDown),
             };
         }
     }

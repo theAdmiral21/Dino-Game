@@ -1,14 +1,15 @@
 using UnityEngine;
 using Movement.Core.Movement.Abstractions;
 using NPC.Core.Effects;
+using Movement.Core.Movement.DataStructures;
 
 namespace NPC.Unity.Effects
 {
-    public class RobotEffectTranslator : BaseEffectTranslator
+    public class ActionEffectTranslator : BaseEffectTranslator
     {
         public override void ConvertActionEffects(IActionResult effect)
         {
-            // Debug.Log($"Robot got action result {effect}");
+            Debug.Log($"Raptor got action result {effect}");
             switch (effect)
             {
                 case AlertResult alert:
@@ -29,6 +30,11 @@ namespace NPC.Unity.Effects
                 case AttackResult attack:
                     {
                         _effectResults.Add(new AttackEffect());
+                        break;
+                    }
+                case LungeResult lunge:
+                    {
+                        _effectResults.Add(new LungeEffect());
                         break;
                     }
             }

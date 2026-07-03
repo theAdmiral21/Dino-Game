@@ -1,10 +1,13 @@
 using System.Collections;
+using System.Collections.Generic;
 using Core.Movement.Inputs;
 using Game.Core.Animations;
 using Game.Core.Effects;
 using Movement.Core.Abstractions;
 using Movement.Core.Rules;
 using NPC.Core.Effects;
+using NUnit.Framework;
+using PlayerController.Core.Effects.DataStructures;
 using Primitives.Physics;
 using UnityEngine;
 
@@ -13,14 +16,46 @@ namespace Enemy.Unity.Effects
     [RequireComponent(typeof(Animator))]
     public class AnimatorBridge : MonoBehaviour, IAnimatorBridge
     {
-        // [SerializeField] private GameObject _alertObject;
         [SerializeField] private Animator _animator;
+
+        private static readonly int IsAngryHash = Animator.StringToHash("IsAngry");
+        private static readonly int IsIdleHash = Animator.StringToHash("IsIdle");
+        private static readonly int IsWalkingHash = Animator.StringToHash("IsWalking");
+        private static readonly int IsRunningHash = Animator.StringToHash("IsRunning");
+        private static readonly int IsDeadHash = Animator.StringToHash("IsDead");
+        private static readonly int IsLunging = Animator.StringToHash("IsLunging");
+        private static readonly int LungeTrigger = Animator.StringToHash("LungeTrigger");
+        private static readonly int isGroundedHash = Animator.StringToHash("IsGrounded");
+
+        private HashSet<int> _availableParams;
+
         private Vector3 _transformCache = Vector3.one;
         private Transform _animatorTransform => transform;
         private bool _isAngry = false;
+        private bool _lungeTriggered = false;
         private void Awake()
         {
-            // _alertObject.SetActive(false);
+            _availableParams = new();
+            foreach (var param in _animator.parameters)
+            {
+                _availableParams.Add(param.nameHash);
+            }
+        }
+
+        private void SetBoolSafe(int hash, bool value)
+        {
+            if (_availableParams.Contains(hash))
+            {
+                _animator.SetBool(hash, value);
+            }
+        }
+
+        private void SetTriggerSafe(int hash)
+        {
+            if (_availableParams.Contains(hash))
+            {
+                _animator.SetTrigger(hash);
+            }
         }
 
         public void ApplyEffect(IEffectResult effect)
@@ -31,7 +66,7 @@ namespace Enemy.Unity.Effects
                     {
                         // Debug.Log($"Play alert effect!");
                         _isAngry = true;
-                        _animator.SetBool("IsAngry", _isAngry);
+                        SetBoolSafe(IsAngryHash, _isAngry);
                         AnimateAlert();
                         break;
                     }
@@ -39,7 +74,7 @@ namespace Enemy.Unity.Effects
                     {
                         // Debug.Log($"Play passive effect!");
                         _isAngry = false;
-                        _animator.SetBool("IsAngry", _isAngry);
+                        SetBoolSafe(IsAngryHash, _isAngry);
                         break;
                     }
                 case DeathEffect death:
@@ -47,6 +82,18 @@ namespace Enemy.Unity.Effects
                         // Debug.Log($"Animating death effect!");
                         _isAngry = false;
                         AnimateDeath();
+                        break;
+                    }
+                case LungeEffect lunge:
+                    {
+                        AnimateAttack();
+                        break;
+                    }
+                case LandEffect landing:
+                    {
+                        // Debug.Log("Animating landing");
+                        // SetBoolSafe(IsLunging, false);
+                        _animator.ResetTrigger(LungeTrigger);
                         break;
                     }
             }
@@ -61,6 +108,8 @@ namespace Enemy.Unity.Effects
             AnimateWalk(physicsContext, inputValues);
 
             AnimateIdle(physicsContext, inputValues);
+
+            SetBoolSafe(isGroundedHash, physicsContext.IsGrounded || physicsContext.IsOnPlatform);
         }
 
         private void SetDirection(IRuleState ruleState)
@@ -72,7 +121,15 @@ namespace Enemy.Unity.Effects
         }
         private void AnimateAttack()
         {
-            throw new System.NotImplementedException();
+            // There could be a few different kind of attacks per dino. For now worry about the raptor
+            // if (!_lungeTriggered)
+            // {
+            Debug.Log($"Animating lunge");
+            // SetBoolSafe(IsLunging, true);
+            SetTriggerSafe(LungeTrigger);
+            // _lungeTriggered = true;
+            // }
+
         }
 
         private void AnimateAlert()
@@ -88,11 +145,11 @@ namespace Enemy.Unity.Effects
         private void AnimateDeath()
         {
             Debug.Log($"Animate dead");
-            _animator.SetBool("IsAngry", false);
-            _animator.SetBool("IsIdle", false);
-            _animator.SetBool("IsWalking", false);
-            _animator.SetBool("IsRunning", false);
-            _animator.SetTrigger("IsDead");
+            SetBoolSafe(IsAngryHash, false);
+            SetBoolSafe(IsIdleHash, false);
+            SetBoolSafe(IsWalkingHash, false);
+            SetBoolSafe(IsRunningHash, false);
+            SetTriggerSafe(IsDeadHash);
         }
 
         private void AnimateIdle(PhysicsContext physicsContext, IActorInput inputValue)
@@ -100,32 +157,24 @@ namespace Enemy.Unity.Effects
             // Debug.Log($"Animating idle");
             if ((physicsContext.IsGrounded || physicsContext.IsOnPlatform) && inputValue.Move.x == 0)
             {
-                _animator.SetBool("IsIdle", true);
+                SetBoolSafe(IsIdleHash, true);
             }
             else
             {
-                _animator.SetBool("IsIdle", false);
+                SetBoolSafe(IsIdleHash, false);
             }
 
-        }
-
-        private void AnimateMovement()
-        {
-            // Debug.Log($"Animate patrol");
-            _animator.SetBool("IsIdle", false);
-            _animator.SetBool("IsPatrol", true);
-            _animator.SetBool("IsDead", false);
         }
 
         private void AnimateRun(PhysicsContext physicsContext, IActorInput inputValue)
         {
             if ((physicsContext.IsGrounded || physicsContext.IsOnPlatform) && inputValue.Move.x != 0 && _isAngry)
             {
-                _animator.SetBool("IsRunning", true);
+                SetBoolSafe(IsRunningHash, true);
             }
             else
             {
-                _animator.SetBool("IsRunning", false);
+                SetBoolSafe(IsRunningHash, false);
             }
         }
 
@@ -133,11 +182,11 @@ namespace Enemy.Unity.Effects
         {
             if ((physicsContext.IsGrounded || physicsContext.IsOnPlatform) && inputValue.Move.x != 0 && !_isAngry)
             {
-                _animator.SetBool("IsWalking", true);
+                SetBoolSafe(IsWalkingHash, true);
             }
             else
             {
-                _animator.SetBool("IsWalking", false);
+                SetBoolSafe(IsWalkingHash, false);
             }
         }
     }

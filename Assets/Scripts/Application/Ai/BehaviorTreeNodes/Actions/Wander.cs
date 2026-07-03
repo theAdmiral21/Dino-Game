@@ -50,7 +50,7 @@ namespace AI.Application.BehaviorTreeNodes
             // If the timer is incomplete and inactive
             if (!Timer.TimerComplete && !Timer.IsActive)
             {
-                Debug.Log($"Starting wander timer");
+                // Debug.Log($"Starting wander timer");
                 // Pick a location
                 PickDestination(context);
                 // Restart the timer
@@ -79,13 +79,13 @@ namespace AI.Application.BehaviorTreeNodes
             context.AiInput.SetMove(Vector2.zero);
             _stuckCounter = 0;
             _lastPosition = Vector2.zero;
-            Debug.Log($"Reset wander timer");
+            // Debug.Log($"Reset wander timer");
         }
 
         private void PickDestination(T context)
         {
             Vector2 dest = PathUtils.PickRandomXDest(-5f, _maxWanderRadius, context.CurrentPosition);
-            Debug.Log($"Wandering to: {dest}");
+            // Debug.Log($"Wandering to: {dest}");
             context.SetDestination(dest);
         }
 

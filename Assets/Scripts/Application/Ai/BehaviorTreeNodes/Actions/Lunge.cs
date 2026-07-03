@@ -44,7 +44,7 @@ namespace AI.Application.BehaviorTreeNodes
 
         public void Reset(T context)
         {
-            Debug.Log($"Resetting Lunge");
+            // Debug.Log($"Resetting Lunge");
         }
 
         private NodeResult ChargeTarget(T context)
@@ -53,8 +53,8 @@ namespace AI.Application.BehaviorTreeNodes
             Vector2 targetPos = context.Perception.TargetPosition.Value;
             Vector2 targetDir = (targetPos - context.CurrentPosition).normalized;
             // pounce my girl
+            // Debug.Log($"Lunging target dir: {targetDir}");
             context.RaptorInput.Lunge(targetDir);
-            Debug.Log($"Lunging!");
 
             return NodeResult.Running;
 

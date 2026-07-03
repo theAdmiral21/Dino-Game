@@ -44,7 +44,7 @@ namespace Enemy.Core.Rules
 
         public bool IsLocked { get; private set; }
 
-        public void UpdateRules(IActorInput inputValues, PhysicsContext physicsContext, float dt)
+        public virtual void UpdateRules(IActorInput inputValues, PhysicsContext physicsContext, float dt)
         {
             if (inputValues is null)
             {

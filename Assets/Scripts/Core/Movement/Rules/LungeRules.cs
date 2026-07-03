@@ -24,6 +24,8 @@ namespace Movement.Core.Rules
                 Debug.Log($"Is grounded!");
                 if (lungeState.LungeAmount > 0)
                 {
+                    lungeState.DecrementLunge();
+                    lungeState.StartLungeCoolDownTimer();
                     return Approved(request);
                 }
             }

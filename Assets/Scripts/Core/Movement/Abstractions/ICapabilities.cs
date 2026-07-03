@@ -162,14 +162,14 @@ namespace Movement.Core.Abstractions
 
     public interface ILungeState
     {
-        public bool IsLunging { get; }
+        // public bool IsLunging { get; }
         public int LungeAmount { get; }
-        public float LungeTime { get; }
-        public float LungeCounter { get; }
+        public float LungeCoolDownTime { get; }
+        public float LungeCoolDownCounter { get; }
         public InputDirection LungeDirection { get; }
-        public void StartLungeTimer();
+        public void StartLungeCoolDownTimer();
         public void DecrementLunge();
         public void ResetLunge(PhysicsContext physicsContext);
-        public void SetLungeDirection(InputDirection direction);
+        // public void SetLungeDirection(InputDirection direction);
     }
 }

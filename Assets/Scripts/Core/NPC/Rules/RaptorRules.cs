@@ -13,34 +13,44 @@ namespace NPC.Core.Rules
     public class RaptorRules : EnemyRules,
                                ILungeState
     {
-        public bool IsLunging => LungeCounter > 0;
+        // public bool IsLunging => LungeCounter > 0;
 
         public int LungeAmount { get; private set; }
         private int _totalLunges;
-        public float LungeTime { get; private set; }
-
-        public float LungeCounter { get; private set; }
 
         public InputDirection LungeDirection { get; private set; }
+
+        public float LungeCoolDownTime { get; private set; }
+
+        public float LungeCoolDownCounter { get; private set; }
 
         public RaptorRules(IStatCollection stats)
         {
             stats.TryGet<LungeStats>(out var lungeStats);
             _totalLunges = (int)lungeStats.TotalLunges.Value;
             LungeAmount = _totalLunges;
+
+            LungeCoolDownTime = lungeStats.LungeCoolDown.Value;
+
         }
 
-        public new void UpdateRules(IActorInput inputValues, PhysicsContext physicsContext, float dt)
+        public override void UpdateRules(IActorInput inputValues, PhysicsContext physicsContext, float dt)
         {
             base.UpdateRules(inputValues, physicsContext, dt);
-            TickTimers();
 
-            if (physicsContext.IsGrounded || physicsContext.IsOnPlatform)
+            TickTimers();
+            Debug.Log($"Called tick timers");
+            ResetLunges(physicsContext);
+
+        }
+        private void ResetLunges(PhysicsContext physicsContext)
+        {
+            if ((physicsContext.IsGrounded || physicsContext.IsOnPlatform) && LungeCoolDownCounter <= 0)
             {
+                Debug.Log($"Reset lunges");
                 LungeAmount = _totalLunges;
             }
         }
-
         public void DecrementLunge()
         {
             LungeAmount -= 1;
@@ -57,17 +67,20 @@ namespace NPC.Core.Rules
             LungeDirection = direction;
         }
 
-        public void StartLungeTimer()
+        public void StartLungeCoolDownTimer()
         {
-            LungeCounter = LungeTime;
+            Debug.Log($"Starting lunge cool down");
+            LungeCoolDownCounter = LungeCoolDownTime;
         }
 
         private void TickTimers()
         {
-            if (LungeCounter > 0)
+            if (LungeCoolDownCounter > 0)
             {
-                LungeCounter -= Dt;
+                Debug.Log($"CoolDown counter: {LungeCoolDownCounter}");
+                LungeCoolDownCounter -= Dt;
             }
         }
+
     }
 }

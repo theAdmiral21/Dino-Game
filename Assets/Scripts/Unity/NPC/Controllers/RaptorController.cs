@@ -115,7 +115,7 @@ namespace Unity.NPC.Controllers
             // Draw where the raptor is trying to go
             DrawUtil.DrawDebugCircle(_context.Destination, 2, Color.yellow);
 
-            Debug.Log($"[Run] input dir: {_context.AiInput.Move.x}");
+            // Debug.Log($"[Run] input dir: {_context.AiInput.Move.x}");
         }
     }
 }

@@ -617,6 +617,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 884783381777007510}
+  - component: {fileID: 3946994559372827821}
   - component: {fileID: 261772156354204720}
   - component: {fileID: 1219006616773937655}
   - component: {fileID: 2313714383482377182}
@@ -642,6 +643,30 @@ Transform:
   m_Children: []
   m_Father: {fileID: 6757668930858048360}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3946994559372827821
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7405074034416881185}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 983c55ddcab01f54a9ea5f26970bfdaf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _physicsActorMono:
+    _monoScript: {fileID: 7516074191666959453}
+  _actorEventBusMono:
+    _monoScript: {fileID: 7516074191666959453}
+  _visualStateEffectsMono:
+    _monoScript: {fileID: 0}
+  _audioStateEffectsMono:
+    _monoScript: {fileID: 0}
+  _ruleStateViewMono:
+    _monoScript: {fileID: 3890522784345501913}
+  _effectOrchestratorMono:
+    _monoScript: {fileID: 1219006616773937655}
 --- !u!114 &261772156354204720
 MonoBehaviour:
   m_ObjectHideFlags: 0

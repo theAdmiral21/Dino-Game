@@ -6,7 +6,7 @@ namespace Unity.Tools.DrawingTools
     {
         public static void DrawDebugCircle(Vector2 center, float radius, Color color, int segments = 32)
         {
-            Debug.Log($"Drawing circle at {center} with radius {radius}");
+            // Debug.Log($"Drawing circle at {center} with radius {radius}");
             float angleStep = 360f / segments;
             Vector2 prevPoint = center + new Vector2(radius, 0);
 
