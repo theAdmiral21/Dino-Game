@@ -5,14 +5,12 @@ using System.Collections.Generic;
 using Core.Ai.Behavior.Visualization;
 using System;
 using Core.Movement.Abstractions;
-using Core.Movement.Inputs;
-using Movement.Core.Abstractions;
 
 namespace AI.Application.BehaviorTreeNodes
 {
-    public class Dead<T> : IBehaviorNode<T> where T : IDeadContext, IRaptorInputContext
+    public class IsAlive<T> : IBehaviorNode<T> where T : IHealthContext
     {
-        public string DisplayName => "Dead";
+        public string DisplayName => "IsAlive";
         public NodeResult LastResult { get; private set; }
         public float LastTickTime { get; private set; }
         public IReadOnlyList<IInspectableNode> Children => Array.Empty<IInspectableNode>();
@@ -26,14 +24,19 @@ namespace AI.Application.BehaviorTreeNodes
 
         private NodeResult TickInternal(T context)
         {
-            context.Die();
-            context.RaptorInput.SetMove(Vector2.zero);
+            //if alive return failure
+            if (context.HealthComponent.IsAlive)
+            {
+                // Don't enter the death sequence, you're alive
+                return NodeResult.Failure;
+            }
             return NodeResult.Success;
+
         }
 
         public void Reset(T context)
         {
-            Debug.Log($"Resetting Dead");
+            Debug.Log($"Resetting IsAlive");
         }
     }
 }

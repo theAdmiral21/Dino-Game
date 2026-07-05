@@ -6,6 +6,9 @@ using Core.Ai.Behavior.Visualization;
 using Core.Ai.BlackBoard;
 using Core.Detection;
 using Core.Movement.Inputs;
+using Game.Core.Execution;
+using Game.Core.Health;
+using Infrastructure.Unity.Registries;
 using Movement.Core.Abstractions;
 using Movement.Unity.Abstractions;
 using NPC.Application.BehaviorContexts;
@@ -19,7 +22,7 @@ using UnityEngine;
 
 namespace Unity.NPC.Controllers
 {
-    public class RaptorController : MonoBehaviour, IRaptorController
+    public class RaptorController : SelfRegister<IInitializable<IGameContext>>, IRaptorController, IInitializable<IGameContext>
     {
         [SerializeField] private Transform _parentTransform;
         [Header("Behavior Tree Root Node")]
@@ -31,6 +34,7 @@ namespace Unity.NPC.Controllers
         private IPackDataProvider _packDataProvider;
         private IRaptorInput _raptorInput;
         private IDetectorOrchestrator _detectorOrchestrator;
+        private IHealthComponent _healthComponent;
 
         private bool IsActive = true;
 
@@ -38,13 +42,16 @@ namespace Unity.NPC.Controllers
         private IBehaviorTree<RaptorContext> _behaviorTree;
 
         public RaptorContext Context => _context;
+
+        [SerializeField] private int _priority;
+        public int Priority => _priority;
+
         private RaptorContext _context;
 
         [Header("Debug")]
         [SerializeField] private string _currentNode;
         [SerializeField] private string _currentStatus;
-
-        private void Awake()
+        public void Initialize(IGameContext context)
         {
             // Go collect everything you need to build the component
             var dataProvider = ProviderLookUp.Require<RaptorDataProvider>(this);
@@ -52,9 +59,16 @@ namespace Unity.NPC.Controllers
             _packDataProvider = dataProvider.PackDataProvider;
             _raptorInput = dataProvider.RaptorInput;
             _detectorOrchestrator = dataProvider.DetectorOrchestrator;
+            _healthComponent = dataProvider.HealthComponent;
+            Debug.Log($"health component: {_healthComponent}");
 
             // build the context
-            _context = new RaptorContext(_raptorInput, _packDataProvider, _statsSO.BuildRunTime(), _statSheet.StatCollection);
+            _context = new RaptorContext(_raptorInput,
+                                         _packDataProvider,
+                                         _statsSO.BuildRunTime(),
+                                         _statSheet.StatCollection,
+                                         this,
+                                         _healthComponent);
 
             // Build the nodes
             IBehaviorNode<RaptorContext> root = BuildNode(_rootSO);
@@ -66,6 +80,10 @@ namespace Unity.NPC.Controllers
             _detectorOrchestrator.InitBrain(_context);
         }
 
+        public void PostInitialize(IGameContext context)
+        {
+
+        }
         private IBehaviorNode<RaptorContext> BuildNode(BehaviorNodeSO node)
         {
             switch (node)
@@ -131,5 +149,7 @@ namespace Unity.NPC.Controllers
         {
             IsActive = true;
         }
+
+
     }
 }

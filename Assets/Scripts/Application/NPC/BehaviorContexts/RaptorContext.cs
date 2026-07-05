@@ -11,6 +11,7 @@ using Core.Detection.DataStructures;
 using Core.Movement.Abstractions;
 using Core.Movement.Inputs;
 using Enemy.Core.Detectors.Abstractions;
+using Game.Core.Health;
 using Movement.Core.Abstractions;
 using Movement.Core.Enums;
 using Movement.Core.Movement.DataStructures;
@@ -37,7 +38,8 @@ namespace NPC.Application.BehaviorContexts
                                  IDetectorContext,
                                  ISearchAreaContext,
                                  IStatSheet,
-                                 IDeadContext
+                                 IDeadContext,
+                                 IHealthContext
     {
         public MovementType MoveType => MovementType.Run;
 
@@ -71,21 +73,27 @@ namespace NPC.Application.BehaviorContexts
 
         public IAiInput AiInput => RaptorInput;
 
-        private IPackDataProvider _packDataProvider;
+        public IHealthComponent HealthComponent { get; private set; }
 
+        private IPackDataProvider _packDataProvider;
+        private ITickTreeControl _treeTickControl;
         private IPlayerDetector _detector;
         private IPathAwayFrom _pathFinder;
         public RaptorContext(
                             IRaptorInput raptorInput,
                             IPackDataProvider packDataProvider,
                             DetectorStats detectionStats,
-                            IStatCollection stats
+                            IStatCollection stats,
+                            ITickTreeControl treeTickControl,
+                            IHealthComponent healthComponent
                             )
         {
             RaptorInput = raptorInput;
             _packDataProvider = packDataProvider;
             DetectionStats = detectionStats;
             StatCollection = stats;
+            _treeTickControl = treeTickControl;
+            HealthComponent = healthComponent;
         }
 
         public IDetectionData DetectPlayer()
@@ -185,6 +193,7 @@ namespace NPC.Application.BehaviorContexts
         public void Die()
         {
             // Stop ticking, stop moving, delete the physics actor, optionally start a despawn timer
+            _treeTickControl.StopBehaviorTree();
         }
     }
 }

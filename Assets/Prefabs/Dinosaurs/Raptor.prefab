@@ -239,8 +239,6 @@ MonoBehaviour:
     _monoScript: {fileID: 7516074191666959453}
   _actorEventBusMono:
     _monoScript: {fileID: 1294869064446591111}
-  _packDataProviderMono:
-    _monoScript: {fileID: 0}
   _actorInputMono:
     _monoScript: {fileID: 5123753718159855905}
   _raptorInputMono:
@@ -314,6 +312,7 @@ MonoBehaviour:
   _parentTransform: {fileID: 6757668930858048360}
   _rootSO: {fileID: 11400000, guid: 84f54b2f7486e2948806dfe0f7f9c38f, type: 2}
   _statsSO: {fileID: 11400000, guid: cf8f3ec021ea1894c8c0d97b0518c254, type: 2}
+  _priority: 6
   _currentNode: 
   _currentStatus: 
 --- !u!114 &6994846599287633704
@@ -437,7 +436,7 @@ Transform:
   m_GameObject: {fileID: 2745197555800419785}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.4, z: 0}
+  m_LocalPosition: {x: 0, y: -0.8, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

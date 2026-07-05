@@ -31,6 +31,7 @@ namespace Enemy.Unity.Effects
         private static readonly int IsWalkingHash = Animator.StringToHash("IsWalking");
         private static readonly int IsRunningHash = Animator.StringToHash("IsRunning");
         private static readonly int IsDeadHash = Animator.StringToHash("IsDead");
+        private static readonly int DeadTrigger = Animator.StringToHash("DeadTrigger");
         private static readonly int LungeTrigger = Animator.StringToHash("LungeTrigger");
         private static readonly int isGroundedHash = Animator.StringToHash("IsGrounded");
 
@@ -46,7 +47,7 @@ namespace Enemy.Unity.Effects
         public int Priority => _priority; // after the health component
 
         private bool _isAngry = false;
-        private bool _lungeTriggered = false;
+        private bool _isDead = false;
         private void Awake()
         {
             base.Awake();
@@ -98,6 +99,7 @@ namespace Enemy.Unity.Effects
         }
         public void ApplyEffect(IEffectResult effect)
         {
+            if (_isDead) return;
             switch (effect)
             {
                 case AlertEffect alert:
@@ -139,6 +141,7 @@ namespace Enemy.Unity.Effects
 
         public void SyncAnimation(IActorInput inputValues, PhysicsContext physicsContext, in IRuleState ruleState)
         {
+            if (_isDead) return;
             SetDirection(ruleState);
 
             AnimateRun(physicsContext, inputValues);
@@ -182,12 +185,14 @@ namespace Enemy.Unity.Effects
         }
         private void AnimateDeath()
         {
-            Debug.Log($"Animate dead");
-            SetBoolSafe(IsAngryHash, false);
-            SetBoolSafe(IsIdleHash, false);
-            SetBoolSafe(IsWalkingHash, false);
-            SetBoolSafe(IsRunningHash, false);
-            SetTriggerSafe(IsDeadHash);
+            SetTriggerSafe(DeadTrigger);
+            _isDead = true;
+            // Debug.Log($"Animate dead");
+            // SetBoolSafe(IsAngryHash, false);
+            // SetBoolSafe(IsIdleHash, false);
+            // SetBoolSafe(IsWalkingHash, false);
+            // SetBoolSafe(IsRunningHash, false);
+            // SetBoolSafe(IsDeadHash, true);
         }
 
         private void AnimateIdle(PhysicsContext physicsContext, IActorInput inputValue)
