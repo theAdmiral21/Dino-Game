@@ -14,7 +14,8 @@ namespace PlayerController.Unity.Inputs
     {
         [SerializeField] private bool _debugStatus;
         public bool IsEnabled { get; private set; }
-        public int Priority => 0;
+        [SerializeField] private int _priority = 0;
+        public int Priority => _priority;
         private GameInputs _actionAsset;
         private Dictionary<InputContext, BaseInputReader> _inputReaders = new();
         private IGameStateEvents _stateEvents;

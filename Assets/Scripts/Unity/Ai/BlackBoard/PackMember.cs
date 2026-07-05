@@ -33,7 +33,7 @@ namespace Unity.Ai.BlackBoard
             Status.Health = _healthComponent.HealthComponent.StateOfHealth;
             Status.Position = transform.position;
             Status.CurrentStatus = _context.CurrentStatus;
-            Status.Alertness = _detectorOrchestrator.Brain.Alertness;
+            Status.Alertness = _detectorOrchestrator.DetectorBrain.Alertness;
             Status.Perception = _context.Perception;
 
             if (_debugMemberStatus)

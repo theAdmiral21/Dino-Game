@@ -19,7 +19,8 @@ namespace Infrastructure.Unity.Players
         public IReadOnlyCollection<ICheckpoint> Checkpoints => _checkpoints.Interface.Checkpoints;
         private IEventBus _eventBus;
         private Dictionary<Guid, CheckPointData> _checkpointMap = new();
-        public int Priority => 0;
+        [SerializeField] private int _priority = 0;
+        public int Priority => _priority;
         public void Initialize(IGameContext context)
         {
             _eventBus = context.EventBus;

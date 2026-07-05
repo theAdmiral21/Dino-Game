@@ -16,8 +16,8 @@ namespace Game.Unity.Audio
         private AudioSource _scentSource;
         private AudioSource _twinkleSource;
 
-        public int Priority => 1;
-
+        [SerializeField] private int _priority = 0;
+        public int Priority => _priority;
         public void Initialize(IGameContext context)
         {
             _audioService = context.AudioService;

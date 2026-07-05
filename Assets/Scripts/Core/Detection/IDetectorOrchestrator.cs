@@ -2,9 +2,9 @@ using Core.Ai.State.BehaviorContext;
 
 namespace Core.Detection
 {
-    public interface IDetectorOrchestrator
+    public interface IDetectorOrchestrator : IDetectorBrainProvider
     {
-        public IDetectorBrain Brain { get; }
+        // public IDetectorBrain DetectorBrain { get; }
         public void InitBrain(IPerceptionContext context);
     }
 }

@@ -73,7 +73,8 @@ namespace Enemy.Unity
         private string _currentState;
 
         private Vector2 _startPosition;
-        public int Priority => 5;
+        [SerializeField] private int _priority = 5;
+        public int Priority => _priority;
         private void Awake()
         {
             base.Awake();

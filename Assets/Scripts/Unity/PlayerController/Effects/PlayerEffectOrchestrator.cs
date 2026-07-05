@@ -36,7 +36,8 @@ namespace PlayerController.Unity.Effects
 
         [SerializeField] private float _stepDistance;
 
-        public int Priority => 0;
+        [SerializeField] private int _priority = 0;
+        public int Priority => _priority;
 
         private new void OnDestroy()
         {

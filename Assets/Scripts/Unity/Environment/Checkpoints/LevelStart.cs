@@ -26,7 +26,8 @@ namespace Environment.Unity.Checkpoints
 
 
         private IEventBus _eventBus;
-        public int Priority => 0;
+        [SerializeField] private int _priority = 0;
+        public int Priority => _priority;
         private void Awake()
         {
             base.Awake();

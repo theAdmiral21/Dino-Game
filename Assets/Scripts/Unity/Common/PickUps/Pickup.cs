@@ -14,7 +14,8 @@ namespace Unity.Common.Pickups
 
         internal IAudioService _audioService;
         internal IEventBus _eventBus;
-        public int Priority => 8;
+        [SerializeField] private int _priority = 8;
+        public int Priority => _priority;
 
         private new void Awake()
         {

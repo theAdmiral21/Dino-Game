@@ -35,7 +35,8 @@ namespace Physics.Unity.Actors
 
         public bool IsAsleep { get; private set; }
 
-        public int Priority => 0;
+        [SerializeField] private int _priority = 0;
+        public int Priority => _priority;
 
         public IActorEventBus ActorEventBus => Brain.ActorEventBus;
 

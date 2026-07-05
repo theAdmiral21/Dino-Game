@@ -35,7 +35,8 @@ namespace NPC.Unity.Effects
         [SerializeField] private SerializedInterface<IEffectOrchestrator> _effectOrchestratorMono;
         protected IEffectOrchestrator _effectOrchestrator => _effectOrchestratorMono.Interface;
 
-        public int Priority => 0;
+        [SerializeField] private int _priority = 0;
+        public int Priority => _priority;
 
         protected void OnDestroy()
         {

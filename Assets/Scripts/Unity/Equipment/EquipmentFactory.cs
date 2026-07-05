@@ -15,7 +15,8 @@ namespace Unity.Equipment
         [SerializeField] private GameObject _rockPrefab;
         [SerializeField] private GameObject _shotgunPrefab;
 
-        public int Priority => 0;
+        [SerializeField] private int _priority = 0;
+        public int Priority => _priority;
 
         private IGameContext _gameContext;
 

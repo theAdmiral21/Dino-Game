@@ -10,7 +10,8 @@ namespace NPC.Unity.Effects
     {
         protected IAudioService _audioService;
 
-        public int Priority => 0;
+        [SerializeField] private int _priority = 0;
+        public int Priority => _priority;
 
         public abstract void HandleSound(IEffectResult audioEffect);
 

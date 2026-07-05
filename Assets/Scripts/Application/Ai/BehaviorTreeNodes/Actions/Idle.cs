@@ -13,7 +13,7 @@ using Core.Ai.BlackBoard;
 
 namespace AI.Application.BehaviorTreeNodes
 {
-    public class Idle<T> : IBehaviorNode<T> where T : ITickTimerContext, IGameTimerContext, IInputContext, IStatusContext
+    public class Idle<T> : IBehaviorNode<T> where T : ITickTimerContext, IGameTimerContext, IAInputContext, IStatusContext
     {
         public string DisplayName => "Idle";
         public NodeResult LastResult { get; private set; }

@@ -21,7 +21,7 @@ namespace NPC.Application.BehaviorContexts
                                IPathFindContext,
                                ITickTimerContext,
                                IGameTimerContext,
-                               IInputContext
+                               IAInputContext
     {
         public MovementType MoveType => MovementType.Run;
 

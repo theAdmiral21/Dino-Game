@@ -5,7 +5,7 @@ namespace PlayerController.Core.Info
 {
     public interface IPlayerView
     {
-        public IPlayerInfoProvider PlayerInfo { get; }
+        // public IPlayerInfoProvider PlayerInfo { get; }
         public ITransitionView TransitionView { get; }
         // public ISpawnPoint CheckPoint { get; }
 

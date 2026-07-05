@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Core.PlayerController.Info;
 using Game.Core.Execution;
 using Game.Core.State.Services;
 using Infrastructure.Application.Abstractions;
@@ -33,7 +34,8 @@ namespace Infrastructure.Unity.Players
         private string _playerListDebug;
         private string _playerMapDebug;
 
-        public int Priority => 0;
+        [SerializeField] private int _priority = 0;
+        public int Priority => _priority;
         private void Awake()
         {
             if (Instance != null)
@@ -129,7 +131,9 @@ namespace Infrastructure.Unity.Players
 
         public void TrackPlayer(GameObject playerObject)
         {
-            IPlayerInfo info = playerObject.GetComponentInChildren<IPlayerInfoProvider>().PlayerInfo;
+            // Okay this is hacky. Because the info setter isn't populated until after the 
+            IPlayerInfo info = playerObject.GetComponentInChildren<IPlayerInfoSetter>().PlayerInfo;
+            Debug.Assert(info != null, $"Player info is null for: {playerObject.name}");
             Debug.Log($"Info instance id (TrackPlayer): {info.GetHashCode()}");
             if (_playerMap.TryAdd(info, playerObject))
             {

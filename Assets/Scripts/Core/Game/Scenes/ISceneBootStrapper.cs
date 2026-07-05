@@ -10,8 +10,9 @@ namespace Game.Core.Scenes
         public event Action OnReady;
         public IReadOnlyCollection<IInitializable<IGameContext>> Systems { get; }
         public void ConsumePersistent();
-        public void InitializeScene();
-        public void PostInitializeScene();
+        public void RunInitialization();
+        // public void InitializeScene();
+        // public void PostInitializeScene();
         public void TearDown(SceneId _);
     }
 }

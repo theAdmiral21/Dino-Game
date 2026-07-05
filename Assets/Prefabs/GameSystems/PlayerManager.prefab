@@ -63,6 +63,7 @@ MonoBehaviour:
   _makePlayerInfo: {fileID: 7708109367987734151}
   _addPlayerInfo: {fileID: 5996629088492320591}
   _setTransitionView: {fileID: 4767372440742452229}
+  _priority: 0
 --- !u!114 &2326134647520918453
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -75,6 +76,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 732876bc3d7cd894cbdaa191d5bea85e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _priority: 0
   _playerPreFab: {fileID: 1497200054785741571, guid: f549ff4aa6ac0f4419029b4cb25195dd, type: 3}
 --- !u!114 &4528896620712008213
 MonoBehaviour:
@@ -115,6 +117,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffb1751ff93760e48988c7763784ec24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _priority: 0
   _cameraPreFab: {fileID: 7534009588673874225, guid: 4d6cb83789f338041ab7480d2da83cdd, type: 3}
 --- !u!114 &5160754671737106561
 MonoBehaviour:
@@ -239,6 +242,7 @@ MonoBehaviour:
     _monoScript: {fileID: 2473943142844981807}
   _lifecycleHandler: {fileID: 4669489917175724243}
   _debugCharacterId: 0
+  _priority: 10
 --- !u!114 &4669489917175724243
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -254,6 +258,7 @@ MonoBehaviour:
   _spawnPipeline:
     _monoScript: {fileID: 2473943142844981807}
   _transition: 0
+  _priority: 50
 --- !u!1001 &2869705902289542832
 PrefabInstance:
   m_ObjectHideFlags: 0

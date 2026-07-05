@@ -11,7 +11,7 @@ using System;
 
 namespace Application.Ai.BehaviorTreeNodes.Actions
 {
-    public class Chase<T> : IBehaviorNode<T> where T : IInputContext, IPerceptionContext, IMoveToContext, IStatusContext, IPackDataContext
+    public class Chase<T> : IBehaviorNode<T> where T : IAInputContext, IPerceptionContext, IMoveToContext, IStatusContext, IPackDataContext
     {
         public string DisplayName => "Chase";
         public float LastTickTime { get; private set; }

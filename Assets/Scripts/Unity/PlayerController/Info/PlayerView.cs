@@ -7,8 +7,8 @@ namespace PlayerController.Unity.Info
 {
     public class PlayerView : MonoBehaviour, IPlayerView
     {
-        public IPlayerInfoProvider PlayerInfo => _playerInfo.Interface;
-        [SerializeField] SerializedInterface<IPlayerInfoProvider> _playerInfo;
+        // public IPlayerInfoProvider PlayerInfo => _playerInfo.Interface;
+        // [SerializeField] SerializedInterface<IPlayerInfoProvider> _playerInfo;
 
         public ITransitionView TransitionView { get; private set; }
 

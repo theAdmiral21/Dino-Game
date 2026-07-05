@@ -12,7 +12,7 @@ using System.Collections.Generic;
 
 namespace Application.Ai.BehaviorTreeNodes.Actions
 {
-    public class MoveToSound<T> : IBehaviorNode<T> where T : IInputContext, IPerceptionContext, IStatusContext, IMoveToContext, ITickTimerContext
+    public class MoveToSound<T> : IBehaviorNode<T> where T : IAInputContext, IPerceptionContext, IStatusContext, IMoveToContext, ITickTimerContext
     {
         public string DisplayName => "MoveToSound";
         public float LastTickTime { get; private set; }

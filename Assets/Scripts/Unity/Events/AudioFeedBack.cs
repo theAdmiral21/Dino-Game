@@ -19,8 +19,8 @@ namespace Game.Unity.Events
         [SerializeField] private bool _allowPolyphony = false;
         private IAudioService _audioService;
         private bool _isPlaying = false;
-        public int Priority => 0;
-
+        [SerializeField] private int _priority = 0;
+        public int Priority => _priority;
         private void Awake()
         {
             base.Awake();

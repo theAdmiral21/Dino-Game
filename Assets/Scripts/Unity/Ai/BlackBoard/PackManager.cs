@@ -40,6 +40,7 @@ namespace Unity.Ai.BlackBoard
 
         private void FixedUpdate()
         {
+            if (Coordinator.PackMembers.Count == 0) return;
             // Update the raptors
             Coordinator.UpdateMemberStatus();
             // Update the black board

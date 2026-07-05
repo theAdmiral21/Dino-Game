@@ -1,4 +1,5 @@
 using System;
+using Core.Common.Abstractions;
 using Game.Core.Health;
 using Primitives.Damage;
 using Primitives.EventBus.Abstractions;
@@ -19,13 +20,11 @@ namespace NPC.Application.Health
         public event Action OnDeath;
         public event Action OnHealed;
         public event Action OnDamaged;
-        private IEventBus _eventBus;
 
-        public NpcHealthComponent(int maxHealth, IEventBus eventBus)
+        public NpcHealthComponent(int maxHealth)
         {
             MaxHealth = maxHealth;
             CurrentHealth = maxHealth;
-            _eventBus = eventBus;
         }
         public void HandleDamage(DamageInfo damageInfo)
         {

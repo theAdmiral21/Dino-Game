@@ -10,13 +10,24 @@ using Game.Core.Health;
 using PlayerController.Core.Info;
 using Movement.Core.Abstractions;
 using Core.Game.HealthSystem.Health;
+using Primitives.Players;
+using Infrastructure.Unity.Registries;
+using Unity.Common;
+using Unity.Infrastructure.Providers;
 
 namespace PlayerController.Unity.Health
 {
-    public class PlayerHealth : MonoBehaviour, IDamageable, IHealable, IHealthComponentProvider, IInitializable<IGameContext>
+    public class PlayerHealth : SelfRegister<IInitializable<IGameContext>>,
+                                IDamageable,
+                                IHealable,
+                                IHealthComponentProvider,
+                                IInitializable<IGameContext>
     {
         [SerializeField] SerializedInterface<IPlayerView> _playerView;
         [SerializeField] SerializedInterface<IOverrideControls> _overrideControls;
+
+        [Header("Health Amount")]
+        [SerializeField] private int _maxHealth;
 
         [SerializeField] private SerializedInterface<IKnockBackable> _knockBackMono;
         public IKnockBackable KnockBack => _knockBack;
@@ -30,13 +41,15 @@ namespace PlayerController.Unity.Health
         private IHealthComponent _healthComponent;
         public int CurrentHealth => _healthComponent.CurrentHealth;
         public bool IsAlive => _healthComponent.IsAlive;
-        [SerializeField] private int _maxHealth;
+        private IPlayerInfo _playerInfo;
 
-        public int Priority => 5;
+        [Header("Init order")]
+        [SerializeField] private int _priority = 5;
+        public int Priority => _priority;
 
         private void Awake()
         {
-            RegistryGateway.Register<IInitializable<IGameContext>>(this);
+            base.Awake();
 
             if (_knockBack == null)
             {
@@ -52,9 +65,24 @@ namespace PlayerController.Unity.Health
 
         }
 
-        private void OnDestroy()
+        public void Initialize(IGameContext context)
         {
+            var provider = ProviderLookUp.Require<PlayerDataProvider>(this);
+            _playerInfo = provider.PlayerInfo;
+
+            _healthComponent = new PlayerHealthComponent(_maxHealth,
+                                                context.EventBus,
+                                                _playerInfo,
+                                                _playerView.Interface,
+                                                _overrideControls.Interface);
+
         }
+
+        public void PostInitialize(IGameContext context)
+        {
+            Debug.Assert(_healthComponent != null, "Health manager is null");
+        }
+
         public void ReceiveDamage(DamageInfo damageInfo)
         {
             Debug.Log($"Taking damage; info: {damageInfo}");
@@ -75,21 +103,6 @@ namespace PlayerController.Unity.Health
         public void Heal(HealInfo info)
         {
             _healthComponent.HandleHealing(info);
-        }
-
-        public void Initialize(IGameContext context)
-        {
-            _healthComponent = new PlayerHealthComponent(_maxHealth,
-                                                context.EventBus,
-                                                _playerView.Interface,
-                                                _overrideControls.Interface);
-
-            // Debug.Log($"Init Health manager: {_healthComponent}");
-        }
-
-        public void PostInitialize(IGameContext context)
-        {
-            Debug.Assert(_healthComponent != null, "Health manager is null");
         }
     }
 }

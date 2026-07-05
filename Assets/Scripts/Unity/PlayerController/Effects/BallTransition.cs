@@ -1,6 +1,7 @@
 using Game.Unity.UI.Menus.Presenters.Transitions;
 using Primitives.Easing;
 using Primitives.Effects;
+using UnityEngine;
 
 namespace PlayerController.Unity.Effects.Transition
 {
@@ -11,7 +12,8 @@ namespace PlayerController.Unity.Effects.Transition
         private float _maxScale = 100;
         // Debug
         private float _currentScale;
-        public int Priority => 8;
+        [SerializeField] private int _priority = 8;
+        public int Priority => _priority;
 
         public override ScreenTransitions TransitionType => ScreenTransitions.TennisBall;
 

@@ -12,7 +12,8 @@ namespace Game.Unity.Audio
     {
         [SerializeField] private TriggerVolume _trigger;
         private IAudioService _audioService;
-        public int Priority => 0;
+        [SerializeField] private int _priority = 0;
+        public int Priority => _priority;
 
         private new void Awake()
         {

@@ -18,7 +18,7 @@ using AI.Core.State;
 
 namespace AI.Application.BehaviorTreeNodes
 {
-    public class Stalk<T> : IBehaviorNode<T> where T : IAlertContext, IPerceptionContext, IStatusContext, IPackDataContext, IMoveToContext, IDetectorContext, IInputContext, ISearchAreaContext
+    public class Stalk<T> : IBehaviorNode<T> where T : IAlertContext, IPerceptionContext, IStatusContext, IPackDataContext, IMoveToContext, IDetectorContext, IAInputContext, ISearchAreaContext
     {
         public string DisplayName => "Stalk";
         public NodeResult LastResult { get; private set; }

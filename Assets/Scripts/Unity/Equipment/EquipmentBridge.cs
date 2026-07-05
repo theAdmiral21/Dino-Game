@@ -3,23 +3,25 @@ using Game.Core.Execution;
 using Infrastructure.Unity.Registries;
 using Movement.Core.Movement.DataStructures;
 using Physics.Core.PhysicsActors;
+using Unity.Common;
 using Unity.Common.Unity;
+using UnityEditor.VersionControl;
 using UnityEngine;
 
 namespace Unity.Equipment
 {
     public class EquipmentBridge : SelfRegister<IInitializable<IGameContext>>, IEquipmentBridge, IInitializable<IGameContext>
     {
-        [SerializeField] private SerializedInterface<IEquipmentManager> _equipmentManagerMono;
-        private IEquipmentManager _equipmentManager => _equipmentManagerMono.Interface;
-
+        // [SerializeField] private SerializedInterface<IEquipmentManager> _equipmentManagerMono;
+        private IEquipmentManager _equipmentManager;
         public IEquipment Equipped => _equipped;
         private IEquipment _equipped => _equipmentManager.ActiveEquipment;
 
-        [SerializeField] private SerializedInterface<IActorEventBusProvider> _actorEventBusMono;
-        private IActorEventBus _actorEventBus => _actorEventBusMono.Interface.ActorEventBus;
+        // [SerializeField] private SerializedInterface<IActorEventBusProvider> _actorEventBusMono;
+        private IActorEventBus _actorEventBus;
 
-        public int Priority => 0;
+        [SerializeField] private int _priority = 0;
+        public int Priority => _priority;
 
         [Header("Debug")]
         [SerializeField] string CurrentWeapon;
@@ -37,10 +39,12 @@ namespace Unity.Equipment
 
         public void Initialize(IGameContext context)
         {
-            SubToEvents();
+            _actorEventBus = ProviderLookUp.Require<IActorEventBusProvider>(this).ActorEventBus;
+            _equipmentManager = ProviderLookUp.Require<IEquipmentManagerProvider>(this).EquipmentManager;
         }
         public void PostInitialize(IGameContext context)
         {
+            SubToEvents();
             // Debug.Assert(_actorEventBus != null, "Failed to set actor event bus");
         }
 

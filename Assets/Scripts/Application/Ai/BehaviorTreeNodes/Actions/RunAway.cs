@@ -12,7 +12,7 @@ using System;
 
 namespace AI.Application.BehaviorTreeNodes
 {
-    public class RunAway<T> : IBehaviorNode<T> where T : IDetectPlayerContext, IPositionContext, IPathFindContext, IInputContext, IStatusContext
+    public class RunAway<T> : IBehaviorNode<T> where T : IDetectPlayerContext, IPositionContext, IPathFindContext, IAInputContext, IStatusContext
     {
         public string DisplayName => "RunAway";
         public float LastTickTime { get; private set; }

@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &200392882278204395
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3767532512603775973}
+  m_Layer: 0
+  m_Name: BarrelEnd
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3767532512603775973
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 200392882278204395}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 1.047, y: 0.117, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 135334415331120790}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3084393727961702177
 GameObject:
   m_ObjectHideFlags: 0
@@ -112,6 +143,7 @@ Transform:
   - {fileID: 7620391442270038356}
   - {fileID: 1014486160038203734}
   - {fileID: 4878260404314377468}
+  - {fileID: 3767532512603775973}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5417475258693205326
@@ -126,8 +158,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81551f3d9f30a354eb1a764707e53dcf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _layerMask:
+    serializedVersion: 2
+    m_Bits: 136
   _gunShotSoundMono:
     _monoScript: {fileID: 2998762912476515454}
+  _barrelEnd: {fileID: 3767532512603775973}
+  _debug: 1
   _hasInfiniteAmmo: 1
 --- !u!1 &5266772028721339853
 GameObject:

@@ -11,7 +11,9 @@ using Physics.Application.DataStructures;
 using Physics.Application.Orchestrators;
 using Physics.Core.DataStructures;
 using Primitives.Physics;
+using Unity.Common;
 using Unity.Common.Unity;
+using Unity.Infrastructure.Providers;
 using UnityEngine;
 
 namespace Physics.Unity.Actors
@@ -21,14 +23,14 @@ namespace Physics.Unity.Actors
                                 IKnockBackable,
                                 IActionRequestSink
     {
-        [SerializeField] private SerializedInterface<IStatProvider> _statProviderMono;
-        IStatCollection _stats => _statProviderMono.Interface.StatSheet.StatCollection;
+        // [SerializeField] private SerializedInterface<IStatProvider> _statProviderMono;
+        IStatCollection _stats;
 
-        [SerializeField] private SerializedInterface<IRuleStateProvider> _ruleStateMono;
-        IRuleState _ruleState => _ruleStateMono.Interface.RuleStateView;
+        // [SerializeField] private SerializedInterface<IRuleStateProvider> _ruleStateMono;
+        IRuleState _ruleState;
 
-        [SerializeField] private SerializedInterface<IActorInput> _actorInputMono;
-        IActorInput _actorInput => _actorInputMono.Interface;
+        // [SerializeField] private SerializedInterface<IActorInput> _actorInputMono;
+        IActorInput _actorInput;
 
         [SerializeField] private SerializedInterface<IEquipmentBridge> _bridgeMono;
         IEquipmentBridge _equipmentBridge => _bridgeMono.Interface;
@@ -85,7 +87,15 @@ namespace Physics.Unity.Actors
 
         public override void Initialize(IGameContext context)
         {
-            Debug.Log($"PlayerActor.Initialize() - bounds: {_bounds} - Frame: {Time.frameCount}");
+            var provider = ProviderLookUp.Require<PlayerDataProvider>(this);
+            _stats = provider.StatSheet.StatCollection;
+            _ruleState = provider.RuleStateView;
+            _actorInput = provider.ActorInput;
+            var actorEventBus = provider.ActorEventBus;
+
+            Debug.Assert(_ruleState != null, $"PlayerActor rule state is null");
+
+            // Debug.Log($"PlayerActor.Initialize() - bounds: {_bounds} - Frame: {Time.frameCount}");
             // Debug.Log($"Initializing PlayerActor!");
             var rayConfig = new RaycastConfiguration(_bounds, _collisionLayer.value, gameObject.layer);
 
@@ -100,7 +110,8 @@ namespace Physics.Unity.Actors
                 _ruleState,
                 _stats,
                 rayConfig,
-                _equipmentBridge);
+                _equipmentBridge,
+                actorEventBus);
 
             Debug.Assert(_ruleState.TryGet<IDirectionState>(out var dir), $"Failed to get direction state from rule state");
             _dirState = dir;

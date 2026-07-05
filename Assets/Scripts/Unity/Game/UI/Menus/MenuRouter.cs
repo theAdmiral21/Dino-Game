@@ -29,7 +29,8 @@ namespace Primitives.Unity.UI.Menus
 
         public IUICommandHandler CommandHandler => _commandHandler;
 
-        public int Priority => 0;
+        [SerializeField] private int _priority = 0;
+        public int Priority => _priority;
 
         private IUICommandHandler _commandHandler;
 

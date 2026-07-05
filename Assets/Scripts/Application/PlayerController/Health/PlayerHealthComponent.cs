@@ -7,6 +7,7 @@ using PlayerController.Core.ManagerControls.Abstractions;
 using Game.Core.Health;
 using PlayerController.Core.Info;
 using Primitives.Health;
+using Primitives.Players;
 
 namespace PlayerController.Application.Health
 {
@@ -22,8 +23,9 @@ namespace PlayerController.Application.Health
         public event Action OnDamaged;
         private IEventBus _eventBus;
         private IPlayerView _playerView;
+        private IPlayerInfo _playerInfo;
         private IOverrideControls _overrideControls;
-        public PlayerHealthComponent(int maxHealth, IEventBus eventBus, IPlayerView playerView, IOverrideControls overrideControls)
+        public PlayerHealthComponent(int maxHealth, IEventBus eventBus, IPlayerInfo playerInfo, IPlayerView playerView, IOverrideControls overrideControls)
         {
             if (maxHealth <= 0)
             {
@@ -34,6 +36,7 @@ namespace PlayerController.Application.Health
             CurrentHealth = maxHealth;
             _eventBus = eventBus;
             _playerView = playerView;
+            _playerInfo = playerInfo;
             _overrideControls = overrideControls;
         }
 
@@ -98,6 +101,7 @@ namespace PlayerController.Application.Health
                 {
                     OverrideControls = _overrideControls,
                     PlayerView = _playerView,
+                    PlayerInfo = _playerInfo,
                 });
                 Respawning = true;
             }

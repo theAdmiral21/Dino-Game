@@ -13,6 +13,9 @@ using Primitives.Physics;
 using Physics.Core.PhysicsActors;
 using Core.Movement.Inputs;
 using Core.Movement.Inputs.DataStructures;
+using UnityEditor.VersionControl;
+using Unity.Common;
+using Unity.Infrastructure.Providers;
 
 namespace PlayerController.Unity.Inputs
 {
@@ -24,16 +27,16 @@ namespace PlayerController.Unity.Inputs
         // [SerializeField] private PlayerInputReader _inputReader;
         [SerializeField] private PlayerEffectOrchestrator _effectOrchestrator;
         [SerializeField] private AnimatorEffectBridge _animatorBridge;
-        [SerializeField] private SerializedInterface<IActorInput> _actorInput;
-        [SerializeField] private SerializedInterface<IRuleStateProvider> _ruleStateViewMono;
-        private IRuleState _ruleStateView => _ruleStateViewMono.Interface.RuleStateView;
+
+        private IActorInput _actorInput;
+        private IRuleState _ruleStateView;
+        private IStatCollection _stats;
 
         [SerializeField] private SerializedInterface<IPhysicsActor> _physicsActorMono;
         private PhysicsContext _physicsContext => _physicsActorMono.Interface.Brain.CurrentContext;
 
-        [SerializeField] private SerializedInterface<IStatSheet> _statSheetMono;
-        private IStatCollection _stats => _statSheetMono.Interface.StatCollection;
-        public int Priority => 2;
+        [SerializeField] private int _priority = 2;
+        public int Priority => _priority;
 
         private InputState _inputState;
         private IGameStateProvider _gameState;
@@ -54,6 +57,12 @@ namespace PlayerController.Unity.Inputs
             // Debug.Log($"Game state: {_gameState}");
 
             _changeGameState = context.GameStateServices.ChangeGameState;
+
+            var provider = ProviderLookUp.Require<PlayerDataProvider>(this);
+            _actorInput = provider.ActorInput;
+            _ruleStateView = provider.RuleStateView;
+            _stats = provider.StatSheet.StatCollection;
+
         }
 
         public void PostInitialize(IGameContext context)
@@ -75,7 +84,7 @@ namespace PlayerController.Unity.Inputs
 
             // Animate the state
 
-            _animatorBridge.SyncAnimation(_actorInput.Interface, _physicsContext, _ruleStateView);
+            _animatorBridge.SyncAnimation(_actorInput, _physicsContext, _ruleStateView);
 
         }
     }

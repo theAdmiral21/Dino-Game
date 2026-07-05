@@ -13,7 +13,8 @@ namespace PlayerController.Unity.ManagerControls
     {
         public bool PlayerEnabled => _playerEnabled;
 
-        public int Priority => 36; // I've been assigning these at random.. I should probably stop doing that
+        [SerializeField] private int _priority = 36;
+        public int Priority => _priority; // I've been assigning these at random.. I should probably stop doing that
 
         private bool _playerEnabled = true;
         [SerializeField] private PlayerActionMapManager _actionMapManager;

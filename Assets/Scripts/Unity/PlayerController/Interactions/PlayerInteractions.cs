@@ -40,7 +40,8 @@ namespace PlayerController.Unity.Interactions
             }
         }
         private InteractContext _cachedContext;
-        public int Priority => 0;
+        [SerializeField] private int _priority = 0;
+        public int Priority => _priority;
 
         private void Awake()
         {

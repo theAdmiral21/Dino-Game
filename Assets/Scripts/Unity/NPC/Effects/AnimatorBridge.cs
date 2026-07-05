@@ -1,20 +1,28 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Core.Game.HealthSystem.Health;
 using Core.Movement.Inputs;
 using Game.Core.Animations;
 using Game.Core.Effects;
+using Game.Core.Execution;
+using Game.Core.Health;
+using Infrastructure.Unity.Registries;
 using Movement.Core.Abstractions;
 using Movement.Core.Rules;
 using NPC.Core.Effects;
 using NUnit.Framework;
 using PlayerController.Core.Effects.DataStructures;
 using Primitives.Physics;
+using Unity.Common;
+using Unity.Common.Unity;
+using Unity.Infrastructure.Providers;
 using UnityEngine;
 
 namespace Enemy.Unity.Effects
 {
     [RequireComponent(typeof(Animator))]
-    public class AnimatorBridge : MonoBehaviour, IAnimatorBridge
+    public class AnimatorBridge : SelfRegister<IInitializable<IGameContext>>, IAnimatorBridge, IInitializable<IGameContext>
     {
         [SerializeField] private Animator _animator;
 
@@ -23,23 +31,36 @@ namespace Enemy.Unity.Effects
         private static readonly int IsWalkingHash = Animator.StringToHash("IsWalking");
         private static readonly int IsRunningHash = Animator.StringToHash("IsRunning");
         private static readonly int IsDeadHash = Animator.StringToHash("IsDead");
-        private static readonly int IsLunging = Animator.StringToHash("IsLunging");
         private static readonly int LungeTrigger = Animator.StringToHash("LungeTrigger");
         private static readonly int isGroundedHash = Animator.StringToHash("IsGrounded");
 
         private HashSet<int> _availableParams;
 
+        // [SerializeField] private SerializedInterface<IHealthComponentProvider> _healthComponentProviderMono;
+        private IHealthComponent _healthComponent;
+
         private Vector3 _transformCache = Vector3.one;
         private Transform _animatorTransform => transform;
+
+        [SerializeField] private int _priority = 1;
+        public int Priority => _priority; // after the health component
+
         private bool _isAngry = false;
         private bool _lungeTriggered = false;
         private void Awake()
         {
+            base.Awake();
             _availableParams = new();
             foreach (var param in _animator.parameters)
             {
                 _availableParams.Add(param.nameHash);
             }
+        }
+
+        private void OnDestroy()
+        {
+            _healthComponent.OnDeath -= HandleDeath;
+            base.OnDestroy();
         }
 
         private void SetBoolSafe(int hash, bool value)
@@ -58,6 +79,23 @@ namespace Enemy.Unity.Effects
             }
         }
 
+        public void Initialize(IGameContext context)
+        {
+            // Get the health component
+            var provider = ProviderLookUp.Require<RaptorDataProvider>(this);
+            _healthComponent = provider.HealthComponent;
+        }
+
+        public void PostInitialize(IGameContext context)
+        {
+            Debug.Log($"Subbing to death event");
+            _healthComponent.OnDeath += HandleDeath;
+        }
+        private void HandleDeath()
+        {
+            Debug.Log($"Handling death event");
+            ApplyEffect(new DeathEffect());
+        }
         public void ApplyEffect(IEffectResult effect)
         {
             switch (effect)
@@ -79,7 +117,7 @@ namespace Enemy.Unity.Effects
                     }
                 case DeathEffect death:
                     {
-                        // Debug.Log($"Animating death effect!");
+                        Debug.Log($"Animating death effect!");
                         _isAngry = false;
                         AnimateDeath();
                         break;
@@ -189,5 +227,6 @@ namespace Enemy.Unity.Effects
                 SetBoolSafe(IsWalkingHash, false);
             }
         }
+
     }
 }

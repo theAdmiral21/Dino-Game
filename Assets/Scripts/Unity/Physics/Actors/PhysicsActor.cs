@@ -10,68 +10,38 @@ using Movement.Unity.Abstractions;
 using Physics.Application.DataStructures;
 using Physics.Application.Orchestrators;
 using Physics.Core.DataStructures;
+using Physics.Core.PhysicsActors;
 using Primitives.Physics;
+using Unity.Common;
 using Unity.Common.Unity;
-
+using Unity.Infrastructure.Providers;
 using UnityEngine;
 
 namespace Physics.Unity.Actors
 {
     [RequireComponent(typeof(Collider2D))]
     public class PhysicsActor : BasePhysicsActor,
-                                //SelfRegister<IInitializable<IGameContext>>,
-                                // IPhysicsActor,
-                                // IExternalForceReceiver,
-                                // IInitializable<IGameContext>,
                                 IActionRequestSink,
                                 IActionResultViewer
-    // IStunnable,
-    // IKnockBackable
-    // IActorEventBusProvider
+
     {
-        // public IActorBrain Brain { get; private set; }
-        // public IKinematicBody Body { get; private set; }
+
         public RaycastConfiguration RayConfig { get; private set; }
         public BodyType BodyType => _bodyType;
         [SerializeField] BodyType _bodyType;
-        // public bool IsAsleep { get; private set; }
-        // public ActorType Actor => _actor;
-        // [SerializeField] private ActorType _actor;
-        // public Vector2 MoveVector { get; set; }
-
-        // public string Name => _name;
-
-        // public IBoundsProvider Bounds => _bounds;
-        // private IBoundsProvider _bounds;
-
-        // public ITransformProvider TransformProvider => _transformProvider;
-        // private ITransformProvider _transformProvider;
 
 
-        // public bool ReadyToDestroy => _readyToDestroy;
-        // private bool _readyToDestroy;
-
-        // public int Priority => 5;
 
         public List<IActionRequest> ActionRequests => Brain.ActionRequests;
 
+        // [SerializeField] private SerializedInterface<IStatProvider> _statProviderMono;
+        IStatCollection _stats;
+        // [SerializeField] private SerializedInterface<IRuleStateProvider> _ruleStateMono;
+        IRuleState _ruleState;
 
-        // [SerializeField] private string _name;
-
-        // [SerializeField] private SerializedInterface<IActionBuffer> _actionBufferMono;
-        // private IActionBuffer _actionBuffer => _actionBufferMono.Interface;
-
-        [SerializeField] private SerializedInterface<IStatProvider> _statProviderMono;
-        IStatCollection _stats => _statProviderMono.Interface.StatSheet.StatCollection;
-        [SerializeField] private SerializedInterface<IRuleStateProvider> _ruleStateMono;
-        IRuleState _ruleState => _ruleStateMono.Interface.RuleStateView;
-
-        [SerializeField] private SerializedInterface<IActorInput> _actorInputMono;
-        IActorInput _actorInput => _actorInputMono.Interface;
+        // [SerializeField] private SerializedInterface<IActorInput> _actorInputMono;
+        IActorInput _actorInput;
         public List<IActionResult> ActionResults => Brain.ActionResults;
-        // public IActorEventBus ActorEventBus => Brain.ActorEventBus;
-        // private IGameStateProvider _gameState;
-        // private LayerMask _collisionLayer;
 
 
 
@@ -79,25 +49,16 @@ namespace Physics.Unity.Actors
         [SerializeField] private KinematicResult _debugState;
         [SerializeField] private PhysicsContext _debugPhysics;
 
-
-        // private new void Awake()
-        // {
-        //     base.Awake();
-        //     RegistryGateway.Register<IPhysicsActor>(this);
-
-        //     Collider2D collider = GetComponent<Collider2D>();
-        //     _bounds = new UnityColliderBoundsProvider(collider);
-        //     _transformProvider = new UnityTransformProvider(transform);
-
-        //     // The collision layer should always be collision
-        //     _collisionLayer = LayerMask.GetMask("Collision");
-        //     Debug.Assert(_collisionLayer.value == (1 << 7), $"Collision layer mask is using layer {_collisionLayer.value}");
-        // }
-
-
-
         public override void Initialize(IGameContext context)
         {
+            // var provider = ProviderLookUp.Require<PlayerDataProvider>(this);
+            _stats = ProviderLookUp.Require<IStatProvider>(this).StatSheet.StatCollection;
+            _ruleState = ProviderLookUp.Require<IRuleStateProvider>(this).RuleStateView;
+            _actorInput = ProviderLookUp.Require<IActorInputContext>(this).ActorInput;
+            var actorEventBus = ProviderLookUp.Require<IActorEventBusProvider>(this).ActorEventBus;
+
+            Debug.Log($"{Name} has ruleState: {_ruleState != null}");
+
             RayConfig = new RaycastConfiguration(_bounds, _collisionLayer.value, gameObject.layer);
             // Add the body
             Body = new KinematicBody(_bounds, _transformProvider, RayConfig, _bodyType);
@@ -112,7 +73,8 @@ namespace Physics.Unity.Actors
                     null,
                     null,
                     RayConfig,
-                    null);
+                    null,
+                    actorEventBus);
             }
             else
             {
@@ -123,7 +85,8 @@ namespace Physics.Unity.Actors
                     _ruleState,
                     _stats,
                     RayConfig,
-                    null);
+                    null,
+                    actorEventBus);
             }
         }
 

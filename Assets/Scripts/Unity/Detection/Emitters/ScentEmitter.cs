@@ -27,8 +27,8 @@ namespace Unity.Detection.Emitters
         private float _lifeTime;
         private float _intensity;
 
-
-        public int Priority => 0;
+        [SerializeField] private int _priority = 0;
+        public int Priority => _priority;
 
         public void Initialize(IGameContext context)
         {

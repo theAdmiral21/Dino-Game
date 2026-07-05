@@ -6,19 +6,22 @@ using Core.Equipment;
 using Game.Application.Audio.DataStructures;
 using Game.Core.Audio;
 using Game.Core.Execution;
-using Infrastructure.Unity.Registries;
-using Movement.Core.Movement.DataStructures;
-using Physics.Core.PhysicsActors;
+using NUnit.Framework.Constraints;
 using Primitives.Audio.EntityKeys;
 using Primitives.Audio.SoundKeys;
+using Primitives.Damage;
 using Primitives.Items;
 using Unity.Common.Unity;
+using UnityEditor;
 using UnityEngine;
 
 namespace Unity.Equipment
 {
-    public class SpasEquipment : MonoBehaviour, IEquipment, IAllowInfiniteAmmo
+    public class SpasEquipment : MonoBehaviour, IEquipment, IAllowInfiniteAmmo, IDamageDealer
     {
+        [Header("Bullet Collision Layers")]
+        [SerializeField] private LayerMask _layerMask;
+
         [Header("Emitters")]
         [SerializeField] private SerializedInterface<ISoundEmitter> _gunShotSoundMono;
         private ISoundEmitter _gunShotSound => _gunShotSoundMono.Interface;
@@ -36,14 +39,23 @@ namespace Unity.Equipment
 
         private IMagazine _magazine;
         private bool _weaponRaised;
+        [SerializeField] private Transform _barrelEnd;
+        private Vector2 _barrelPos => _barrelEnd.position;
         private Vector2 _aimPos;
         private Vector2 _playerPos => new Vector2(transform.position.x, transform.position.y);
+
+        private DamageInfo _damageInfo;
+
+        [Header("Debug")]
+        [SerializeField] private bool _debug;
+
 
         [Header("Cheats")]
         [SerializeField] private bool _hasInfiniteAmmo;
         public bool HasInfiniteAmmo => _hasInfiniteAmmo;
 
-        public int Priority => 0;
+        [SerializeField] private int _priority = 0;
+        public int Priority => _priority;
 
 
         private IGameContext _gameContext;
@@ -89,7 +101,7 @@ namespace Unity.Equipment
                 new LevelObjectSoundRequest(
                     LevelObjectEntityKey.Shotgun,
                     ActionSoundKey.Attack));
-
+            DamageCast();
             _gunShotSound.EmitSound();
             yield return new WaitForSeconds(Stats.FireRate);
             _audioService.PlaySFX(
@@ -99,7 +111,53 @@ namespace Unity.Equipment
             yield return new WaitForSeconds(0.5f);
             // After firing, wait then reload
         }
+        private void DamageCast()
+        {
+            // Perform a ray cast in the direction the player is aiming
+            Vector2 _aimDir = (_aimPos - _barrelPos).normalized;
 
+            // fire 5 raycasts in a cone with varying angles
+            float spreadAngle = 15;
+
+            for (int i = 0; i < 5; i++)
+            {
+                float angle = UnityEngine.Random.Range(-spreadAngle / 2f, spreadAngle / 2f);
+                Vector2 fuzzyDir = RotateVector(_aimDir, angle);
+                // perform the cast with infinite range?
+                RaycastHit2D hit = Physics2D.Raycast(_barrelPos, fuzzyDir, 100f, _layerMask);
+
+                if (_debug)
+                {
+                    Debug.DrawRay(_barrelPos, fuzzyDir * 100, Color.red, 1f);
+                }
+
+                if (hit.collider != null)
+                {
+                    IDamageable damageable = hit.collider.GetComponentInChildren<IDamageable>();
+                    InflictDamage(damageable);
+                }
+            }
+        }
+        public void InflictDamage(IDamageable damageable)
+        {
+            if (damageable == null) return;
+
+            damageable.ReceiveDamage(new DamageInfo(DamageType.Hurt,
+                                _projectileStats.KnockBack * (_aimPos - _barrelPos).normalized,
+                                _projectileStats.KnockBack,
+                                _projectileStats.HitStun,
+                                _projectileStats.Damage));
+        }
+        private Vector2 RotateVector(Vector2 v, float degrees)
+        {
+            float rad = degrees * Mathf.Deg2Rad;
+            float cos = Mathf.Cos(rad);
+            float sin = Mathf.Sin(rad);
+            return new Vector2(
+                v.x * cos - v.y * sin,
+                v.x * sin + v.y * cos
+            );
+        }
         public void RaiseWeapon(bool raiseWeapon)
         {
             _weaponRaised = raiseWeapon;
@@ -128,7 +186,7 @@ namespace Unity.Equipment
 
         private void DrawCrossHair()
         {
-            Debug.DrawLine(transform.position, _aimPos);
+            Debug.DrawLine(_barrelEnd.position, _aimPos);
         }
 
         private void Update()

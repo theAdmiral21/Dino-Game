@@ -12,6 +12,7 @@ using Infrastructure.Unity.Players;
 using Primitives.Common.Scenes;
 using Infrastructure.Core.Services;
 using Primitives.Players;
+using Unity.Game.GameLoop;
 
 namespace Game.Unity.GameLoop
 {
@@ -93,12 +94,12 @@ namespace Game.Unity.GameLoop
                 PrintDebug();
             }
 
+            InitFactory.InitializeObject(_gameContext, _systemList);
+            // // Do I call this here or some where else? 
+            // InitializeScene();
 
-            // Do I call this here or some where else? 
-            InitializeScene();
 
-
-            PostInitializeScene();
+            // PostInitializeScene();
 
 #if UNITY_EDITOR
             SpawnDebugPlayers();
@@ -113,25 +114,25 @@ namespace Game.Unity.GameLoop
             }
         }
 
-        public void InitializeScene()
-        {
-            foreach (var system in Systems)
-            {
-                // if (_printDebug) Debug.Log($"Initializing: {system}");
+        // public void InitializeScene()
+        // {
+        //     foreach (var system in _systemList)
+        //     {
+        //         // if (_printDebug) Debug.Log($"Initializing: {system}");
 
-                system.Initialize(_gameContext);
-            }
-        }
+        //         system.Initialize(_gameContext);
+        //     }
+        // }
 
-        public void PostInitializeScene()
-        {
-            foreach (var system in Systems)
-            {
-                // if (_printDebug) Debug.Log($"Post initializing: {system}");
+        // public void PostInitializeScene()
+        // {
+        //     foreach (var system in _systemList)
+        //     {
+        //         // if (_printDebug) Debug.Log($"Post initializing: {system}");
 
-                system.PostInitialize(_gameContext);
-            }
-        }
+        //         system.PostInitialize(_gameContext);
+        //     }
+        // }
         public void ConsumePersistent()
         {
 

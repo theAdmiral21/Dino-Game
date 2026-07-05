@@ -18,3 +18,4 @@ MonoBehaviour:
   _LungeApexTime: 0.25
   _lungeDuration: 0.3
   _LungeDamage: 80
+  _LungeCoolDown: 2

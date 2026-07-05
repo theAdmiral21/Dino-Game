@@ -75,10 +75,14 @@ namespace Editor
 
             GetPackMembers();
 
+
             // Dino list on the left
             EditorGUILayout.LabelField("Pack Members", EditorStyles.boldLabel);
-            _memberNdx = GUILayout.SelectionGrid(_memberNdx, _memberNames.ToArray(), 1, EditorStyles.radioButton);
-            _selectedMember = _packMembers[_memberNdx];
+            if (_packMembers.Count > 0)
+            {
+                _memberNdx = GUILayout.SelectionGrid(_memberNdx, _memberNames.ToArray(), 1, EditorStyles.radioButton);
+                _selectedMember = _packMembers[_memberNdx];
+            }
             EditorGUILayout.EndVertical();
 
             // Divider

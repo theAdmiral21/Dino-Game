@@ -29,7 +29,8 @@ namespace Environment.Unity.Checkpoints
         public CheckPointData Data => _data;
         private CheckPointData _data;
         private IEventBus _eventBus;
-        public int Priority => 0;
+        [SerializeField] private int _priority = 0;
+        public int Priority => _priority;
 
 
         public void Awake()

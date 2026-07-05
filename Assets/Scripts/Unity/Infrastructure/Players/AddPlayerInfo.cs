@@ -1,3 +1,4 @@
+using Core.PlayerController.Info;
 using Infrastructure.Unity.DataStructures;
 using PlayerController.Core.Info;
 using Primitives.Players;
@@ -11,7 +12,7 @@ namespace Infrastructure.Unity.Players
         {
             // Set the player's data
             Debug.Log($"info instance (AddInfo): {playerInfo.GetHashCode()}");
-            var infoProvider = data.PlayerObject.GetComponent<IPlayerInfoProvider>();
+            var infoProvider = data.PlayerObject.GetComponent<IPlayerInfoSetter>();
             infoProvider.SetPlayerInfo(playerInfo);
             return data;
         }

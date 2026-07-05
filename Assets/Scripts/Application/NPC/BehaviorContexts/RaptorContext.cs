@@ -8,6 +8,7 @@ using Core.Ai.BlackBoard;
 using Core.Ai.BlackBoard.DataStructures;
 using Core.Ai.State.BehaviorContext;
 using Core.Detection.DataStructures;
+using Core.Movement.Abstractions;
 using Core.Movement.Inputs;
 using Enemy.Core.Detectors.Abstractions;
 using Movement.Core.Abstractions;
@@ -27,7 +28,7 @@ namespace NPC.Application.BehaviorContexts
                                  IPathFindContext,
                                  ITickTimerContext,
                                  IGameTimerContext,
-                                 IInputContext,
+                                 IAInputContext,
                                  IRaptorInputContext,
                                  IPerceptionContext,
                                  IStatusContext,
@@ -35,7 +36,8 @@ namespace NPC.Application.BehaviorContexts
                                  IPackDataContext,
                                  IDetectorContext,
                                  ISearchAreaContext,
-                                 IStatSheet
+                                 IStatSheet,
+                                 IDeadContext
     {
         public MovementType MoveType => MovementType.Run;
 
@@ -50,8 +52,6 @@ namespace NPC.Application.BehaviorContexts
         public Vector2 LastKnownLocation { get; private set; }
 
         public float Dt { get; set; }
-
-        // public IAiInput AiInput => _aiInput;
 
         public PerceptionState Perception { get; private set; }
 
@@ -75,7 +75,12 @@ namespace NPC.Application.BehaviorContexts
 
         private IPlayerDetector _detector;
         private IPathAwayFrom _pathFinder;
-        public RaptorContext(IRaptorInput raptorInput, IPackDataProvider packDataProvider, DetectorStats detectionStats, IStatCollection stats)
+        public RaptorContext(
+                            IRaptorInput raptorInput,
+                            IPackDataProvider packDataProvider,
+                            DetectorStats detectionStats,
+                            IStatCollection stats
+                            )
         {
             RaptorInput = raptorInput;
             _packDataProvider = packDataProvider;
@@ -175,6 +180,11 @@ namespace NPC.Application.BehaviorContexts
         public void SearchArea()
         {
             throw new NotImplementedException();
+        }
+
+        public void Die()
+        {
+            // Stop ticking, stop moving, delete the physics actor, optionally start a despawn timer
         }
     }
 }

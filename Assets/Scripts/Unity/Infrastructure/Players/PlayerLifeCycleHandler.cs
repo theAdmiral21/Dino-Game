@@ -27,7 +27,8 @@ namespace Infrastructure.Unity.Status
         private SceneId _currentScene => _currentSceneProvider.CurrentScene;
 
         private HashSet<Guid> _respawnTargets = new();
-        public int Priority => 50;
+        [SerializeField] private int _priority = 50;
+        public int Priority => _priority;
 
         private void Awake()
         {
@@ -142,7 +143,7 @@ namespace Infrastructure.Unity.Status
         private IEnumerator RespawnRoutine(PlayerDiedEvent eventData)
         {
             // Raise a flag so this isn't called more than once for the same player
-            Guid player = eventData.PlayerView.PlayerInfo.PlayerInfo.PlayerId;
+            Guid player = eventData.PlayerInfo.PlayerId;
             if (_respawnTargets.Add(player))
             {
                 eventData.OverrideControls.DisablePlayer();
@@ -157,16 +158,16 @@ namespace Infrastructure.Unity.Status
             }
         }
 
-        private IEnumerator FailDolphinRoutine(PlayerDiedEvent eventData)
-        {
-            // Raise a flag so this isn't called more than once for the same player
-            Guid player = eventData.PlayerView.PlayerInfo.PlayerInfo.PlayerId;
-            if (_respawnTargets.Add(player))
-            {
-                eventData.OverrideControls.DisablePlayer();
-                // Fade In
-                yield return eventData.PlayerView.TransitionView.PlayInTransition(ScreenTransitions.Dolphin);
-            }
-        }
+        // private IEnumerator FailDolphinRoutine(PlayerDiedEvent eventData)
+        // {
+        //     // Raise a flag so this isn't called more than once for the same player
+        //     Guid player = eventData.PlayerView.PlayerInfo.PlayerInfo.PlayerId;
+        //     if (_respawnTargets.Add(player))
+        //     {
+        //         eventData.OverrideControls.DisablePlayer();
+        //         // Fade In
+        //         yield return eventData.PlayerView.TransitionView.PlayInTransition(ScreenTransitions.Dolphin);
+        //     }
+        // }
     }
 }

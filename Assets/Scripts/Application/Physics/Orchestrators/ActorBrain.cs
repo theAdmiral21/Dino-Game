@@ -16,6 +16,7 @@ using Primitives.Physics;
 using Physics.Core.PhysicsActors;
 using Core.Equipment;
 using Core.Movement.Inputs;
+using UnityEngine;
 
 namespace Physics.Application.Orchestrators
 {
@@ -51,7 +52,8 @@ namespace Physics.Application.Orchestrators
                             IRuleState ruleState,
                             IStatCollection stats,
                             RaycastConfiguration raycastConfig,
-                            IEquipmentBridge equipmentBridge
+                            IEquipmentBridge equipmentBridge,
+                            IActorEventBus actorEventBus
                             )
         {
             _actor = actor;
@@ -59,15 +61,22 @@ namespace Physics.Application.Orchestrators
             _actorInput = actorInput;
             _actionDispatch = new ActionDispatcher(BuildActionDispatchers());
             _movementOrchestrator = new MovementOrchestrator(_actionDispatch);
-
+            ActorEventBus = actorEventBus;
             RaycastConfig = raycastConfig;
-
             _equipmentBridge = equipmentBridge;
 
-            // Make an event bus
-            ActorEventBus = new ActorEventBus();
+            Debug.Assert(_actor != null, $"actor is null!");
+            Debug.Assert(_gameState != null, $"gameState is null!");
+            Debug.Assert(_actorInput != null, $"actorInput is null!");
+            Debug.Assert(ruleState != null, $"ruleState is null for {_actor.Name}!");
+            Debug.Assert(stats != null, $"stats is null!");
+            Debug.Assert(raycastConfig != null, $"raycastConfig is null for {_actor.Name}!");
+            Debug.Assert(equipmentBridge != null, $"equipmentBridge is null for {_actor.Name}!");
+            Debug.Assert(actorEventBus != null, $"ActorEventBus is null for {_actor.Name}!");
 
             _ruleState = ruleState;
+
+            Debug.Log($"actor {_actor.Name} has ruleState: {_ruleState != null}");
 
             // Register capabilities
             if (_actor.Body.BodyType == BodyType.Kinematic)

@@ -12,7 +12,7 @@ using System;
 
 namespace Application.Ai.BehaviorTreeNodes.Actions
 {
-    public class MoveToPackTarget<T> : IBehaviorNode<T> where T : IInputContext, IPackDataContext, IStatusContext, IMoveToContext, ITickTimerContext
+    public class MoveToPackTarget<T> : IBehaviorNode<T> where T : IAInputContext, IPackDataContext, IStatusContext, IMoveToContext, ITickTimerContext
     {
         public string DisplayName => "MoveToPackTarget";
         public float LastTickTime { get; private set; }

@@ -7,5 +7,7 @@ namespace Core.Ai.BlackBoard
     {
         public IInspectableNode RootNode { get; }
         public void TickBehaviorTree(float dt);
+        public void StopBehaviorTree();
+        public void StartBehaviorTree();
     }
 }

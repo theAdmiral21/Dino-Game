@@ -21,7 +21,8 @@ namespace Game.Unity.Cameras
 
         public Transform TargetTransform { get; private set; }
 
-        public int Priority => 0;
+        [SerializeField] private int _priority = 0;
+        public int Priority => _priority;
 
         private void Awake()
         {

@@ -15,7 +15,7 @@ using System;
 
 namespace AI.Application.BehaviorTreeNodes
 {
-    public class Wander<T> : IBehaviorNode<T> where T : IMoveToContext, ITickTimerContext, IGameTimerContext, IStatusContext, IAlertContext, IInputContext
+    public class Wander<T> : IBehaviorNode<T> where T : IMoveToContext, ITickTimerContext, IGameTimerContext, IStatusContext, IAlertContext, IAInputContext
     {
         public string DisplayName => "Wander";
         public float LastTickTime { get; private set; }

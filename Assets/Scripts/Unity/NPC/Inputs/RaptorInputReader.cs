@@ -1,17 +1,15 @@
+using Core.Movement.Abstractions;
 using Core.Movement.Inputs;
 using Movement.Core.Abstractions;
 using Movement.Core.Movement.DataStructures;
-using NPC.Unity.Inputs;
 using Primitives.Physics;
-using Unity.Common.Unity;
 using UnityEngine;
 
 namespace Unity.NPC.Inputs
 {
     public class RaptorInputReader : MonoBehaviour, IRaptorInput
     {
-        [SerializeField] private SerializedInterface<IActionRequestSink> _requestSinkMono;
-        private IActionRequestSink _requestSink => _requestSinkMono.Interface;
+        private IActionRequestSink _requestSink;
         [SerializeField] private bool _printDebug;
         public Vector2 Move => _move;
         private Vector2 _move;
@@ -27,6 +25,12 @@ namespace Unity.NPC.Inputs
         public bool LungePressed { get; private set; }
 
         private bool _faceLeftHeld;
+
+        private void Awake()
+        {
+            var sinkProvider = GetComponentInParent<IActionRequestSinkProvider>();
+            _requestSink = sinkProvider.RequestSink;
+        }
 
         public void Lunge(Vector2 direction)
         {

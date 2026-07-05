@@ -19,7 +19,8 @@ namespace Unity.AI.Detection.Detectors
 
         public event Action<OlfactoryData> ScentEvent;
 
-        public int Priority => 0;
+        [SerializeField] private int _priority = 0;
+        public int Priority => _priority;
         private void Awake()
         {
             base.Awake();

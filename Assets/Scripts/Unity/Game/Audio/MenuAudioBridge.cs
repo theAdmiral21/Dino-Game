@@ -10,8 +10,8 @@ namespace Game.Unity.Audio
     public class MenuAudioBridge : SelfRegister<IInitializable<IGameContext>>, IInitializable<IGameContext>, IMenuAudio
     {
         private IAudioService _audioService;
-        public int Priority => 0;
-        // Instead of playing sounds directly, use the audio services
+        [SerializeField] private int _priority = 0;
+        public int Priority => _priority;        // Instead of playing sounds directly, use the audio services
         // private void Awake()
         // {
         //     // Register with the scene boot strapper in order initialize in the correct order

@@ -7,6 +7,7 @@ using PlayerController.Core.Events;
 using PlayerController.Core.Info;
 using Primitives.EventBus.Abstractions;
 using Primitives.Players;
+using Unity.Game.GameLoop;
 using UnityEngine;
 
 namespace Infrastructure.Unity.Players
@@ -24,7 +25,8 @@ namespace Infrastructure.Unity.Players
         // [SerializeField] private InitializeObject _initializeObject;
         [SerializeField] private SetTransitionView _setTransitionView;
         private IEventBus _eventBus;
-        public int Priority => 0;
+        [SerializeField] private int _priority = 0;
+        public int Priority => _priority;
 
         public void Awake()
         {
@@ -50,7 +52,7 @@ namespace Infrastructure.Unity.Players
             // Disable the player
             eventData.OverrideControls.DisablePlayer();
             // Move the player
-            Guid playerId = eventData.PlayerView.PlayerInfo.PlayerInfo.PlayerId;
+            Guid playerId = eventData.PlayerInfo.PlayerId;
             eventData.OverrideControls.OverrideMove(_spawnPoint.GetRespawnPoint(playerId));
             // Reenable the player
             eventData.OverrideControls.EnablePlayer();
@@ -129,15 +131,13 @@ namespace Infrastructure.Unity.Players
 
             // Add the player object
             Debug.Log($"Spawning new player - frame {Time.frameCount}");
-            data = _factory.InstantiateObject(ref data);
-            // Add the camera object
-            data = _cameraCreator.InstantiateObject(ref data);
-            // Initialize the objects
-            // data = _initializeObject.InitializePlayer(ref data);
-            // Set the transition view
-            data = _setTransitionView.SetView(ref data);
+            data = _factory.InstantiateObject(playerInfo, ref data);
             // Set the player info
             data = _addPlayerInfo.AddInfo(playerInfo, ref data);
+            // Add the camera object
+            data = _cameraCreator.InstantiateObject(ref data);
+            // Set the transition view
+            data = _setTransitionView.SetView(ref data);
             // Get the save data
             data = _getSaveData.Fetch(ref data);
             // Get the character config

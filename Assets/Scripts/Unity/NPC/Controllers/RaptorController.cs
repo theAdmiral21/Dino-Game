@@ -5,14 +5,15 @@ using AI.Core.Behavior;
 using Core.Ai.Behavior.Visualization;
 using Core.Ai.BlackBoard;
 using Core.Detection;
-using Core.Game.HealthSystem.Health;
 using Core.Movement.Inputs;
 using Movement.Core.Abstractions;
-using Movement.Unity.Stats;
+using Movement.Unity.Abstractions;
 using NPC.Application.BehaviorContexts;
 using Unity.AI.BehaviorTree;
+using Unity.Common;
 using Unity.Common.Unity;
 using Unity.Detection.Detectors.DataStructures;
+using Unity.Infrastructure.Providers;
 using Unity.Tools.DrawingTools;
 using UnityEngine;
 
@@ -21,21 +22,17 @@ namespace Unity.NPC.Controllers
     public class RaptorController : MonoBehaviour, IRaptorController
     {
         [SerializeField] private Transform _parentTransform;
-
+        [Header("Behavior Tree Root Node")]
         [SerializeField] private BehaviorNodeSO _rootSO;
+        [Header("Detector Stats")]
         [SerializeField] private DetectorStatsSO _statsSO;
 
-        [SerializeField] private SerializedInterface<IStatSheet> _statSheetMono;
-        private IStatSheet _statSheet => _statSheetMono.Interface;
+        private IStatSheet _statSheet;
+        private IPackDataProvider _packDataProvider;
+        private IRaptorInput _raptorInput;
+        private IDetectorOrchestrator _detectorOrchestrator;
 
-        [SerializeField] private SerializedInterface<IRaptorInput> _raptorInputMono;
-        private IRaptorInput _raptorInput => _raptorInputMono.Interface;
-
-        [SerializeField] private SerializedInterface<IDetectorOrchestrator> _detectorOrchestratorMono;
-        private IDetectorOrchestrator _detectorOrchestrator => _detectorOrchestratorMono.Interface;
-
-        [SerializeField] private SerializedInterface<IPackDataProvider> _packDataProviderMono;
-        private IPackDataProvider _packDataProvider => _packDataProviderMono.Interface;
+        private bool IsActive = true;
 
         public IInspectableNode RootNode => _behaviorTree.Root;
         private IBehaviorTree<RaptorContext> _behaviorTree;
@@ -49,6 +46,12 @@ namespace Unity.NPC.Controllers
 
         private void Awake()
         {
+            // Go collect everything you need to build the component
+            var dataProvider = ProviderLookUp.Require<RaptorDataProvider>(this);
+            _statSheet = dataProvider.StatSheet;
+            _packDataProvider = dataProvider.PackDataProvider;
+            _raptorInput = dataProvider.RaptorInput;
+            _detectorOrchestrator = dataProvider.DetectorOrchestrator;
 
             // build the context
             _context = new RaptorContext(_raptorInput, _packDataProvider, _statsSO.BuildRunTime(), _statSheet.StatCollection);
@@ -61,16 +64,6 @@ namespace Unity.NPC.Controllers
 
             // Init the detector brain
             _detectorOrchestrator.InitBrain(_context);
-        }
-
-        public void TickBehaviorTree(float dt)
-        {
-            // Update your context
-            _context.Dt = Time.deltaTime;
-            _context.CurrentPosition = _parentTransform.position;
-
-            // Update your tree
-            _behaviorTree.Tick(_context);
         }
 
         private IBehaviorNode<RaptorContext> BuildNode(BehaviorNodeSO node)
@@ -96,6 +89,17 @@ namespace Unity.NPC.Controllers
             }
         }
 
+        public void TickBehaviorTree(float dt)
+        {
+            if (!IsActive) return;
+            // Update your context
+            _context.Dt = Time.deltaTime;
+            _context.CurrentPosition = _parentTransform.position;
+
+            // Update your tree
+            _behaviorTree.Tick(_context);
+        }
+
         private void LateUpdate()
         {
             try
@@ -116,6 +120,16 @@ namespace Unity.NPC.Controllers
             DrawUtil.DrawDebugCircle(_context.Destination, 2, Color.yellow);
 
             // Debug.Log($"[Run] input dir: {_context.AiInput.Move.x}");
+        }
+
+        public void StopBehaviorTree()
+        {
+            IsActive = false;
+        }
+
+        public void StartBehaviorTree()
+        {
+            IsActive = true;
         }
     }
 }

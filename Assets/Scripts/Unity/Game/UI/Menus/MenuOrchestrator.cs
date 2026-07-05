@@ -15,7 +15,8 @@ namespace Primitives.UI.Menus.Unity
     [RequireComponent(typeof(MenuAudioBridge))]
     public class MenuOrchestrator : SelfRegister<IInitializable<IGameContext>>, IUICommandHandler, IInitializable<IGameContext>
     {
-        public int Priority => 0;
+        [SerializeField] private int _priority = 0;
+        public int Priority => _priority;
         private MenuController _menuController;
         private MenuRouter _menuRouter;
 

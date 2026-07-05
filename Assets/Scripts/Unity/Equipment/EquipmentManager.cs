@@ -8,7 +8,10 @@ namespace Unity.Equipment
 {
     public class EquipmentManager : MonoBehaviour, IEquipmentManager
     {
-        [SerializeField] private Transform _equipmentTransform;
+        [SerializeField] private Transform _facingTransform;
+        [SerializeField] private Transform _equipmentAnchor;
+
+        private Vector3 _anchorScale;
 
         [SerializeField] private SerializedInterface<IEquipmentBridge> _equipmentBridgeMono;
         private IEquipmentBridge _equipmentBridge => _equipmentBridgeMono.Interface;
@@ -42,7 +45,7 @@ namespace Unity.Equipment
         {
             Debug.Log($"Setting up new equipment: {evt.NewItem.Item}");
             // Instantiate the new equipment
-            IEquipment equipment = _equipmentFactory.BuildEquipment(evt.NewItem.Item, transform);
+            IEquipment equipment = _equipmentFactory.BuildEquipment(evt.NewItem.Item, _equipmentAnchor);
 
             // Assign the equipment and item
             ActiveEquipment = equipment;
@@ -89,6 +92,13 @@ namespace Unity.Equipment
         private void UnsubToEvents()
         {
             _inventoryEventBus.Unsubscribe<CurrentEquipmentChanged>(HandleEquipmentChanged);
+        }
+
+        private void Update()
+        {
+            _anchorScale = _equipmentAnchor.localScale;
+            _anchorScale.x = Mathf.Sign(_facingTransform.localScale.x);
+            _equipmentAnchor.localScale = _anchorScale;
         }
 
         private void LateUpdate()

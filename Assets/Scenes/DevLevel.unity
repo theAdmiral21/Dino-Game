@@ -6021,13 +6021,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _actor: 200
   _name: Flare?
+  _priority: 0
   _bodyType: 1
-  _statProviderMono:
-    _monoScript: {fileID: 0}
-  _ruleStateMono:
-    _monoScript: {fileID: 0}
-  _actorInputMono:
-    _monoScript: {fileID: 0}
   _debugState:
     CurrentPosition: {x: 0, y: 0}
     Velocity: {x: 0, y: 0}
@@ -6261,6 +6256,10 @@ PrefabInstance:
     - target: {fileID: 3899485552932011652, guid: 5ada84c0d06584247b45a862db34c0db, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4026009275436071257, guid: 5ada84c0d06584247b45a862db34c0db, type: 3}
+      propertyPath: TimeScale
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 4906900865698593362, guid: 5ada84c0d06584247b45a862db34c0db, type: 3}
       propertyPath: m_Name
@@ -6503,7 +6502,7 @@ MonoBehaviour:
   _lightLayer:
     serializedVersion: 2
     m_Bits: 8192
---- !u!1001 &1843987140
+--- !u!1001 &1931963122
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -6513,19 +6512,23 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1497200054785741571, guid: f549ff4aa6ac0f4419029b4cb25195dd, type: 3}
       propertyPath: m_Name
-      value: Player
+      value: Player (1)
       objectReference: {fileID: 0}
     - target: {fileID: 1497200054785741571, guid: f549ff4aa6ac0f4419029b4cb25195dd, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1529720174517458335, guid: f549ff4aa6ac0f4419029b4cb25195dd, type: 3}
+      propertyPath: _priority
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 7937856566656044007, guid: f549ff4aa6ac0f4419029b4cb25195dd, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.91312
+      value: -24.78434
       objectReference: {fileID: 0}
     - target: {fileID: 7937856566656044007, guid: f549ff4aa6ac0f4419029b4cb25195dd, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.96
+      value: 2.7847066
       objectReference: {fileID: 0}
     - target: {fileID: 7937856566656044007, guid: f549ff4aa6ac0f4419029b4cb25195dd, type: 3}
       propertyPath: m_LocalPosition.z
@@ -8473,9 +8476,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1503277169937464022, guid: 685d5ce6d578d3a4ba41aff18efa1179, type: 3}
+      propertyPath: _priority
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3537129535944668539, guid: 685d5ce6d578d3a4ba41aff18efa1179, type: 3}
       propertyPath: m_Name
       value: ShotgunPickUp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5635437371352949857, guid: 685d5ce6d578d3a4ba41aff18efa1179, type: 3}
+      propertyPath: _priority
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6391186082803718905, guid: 685d5ce6d578d3a4ba41aff18efa1179, type: 3}
       propertyPath: m_LocalPosition.x
@@ -8741,19 +8752,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: Raptor
       objectReference: {fileID: 0}
-    - target: {fileID: 662974438042230840, guid: bbb0bfd250f06fe4b80725695ddc694f, type: 3}
-      propertyPath: _debugMemberStatus
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6036390399141617228, guid: bbb0bfd250f06fe4b80725695ddc694f, type: 3}
-      propertyPath: _rootSO
-      value: 
-      objectReference: {fileID: 11400000, guid: 84f54b2f7486e2948806dfe0f7f9c38f, type: 2}
-    - target: {fileID: 6036390399141617228, guid: bbb0bfd250f06fe4b80725695ddc694f, type: 3}
-      propertyPath: _statsSO
-      value: 
-      objectReference: {fileID: 11400000, guid: cf8f3ec021ea1894c8c0d97b0518c254, type: 2}
-    - target: {fileID: 6036390399141617228, guid: bbb0bfd250f06fe4b80725695ddc694f, type: 3}
+    - target: {fileID: 5161551725574931073, guid: bbb0bfd250f06fe4b80725695ddc694f, type: 3}
       propertyPath: _packDataProviderMono._monoScript
       value: 
       objectReference: {fileID: 317080527}
@@ -8796,10 +8795,6 @@ PrefabInstance:
     - target: {fileID: 6757668930858048360, guid: bbb0bfd250f06fe4b80725695ddc694f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7916745349292568355, guid: bbb0bfd250f06fe4b80725695ddc694f, type: 3}
-      propertyPath: _drawDebug
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -8887,7 +8882,6 @@ SceneRoots:
   - {fileID: 23432274}
   - {fileID: 796519519812933117}
   - {fileID: 97504165187657561}
-  - {fileID: 1843987140}
   - {fileID: 317080528}
   - {fileID: 33780128}
   - {fileID: 933118829}
@@ -8895,3 +8889,4 @@ SceneRoots:
   - {fileID: 2092644201}
   - {fileID: 1250718632609619850}
   - {fileID: 1397231118}
+  - {fileID: 1931963122}

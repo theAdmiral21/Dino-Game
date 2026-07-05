@@ -15,7 +15,8 @@ namespace Game.Unity.GameLoop
         [SerializeField] private BaseSceneContext _sceneContext;
         private ISceneRunTimeController _sceneController;
 
-        public int Priority => 0;
+        [SerializeField] private int _priority = 0;
+        public int Priority => _priority;
 
         // private void Awake()
         // {

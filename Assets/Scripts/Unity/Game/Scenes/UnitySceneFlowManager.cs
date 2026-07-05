@@ -21,7 +21,8 @@ namespace Game.Unity.Scenes
         private SceneChangeCoordinator _sceneFlowCoordinator;
         public static UnitySceneFlowManager Instance { get; private set; }
 
-        public int Priority => 0;
+        [SerializeField] private int _priority = 0;
+        public int Priority => _priority;
         private ISceneEvents _sceneEvents;
         private SceneId _targetScene;
         public void Awake()
