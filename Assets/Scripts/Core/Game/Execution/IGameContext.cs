@@ -1,4 +1,5 @@
 using Core.Detection.Services;
+using Core.NPC.Services;
 using Game.Core.Audio;
 using Game.Core.Cameras;
 // using Game.Core.Quests;
@@ -41,6 +42,7 @@ namespace Game.Core.Execution
 
         // public IChoreStatusProvider ChoreStatusProvider { get; }
         public IDetectionServices DetectionServices { get; }
+        public ISpawnNpcService SpawnNpcService { get; }
 
     }
 }

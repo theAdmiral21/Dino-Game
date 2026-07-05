@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 namespace Core.Ai.BlackBoard
 {
-    public interface IPackManager
+    public interface IPackManager : IPackDataProvider
     {
         public IPackCoordinator Coordinator { get; }
         public void AddMember(IPackMember member);

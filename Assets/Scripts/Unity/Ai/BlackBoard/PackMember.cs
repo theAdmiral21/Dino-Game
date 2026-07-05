@@ -1,9 +1,13 @@
+using System;
 using Core.Ai.BlackBoard;
 using Core.Detection;
 using Core.Game.HealthSystem.Health;
 using NPC.Application.BehaviorContexts;
+using Unity.Common;
 using Unity.Common.Unity;
+using Unity.Infrastructure.Providers;
 using Unity.NPC.Controllers;
+using UnityEditor.VersionControl;
 using UnityEngine;
 
 namespace Unity.Ai.BlackBoard
@@ -25,6 +29,8 @@ namespace Unity.Ai.BlackBoard
         [SerializeField] private SerializedInterface<IRaptorController> _raptorControllerMono;
         public IRaptorController RaptorController => _raptorControllerMono.Interface;
 
+        public IPackManager PackManager { get; private set; }
+
         [Header("Debug")]
         [SerializeField] private bool _debugMemberStatus;
         [SerializeField] private MemberStatus _debugStatus;
@@ -40,6 +46,18 @@ namespace Unity.Ai.BlackBoard
             {
                 _debugStatus = Status;
             }
+        }
+        public void SetPackManager(IPackManager packManager)
+        {
+            PackManager = packManager;
+            // This should only happen once or rarely
+            UpdateRaptorPackManager();
+        }
+
+        private void UpdateRaptorPackManager()
+        {
+            var provider = ProviderLookUp.Require<RaptorDataProvider>(this);
+            provider.SetPackDataProvider(PackManager);
         }
     }
 }

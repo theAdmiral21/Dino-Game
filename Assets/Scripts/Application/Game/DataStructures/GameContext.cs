@@ -1,4 +1,5 @@
 using Core.Detection.Services;
+using Core.NPC.Services;
 using Game.Core.Audio;
 using Game.Core.Cameras;
 using Game.Core.Execution;
@@ -22,7 +23,7 @@ namespace Game.Application.DataStructures
         public IPlayerServices PlayerServices { get; }
         public ISceneContextService SceneContextService { get; }
         public IDetectionServices DetectionServices { get; }
-
+        public ISpawnNpcService SpawnNpcService { get; }
 
 
         public GameContext(
@@ -35,7 +36,8 @@ namespace Game.Application.DataStructures
             IPhysicsServices physicsServices,
             IPlayerServices playerServices,
             ISceneContextService sceneContextService,
-            IDetectionServices detectionServices
+            IDetectionServices detectionServices,
+            ISpawnNpcService spawnNpcService
         )
         {
             GameStateServices = gameStateServices;
@@ -48,6 +50,7 @@ namespace Game.Application.DataStructures
             PlayerServices = playerServices;
             SceneContextService = sceneContextService;
             DetectionServices = detectionServices;
+            SpawnNpcService = spawnNpcService;
         }
     }
 }

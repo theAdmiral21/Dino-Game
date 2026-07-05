@@ -38,6 +38,7 @@ namespace Infrastructure.Unity.Players
         public int Priority => _priority;
         private void Awake()
         {
+            base.Awake();
             if (Instance != null)
             {
                 Destroy(gameObject);
@@ -54,6 +55,7 @@ namespace Infrastructure.Unity.Players
             {
                 Instance = null;
             }
+            base.OnDestroy();
         }
 
         public void SpawnTestPlayer(CharacterID id)
@@ -111,6 +113,7 @@ namespace Infrastructure.Unity.Players
         public void Initialize(IGameContext context)
         {
             _gameStateProvider = context.GameStateServices.GameState;
+            _eventBus = context.EventBus;
 
         }
 

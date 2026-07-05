@@ -50,9 +50,10 @@ namespace Unity.Infrastructure.Providers
         [SerializeField] private SerializedInterface<IActorEventBusProvider> _actorEventBusMono;
         public IActorEventBus ActorEventBus => _actorEventBusMono.Interface.ActorEventBus;
 
-        [SerializeField] private SerializedInterface<IPackDataProvider> _packDataProviderMono;
-        public PackData PackData => _packDataProviderMono.Interface.PackData;
-        public IPackDataProvider PackDataProvider => _packDataProviderMono.Interface;
+        public PackData PackData => PackDataProvider.PackData;
+        public IPackDataProvider PackDataProvider { get; private set; }
+        public void SetPackDataProvider(IPackDataProvider packDataProvider) => PackDataProvider = packDataProvider;
+
         [SerializeField] private SerializedInterface<IActorInput> _actorInputMono;
         public IActorInput ActorInput => _actorInputMono.Interface;
         [SerializeField] private SerializedInterface<IRaptorInput> _raptorInputMono;

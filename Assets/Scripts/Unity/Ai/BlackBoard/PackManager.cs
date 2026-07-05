@@ -2,15 +2,21 @@ using System.Collections.Generic;
 using Application.Ai.BlackBoard;
 using Core.Ai.BlackBoard;
 using Core.Ai.BlackBoard.DataStructures;
+using Core.NPC.Services;
+using Game.Core.Execution;
+using Infrastructure.Unity.Registries;
 using UnityEngine;
 
 namespace Unity.Ai.BlackBoard
 {
-    public class PackManager : MonoBehaviour, IPackManager, IPackDataProvider
+    public class PackManager : MonoBehaviour, IPackManager
     {
         public IPackCoordinator Coordinator { get; private set; }
-
         public PackData PackData => Coordinator.Data;
+
+        [SerializeField] private int _priority;
+        public int Priority => _priority;
+
 
         private void Awake()
         {
@@ -30,11 +36,13 @@ namespace Unity.Ai.BlackBoard
 
         public void AddMember(IPackMember member)
         {
+            member.SetPackManager(this);
             Coordinator.AddMember(member);
         }
 
         public void RemoveMember(IPackMember member)
         {
+            member.SetPackManager(null);
             Coordinator.RemoveMember(member);
         }
 

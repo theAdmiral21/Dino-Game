@@ -32,6 +32,9 @@ using Core.Detection.Services;
 using Application.Detection.Services;
 using Core.Detection.Olfactory;
 using Unity.Detection.DetectionManager.cs;
+using Core.NPC.Services;
+using Unity.NPC;
+using Unity.NPC.Spawners;
 
 namespace Game.Unity
 {
@@ -64,6 +67,7 @@ namespace Game.Unity
         private IPlayerServices _playerServices;
         private ISceneContextService _sceneContextService;
         private IDetectionServices _detectionServices;
+        private ISpawnNpcService _spawnNpcService;
         private IGameContext _gameContext;
 
 
@@ -133,6 +137,9 @@ namespace Game.Unity
             IScentMap scentMap = DetectionManager.Instance.ScentMap;
             _detectionServices = new DetectionServices(scentMap);
 
+            // Npc spawn services
+            _spawnNpcService = GetComponentInChildren<NpcSpawner>();
+
             _gameContext = new GameContext(
                             _gameStateServices,
                             _quitServices,
@@ -143,7 +150,8 @@ namespace Game.Unity
                             _physicsServices,
                             _playerServices,
                             _sceneContextService,
-                            _detectionServices
+                            _detectionServices,
+                            _spawnNpcService
 );
 
             GameContextRegistry.Set(_gameContext);
