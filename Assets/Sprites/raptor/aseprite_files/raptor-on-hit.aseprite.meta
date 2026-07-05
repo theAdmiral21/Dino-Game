@@ -2,7 +2,12 @@ fileFormatVersion: 2
 guid: 1f30c0e7f5f2e0b488082202552baf10
 ScriptedImporter:
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:AnimationClip
+      assembly: UnityEngine.AnimationModule
+      name: raptor-on-hit_Clip
+    second: {fileID: 7400000, guid: 621e739191c175544889a866f5ed0ab7, type: 2}
   serializedVersion: 2
   userData: 
   assetBundleName: 
@@ -102,7 +107,7 @@ ScriptedImporter:
     generateIndividualEvents: 1
     generateSpriteAtlas: 1
   importFileNodeState: 1
-  platformSettingsDirtyTick: 639188646363827939
+  platformSettingsDirtyTick: 639188648232674686
   textureAssetName: 
   singleSpriteImportData:
   - name: 
@@ -148,6 +153,27 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 4, y: 4}
+  - name: Frame_1
+    originalName: 
+    pivot: {x: 0.5263158, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 31
+      width: 38
+      height: 19
+    spriteID: 26918e418b5de7949896a4b34b643c85
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 31}
   spriteSheetImportData: []
   tileSetImportData: []
   asepriteLayers:
@@ -163,7 +189,7 @@ ScriptedImporter:
     layerType: 0
     blendMode: 0
     cells:
-    - name: raptor-on-hit
+    - name: Frame_0
       frameIndex: 0
       additiveSortOrder: 0
       cellRect:
@@ -172,6 +198,15 @@ ScriptedImporter:
         width: 38
         height: 19
       spriteId: 5c99b765286e2e745aa76032aaae0af2
+    - name: Frame_1
+      frameIndex: 1
+      additiveSortOrder: 0
+      cellRect:
+        x: 44
+        y: 0
+        width: 38
+        height: 19
+      spriteId: 26918e418b5de7949896a4b34b643c85
     linkedCells: []
     tileCells: []
     tileSetIndex: 0
@@ -206,4 +241,4 @@ ScriptedImporter:
   secondarySpriteTextures: []
   spritePackingTag: 
   canvasSize: {x: 128, y: 64}
-  previousTextureSize: {x: 64, y: 32}
+  previousTextureSize: {x: 64, y: 64}

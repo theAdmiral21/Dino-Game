@@ -34,6 +34,7 @@ namespace Enemy.Unity.Effects
         private static readonly int DeadTrigger = Animator.StringToHash("DeadTrigger");
         private static readonly int LungeTrigger = Animator.StringToHash("LungeTrigger");
         private static readonly int isGroundedHash = Animator.StringToHash("IsGrounded");
+        private static readonly int HurtTrigger = Animator.StringToHash("HurtTrigger");
 
         private HashSet<int> _availableParams;
 
@@ -61,6 +62,7 @@ namespace Enemy.Unity.Effects
         private void OnDestroy()
         {
             _healthComponent.OnDeath -= HandleDeath;
+            _healthComponent.OnDamaged -= HandleHurt;
             base.OnDestroy();
         }
 
@@ -91,11 +93,18 @@ namespace Enemy.Unity.Effects
         {
             Debug.Log($"Subbing to death event");
             _healthComponent.OnDeath += HandleDeath;
+            _healthComponent.OnDamaged += HandleHurt;
         }
         private void HandleDeath()
         {
             Debug.Log($"Handling death event");
             ApplyEffect(new DeathEffect());
+        }
+
+        private void HandleHurt()
+        {
+            Debug.Log($"Handling hurt event");
+            ApplyEffect(new HurtEffect());
         }
         public void ApplyEffect(IEffectResult effect)
         {
@@ -134,6 +143,13 @@ namespace Enemy.Unity.Effects
                         // Debug.Log("Animating landing");
                         // SetBoolSafe(IsLunging, false);
                         _animator.ResetTrigger(LungeTrigger);
+                        break;
+                    }
+                case HurtEffect hurt:
+                    {
+                        // Debug.Log("Animating landing");
+                        // SetBoolSafe(IsLunging, false);
+                        SetTriggerSafe(HurtTrigger);
                         break;
                     }
             }

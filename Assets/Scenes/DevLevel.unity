@@ -559,6 +559,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _priority: 0
+  _packManagerTransform: {fileID: 317080528}
+  _packManagerMono:
+    _monoScript: {fileID: 317080527}
   _npcSpawnRegistryMono:
     _monoScript: {fileID: 196149413}
 --- !u!1 &236589747
@@ -8742,9 +8745,17 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5161551725574931073, guid: bbb0bfd250f06fe4b80725695ddc694f, type: 3}
+      propertyPath: _priority
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5161551725574931073, guid: bbb0bfd250f06fe4b80725695ddc694f, type: 3}
       propertyPath: _packDataProviderMono._monoScript
       value: 
       objectReference: {fileID: 317080527}
+    - target: {fileID: 6036390399141617228, guid: bbb0bfd250f06fe4b80725695ddc694f, type: 3}
+      propertyPath: _priority
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 6757668930858048360, guid: bbb0bfd250f06fe4b80725695ddc694f, type: 3}
       propertyPath: m_LocalPosition.x
       value: -42.9
