@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b251a034275cfb04283a180cd9d998bf, type: 3}
   m_Name: PelletStats
   m_EditorClassIdentifier: 
-  Damage: 80
+  Damage: 16
   KnockBack: 45
   HitStun: 0
   HurtType: 0
