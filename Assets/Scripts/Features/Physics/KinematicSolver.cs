@@ -32,6 +32,8 @@ namespace Physics.Features.Movement
         private ICalcAction _calcDoggoDashUpdate;
         private ICalcAction _calcFriction;
         private ICalcAction _calcLunge;
+        private ICalcAction _calcClimb;
+        private ICalcAction _calcClimbStop;
         public KinematicSolver()
         {
             // Set up your calculation actions
@@ -54,6 +56,8 @@ namespace Physics.Features.Movement
             _calcDoggoDashUpdate = new CalcDodgeUpdate();
             _calcFriction = new CalcFriction();
             _calcLunge = new CalcLunge();
+            _calcClimb = new CalcClimb();
+            _calcClimbStop = new CalcClimbStop();
         }
 
         public KinematicResult Solve(ActorFrameData frameData)
@@ -189,6 +193,18 @@ namespace Physics.Features.Movement
                         {
                             // Debug.Log($"Friction update case");
                             frameData.CurrentState = _calcLunge.Calculate(frameData.ActorStats, lunge, ref frameData.CurrentState);
+                            break;
+                        }
+                    case ClimbResult climb:
+                        {
+                            Debug.Log($"Calc Climb case");
+                            frameData.CurrentState = _calcClimb.Calculate(frameData.ActorStats, climb, ref frameData.CurrentState);
+                            break;
+                        }
+                    case ClimbStopResult climbStop:
+                        {
+                            Debug.Log($"Calc Climb case");
+                            frameData.CurrentState = _calcClimbStop.Calculate(frameData.ActorStats, climbStop, ref frameData.CurrentState);
                             break;
                         }
 

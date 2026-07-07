@@ -6,6 +6,8 @@ using Primitives.Stats.DataStructures;
 using Primitives.Input;
 using Movement.Core.Rules;
 using Core.Movement.Inputs;
+using Primitives.Physics.Enums;
+using System;
 
 namespace Movement.Core.State.DataStructures
 {
@@ -23,7 +25,8 @@ namespace Movement.Core.State.DataStructures
                                     IDodgeState,
                                     IInvincibleState,
                                     ICrouchState,
-                                    IAimingState
+                                    IAimingState,
+                                    IClimbState
     {
         public float RemainingJumps => _remainingJumps;
         private float _remainingJumps;
@@ -121,22 +124,6 @@ namespace Movement.Core.State.DataStructures
 
         public bool WallJumpBuffered => _wallJumpCounter > 0;
 
-        // Zoomies
-        public bool IsZooming { get; private set; }
-        public float ZoomyAmount { get; private set; }
-        public float MinimumRequiredZoom { get; private set; }
-        public float ZoomLimit { get; private set; }
-
-        // // Dashing
-        // public bool IsDashing => DashCounter > 0;
-        // public int DashAmount { get; private set; }
-        // public float DashTime { get; private set; }
-        // public float DashCounter { get; private set; }
-        // public InputDirection DashDirection { get; private set; }
-        // private int _totalDashes;
-
-        // Debug movement type switch
-        public bool DashMode { get; private set; }
 
         // Dodging
         public bool IsDodging => DodgeCounter > 0;
@@ -151,6 +138,12 @@ namespace Movement.Core.State.DataStructures
         public bool IsAiming { get; private set; }
 
         public bool IsLocked { get; private set; }
+
+        public bool IsClimbing { get; private set; }
+
+        public ClimbObject ClimbingSurface { get; private set; }
+
+        public bool WasClimbingLastFrame { get; private set; }
 
         private int _totalDodges;
 
@@ -205,8 +198,7 @@ namespace Movement.Core.State.DataStructures
         {
             // Update dt
             _dt = dt;
-            // Set the direction the player is facing
-            // SetDirection(inputValues, physicsContext);
+
             // Reset the jumps
             ResetJumps(physicsContext);
             // Reset the dash
@@ -225,17 +217,15 @@ namespace Movement.Core.State.DataStructures
 
             StartIFrameTimer();
 
-            // StartQuickStepCoolDown();
-
-            // StartLongJumpTimer();
-
-            // UpdateLongJumpState();
-
             _stunnedLastFrame = IsStunned;
-            // _quickSteppingLastFrame = QuickStepActive;
 
             UpdateCrouchState(inputValues);
 
+            UpdateClimbingState(physicsContext);
+
+            SetClimbingLastFrame();
+
+            Debug.Log($"IsClimbing: {IsClimbing}");
         }
 
         public void StartBlockXTimer()
@@ -395,18 +385,6 @@ namespace Movement.Core.State.DataStructures
             {
                 _wallJumpCounter -= Dt;
             }
-            if (IsZooming)
-            {
-                if (ZoomyAmount > 0)
-                {
-                    ZoomyAmount -= Dt;
-                }
-                else
-                {
-                    IsZooming = false;
-                    ZoomyAmount = 0;
-                }
-            }
             if (DodgeCounter > 0)
             {
                 DodgeCounter -= Dt;
@@ -475,21 +453,6 @@ namespace Movement.Core.State.DataStructures
             _wallJumpCounter = 0;
         }
 
-        public void AddZoomies(float zoomAmount)
-        {
-            // I should put some sort of limit on this.. right?
-            ZoomyAmount += zoomAmount;
-
-            if (ZoomyAmount > ZoomLimit)
-            {
-                ZoomyAmount = ZoomLimit;
-            }
-        }
-
-        public void StartZoomiesTimer()
-        {
-            IsZooming = true;
-        }
 
         public void DecrementDodge()
         {
@@ -541,5 +504,37 @@ namespace Movement.Core.State.DataStructures
             IsAiming = val;
         }
 
+        public void SetClimbing(bool val)
+        {
+            IsClimbing = val;
+        }
+
+        public void SetClimbingSurface(ClimbType climbingSurface)
+        {
+            if (climbingSurface == ClimbType.StairsTop || climbingSurface == ClimbType.StairsBottom)
+            {
+                ClimbingSurface = ClimbObject.Stairs;
+            }
+            else if (climbingSurface == ClimbType.LadderTop || climbingSurface == ClimbType.LadderBottom)
+            {
+                ClimbingSurface = ClimbObject.Ladder;
+            }
+            else
+            {
+                ClimbingSurface = ClimbObject.None;
+            }
+        }
+        public void UpdateClimbingState(PhysicsContext physicsContext)
+        {
+            if (IsClimbing && (physicsContext.IsGrounded || physicsContext.IsOnPlatform))
+            {
+                SetClimbing(false);
+            }
+        }
+
+        private void SetClimbingLastFrame()
+        {
+            WasClimbingLastFrame = IsClimbing;
+        }
     }
 }

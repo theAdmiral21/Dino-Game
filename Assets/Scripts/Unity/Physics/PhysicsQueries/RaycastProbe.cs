@@ -37,7 +37,7 @@ namespace Physics.Unity.Physics
             {
                 Vector2 origin = rayConfig.Origins.BottomLeft + (rayConfig.RaySpacingX * i);
                 Vector2 dir = Vector2.down;
-                RaycastHit2D hits = Physics2D.Raycast(origin, dir, dist, _collisionMask);
+                RaycastHit2D hits = Physics2D.Raycast(origin, dir, dist, rayConfig.CollisionLayer);
                 // Debugging
                 if (drawDebug)
                 {

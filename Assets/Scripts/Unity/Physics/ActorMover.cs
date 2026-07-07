@@ -1,4 +1,5 @@
 using System;
+using Codice.Client.BaseCommands.CheckIn;
 using Physics.Application.Abstractions;
 using Physics.Core.PhysicsActors;
 using Unity.Common.Unity;
@@ -35,6 +36,40 @@ namespace Physics.Unity
             {
                 throw new InvalidOperationException();
             }
+        }
+
+        public void SetXPosition(IPhysicsActor actor, float xPosition)
+        {
+            var actorTransform = actor.GetComponent<Transform>();
+            Vector2 position = new Vector2(xPosition, actorTransform.position.y);
+            // Check if the position is valid
+            if (_raycastController.Interface.CheckFit(position, ref actor.Brain.FrameData.RaycastConfig))
+            {
+                actorTransform.position = position;
+                // make sure everything stays in sync
+                // _raycastController.Interface.UpdateRaycastOrigins();
+            }
+            // else
+            // {
+            //     throw new InvalidOperationException();
+            // }
+        }
+
+        public void SetYPosition(IPhysicsActor actor, float yPosition)
+        {
+            var actorTransform = actor.GetComponent<Transform>();
+            Vector2 position = new Vector2(actorTransform.position.x, yPosition);
+            // Check if the position is valid
+            if (_raycastController.Interface.CheckFit(position, ref actor.Brain.FrameData.RaycastConfig))
+            {
+                actorTransform.position = position;
+                // make sure everything stays in sync
+                // _raycastController.Interface.UpdateRaycastOrigins();
+            }
+            // else
+            // {
+            //     throw new InvalidOperationException();
+            // }
         }
 
 

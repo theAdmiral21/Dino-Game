@@ -115,4 +115,14 @@ namespace Movement.Core.Stats
         public float LungeApexTime { get; }
         public float LungeDamage { get; }
     }
+
+    public interface IClimbStats : IGameStat
+    {
+        public float StairSpeed { get; }
+        public float StairAccel { get; }
+        public float StairBrake { get; }
+        public float LadderSpeed { get; }
+        public float LadderAccel { get; }
+        public float LadderBrake { get; }
+    }
 }

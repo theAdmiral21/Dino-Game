@@ -1,6 +1,7 @@
 using Core.Movement.Inputs;
 using Primitives.Input;
 using Primitives.Physics;
+using Primitives.Physics.Enums;
 
 namespace Movement.Core.Abstractions
 {
@@ -171,5 +172,15 @@ namespace Movement.Core.Abstractions
         public void DecrementLunge();
         public void ResetLunge(PhysicsContext physicsContext);
         // public void SetLungeDirection(InputDirection direction);
+    }
+
+    public interface IClimbState
+    {
+        public bool IsClimbing { get; }
+        public bool WasClimbingLastFrame { get; }
+        public ClimbObject ClimbingSurface { get; }
+        public void SetClimbing(bool val);
+        public void SetClimbingSurface(ClimbType climbingSurface);
+        public void UpdateClimbingState(PhysicsContext physicsContext);
     }
 }

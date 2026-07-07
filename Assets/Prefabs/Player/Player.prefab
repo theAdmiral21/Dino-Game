@@ -251,6 +251,8 @@ GameObject:
   - component: {fileID: 3572267405284978120}
   - component: {fileID: 2500969947375067547}
   - component: {fileID: 5497312129400346936}
+  - component: {fileID: 7724699803452001103}
+  - component: {fileID: 3702397233845520852}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -328,7 +330,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 2.1}
+  m_Size: {x: 0.7, y: 2.1}
   m_EdgeRadius: 0
 --- !u!114 &3087106105510506854
 MonoBehaviour:
@@ -393,6 +395,8 @@ MonoBehaviour:
   _actor: 200
   _name: Player
   _priority: 4
+  _getClimbableMono:
+    _monoScript: {fileID: 7724699803452001103}
   _bridgeMono:
     _monoScript: {fileID: 3761351669364046573}
   _debugState:
@@ -458,8 +462,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69e2882e97f0fb745baaaffb93b43b83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerInfo:
-    _monoScript: {fileID: 0}
 --- !u!114 &6493847823426899023
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -520,6 +522,37 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _priority: 0
+--- !u!114 &7724699803452001103
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1497200054785741571}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d98402b7bfe17ca4d9128be83e5fb9ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _climbLayer:
+    serializedVersion: 2
+    m_Bits: 16384
+  _debug: 1
+--- !u!114 &3702397233845520852
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1497200054785741571}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a960a1fa6c8ef94f95be2f9875d65a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _priority: 0
+  _getClimbableMono:
+    _monoScript: {fileID: 7724699803452001103}
 --- !u!1 &1546334948991769612
 GameObject:
   m_ObjectHideFlags: 0
@@ -5912,11 +5945,11 @@ MonoBehaviour:
     _monoScript: {fileID: 3957615128236227869}
   _overrideControls:
     _monoScript: {fileID: 1014122250239838178}
+  _maxHealth: 10
   _knockBackMono:
     _monoScript: {fileID: 1431672147824395412}
   _stunMono:
     _monoScript: {fileID: 1431672147824395412}
-  _maxHealth: 10
   _priority: 1
 --- !u!1 &7119522534278711034
 GameObject:
@@ -6099,6 +6132,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: f2c85ddfedaecb24da7aae31a551b110, type: 2}
   - {fileID: 11400000, guid: af8084c29d940a642937458d9a65706b, type: 2}
   - {fileID: 11400000, guid: 969e3ae706a17344a861fa0a9df745bd, type: 2}
+  - {fileID: 11400000, guid: dbe406dc4a2b777488f0efa13f1fabbc, type: 2}
 --- !u!1 &8478692204791979029
 GameObject:
   m_ObjectHideFlags: 0

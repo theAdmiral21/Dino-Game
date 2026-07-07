@@ -45,6 +45,7 @@ namespace Physics.Application.Orchestrators
         // Cached Rule states
         private IJumpState _jumpState;
         private bool _hasJumpState;
+        private bool _wasClimbingLastFrame;
 
         public ActorBrain(IPhysicsActor actor,
                             IActorInput actorInput,
@@ -107,7 +108,6 @@ namespace Physics.Application.Orchestrators
             if (_hasJumpState) _jumpState = jumpState;
 
         }
-
 
         public List<IActionResult> Think(ActorActionContext context)
         {
@@ -249,6 +249,7 @@ namespace Physics.Application.Orchestrators
                 new AimDispatcher(),
                 new ReloadDispatcher(),
                 new LungeDispatcher(),
+                new ClimbDispatcher(),
         };
 
             return dispatchers;

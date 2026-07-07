@@ -1,6 +1,8 @@
+using Core.Environment.Interactions;
 using Core.Equipment;
 using Core.Movement.Abstractions;
 using Core.Movement.Inputs;
+using Core.Physics.PhysicsQueries;
 using Game.Core.Execution;
 using Movement.Core.Abstractions;
 using Movement.Core.Movement.DataStructures;
@@ -11,9 +13,11 @@ using Physics.Application.DataStructures;
 using Physics.Application.Orchestrators;
 using Physics.Core.DataStructures;
 using Primitives.Physics;
+using Primitives.Physics.Enums;
 using Unity.Common;
 using Unity.Common.Unity;
 using Unity.Infrastructure.Providers;
+using Unity.PlayerController.Interactions;
 using UnityEngine;
 
 namespace Physics.Unity.Actors
@@ -23,6 +27,9 @@ namespace Physics.Unity.Actors
                                 IKnockBackable,
                                 IActionRequestSink
     {
+        [SerializeField] private SerializedInterface<IGetClimbable> _getClimbableMono;
+        private IGetClimbable _getClimbable => _getClimbableMono.Interface;
+
         // [SerializeField] private SerializedInterface<IStatProvider> _statProviderMono;
         IStatCollection _stats;
 
@@ -38,6 +45,8 @@ namespace Physics.Unity.Actors
         private BodyType _bodyType = BodyType.Kinematic;
         // private IJumpContextBuilder _jumpContextBuilder;
         private IDirectionState _dirState;
+
+
 
         [Header("Debug")]
         [SerializeField] private KinematicResult _debugState;
@@ -61,28 +70,35 @@ namespace Physics.Unity.Actors
         {
             if (Brain == null) return;
 
-            // switch (newRequest)
-            // {
-            // case JumpRequest jump:
-            //     {
-            //         // Update the jump request with the jump context
-            //         jump.Context = _jumpContextBuilder.BuildJumpContext(
-            //             Body.RayConfig,
-            //             Brain.FrameData.CurrentState.Velocity,
-            //             Brain.FrameData.CurrentState.Gravity,
-            //             _dirState.Dir
-            //         );
-            //         // Debug.Log($"Adding new jump request. Normal: {jump.Context.HitNormal}Contact: {jump.Context.MadeContact}");
-            //         Brain.UpdateRequestList(jump);
-            //         return;
-            //     }
-            // default:
-            //     {
-            // Debug.Log($"Enqueuing {newRequest}");
-            Brain.UpdateRequestList(newRequest);
-            // return;
-            // }
-            // }
+            switch (newRequest)
+            {
+                case ClimbRequest climb:
+                    {
+                        // check if there is something to climb
+                        IClimbable climbable = _getClimbable.FindClimbable(Body.RayConfig);
+
+                        // If you didn't find anything send None
+                        if (climbable == null)
+                        {
+                            Brain.UpdateRequestList(climb);
+                            return;
+                        }
+
+                        // Update the climb type
+                        ClimbType climbType = climbable.GetClimbType(Body.RayConfig.Bounds.Center);
+                        // Update the action with the correct data
+                        climb = new ClimbRequest(climb.InputDir, climbType);
+
+                        Brain.UpdateRequestList(climb);
+                        return;
+                    }
+                default:
+                    {
+                        // Debug.Log($"Enqueuing {newRequest}");
+                        Brain.UpdateRequestList(newRequest);
+                        return;
+                    }
+            }
         }
 
         public override void Initialize(IGameContext context)

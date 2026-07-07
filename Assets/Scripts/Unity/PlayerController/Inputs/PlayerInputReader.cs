@@ -124,19 +124,11 @@ namespace PlayerController.Unity.Inputs
             Debug.Log($"Got x input");
             if (context.started)
             {
-                float tapDir = Mathf.Sign(context.ReadValue<Vector2>().x);
-                if (Mathf.Abs(tapDir) < 0.5f) return;
-                if (tapDir == _prevTap && (Time.time - _lastTapTime < DOUBLE_TAP_WINDOW))
-                {
-                    // Debug.Log($"Got quick step! {Time.frameCount}");
-                    // Debug.Log($" tapDir: {tapDir}; Prev tap: {_prevTap}; time: {Time.time}; _lastTapTime: {_lastTapTime}");
+                float climbDir = Mathf.Sign(context.ReadValue<Vector2>().y);
+                if (Mathf.Abs(climbDir) < 0.5f) return;
 
-                    // QuickStep?.Invoke(new QuickStepRequest(true, tapDir));
-                    _requestHandler.EnqueueActionRequest(new QuickStepRequest(true, tapDir));
-                }
-                // Get the tap time
-                _lastTapTime = Time.time;
-                _prevTap = tapDir;
+                // Evaluate if you can climb
+
             }
             else if (context.performed)
             {
@@ -166,10 +158,15 @@ namespace PlayerController.Unity.Inputs
 
         private void Update()
         {
-            if (MoveInput != Vector2.zero)
+            if (MoveInput.x != 0)
             {
                 // Run?.Invoke(new RunRequest(true, MoveInput));
                 _requestHandler.EnqueueActionRequest(new RunRequest(false, MoveInput));
+            }
+            if (MoveInput.y != 0)
+            {
+                // Run?.Invoke(new RunRequest(true, MoveInput));
+                _requestHandler.EnqueueActionRequest(new ClimbRequest(MoveInput));
             }
         }
         public void OnDodge(InputAction.CallbackContext context)

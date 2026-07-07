@@ -24,6 +24,7 @@ namespace Movement.Core.Movement
             // if (!ruleState.TryGet<IXInputState>(out var xInput)) return Denied();
             if (!ruleState.TryGet<IGravityState>(out var gravState)) return Denied();
             if (!ruleState.TryGet<IFallState>(out var fallState)) return Denied();
+            if (!ruleState.TryGet<IClimbState>(out var climbState)) return Denied();
 
             // Do not override gravity during a wall jump
             // if (xInput.XInputLocked) return Denied();
@@ -32,7 +33,7 @@ namespace Movement.Core.Movement
             // Debug.Log($"Not On Platform: {!facts.IsOnPlatform}");
             // Debug.Log($"Not Rising: {!facts.IsRising}");
             // Debug.Log($"Not WallSliding: {!facts.IsWallSliding}");
-            bool isAirborne = !facts.IsGrounded && !facts.IsOnPlatform && !facts.IsRising;
+            bool isAirborne = !facts.IsGrounded && !facts.IsOnPlatform && !climbState.IsClimbing;
 
             if (isAirborne)
             {
@@ -76,15 +77,15 @@ namespace Movement.Core.Movement
 
         }
 
-        private static bool PushingLeft(PhysicsContext facts, IActorInput inputs)
-        {
-            return facts.WallContactType == WallContact.Left && inputs.Move.x < -0.5f;
-        }
+        // private static bool PushingLeft(PhysicsContext facts, IActorInput inputs)
+        // {
+        //     return facts.WallContactType == WallContact.Left && inputs.Move.x < -0.5f;
+        // }
 
-        private static bool PushingRight(PhysicsContext facts, IActorInput inputs)
-        {
-            return facts.WallContactType == WallContact.Right && inputs.Move.x > 0.5f;
-        }
+        // private static bool PushingRight(PhysicsContext facts, IActorInput inputs)
+        // {
+        //     return facts.WallContactType == WallContact.Right && inputs.Move.x > 0.5f;
+        // }
 
         private static FallResult Approved(FallType type)
         {

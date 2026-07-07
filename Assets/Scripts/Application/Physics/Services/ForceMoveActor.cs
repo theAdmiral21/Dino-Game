@@ -17,5 +17,15 @@ namespace Physics.Application.Services
             _actorMover.SetPosition(target, destination);
         }
 
+        public void ForceMoveX(IPhysicsActor target, float xPosition)
+        {
+
+            _actorMover.SetXPosition(target, xPosition);
+        }
+
+        public void ForceMoveY(IPhysicsActor target, float yPosition)
+        {
+            _actorMover.SetXPosition(target, yPosition);
+        }
     }
 }

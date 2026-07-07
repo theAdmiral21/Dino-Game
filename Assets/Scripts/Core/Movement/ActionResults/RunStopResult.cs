@@ -12,7 +12,7 @@ namespace Movement.Core.Movement.DataStructures
         public ActionPhase Phase => _phase;
         private readonly ActionPhase _phase;
         public RunType RunType;
-        public Type ResultType => typeof(RunResult);
+        public Type ResultType => typeof(RunStopResult);
 
         public RunStopResult(bool approved, RunType runType, ActionPhase phase)
         {

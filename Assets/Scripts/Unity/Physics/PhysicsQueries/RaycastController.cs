@@ -239,6 +239,7 @@ namespace Physics.Unity.Movement
         /// <param name="center"></param>
         public bool CheckFit(Vector2 center, ref RaycastConfiguration rayConfig)
         {
+            Debug.Log($"Checking fit at: {center}");
             if (DrawRaycast)
             {
                 // Draw a line from your current center to the new center

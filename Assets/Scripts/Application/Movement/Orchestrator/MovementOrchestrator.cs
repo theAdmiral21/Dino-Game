@@ -52,6 +52,9 @@ namespace Movement.Application
             var frictionResult = FrictionRules.TryFriction(actionContext.Facts, actionContext.RuleState);
             _actionResults.Add(frictionResult);
 
+            var climbStopResult = ClimbStopRules.TryStopClimbStop(actionContext.InputValues, actionContext.Facts, actionContext.RuleState);
+            _actionResults.Add(climbStopResult);
+
 
             // // After evaluation set values for the previous frame 
             IGroundedState groundState = actionContext.RuleState as IGroundedState;

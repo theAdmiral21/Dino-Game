@@ -30,10 +30,13 @@ namespace Movement.Core.Movement
             // Debug.Log($"Passed direction check");
             if (!ruleState.TryGet<ILandingState>(out var landingState)) return Denied();
             // Debug.Log($"Passed landing check");
+            if (!ruleState.TryGet<IClimbState>(out var climbState)) return Denied();
+            // Debug.Log($"Passed landing check");
 
 
             // Basic checks
-            if (!request.Requested || disabledState.IsDisabled || stunState.IsStunned) return Denied();
+            if (!request.Requested || disabledState.IsDisabled || stunState.IsStunned || climbState.IsClimbing) return Denied();
+
             // If the player is wall jumping, block x input
             if (xInputState.XInputLocked) return Denied();
             // Debug.Log($"[Run rules] inputs: {inputs.Move}");

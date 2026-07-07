@@ -5,13 +5,15 @@ using Movement.Core.Abstractions;
 using Movement.Core.Stats;
 using Primitives.Input;
 using Primitives.Physics;
+using Primitives.Physics.Enums;
 using Primitives.Stats.DataStructures;
 using UnityEngine;
 
 namespace NPC.Core.Rules
 {
     public class RaptorRules : EnemyRules,
-                               ILungeState
+                               ILungeState,
+                               IClimbState
     {
         // public bool IsLunging => LungeCounter > 0;
 
@@ -23,6 +25,12 @@ namespace NPC.Core.Rules
         public float LungeCoolDownTime { get; private set; }
 
         public float LungeCoolDownCounter { get; private set; }
+
+        public bool IsClimbing => false;
+
+        public ClimbObject ClimbingSurface => ClimbObject.None;
+
+        public bool WasClimbingLastFrame => false;
 
         public RaptorRules(IStatCollection stats)
         {
@@ -82,5 +90,17 @@ namespace NPC.Core.Rules
             }
         }
 
+        public void SetClimbing(bool val)
+        {
+
+        }
+
+        public void SetClimbingSurface(ClimbType climbingSurface)
+        {
+        }
+
+        public void UpdateClimbingState(PhysicsContext physicsContext)
+        {
+        }
     }
 }
