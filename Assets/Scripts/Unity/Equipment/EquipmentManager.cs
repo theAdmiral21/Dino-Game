@@ -145,6 +145,7 @@ namespace Unity.Equipment
         }
         public void ToggleFlashLight()
         {
+            if (!_allowFlashLight) return;
             _flashLight.ToggleFlashlight();
         }
     }
