@@ -83,7 +83,7 @@ namespace Game.Unity
 
             _physicsManager = GetComponentInChildren<PhysicsManager>();
 
-            Debug.Log($"INSTANTIATED GameSystemsManager {GetInstanceID()}");
+            Debug.Log($"INSTANTIATED GameSystemsManager {GetEntityId()}");
         }
 
         private void BuildGameContext()
@@ -169,7 +169,7 @@ namespace Game.Unity
 
         private void OnDestroy()
         {
-            Debug.Log($"DESTROYED GameSystemsManager {GetInstanceID()}");
+            Debug.Log($"DESTROYED GameSystemsManager {GetEntityId()}");
             if (Instance == this)
             {
                 _bootStrapper.OnReady -= StartScene;

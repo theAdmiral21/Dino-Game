@@ -8,7 +8,7 @@ namespace Infrastructure.Unity
     public class TransitionRegistry : MonoBehaviour, IScreenTransitionRegistry
     {
         [Header("Debug")]
-        [SerializeField]
+
         public IReadOnlyCollection<IScreenTransition> Transitions => _transitions.Entities;
         private Registry<IScreenTransition> _transitions = new();
 

@@ -19,13 +19,13 @@ namespace Unity.NPC
             }
             Instance = this;
             DontDestroyOnLoad(gameObject);
-            Debug.Log($"INSTANTIATED NpcManager {GetInstanceID()}");
+            Debug.Log($"INSTANTIATED NpcManager {GetEntityId()}");
 
 
         }
         private void OnDestroy()
         {
-            Debug.Log($"DESTROYED NpcManager {GetInstanceID()}");
+            Debug.Log($"DESTROYED NpcManager {GetEntityId()}");
             if (Instance == this)
             {
                 Instance = null;

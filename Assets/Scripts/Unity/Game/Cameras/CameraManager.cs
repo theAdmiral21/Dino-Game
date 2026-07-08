@@ -27,12 +27,12 @@ namespace Game.Unity.Cameras
             Instance = this;
 
             DontDestroyOnLoad(gameObject);
-            Debug.Log($"INSTANTIATED CameraManager {GetInstanceID()}");
+            Debug.Log($"INSTANTIATED CameraManager {GetEntityId()}");
         }
 
         private void OnDestroy()
         {
-            Debug.Log($"DESTROYED CameraManager {GetInstanceID()}");
+            Debug.Log($"DESTROYED CameraManager {GetEntityId()}");
             if (Instance == this)
             {
                 Instance = null;

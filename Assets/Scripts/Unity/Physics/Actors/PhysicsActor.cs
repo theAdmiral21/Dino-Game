@@ -165,7 +165,7 @@ namespace Physics.Unity.Actors
         public override void EnqueueActionRequest(IActionRequest newRequest)
         {
 
-            // Debug.Log($"{Name} | InstanceID: {GetInstanceID()} | Brain null: {Brain == null}");
+            // Debug.Log($"{Name} | InstanceID: {GetEntityId()} | Brain null: {Brain == null}");
             if (Brain == null) return;
 
             // switch (newRequest)

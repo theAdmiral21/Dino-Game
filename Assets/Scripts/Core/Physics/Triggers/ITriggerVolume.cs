@@ -1,10 +1,11 @@
 using Physics.Core.Abstractions;
+using UnityEngine;
 
 namespace Core.Physics.Triggers
 {
     public interface ITriggerVolume
     {
-        int Id { get; }
+        EntityId Id { get; }
         IBoundsProvider BoundsProvider { get; }
     }
 }

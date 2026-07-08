@@ -19,7 +19,7 @@ namespace Gameplay.Common.Unity
         [SerializeField] protected bool _isSingleUse;
         [SerializeField] protected Collider2D _collider;
         [SerializeField] protected string _triggerTarget;
-        public int Id { get; protected set; }
+        public EntityId Id { get; protected set; }
         public IBoundsProvider BoundsProvider => _boundsProvider;
         protected IBoundsProvider _boundsProvider;
         private bool _fired = false;

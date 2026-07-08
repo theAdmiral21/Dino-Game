@@ -107,7 +107,7 @@ namespace Editor
                 if (temp == null) continue;
 
                 _packManagers.Add(temp);
-                _managerNames.Add($"Manager {manager.GetInstanceID()}");
+                _managerNames.Add($"Manager {manager.GetEntityId()}");
             }
         }
 
@@ -116,8 +116,8 @@ namespace Editor
             _packData = _selectedPack.Coordinator.Data;
             _packMembers.Clear();
             _memberNames.Clear();
-            List<int> keys = _packData.Members.Keys.ToList();
-            foreach (int key in keys)
+            List<EntityId> keys = _packData.Members.Keys.ToList();
+            foreach (EntityId key in keys)
             {
                 _packMembers.Add(_packData.Members[key]);
                 _memberNames.Add($"Member {_packData.Members[key].MemberId}");

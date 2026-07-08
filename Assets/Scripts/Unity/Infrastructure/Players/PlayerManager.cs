@@ -46,11 +46,11 @@ namespace Infrastructure.Unity.Players
             }
             Instance = this;
             DontDestroyOnLoad(gameObject);
-            Debug.Log($"INSTANTIATED PlayerManager {GetInstanceID()}");
+            Debug.Log($"INSTANTIATED PlayerManager {GetEntityId()}");
         }
         private void OnDestroy()
         {
-            Debug.Log($"DESTROYED PlayerManager {GetInstanceID()}");
+            Debug.Log($"DESTROYED PlayerManager {GetEntityId()}");
             if (Instance == this)
             {
                 Instance = null;

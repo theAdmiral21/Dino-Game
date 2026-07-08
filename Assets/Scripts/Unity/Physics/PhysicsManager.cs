@@ -72,12 +72,12 @@ namespace Physics.Unity.Physics
             _triggerDetection = new TriggerDetection(_physicsRegistry);
 
             DontDestroyOnLoad(gameObject);
-            Debug.Log($"INSTANTIATED PhysicsManager {GetInstanceID()}");
+            Debug.Log($"INSTANTIATED PhysicsManager {GetEntityId()}");
         }
 
         private void OnDestroy()
         {
-            Debug.Log($"DESTROYED PhysicsManager {GetInstanceID()}");
+            Debug.Log($"DESTROYED PhysicsManager {GetEntityId()}");
             if (Instance == this)
             {
                 Instance = null;

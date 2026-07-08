@@ -15,6 +15,6 @@ namespace Core.Ai.BlackBoard.DataStructures
         public Observation<HealthState> TargetHealth;
         public Observation<PlayerStatus> TargetStatus;
         public AlertLevel PackAlertLevel = AlertLevel.Unaware;
-        public Dictionary<int, IPackMember> Members = new();
+        public Dictionary<EntityId, IPackMember> Members = new();
     }
 }

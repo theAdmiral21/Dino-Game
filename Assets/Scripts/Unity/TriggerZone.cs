@@ -15,7 +15,7 @@ namespace Gameplay.Common.Unity
     {
         [SerializeField] protected bool IsOneShot;
 
-        public int Id => GetInstanceID();
+        public EntityId Id => GetEntityId();
 
         public Collider2D Collider { get; private set; }
 

@@ -14,7 +14,7 @@ namespace Unity.Ai.BlackBoard
 {
     public class PackMember : MonoBehaviour, IPackMember
     {
-        public int MemberId => GetInstanceID();
+        public EntityId MemberId => GetEntityId();
         public MemberStatus Status { get; private set; } = new();
 
         [SerializeField] private SerializedInterface<IHealthComponentProvider> _healthComponentMono;

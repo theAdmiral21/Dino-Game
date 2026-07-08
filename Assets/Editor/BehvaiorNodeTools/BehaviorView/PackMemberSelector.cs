@@ -28,7 +28,7 @@ namespace Editor.BehaviorNodeTools.BehaviorView
                 var temp = manager.gameObject.GetComponentInChildren<IPackManager>();
                 if (temp == null) continue;
                 _packManagers.Add(temp);
-                _managerNames.Add($"Manager {manager.GetInstanceID()}");
+                _managerNames.Add($"Manager {manager.GetEntityId()}");
             }
         }
 
@@ -43,7 +43,7 @@ namespace Editor.BehaviorNodeTools.BehaviorView
             var packData = SelectedPack.Coordinator.Data;
             _packMembers.Clear();
             _memberNames.Clear();
-            foreach (int key in packData.Members.Keys)
+            foreach (EntityId key in packData.Members.Keys)
             {
                 _packMembers.Add(packData.Members[key]);
                 _memberNames.Add($"Member {packData.Members[key].MemberId}");

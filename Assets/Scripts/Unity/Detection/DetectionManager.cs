@@ -24,14 +24,14 @@ namespace Unity.Detection.DetectionManager.cs
             Instance = this;
 
             DontDestroyOnLoad(gameObject);
-            Debug.Log($"INSTANTIATED DetectionManager {GetInstanceID()}");
+            Debug.Log($"INSTANTIATED DetectionManager {GetEntityId()}");
 
             ConfigManager();
         }
 
         private void OnDestroy()
         {
-            Debug.Log($"DESTROYED DetectionManager {GetInstanceID()}");
+            Debug.Log($"DESTROYED DetectionManager {GetEntityId()}");
             if (Instance == this)
             {
                 Instance = null;

@@ -23,12 +23,12 @@ namespace Game.Unity.Audio
             }
             Instance = this;
             DontDestroyOnLoad(gameObject);
-            Debug.Log($"INSTANTIATED AudioManager {GetInstanceID()}");
+            Debug.Log($"INSTANTIATED AudioManager {GetEntityId()}");
         }
 
         private void OnDestroy()
         {
-            Debug.Log($"DESTROYED AudioManager {GetInstanceID()}");
+            Debug.Log($"DESTROYED AudioManager {GetEntityId()}");
             if (Instance == this)
             {
                 Instance = null;
