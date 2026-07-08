@@ -17,6 +17,9 @@ namespace Unity.Equipment
         [SerializeField] private SerializedInterface<IEquipmentBridge> _equipmentBridgeMono;
         private IEquipmentBridge _equipmentBridge => _equipmentBridgeMono.Interface;
 
+        [SerializeField] private GameObject _flashLightObject;
+        private IFlashlight _flashLight;
+        private bool _allowFlashLight = false;
 
         public IEquipment ActiveEquipment { get; private set; }
         public IInventoryItem ActiveItem { get; private set; }
@@ -28,6 +31,14 @@ namespace Unity.Equipment
         [Header("Debug")]
         [SerializeField] private string _currentEquipment;
         [SerializeField] private string _currentItem;
+
+        private void Awake()
+        {
+            _flashLightObject.SetActive(true);
+            _flashLight = _flashLightObject.GetComponentInChildren<IFlashlight>();
+            Debug.Assert(_flashLight != null, $"Unable to set _flashlight");
+            _flashLightObject.SetActive(false);
+        }
 
         private void OnDestroy()
         {
@@ -125,6 +136,16 @@ namespace Unity.Equipment
             {
                 _currentItem = ActiveItem.ToString();
             }
+        }
+
+        public void AllowFlashLight()
+        {
+            _allowFlashLight = true;
+            _flashLightObject.SetActive(true);
+        }
+        public void ToggleFlashLight()
+        {
+            _flashLight.ToggleFlashlight();
         }
     }
 }

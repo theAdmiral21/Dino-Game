@@ -70,6 +70,11 @@ namespace Unity.Inventory
 
         public int StockItem(IItemProviderRequest provider)
         {
+            if (provider.Item == ItemType.Flashlight)
+            {
+                _equipmentManager.AllowFlashLight();
+                return 1; // this consume the pick up
+            }
             return InventorySystem.RestockItem(provider);
         }
     }

@@ -10,6 +10,8 @@ namespace Core.Equipment
         public void HandleEquipmentChanged(CurrentEquipmentChanged evt);
         public void HandleEquipmentChangeResult(SwitchEquipmentResult result);
         public void HandleEquipmentIndexResult(IndexEquipmentResult result);
+        public void AllowFlashLight();
+        public void ToggleFlashLight();
         public void Init(IEventBus inventoryEventBus, IInventorySystem inventorySystem);
     }
 }

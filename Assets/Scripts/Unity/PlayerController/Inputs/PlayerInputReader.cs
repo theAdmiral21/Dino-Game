@@ -325,7 +325,8 @@ namespace PlayerController.Unity.Inputs
 
         public void OnToggleFlashlight(InputAction.CallbackContext context)
         {
-            throw new NotImplementedException();
+            if (context.started)
+                _requestHandler.EnqueueActionRequest(new ToggleFlashLightRequest());
         }
 
         public void OnSprint(InputAction.CallbackContext context) { }

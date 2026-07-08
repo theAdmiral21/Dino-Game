@@ -89,6 +89,11 @@ namespace Unity.Equipment
                         _equipmentManager.HandleEquipmentIndexResult(indexEquipment);
                         break;
                     }
+                case ToggleFlashLightResult toggleFlashLight:
+                    {
+                        _equipmentManager.ToggleFlashLight();
+                        break;
+                    }
             }
         }
 

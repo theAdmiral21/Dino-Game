@@ -253,6 +253,7 @@ namespace Physics.Application.Orchestrators
                 new InteractDispatcher(),
                 new SwitchEquipmentDispatcher(),
                 new IndexEquipmentDispatcher(),
+                new ToggleFlashLightDispatcher(),
         };
 
             return dispatchers;
