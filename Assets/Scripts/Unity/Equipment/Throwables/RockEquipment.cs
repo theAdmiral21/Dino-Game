@@ -1,11 +1,13 @@
 using System;
 using System.Collections;
+using System.Linq;
 using Application.Inventory;
 using Core.Equipment;
 using Game.Core.Execution;
 using Movement.Core.Movement.DataStructures;
 using Physics.Core.PhysicsActors;
 using Primitives.Items;
+using Unity.Game.GameLoop;
 using UnityEngine;
 
 namespace Unity.Equipment
@@ -80,12 +82,13 @@ namespace Unity.Equipment
                 // hmm I have to initialize this entire thing before doing anything with it..
                 var intializables = rockObject.GetComponentsInChildren<IInitializable<IGameContext>>();
 
-                foreach (var init in intializables)
-                {
-                    init.Initialize(_gameContext);
+                InitFactory.InitializeObject(_gameContext, intializables.ToList());
+                // foreach (var init in intializables)
+                // {
+                //     init.Initialize(_gameContext);
 
-                    init.PostInitialize(_gameContext);
-                }
+                //     init.PostInitialize(_gameContext);
+                // }
                 rockObject.SetActive(false);
 
                 rockObject.transform.position = transform.position;

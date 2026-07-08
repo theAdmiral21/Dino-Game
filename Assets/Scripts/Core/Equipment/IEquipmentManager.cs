@@ -1,4 +1,5 @@
 using Core.Inventory;
+using Movement.Core.Movement.DataStructures;
 using Primitives.EventBus.Abstractions;
 
 namespace Core.Equipment
@@ -7,6 +8,7 @@ namespace Core.Equipment
     {
         public IEquipment ActiveEquipment { get; }
         public void HandleEquipmentChanged(CurrentEquipmentChanged evt);
+        public void HandleEquipmentChangeResult(SwitchEquipmentResult result);
         public void Init(IEventBus inventoryEventBus, IInventorySystem inventorySystem);
     }
 }

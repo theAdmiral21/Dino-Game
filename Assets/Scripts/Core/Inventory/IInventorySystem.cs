@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Core.Inventory.Requests;
+using Movement.Core.Movement.DataStructures;
 using Primitives.Items;
 
 namespace Core.Inventory
@@ -9,6 +10,6 @@ namespace Core.Inventory
         public Dictionary<ItemType, IInventoryItem> Items { get; }
         public IInventoryItem CurrentlyEquipped { get; }
         public int RestockItem(IItemProviderRequest provider);
-        // public bool TryEquip(ItemType item);
+        public void SwitchEquipment(SwitchEquipmentResult switchEquipment);
     }
 }

@@ -274,37 +274,44 @@ namespace PlayerController.Unity.Inputs
 
         public void OnEquipItem1(InputAction.CallbackContext context)
         {
-            throw new NotImplementedException();
+            if (context.started)
+                _requestHandler.EnqueueActionRequest(new SwitchEquipmentRequest(1));
         }
 
         public void OnEquipItem2(InputAction.CallbackContext context)
         {
-            throw new NotImplementedException();
+            if (context.started)
+                _requestHandler.EnqueueActionRequest(new SwitchEquipmentRequest(2));
         }
 
         public void OnEquipItem3(InputAction.CallbackContext context)
         {
-            throw new NotImplementedException();
+            if (context.started)
+                _requestHandler.EnqueueActionRequest(new SwitchEquipmentRequest(3));
         }
 
         public void OnEquipItem4(InputAction.CallbackContext context)
         {
-            throw new NotImplementedException();
+            if (context.started)
+                _requestHandler.EnqueueActionRequest(new SwitchEquipmentRequest(4));
         }
 
         public void OnEquipItem5(InputAction.CallbackContext context)
         {
-            throw new NotImplementedException();
+            if (context.started)
+                _requestHandler.EnqueueActionRequest(new SwitchEquipmentRequest(5));
         }
 
         public void OnEquipItem6(InputAction.CallbackContext context)
         {
-            throw new NotImplementedException();
+            if (context.started)
+                _requestHandler.EnqueueActionRequest(new SwitchEquipmentRequest(6));
         }
 
         public void OnEquipItem7(InputAction.CallbackContext context)
         {
-            throw new NotImplementedException();
+            if (context.started)
+                _requestHandler.EnqueueActionRequest(new SwitchEquipmentRequest(7));
         }
 
         public void OnToggleFlashlight(InputAction.CallbackContext context)

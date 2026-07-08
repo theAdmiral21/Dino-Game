@@ -1,4 +1,5 @@
 using Core.Equipment;
+using Core.Inventory;
 using Game.Core.Execution;
 using Infrastructure.Unity.Registries;
 using Movement.Core.Movement.DataStructures;
@@ -76,6 +77,11 @@ namespace Unity.Equipment
                 case ReloadResult reload:
                     {
                         Equipped.RequestReload();
+                        break;
+                    }
+                case SwitchEquipmentResult switchEquipment:
+                    {
+                        _equipmentManager.HandleEquipmentChangeResult(switchEquipment);
                         break;
                     }
             }

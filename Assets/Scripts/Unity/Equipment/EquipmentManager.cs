@@ -1,5 +1,6 @@
 using Core.Equipment;
 using Core.Inventory;
+using Movement.Core.Movement.DataStructures;
 using Primitives.EventBus.Abstractions;
 using Unity.Common.Unity;
 using UnityEngine;
@@ -39,6 +40,12 @@ namespace Unity.Equipment
             TearDownActiveEquipment();
 
             SetUpActiveEquipment(evt);
+        }
+
+        public void HandleEquipmentChangeResult(SwitchEquipmentResult switchEquipment)
+        {
+            Debug.Log($"Got switch equipment result");
+            _inventorySystem.SwitchEquipment(switchEquipment);
         }
 
         private void SetUpActiveEquipment(CurrentEquipmentChanged evt)

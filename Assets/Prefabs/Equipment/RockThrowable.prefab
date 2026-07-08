@@ -49,6 +49,52 @@ MonoBehaviour:
     m_Bits: 1024
   _actorMono:
     _monoScript: {fileID: 3919553722864905571}
+--- !u!1 &3284506358383180806
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5111593437657400986}
+  - component: {fileID: 6920680168449685624}
+  m_Layer: 8
+  m_Name: Rules
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5111593437657400986
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3284506358383180806}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2001700500064977103}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6920680168449685624
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3284506358383180806}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8785c96c472e6a24eab4ff89fbe550e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _ruleSet: 0
+  _priority: 0
 --- !u!1 &5634785128749165127
 GameObject:
   m_ObjectHideFlags: 0
@@ -59,11 +105,12 @@ GameObject:
   m_Component:
   - component: {fileID: 2001700500064977103}
   - component: {fileID: 993983059776628991}
+  - component: {fileID: 1717158053324191392}
   - component: {fileID: 3919553722864905571}
   - component: {fileID: 8521548074278025972}
-  - component: {fileID: 1283729961950611957}
   - component: {fileID: 3693287123727940436}
   - component: {fileID: 3197446712193750044}
+  - component: {fileID: 5974566888357228924}
   m_Layer: 8
   m_Name: RockThrowable
   m_TagString: Untagged
@@ -86,6 +133,7 @@ Transform:
   m_Children:
   - {fileID: 2529513269281292997}
   - {fileID: 4693849470110408296}
+  - {fileID: 5111593437657400986}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &993983059776628991
@@ -134,6 +182,29 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.3, y: 0.3}
   m_EdgeRadius: 0
+--- !u!114 &1717158053324191392
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5634785128749165127}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99c651fae4e97fd42bc199a940c15ddd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity::Unity.Infrastructure.Providers.RockDataProvider
+  _actorInputMono:
+    _monoScript: {fileID: 3693287123727940436}
+  _statSheetMono:
+    _monoScript: {fileID: 8521548074278025972}
+  _ruleStateMono:
+    _monoScript: {fileID: 6920680168449685624}
+  _actorMono:
+    _monoScript: {fileID: 3919553722864905571}
+  _actorEventBusMono:
+    _monoScript: {fileID: 5974566888357228924}
+  _priority: 1
 --- !u!114 &3919553722864905571
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -146,15 +217,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2472e14bb2ebb8645bdd660b362cd0ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _actor: 100
+  _actor: 200
   _name: Rock
+  _priority: 2
   _bodyType: 1
-  _statProviderMono:
-    _monoScript: {fileID: 1283729961950611957}
-  _ruleStateMono:
-    _monoScript: {fileID: 1283729961950611957}
-  _actorInputMono:
-    _monoScript: {fileID: 3693287123727940436}
   _debugState:
     CurrentPosition: {x: 0, y: 0}
     Velocity: {x: 0, y: 0}
@@ -201,21 +267,6 @@ MonoBehaviour:
   _stats:
   - {fileID: 11400000, guid: 53e8a8686ddfc3544a7a7db6d298c8c3, type: 2}
   - {fileID: 11400000, guid: 62d2e7fa7e7a9554e94bd66dcc53c68f, type: 2}
---- !u!114 &1283729961950611957
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5634785128749165127}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8785c96c472e6a24eab4ff89fbe550e7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _ruleSet: 0
-  _statSheetMono:
-    _monoScript: {fileID: 8521548074278025972}
 --- !u!114 &3693287123727940436
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -242,6 +293,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _soundEmitterMono:
     _monoScript: {fileID: 8825284988847685691}
+--- !u!114 &5974566888357228924
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5634785128749165127}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b333acc2d4540344ab3ef75b4441555, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity::Unity.Common.ActorEventBusProvider
+  _priority: 0
 --- !u!1 &8366875121284857883
 GameObject:
   m_ObjectHideFlags: 0
@@ -276,6 +340,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &163057790091618425
 SpriteRenderer:
+  serializedVersion: 3
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -294,6 +359,8 @@ SpriteRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -315,9 +382,11 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_Sprite: {fileID: 655555847616907990, guid: 1b34275589a2e6040a0aa0888db4bac7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -327,5 +396,5 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+  m_BlendShapeWeights: []

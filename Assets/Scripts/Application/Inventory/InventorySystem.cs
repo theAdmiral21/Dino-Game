@@ -4,6 +4,7 @@ using Core.Inventory;
 using Core.Inventory.Requests;
 using Primitives.Items;
 using Primitives.EventBus.Abstractions;
+using Movement.Core.Movement.DataStructures;
 
 namespace Application.Inventory
 {
@@ -11,7 +12,19 @@ namespace Application.Inventory
     {
         public Dictionary<ItemType, IInventoryItem> Items => _items;
         private Dictionary<ItemType, IInventoryItem> _items = new();
+
         private readonly Dictionary<ItemType, int> _itemLimits = new();
+        private readonly Dictionary<int, ItemType> _indexMap = new()
+        {
+          {1, ItemType.Rock},
+          {2, ItemType.Taser},
+          {3,ItemType.Shotgun},
+          {4,ItemType.SmokeGrenade},
+          {5,ItemType.Flares},
+          {6,ItemType.NerveGas},
+          {7,ItemType.RocketLauncher}
+        };
+
         public IInventoryItem CurrentlyEquipped => _currentItem;
         private IInventoryItem _currentItem;
 
@@ -37,13 +50,24 @@ namespace Application.Inventory
             // If this is the first time collecting this item, emit an event
             if (!_items.ContainsKey(provider.Item))
             {
+                // Build the new item
                 IInventoryItem newItem = BuildNewInventoryItem(provider.Item);
+                // Add the item to the inventory system
                 _items[provider.Item] = newItem;
-
-                _inventoryEventBus.Publish(new CurrentEquipmentChanged { NewItem = newItem });
+                // Attempt to equip the new item
+                TryEquip(provider.Item);
             }
             int deposited = _items[provider.Item].Deposit(provider.Quantity);
             return deposited;
+        }
+
+        public void SwitchEquipment(SwitchEquipmentResult switchEquipment)
+        {
+            // Try and equip the new item
+            ItemType item = _indexMap[switchEquipment.EquipmentNdx];
+            bool res = TryEquip(item);
+
+            if (!res) Debug.Log($"Indicate the failed equipment switch some how");
         }
 
         private IInventoryItem BuildNewInventoryItem(ItemType item)
@@ -62,34 +86,19 @@ namespace Application.Inventory
             }
             else
             {
-                // check the quantity of the item
-                // if (inventoryItem.Quantity > 0)
-                // {
-                // equip the item
-                // inventoryItem.EquipItem();
+                // Equip the item
                 _currentItem = inventoryItem;
-                return true;
-                // }
-            }
-            // return false;
 
+                // Let everyone know you equipped a new item
+                _inventoryEventBus.Publish(new CurrentEquipmentChanged { NewItem = _items[item] });
+                return true;
+            }
         }
         private void HandleEquipmentChange(CurrentEquipmentChanged evt)
         {
             Debug.Log($"Got equipment changed event");
-            bool res = TryEquip(evt.NewItem.Item);
-            Debug.Log($"Equip result: {res}");
+            // bool res = TryEquip(evt.NewItem.Item);
+            // Debug.Log($"Equip result: {res}");
         }
-
-        // private void EmitEquippedQuantityChanged(int newQuantity)
-        // {
-        //     Debug.Log($"Emitting equipped quantity changed with value {newQuantity}");
-        //     _inventoryEventBus.Publish(new EquipmentQuantityChanged
-        //     {
-        //         // InventoryItem = item,
-        //         CurrentQuantity = newQuantity
-        //     });
-        //     Debug.Log($"Emitted quantity changed event");
-        // }
     }
 }
