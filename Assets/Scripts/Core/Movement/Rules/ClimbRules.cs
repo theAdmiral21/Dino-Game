@@ -18,6 +18,9 @@ namespace Movement.Core.Rules
             if (!ruleState.TryGet<IStunState>(out var stunState)) return Denied();
             if (!ruleState.TryGet<IClimbState>(out var climbState)) return Denied();
 
+
+            if (disabledState.IsDisabled || stunState.IsStunned) return Denied();
+
             Debug.Log($"Requesting climbType: {request.Climb}");
             climbState.SetClimbingSurface(request.Climb);
             if (request.Climb != ClimbType.None)

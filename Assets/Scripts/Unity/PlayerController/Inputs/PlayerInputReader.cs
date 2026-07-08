@@ -7,6 +7,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using Primitives.Physics;
 using Core.Movement.Inputs;
+using PlayerController.Core.Movement.DataStructures;
 
 /*
 Optional actions to add later:
@@ -56,14 +57,14 @@ namespace PlayerController.Unity.Inputs
 
 
         // Event actions
-        public event Action<IActionRequest> JumpCancel;
-        public event Action<IActionRequest> Run;
-        public event Action<IActionRequest> RunStop;
-        public event Action<IActionRequest> QuickStep;
-        public event Action<IActionRequest> Teleport;
-        public event Action<IActionRequest> Bark;
-        public event Action<IActionRequest> Pause;
-        public event Action<IActionRequest> Scent;
+        // public event Action<IActionRequest> JumpCancel;
+        // public event Action<IActionRequest> Run;
+        // public event Action<IActionRequest> RunStop;
+        // public event Action<IActionRequest> QuickStep;
+        // public event Action<IActionRequest> Teleport;
+        // public event Action<IActionRequest> Bark;
+        // public event Action<IActionRequest> Pause;
+        // public event Action<IActionRequest> Scent;
 
         // Buffered events
         public event Action<IActionRequest> BufferJump;
@@ -197,20 +198,24 @@ namespace PlayerController.Unity.Inputs
                 _requestHandler.EnqueueActionRequest(new PauseRequest());
             }
         }
-
-        private Vector2 GetPosition()
+        public void OnInteract(InputAction.CallbackContext context)
         {
-            if (transform.parent == null)
+            if (context.started)
             {
-                return transform.position;
-            }
-            else
-            {
-                return transform.parent.position;
+                _requestHandler.EnqueueActionRequest(new InteractRequest());
             }
         }
-
-
+        // private Vector2 GetPosition()
+        // {
+        //     if (transform.parent == null)
+        //     {
+        //         return transform.position;
+        //     }
+        //     else
+        //     {
+        //         return transform.parent.position;
+        //     }
+        // }
 
         public void OnReload(InputAction.CallbackContext context)
         {

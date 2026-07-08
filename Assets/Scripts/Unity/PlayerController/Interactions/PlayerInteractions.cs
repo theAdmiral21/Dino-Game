@@ -15,9 +15,15 @@ namespace PlayerController.Unity.Interactions
 {
     public class PlayerInteractions : SelfRegister<IInitializable<IGameContext>>, IInteract, IInitializable<IGameContext>
     {
+        [Header("Interaction settings")]
         [SerializeField] bool _drawDebug;
         [SerializeField] private LayerMask _interactLayer;
         [SerializeField] private Vector2 _boxSize;
+
+        [Header("Required references")]
+        [SerializeField] private Transform _facingTransform;
+        [SerializeField] private Transform _rootTransform;
+        private Vector3 _facingScale;
         [SerializeField] private SerializedInterface<IActorEventBusProvider> _actorEventBusMono;
         private IActorEventBus _actorEventBus => _actorEventBusMono.Interface.ActorEventBus;
         [SerializeField] private SerializedInterface<IPlayerInfoProvider> _playerInfoMono;
@@ -40,6 +46,7 @@ namespace PlayerController.Unity.Interactions
             }
         }
         private InteractContext _cachedContext;
+
         [SerializeField] private int _priority = 0;
         public int Priority => _priority;
 
@@ -49,21 +56,31 @@ namespace PlayerController.Unity.Interactions
             _contactFilter = new ContactFilter2D();
             _contactFilter.SetLayerMask(_interactLayer);
             _contactFilter.useLayerMask = true;
+            _facingScale = _rootTransform.localScale;
         }
+        public void Initialize(IGameContext context)
+        {
+            _actorEventBus.OnActionApproved += HandleInteract;
+        }
+        public void PostInitialize(IGameContext context)
+        {
+            Debug.Assert(_actorEventBus != null, "Failed to set actor event bus");
+        }
+
         private void HandleInteract(IActionResult result)
         {
-            if (result is BarkResult) Interact();
+            if (result is InteractResult) Interact();
 
         }
         public void Interact()
         {
-            Debug.Log($"Attempting to interact");
+            // Debug.Log($"Attempting to interact");
             // FInd the closest interactable object
             IInteractable interactable = GetInteractables();
             // If we didn't find anything return
             if (interactable == null) return;
 
-            Debug.Log($"Got interactables");
+            // Debug.Log($"Got interactables");
 
             if (interactable.CanInteract())
             {
@@ -81,12 +98,13 @@ namespace PlayerController.Unity.Interactions
 
         private IInteractable GetInteractables()
         {
-            Debug.LogError($"This needs to take into account whatever direction the player is facing");
+            // Debug.LogError($"This needs to take into account whatever direction the player is facing");
             // reset the distance
             float dist = Mathf.Infinity;
 
             // Perform a rectangle cast in front of the player
             List<Collider2D> results = new();
+            UpdateFacing();
             int hits = Physics2D.OverlapBox(transform.position, _boxSize, 0f, _contactFilter, results);
 
             if (_drawDebug) DrawBox();
@@ -118,6 +136,12 @@ namespace PlayerController.Unity.Interactions
             return target;
         }
 
+        private void UpdateFacing()
+        {
+            _facingScale.x = Mathf.Sign(_facingTransform.localScale.x);
+            _rootTransform.localScale = _facingScale;
+        }
+
         private void DrawBox()
         {
             Vector2 center = transform.position;
@@ -138,15 +162,6 @@ namespace PlayerController.Unity.Interactions
         {
             // Figure out how far the hit is from the player
             return Vector2.Distance(hit.transform.position, _parentPosition);
-        }
-
-        public void Initialize(IGameContext context)
-        {
-            _actorEventBus.OnActionApproved += HandleInteract;
-        }
-        public void PostInitialize(IGameContext context)
-        {
-            Debug.Assert(_actorEventBus != null, "Failed to set actor event bus");
         }
     }
 }

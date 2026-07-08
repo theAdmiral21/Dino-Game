@@ -300,6 +300,15 @@ namespace PlayerController.Unity.Inputs
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Interact"",
+                    ""type"": ""Button"",
+                    ""id"": ""4e2cd744-3452-4283-933d-fd91db5414ec"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -482,7 +491,7 @@ namespace PlayerController.Unity.Inputs
                 {
                     ""name"": """",
                     ""id"": ""c2823b0a-4553-4c6c-bf0f-65d400000351"",
-                    ""path"": ""<Keyboard>/space"",
+                    ""path"": ""<Keyboard>/leftAlt"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard;Keyboard&Mouse"",
@@ -493,7 +502,7 @@ namespace PlayerController.Unity.Inputs
                 {
                     ""name"": """",
                     ""id"": ""0d74cd20-4051-402c-b1ad-d8f1c1575f40"",
-                    ""path"": ""<Keyboard>/space"",
+                    ""path"": ""<Keyboard>/leftAlt"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": "";Keyboard&Mouse"",
@@ -515,7 +524,7 @@ namespace PlayerController.Unity.Inputs
                 {
                     ""name"": """",
                     ""id"": ""845a17a1-0671-4a4a-900b-e9015ed0acb5"",
-                    ""path"": ""<Keyboard>/e"",
+                    ""path"": ""<Keyboard>/space"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": "";Keyboard&Mouse"",
@@ -883,6 +892,17 @@ namespace PlayerController.Unity.Inputs
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Aim"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""79358c66-38cd-4e88-b71c-a30800ab2b87"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""Interact"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -1700,6 +1720,7 @@ namespace PlayerController.Unity.Inputs
             m_InGame_EquipItem7 = m_InGame.FindAction("EquipItem7", throwIfNotFound: true);
             m_InGame_ToggleFlashlight = m_InGame.FindAction("ToggleFlashlight", throwIfNotFound: true);
             m_InGame_Aim = m_InGame.FindAction("Aim", throwIfNotFound: true);
+            m_InGame_Interact = m_InGame.FindAction("Interact", throwIfNotFound: true);
             // InCutScene
             m_InCutScene = asset.FindActionMap("InCutScene", throwIfNotFound: true);
             m_InCutScene_SkipCutScene = m_InCutScene.FindAction("SkipCutScene", throwIfNotFound: true);
@@ -1827,6 +1848,7 @@ namespace PlayerController.Unity.Inputs
         private readonly InputAction m_InGame_EquipItem7;
         private readonly InputAction m_InGame_ToggleFlashlight;
         private readonly InputAction m_InGame_Aim;
+        private readonly InputAction m_InGame_Interact;
         /// <summary>
         /// Provides access to input actions defined in input action map "InGame".
         /// </summary>
@@ -1931,6 +1953,10 @@ namespace PlayerController.Unity.Inputs
             /// </summary>
             public InputAction @Aim => m_Wrapper.m_InGame_Aim;
             /// <summary>
+            /// Provides access to the underlying input action "InGame/Interact".
+            /// </summary>
+            public InputAction @Interact => m_Wrapper.m_InGame_Interact;
+            /// <summary>
             /// Provides access to the underlying input action map instance.
             /// </summary>
             public InputActionMap Get() { return m_Wrapper.m_InGame; }
@@ -2025,6 +2051,9 @@ namespace PlayerController.Unity.Inputs
                 @Aim.started += instance.OnAim;
                 @Aim.performed += instance.OnAim;
                 @Aim.canceled += instance.OnAim;
+                @Interact.started += instance.OnInteract;
+                @Interact.performed += instance.OnInteract;
+                @Interact.canceled += instance.OnInteract;
             }
 
             /// <summary>
@@ -2105,6 +2134,9 @@ namespace PlayerController.Unity.Inputs
                 @Aim.started -= instance.OnAim;
                 @Aim.performed -= instance.OnAim;
                 @Aim.canceled -= instance.OnAim;
+                @Interact.started -= instance.OnInteract;
+                @Interact.performed -= instance.OnInteract;
+                @Interact.canceled -= instance.OnInteract;
             }
 
             /// <summary>
@@ -2804,6 +2836,13 @@ namespace PlayerController.Unity.Inputs
             /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
             /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
             void OnAim(InputAction.CallbackContext context);
+            /// <summary>
+            /// Method invoked when associated input action "Interact" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+            /// </summary>
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+            void OnInteract(InputAction.CallbackContext context);
         }
         /// <summary>
         /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "InCutScene" which allows adding and removing callbacks.

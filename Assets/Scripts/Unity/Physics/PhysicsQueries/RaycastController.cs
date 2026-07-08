@@ -68,18 +68,6 @@ namespace Physics.Unity.Movement
                     {
                         HitInfo = hit,
                     });
-
-                    // hit.collider.TryGetComponent(out IPhysicsActor actor);
-                    // hit.collider.TryGetComponent(out ISurfaceTag surface);
-                    // _horizontalHits.Add(new RayCollision
-                    // {
-                    //     CollisionPoint = hit.point,
-                    //     Normal = hit.normal,
-                    //     OtherActor = actor,
-                    //     Surface = surface.Tag,
-                    // });
-
-                    // Debug.Log($"Got vertical collision with {hit.collider.name}");
                 }
 
                 // Save this frame's result
@@ -104,7 +92,6 @@ namespace Physics.Unity.Movement
 
             // Check for corners
             int cornerIndex = _cornerResolver.CornerCheck(_verticalRaycasts);
-            // Debug.Log($"cornerIndex; {cornerIndex}; Vertical count: {_verticalRaycasts.Count}");
 
             Vector2 correction = Vector2.zero;
             if (cornerIndex != -1 && cornerIndex <= _verticalRaycasts.Count)
@@ -128,7 +115,6 @@ namespace Physics.Unity.Movement
                 RaycastHit2D hit = Physics2D.Raycast(origin, dir, castDist, rayConfig.CollisionLayer);
                 if (hit)
                 {
-
                     velocity.x = (hit.distance - rayConfig.SkinWidth) * dir.x;
                     _rayCastLengthX = hit.distance;
 
@@ -136,19 +122,6 @@ namespace Physics.Unity.Movement
                     {
                         HitInfo = hit,
                     });
-
-                    // hit.collider.TryGetComponent(out IPhysicsActor actor);
-                    // hit.collider.TryGetComponent(out ISurfaceTag surface);
-                    // _horizontalHits.Add(new RayCollision
-                    // {
-                    //     CollisionPoint = hit.point,
-                    //     Normal = hit.normal,
-                    //     OtherActor = actor,
-                    //     Surface = surface.Tag,
-                    // });
-
-                    // Debug.Log($"Got horizontal collision with {hit.collider.name}");
-
                 }
 
                 // Save this frame's result

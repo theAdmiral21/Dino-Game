@@ -5,17 +5,17 @@ using Movement.Core.Movement.Abstractions;
 
 namespace PlayerController.Core.Movement.Abstractions
 {
-    public struct BarkResult : IActionResult
+    public struct InteractResult : IActionResult
     {
         public bool Approved => _approved;
         private bool _approved;
 
-        public Type ResultType => typeof(BarkResult);
+        public Type ResultType => typeof(InteractResult);
 
         public ActionPhase Phase => _phase;
         private readonly ActionPhase _phase;
 
-        public BarkResult(bool approved, ActionPhase phase)
+        public InteractResult(bool approved, ActionPhase phase)
         {
             _approved = approved;
             _phase = phase;

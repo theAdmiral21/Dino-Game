@@ -85,7 +85,7 @@ namespace NPC.Core.Rules
         {
             if (LungeCoolDownCounter > 0)
             {
-                Debug.Log($"CoolDown counter: {LungeCoolDownCounter}");
+                // Debug.Log($"CoolDown counter: {LungeCoolDownCounter}");
                 LungeCoolDownCounter -= Dt;
             }
         }

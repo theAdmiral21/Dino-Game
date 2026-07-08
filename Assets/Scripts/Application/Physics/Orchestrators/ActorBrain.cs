@@ -250,6 +250,7 @@ namespace Physics.Application.Orchestrators
                 new ReloadDispatcher(),
                 new LungeDispatcher(),
                 new ClimbDispatcher(),
+                new InteractDispatcher(),
         };
 
             return dispatchers;
