@@ -8,6 +8,7 @@ using UnityEngine.InputSystem;
 using Primitives.Physics;
 using Core.Movement.Inputs;
 using PlayerController.Core.Movement.DataStructures;
+using System.Net.Mime;
 
 /*
 Optional actions to add later:
@@ -259,12 +260,20 @@ namespace PlayerController.Unity.Inputs
 
         public void OnSelectNextItem(InputAction.CallbackContext context)
         {
-            throw new NotImplementedException();
+            if (context.started)
+            {
+                Debug.Log($"Enqueueing index next request");
+                _requestHandler.EnqueueActionRequest(new IndexEquipmentRequest(1));
+            }
         }
 
         public void OnSelectPrevItem(InputAction.CallbackContext context)
         {
-            throw new NotImplementedException();
+            if (context.started)
+            {
+                Debug.Log($"Enqueueing index previous request");
+                _requestHandler.EnqueueActionRequest(new IndexEquipmentRequest(-1));
+            }
         }
 
         public void OnQuickThrowEquip(InputAction.CallbackContext context)

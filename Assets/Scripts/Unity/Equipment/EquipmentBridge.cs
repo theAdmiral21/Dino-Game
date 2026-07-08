@@ -84,6 +84,11 @@ namespace Unity.Equipment
                         _equipmentManager.HandleEquipmentChangeResult(switchEquipment);
                         break;
                     }
+                case IndexEquipmentResult indexEquipment:
+                    {
+                        _equipmentManager.HandleEquipmentIndexResult(indexEquipment);
+                        break;
+                    }
             }
         }
 

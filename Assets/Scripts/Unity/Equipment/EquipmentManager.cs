@@ -48,6 +48,12 @@ namespace Unity.Equipment
             _inventorySystem.SwitchEquipment(switchEquipment);
         }
 
+        public void HandleEquipmentIndexResult(IndexEquipmentResult indexEquipment)
+        {
+            Debug.Log($"Got switch equipment result");
+            _inventorySystem.IndexEquipment(indexEquipment);
+        }
+
         private void SetUpActiveEquipment(CurrentEquipmentChanged evt)
         {
             Debug.Log($"Setting up new equipment: {evt.NewItem.Item}");

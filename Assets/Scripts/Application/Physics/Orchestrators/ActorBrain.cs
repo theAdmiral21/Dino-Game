@@ -252,6 +252,7 @@ namespace Physics.Application.Orchestrators
                 new ClimbDispatcher(),
                 new InteractDispatcher(),
                 new SwitchEquipmentDispatcher(),
+                new IndexEquipmentDispatcher(),
         };
 
             return dispatchers;

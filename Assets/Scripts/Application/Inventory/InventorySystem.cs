@@ -25,6 +25,20 @@ namespace Application.Inventory
           {7,ItemType.RocketLauncher}
         };
 
+        private int _currentIndex => _indexMapReverse[_currentItem.Item];
+        private readonly Dictionary<ItemType, int> _indexMapReverse = new()
+        {
+          { ItemType.Rock, 1},
+          { ItemType.Taser, 2},
+          {ItemType.Shotgun, 3},
+          {ItemType.SmokeGrenade, 4},
+          {ItemType.Flares, 5},
+          {ItemType.NerveGas, 6},
+          {ItemType.RocketLauncher, 7}
+        };
+
+
+
         public IInventoryItem CurrentlyEquipped => _currentItem;
         private IInventoryItem _currentItem;
 
@@ -68,6 +82,26 @@ namespace Application.Inventory
             bool res = TryEquip(item);
 
             if (!res) Debug.Log($"Indicate the failed equipment switch some how");
+        }
+
+        public void IndexEquipment(IndexEquipmentResult indexEquipment)
+        {
+            int direction = indexEquipment.DeltaNdx >= 0 ? 1 : -1;
+            int startIndex = _currentIndex;
+
+            for (int attempt = 1; attempt <= 7; attempt++)
+            {
+                int ndx = ((startIndex - 1 + direction * attempt) % 7 + 7) % 7 + 1;
+                ItemType item = _indexMap[ndx];
+
+                if (TryEquip(item))
+                {
+                    return;
+                }
+            }
+
+            // Tried all 7 slots, nothing else equippable — stay on current item
+            Debug.Log("No other equippable item found; keeping current equipment.");
         }
 
         private IInventoryItem BuildNewInventoryItem(ItemType item)

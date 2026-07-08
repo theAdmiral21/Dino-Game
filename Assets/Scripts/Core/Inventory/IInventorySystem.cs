@@ -11,5 +11,6 @@ namespace Core.Inventory
         public IInventoryItem CurrentlyEquipped { get; }
         public int RestockItem(IItemProviderRequest provider);
         public void SwitchEquipment(SwitchEquipmentResult switchEquipment);
+        public void IndexEquipment(IndexEquipmentResult indexExquipment);
     }
 }

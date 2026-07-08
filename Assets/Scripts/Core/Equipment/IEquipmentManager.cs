@@ -9,6 +9,7 @@ namespace Core.Equipment
         public IEquipment ActiveEquipment { get; }
         public void HandleEquipmentChanged(CurrentEquipmentChanged evt);
         public void HandleEquipmentChangeResult(SwitchEquipmentResult result);
+        public void HandleEquipmentIndexResult(IndexEquipmentResult result);
         public void Init(IEventBus inventoryEventBus, IInventorySystem inventorySystem);
     }
 }
