@@ -10,9 +10,15 @@ namespace Game.Unity.Events
     {
         [SerializeField] private Animator _animator;
         [SerializeField] private string _triggerParameter;
+
+        private int _triggerHash;
+        private void Awake()
+        {
+            _triggerHash = Animator.StringToHash(_triggerParameter);
+        }
         public void React()
         {
-            _animator.SetTrigger(_triggerParameter);
+            _animator.SetTrigger(_triggerHash);
         }
     }
 }

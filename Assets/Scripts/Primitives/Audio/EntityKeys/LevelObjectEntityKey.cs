@@ -12,5 +12,6 @@ namespace Primitives.Audio.EntityKeys
         NerveGas,
         SmokeGrenade,
         Flashlight,
+        InteriorDoor,
     }
 }

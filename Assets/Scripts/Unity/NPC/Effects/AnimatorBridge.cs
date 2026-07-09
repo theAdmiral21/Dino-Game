@@ -1,7 +1,5 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
-using Core.Game.HealthSystem.Health;
 using Core.Movement.Inputs;
 using Game.Core.Animations;
 using Game.Core.Effects;
@@ -11,11 +9,9 @@ using Infrastructure.Unity.Registries;
 using Movement.Core.Abstractions;
 using Movement.Core.Rules;
 using NPC.Core.Effects;
-using NUnit.Framework;
 using PlayerController.Core.Effects.DataStructures;
 using Primitives.Physics;
 using Unity.Common;
-using Unity.Common.Unity;
 using Unity.Infrastructure.Providers;
 using UnityEngine;
 

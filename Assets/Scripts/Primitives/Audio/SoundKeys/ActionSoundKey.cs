@@ -26,5 +26,8 @@ namespace Primitives.Audio.SoundKeys
         MermaidAppears,
         Pump,
         Lunge,
+        Interact,
+        Open,
+        Close,
     }
 }

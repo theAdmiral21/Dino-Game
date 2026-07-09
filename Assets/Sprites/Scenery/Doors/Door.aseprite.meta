@@ -2,7 +2,17 @@ fileFormatVersion: 2
 guid: c6839a3d7f0b99c40936e4e140342dfb
 ScriptedImporter:
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:AnimationClip
+      assembly: UnityEngine.AnimationModule
+      name: Closed
+    second: {fileID: 7400000, guid: ff3644551c0d15b45a61e99cec4ef113, type: 2}
+  - first:
+      type: UnityEngine:AnimationClip
+      assembly: UnityEngine.AnimationModule
+      name: Open
+    second: {fileID: 7400000, guid: c738e445035de4f4f82cff285a6f4996, type: 2}
   serializedVersion: 2
   userData: 
   assetBundleName: 
@@ -101,7 +111,7 @@ ScriptedImporter:
     addShadowCasters: 0
     generateIndividualEvents: 1
     generateSpriteAtlas: 1
-  platformSettingsDirtyTick: 639190323987095707
+  platformSettingsDirtyTick: 639191965137791297
   singleSpriteImportData:
   - name: 
     originalName: 
