@@ -12,14 +12,36 @@ namespace Movement.Core.Rules
         public static CrouchResult TryCrouch(CrouchRequest request, PhysicsContext facts, IActorInput inputValues, object ruleState)
         {
             if (!ruleState.TryGet<ICrouchState>(out var crouchState)) return Denied();
-            Debug.LogError($"This will eventually need to perform some sort of space check before changing the collider");
-            if (facts.IsGrounded || facts.IsOnPlatform)
+
+            // if you arent crouching, and you're grounded, go ahead and crouch
+            if (!crouchState.IsCrouching)
             {
-                bool newCrouchValue = !crouchState.IsCrouching;
-                crouchState.SetCrouchState(newCrouchValue);
-                return Approved(newCrouchValue);
+                if (facts.IsGrounded || facts.IsOnPlatform)
+                {
+                    crouchState.SetCrouchState(true);
+                    return Approved(true);
+                }
             }
-            crouchState.SetCrouchState(false);
+            else
+            // if you are crouching, check if you can stand before standing up
+            {
+                if (request.CanStand)
+                {
+                    crouchState.SetCrouchState(false);
+                    return Approved(false);
+                }
+            }
+
+
+            //     if (crouchState.IsCrouching && !request.CanStand)
+            //     {
+            //         return Denied();
+            //     }
+            //     bool newCrouchValue = !crouchState.IsCrouching;
+            //     crouchState.SetCrouchState(newCrouchValue);
+            //     return Approved(newCrouchValue);
+            // }
+            // crouchState.SetCrouchState(false);
             return Denied();
         }
 

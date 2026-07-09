@@ -303,6 +303,7 @@ GameObject:
   - component: {fileID: 5497312129400346936}
   - component: {fileID: 7724699803452001103}
   - component: {fileID: 3702397233845520852}
+  - component: {fileID: 458595736447498671}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -448,6 +449,8 @@ MonoBehaviour:
   _priority: 4
   _getClimbableMono:
     _monoScript: {fileID: 7724699803452001103}
+  _crouchControllerMono:
+    _monoScript: {fileID: 458595736447498671}
   _bridgeMono:
     _monoScript: {fileID: 3761351669364046573}
   _debugState:
@@ -604,6 +607,22 @@ MonoBehaviour:
   _priority: 0
   _getClimbableMono:
     _monoScript: {fileID: 7724699803452001103}
+--- !u!114 &458595736447498671
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1497200054785741571}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64d31dcfcb57a074ba06aa290653fbf4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity::Unity.Physics.Collisions.CrouchController
+  _collider: {fileID: 4842269653454337074}
+  _standHeight: 2.1
+  _crouchHeight: 1
+  _priority: 2
 --- !u!1 &1546334948991769612
 GameObject:
   m_ObjectHideFlags: 0

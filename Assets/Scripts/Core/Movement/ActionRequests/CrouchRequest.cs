@@ -8,9 +8,12 @@ namespace Movement.Core.Movement.DataStructures
         public readonly Type RequestType => typeof(CrouchRequest);
         public readonly bool Requested;
 
-        public CrouchRequest(bool requested = true)
+        public readonly bool CanStand;
+
+        public CrouchRequest(bool canStand)
         {
-            Requested = requested;
+            Requested = true;
+            CanStand = canStand;
         }
     }
 }

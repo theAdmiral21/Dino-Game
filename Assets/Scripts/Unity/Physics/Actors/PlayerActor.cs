@@ -2,6 +2,7 @@ using Core.Environment.Interactions;
 using Core.Equipment;
 using Core.Movement.Abstractions;
 using Core.Movement.Inputs;
+using Core.Physics.Collisions;
 using Core.Physics.PhysicsQueries;
 using Game.Core.Execution;
 using Movement.Core.Abstractions;
@@ -29,6 +30,9 @@ namespace Physics.Unity.Actors
     {
         [SerializeField] private SerializedInterface<IGetClimbable> _getClimbableMono;
         private IGetClimbable _getClimbable => _getClimbableMono.Interface;
+
+        [SerializeField] private SerializedInterface<ICheckCanStand> _crouchControllerMono;
+        private ICheckCanStand _crouchController => _crouchControllerMono.Interface;
 
         // [SerializeField] private SerializedInterface<IStatProvider> _statProviderMono;
         IStatCollection _stats;
@@ -90,6 +94,12 @@ namespace Physics.Unity.Actors
                         climb = new ClimbRequest(climb.InputDir, climbType);
 
                         Brain.UpdateRequestList(climb);
+                        return;
+                    }
+                case CrouchRequest crouch:
+                    {
+                        crouch = new CrouchRequest(_crouchController.CheckCanStand(Body.RayConfig));
+                        Brain.UpdateRequestList(crouch);
                         return;
                     }
                 default:

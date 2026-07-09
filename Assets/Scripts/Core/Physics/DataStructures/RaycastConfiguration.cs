@@ -50,6 +50,9 @@ namespace Physics.Core.DataStructures
             _origins.TopRight = new Vector2(shrunk.Max.x, shrunk.Max.y);
             _origins.BottomLeft = new Vector2(shrunk.Min.x, shrunk.Min.y);
             _origins.BottomRight = new Vector2(shrunk.Max.x, shrunk.Min.y);
+
+            // Now that we can crouch we need to update the spacing as well
+            CalculateSpacing();
         }
 
         private void CalculateSpacing()

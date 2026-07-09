@@ -1,11 +1,12 @@
 using System.Collections.Generic;
 using Core.Physics.Collisions.DataStructures;
+using Core.Physics.PhysicsQueries;
 using Physics.Core.DataStructures;
 using UnityEngine;
 
 namespace Physics.Application.Abstractions
 {
-    public interface IRaycastController
+    public interface IRaycastController : IFitCheck
     {
 
         /// <summary>
@@ -33,13 +34,6 @@ namespace Physics.Application.Abstractions
         /// </summary>
         /// <returns></returns>
         // public bool WallJumpCheck();
-
-        /// <summary>
-        /// Method for determining if the player will fit into a given area centered on center.
-        /// </summary>
-        /// <param name="center"></param>
-        /// <returns></returns>
-        public bool CheckFit(Vector2 center, ref RaycastConfiguration rayConfig);
 
         /// <summary>
         /// Method that returns a hash set of all of the collisions gathered this frame. This is meant to be called after Horizontal and Vertical raycast methods have been called.

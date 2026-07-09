@@ -187,7 +187,7 @@ namespace PlayerController.Unity.Inputs
             if (context.started)
             {
                 Debug.Log($"Crouch requested");
-                _requestHandler.EnqueueActionRequest(new CrouchRequest());
+                _requestHandler.EnqueueActionRequest(new CrouchRequest(false));
             }
         }
         public void OnPause(InputAction.CallbackContext context)

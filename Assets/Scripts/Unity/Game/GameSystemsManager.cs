@@ -117,7 +117,8 @@ namespace Game.Unity
 
             // Physics Services
             var moveActor = GetComponentInChildren<IMoveActor>();
-            _physicsServices = new PhysicsServices(moveActor);
+            var raycastController = GetComponentInChildren<IRaycastController>();
+            _physicsServices = new PhysicsServices(moveActor, raycastController);
 
             // Camera service
             var camManager = GetComponentInChildren<CameraManager>();

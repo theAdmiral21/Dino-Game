@@ -230,6 +230,26 @@ namespace Physics.Unity.Movement
             return overlap == null;
         }
 
+        public bool CheckFit(Vector2 center, Vector2 size, int layerMask)
+        {
+            Debug.Log($"Checking fit at: {center}");
+            if (DrawRaycast)
+            {
+                // Draw a line from your current center to the new center
+                Debug.DrawLine(size / 2, center, Color.green, 2f);
+                // Draw the collider centered on the destination
+                DrawColliderAtPoint(center, size);
+            }
+
+            Collider2D overlap = Physics2D.OverlapBox(center, size, 0f, layerMask);
+            if (overlap != null)
+            {
+                Debug.Log($"Overlapped with: {overlap.name}");
+            }
+
+            return overlap == null;
+        }
+
         private void ColliderDraw(RaycastOrigins raycastOrigins)
         {
             Debug.DrawLine(raycastOrigins.BottomLeft, raycastOrigins.TopLeft, Color.purple);
@@ -241,6 +261,20 @@ namespace Physics.Unity.Movement
         private void DrawColliderAtPoint(Vector2 center, RaycastConfiguration rayConfig)
         {
             Vector3 extent = rayConfig.Bounds.Extents;
+            Vector2 bottomLeft = new Vector2(center.x - extent.x, center.y - extent.y);
+            Vector2 bottomRight = new Vector2(center.x + extent.x, center.y - extent.y);
+            Vector2 topLeft = new Vector2(center.x - extent.x, center.y + extent.y);
+            Vector2 topRight = new Vector2(center.x + extent.x, center.y + extent.y);
+
+            Debug.DrawLine(bottomLeft, bottomRight, Color.green, 2f);
+            Debug.DrawLine(bottomLeft, topLeft, Color.green, 2f);
+            Debug.DrawLine(bottomRight, topRight, Color.green, 2f);
+            Debug.DrawLine(topLeft, topRight, Color.green, 2f);
+        }
+
+        private void DrawColliderAtPoint(Vector2 center, Vector2 size)
+        {
+            Vector3 extent = size / 2;
             Vector2 bottomLeft = new Vector2(center.x - extent.x, center.y - extent.y);
             Vector2 bottomRight = new Vector2(center.x + extent.x, center.y - extent.y);
             Vector2 topLeft = new Vector2(center.x - extent.x, center.y + extent.y);
