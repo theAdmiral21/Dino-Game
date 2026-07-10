@@ -14,9 +14,13 @@ namespace Movement.Core.Rules
             // Verify the rule state can be evaluated
             if (!ruleState.TryGet<IDisabledState>(out var disabledState)) return Denied();
             if (!ruleState.TryGet<IStunState>(out var stunState)) return Denied();
+            if (!ruleState.TryGet<IBiteState>(out var biteState)) return Denied();
 
-            if (facts.IsGrounded || facts.IsOnPlatform)
+            if (stunState.IsStunned || disabledState.IsDisabled) return Denied();
+
+            if ((facts.IsGrounded || facts.IsOnPlatform) && biteState.CanBite)
             {
+                biteState.StartBiteCoolDown();
                 return Approved();
             }
 

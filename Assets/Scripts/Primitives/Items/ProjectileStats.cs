@@ -9,6 +9,7 @@ namespace Primitives.Items
         public readonly float HitStun;
         public readonly DamageType HurtType;
         public readonly float SoundRadius;
+        public readonly int QuantityPerShot;
 
         public ProjectileStats(
 
@@ -16,7 +17,8 @@ namespace Primitives.Items
                                 float knockBack,
                                 float hitStun,
                                 DamageType damageType,
-                                float soundRadius
+                                float soundRadius,
+                                int quantityPerShot
                                 )
         {
 
@@ -25,6 +27,7 @@ namespace Primitives.Items
             HitStun = hitStun;
             HurtType = damageType;
             SoundRadius = soundRadius;
+            QuantityPerShot = quantityPerShot;
         }
     }
 }

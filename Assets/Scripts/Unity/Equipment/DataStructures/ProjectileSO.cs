@@ -12,6 +12,7 @@ namespace Unity.Equipment.DataStructures
         public float HitStun;
         public DamageType HurtType;
         public float SoundRadius;
+        public int QuantityPerShot;
 
         public ProjectileStats BuildRunTime()
         {
@@ -20,7 +21,8 @@ namespace Unity.Equipment.DataStructures
                                 KnockBack,
                                 HitStun,
                                 HurtType,
-                                SoundRadius
+                                SoundRadius,
+                                QuantityPerShot
                             );
         }
 

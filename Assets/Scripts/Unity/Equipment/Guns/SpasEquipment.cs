@@ -119,7 +119,7 @@ namespace Unity.Equipment
             // fire 5 raycasts in a cone with varying angles
             float spreadAngle = 15;
 
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < _projectileStats.QuantityPerShot; i++)
             {
                 float angle = UnityEngine.Random.Range(-spreadAngle / 2f, spreadAngle / 2f);
                 Vector2 fuzzyDir = RotateVector(_aimDir, angle);

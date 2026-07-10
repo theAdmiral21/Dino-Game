@@ -13,7 +13,8 @@ namespace NPC.Core.Rules
 {
     public class RaptorRules : EnemyRules,
                                ILungeState,
-                               IClimbState
+                               IClimbState,
+                               IBiteState
     {
         // public bool IsLunging => LungeCounter > 0;
 
@@ -32,6 +33,11 @@ namespace NPC.Core.Rules
 
         public bool WasClimbingLastFrame => false;
 
+        public bool CanBite => _biteCoolDownCounter <= 0;
+
+        public float BiteCoolDownTime { get; private set; }
+        private float _biteCoolDownCounter;
+
         public RaptorRules(IStatCollection stats)
         {
             stats.TryGet<LungeStats>(out var lungeStats);
@@ -39,6 +45,9 @@ namespace NPC.Core.Rules
             LungeAmount = _totalLunges;
 
             LungeCoolDownTime = lungeStats.LungeCoolDown.Value;
+
+            stats.TryGet<BiteStats>(out var biteStats);
+            BiteCoolDownTime = biteStats.CoolDown.Value;
 
         }
 
@@ -85,8 +94,11 @@ namespace NPC.Core.Rules
         {
             if (LungeCoolDownCounter > 0)
             {
-                // Debug.Log($"CoolDown counter: {LungeCoolDownCounter}");
                 LungeCoolDownCounter -= Dt;
+            }
+            if (_biteCoolDownCounter > 0)
+            {
+                _biteCoolDownCounter -= Dt;
             }
         }
 
@@ -101,6 +113,11 @@ namespace NPC.Core.Rules
 
         public void UpdateClimbingState(PhysicsContext physicsContext)
         {
+        }
+
+        public void StartBiteCoolDown()
+        {
+            _biteCoolDownCounter = BiteCoolDownTime;
         }
     }
 }

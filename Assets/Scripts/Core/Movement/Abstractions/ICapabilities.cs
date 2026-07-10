@@ -183,4 +183,11 @@ namespace Movement.Core.Abstractions
         public void SetClimbingSurface(ClimbType climbingSurface);
         public void UpdateClimbingState(PhysicsContext physicsContext);
     }
+
+    public interface IBiteState
+    {
+        public bool CanBite { get; }
+        public float BiteCoolDownTime { get; }
+        public void StartBiteCoolDown();
+    }
 }
