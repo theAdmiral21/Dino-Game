@@ -63,7 +63,7 @@ namespace AI.Application.BehaviorTreeNodes
         public void Reset(T context)
         {
             Timer.ResetTimer();
-            Debug.Log($"Resetting Idle");
+            // Debug.Log($"Resetting Idle");
         }
     }
 }

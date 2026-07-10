@@ -44,7 +44,7 @@ namespace AI.Application.BehaviorTreeNodes
 
         public void Reset(T context)
         {
-            Debug.Log($"Resetting InRange");
+            // Debug.Log($"Resetting InRange");
         }
 
         private float TargetDistance(T context)

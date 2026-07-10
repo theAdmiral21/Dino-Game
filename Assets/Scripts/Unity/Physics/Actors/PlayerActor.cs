@@ -102,6 +102,13 @@ namespace Physics.Unity.Actors
                         Brain.UpdateRequestList(crouch);
                         return;
                     }
+                case RunRequest run:
+                    {
+                        bool canStand = _crouchController.CheckCanStand(Body.RayConfig);
+                        run = new RunRequest(run.BackUp, run.Value, run.CanStand);
+                        Brain.UpdateRequestList(run);
+                        break;
+                    }
                 default:
                     {
                         // Debug.Log($"Enqueuing {newRequest}");

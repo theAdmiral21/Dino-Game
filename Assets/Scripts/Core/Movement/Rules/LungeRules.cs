@@ -21,7 +21,6 @@ namespace Movement.Core.Rules
 
             if (facts.IsGrounded || facts.IsOnPlatform)
             {
-                Debug.Log($"Is grounded!");
                 if (lungeState.LungeAmount > 0)
                 {
                     lungeState.DecrementLunge();

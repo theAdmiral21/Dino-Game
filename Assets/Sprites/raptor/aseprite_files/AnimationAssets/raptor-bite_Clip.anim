@@ -7,7 +7,7 @@ AnimationClip:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: raptor-bite_Clip
-  serializedVersion: 7
+  serializedVersion: 8
   m_Legacy: 0
   m_Compressed: 0
   m_UseHighQualityCurve: 1
@@ -53,8 +53,29 @@ AnimationClip:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 0, y: 0, z: 0}
   m_ClipBindingConstant:
-    genericBindings: []
-    pptrCurveMapping: []
+    genericBindings:
+    - serializedVersion: 2
+      path: 0
+      attribute: 0
+      script: {fileID: 0}
+      typeID: 212
+      customType: 23
+      isPPtrCurve: 1
+      isIntCurve: 0
+      isSerializeReferenceCurve: 0
+      metaData: 0
+    pptrCurveMapping:
+    - {fileID: 1277802042399027546, guid: ac55e5d6c3a29ed47a57f2dbc9549db0, type: 3}
+    - {fileID: 2894387622814575946, guid: ac55e5d6c3a29ed47a57f2dbc9549db0, type: 3}
+    - {fileID: 8165700140307117357, guid: ac55e5d6c3a29ed47a57f2dbc9549db0, type: 3}
+    - {fileID: 4874860158205811571, guid: ac55e5d6c3a29ed47a57f2dbc9549db0, type: 3}
+    - {fileID: -1298058581464577700, guid: ac55e5d6c3a29ed47a57f2dbc9549db0, type: 3}
+    - {fileID: 8041528930395960722, guid: ac55e5d6c3a29ed47a57f2dbc9549db0, type: 3}
+    - {fileID: 4258193821740911577, guid: ac55e5d6c3a29ed47a57f2dbc9549db0, type: 3}
+    - {fileID: 1772648920770332014, guid: ac55e5d6c3a29ed47a57f2dbc9549db0, type: 3}
+    - {fileID: -857450718252257090, guid: ac55e5d6c3a29ed47a57f2dbc9549db0, type: 3}
+    - {fileID: 1363406417666929147, guid: ac55e5d6c3a29ed47a57f2dbc9549db0, type: 3}
+    - {fileID: 1363406417666929147, guid: ac55e5d6c3a29ed47a57f2dbc9549db0, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
@@ -79,4 +100,18 @@ AnimationClip:
   m_EulerEditorCurves: []
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
-  m_Events: []
+  m_Events:
+  - time: 0.1
+    functionName: Swing
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.7
+    functionName: Swing
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0

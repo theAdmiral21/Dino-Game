@@ -163,7 +163,7 @@ namespace PlayerController.Unity.Inputs
             if (MoveInput.x != 0)
             {
                 // Run?.Invoke(new RunRequest(true, MoveInput));
-                _requestHandler.EnqueueActionRequest(new RunRequest(false, MoveInput));
+                _requestHandler.EnqueueActionRequest(new RunRequest(false, MoveInput, true));
             }
             if (MoveInput.y != 0)
             {

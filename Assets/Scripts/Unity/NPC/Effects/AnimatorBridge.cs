@@ -29,6 +29,7 @@ namespace Enemy.Unity.Effects
         private static readonly int IsDeadHash = Animator.StringToHash("IsDead");
         private static readonly int DeadTrigger = Animator.StringToHash("DeadTrigger");
         private static readonly int LungeTrigger = Animator.StringToHash("LungeTrigger");
+        private static readonly int BiteTrigger = Animator.StringToHash("BiteTrigger");
         private static readonly int isGroundedHash = Animator.StringToHash("IsGrounded");
         private static readonly int HurtTrigger = Animator.StringToHash("HurtTrigger");
 
@@ -131,7 +132,7 @@ namespace Enemy.Unity.Effects
                     }
                 case LungeEffect lunge:
                     {
-                        AnimateAttack();
+                        AnimateAttack(lunge);
                         break;
                     }
                 case LandEffect landing:
@@ -146,6 +147,12 @@ namespace Enemy.Unity.Effects
                         // Debug.Log("Animating landing");
                         // SetBoolSafe(IsLunging, false);
                         SetTriggerSafe(HurtTrigger);
+                        break;
+                    }
+                case BiteEffect bite:
+                    {
+                        Debug.Log($"Got bite effect");
+                        AnimateAttack(bite);
                         break;
                     }
             }
@@ -172,16 +179,24 @@ namespace Enemy.Unity.Effects
             _transformCache.x = dirState.Dir;
             _animatorTransform.localScale = _transformCache;
         }
-        private void AnimateAttack()
+        private void AnimateAttack(IEffectResult effect)
         {
             // There could be a few different kind of attacks per dino. For now worry about the raptor
-            // if (!_lungeTriggered)
-            // {
-            Debug.Log($"Animating lunge");
-            // SetBoolSafe(IsLunging, true);
-            SetTriggerSafe(LungeTrigger);
-            // _lungeTriggered = true;
-            // }
+            switch (effect)
+            {
+                case LungeEffect lunge:
+                    {
+                        SetTriggerSafe(LungeTrigger);
+                        break;
+                    }
+                case BiteEffect bite:
+                    {
+                        Debug.Log($"Set bite trigger");
+                        SetTriggerSafe(BiteTrigger);
+                        break;
+                    }
+            }
+
 
         }
 

@@ -56,12 +56,12 @@ namespace AI.Application.States
             if (!_timer.IsActive && _timer.TimerComplete)
             {
                 _timer.ResetTimer();
-                Debug.Log($"Resetting search timer!");
+                // Debug.Log($"Resetting search timer!");
             }
         }
         public void Exit(T context)
         {
-            Debug.Log($"Stopping search!");
+            // Debug.Log($"Stopping search!");
             _timer.StopTimer();
         }
     }

@@ -32,12 +32,12 @@ namespace NPC.Unity.Inputs
         public void SetMove(Vector2 input)
         {
             _move = input;
-            SendRequest(new RunRequest(false, _move));
+            SendRequest(new RunRequest(false, _move, true));
         }
         public void SetBackUp(Vector2 input)
         {
             _move = input;
-            SendRequest(new RunRequest(true, _move));
+            SendRequest(new RunRequest(true, _move, true));
         }
         public void SetJumpPressed(bool input)
         {

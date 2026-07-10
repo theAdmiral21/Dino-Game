@@ -400,6 +400,10 @@ MonoBehaviour:
     _monoScript: {fileID: 708923067542323704}
   _healthComponentMono:
     _monoScript: {fileID: 4621714224737221443}
+  _healProviderMono:
+    _monoScript: {fileID: 4621714224737221443}
+  _damageProviderMono:
+    _monoScript: {fileID: 4621714224737221443}
   _ruleStateMono:
     _monoScript: {fileID: 2363071656125765436}
   _actorMono:

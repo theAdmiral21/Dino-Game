@@ -33,7 +33,7 @@ namespace AI.Application.BehaviorTreeNodes
 
         public void Reset(T context)
         {
-            Debug.Log($"Resetting Dead");
+            // Debug.Log($"Resetting Dead");
         }
     }
 }

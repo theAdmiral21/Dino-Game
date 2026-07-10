@@ -67,6 +67,10 @@ namespace Movement.Core.Movement
                 {
                     if (actorInput.SprintPressed)
                     {
+                        if (!request.CanStand)
+                        {
+                            return Approved(RunType.CrouchWalk, request.BackUp, request.Value);
+                        }
                         return Approved(RunType.Sprint, false, request.Value);
                     }
                 }
@@ -88,6 +92,10 @@ namespace Movement.Core.Movement
                 {
                     if (actorInput.SprintPressed)
                     {
+                        if (!request.CanStand)
+                        {
+                            return Approved(RunType.CrouchWalk, request.BackUp, request.Value);
+                        }
                         return Approved(RunType.Sprint, false, request.Value);
                     }
                 }

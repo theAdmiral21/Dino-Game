@@ -1,3 +1,4 @@
+using Core.Game.HealthSystem.Damage;
 using Core.Game.HealthSystem.Health;
 using Game.Core.Execution;
 using Game.Core.Health;
@@ -8,13 +9,14 @@ using UnityEngine;
 
 namespace NPC.Unity.Health
 {
-    public class NpcHealth : SelfRegister<IInitializable<IGameContext>>, IDamageable, IHealable, IHealthComponentProvider, IInitializable<IGameContext>
+    public class NpcHealth : SelfRegister<IInitializable<IGameContext>>, IDamageable, IHealable, IHealthComponentProvider, IInitializable<IGameContext>, IHealProvider, IDamageProvider
     {
         public int MaxHealth = 1;
         [SerializeField] private int _priority = 0;
         public int Priority => _priority;
         public IHealthComponent HealthComponent { get; private set; }
-
+        public IDamageable Damageable => this;
+        public IHealable Healable => this;
         public void Initialize(IGameContext context)
         {
             HealthComponent = new NpcHealthComponent(MaxHealth);

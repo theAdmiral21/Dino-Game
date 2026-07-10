@@ -254,6 +254,7 @@ namespace Physics.Application.Orchestrators
                 new SwitchEquipmentDispatcher(),
                 new IndexEquipmentDispatcher(),
                 new ToggleFlashLightDispatcher(),
+                new BiteDispatcher(),
         };
 
             return dispatchers;

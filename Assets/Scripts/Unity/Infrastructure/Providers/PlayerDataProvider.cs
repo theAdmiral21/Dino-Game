@@ -5,6 +5,7 @@ using Core.Ai.BlackBoard.DataStructures;
 using Core.Ai.State.BehaviorContext;
 using Core.Detection;
 using Core.Equipment;
+using Core.Game.HealthSystem.Damage;
 using Core.Game.HealthSystem.Health;
 using Core.Movement.Abstractions;
 using Core.Movement.Inputs;
@@ -15,6 +16,7 @@ using Movement.Core.Abstractions;
 using Movement.Unity.Abstractions;
 using Physics.Core.PhysicsActors;
 using PlayerController.Core.Info;
+using Primitives.Damage;
 using Primitives.Players;
 using Unity.Common.Unity;
 using UnityEngine;
@@ -25,6 +27,8 @@ namespace Unity.Infrastructure.Providers
                                         IInitializable<IGameContext>,
                                         IStatProvider,
                                         IHealthComponentProvider,
+                                        IHealProvider,
+                                        IDamageProvider,
                                         IRuleStateProvider,
                                         IActorProvider,
                                         IActionRequestSinkProvider,
@@ -38,6 +42,12 @@ namespace Unity.Infrastructure.Providers
 
         [SerializeField] private SerializedInterface<IHealthComponentProvider> _healthComponentMono;
         public IHealthComponent HealthComponent => _healthComponentMono.Interface.HealthComponent;
+
+        [SerializeField] private SerializedInterface<IHealProvider> _healProviderMono;
+        public IHealable Healable => _healProviderMono.Interface.Healable;
+
+        [SerializeField] private SerializedInterface<IDamageProvider> _damageProviderMono;
+        public IDamageable Damageable => _damageProviderMono.Interface.Damageable;
 
         [SerializeField] private SerializedInterface<IRuleStateProvider> _ruleStateMono;
         public IRuleState RuleStateView => _ruleStateMono.Interface.RuleStateView;

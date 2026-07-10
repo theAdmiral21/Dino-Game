@@ -14,6 +14,7 @@ using Primitives.Players;
 using Infrastructure.Unity.Registries;
 using Unity.Common;
 using Unity.Infrastructure.Providers;
+using Core.Game.HealthSystem.Damage;
 
 namespace PlayerController.Unity.Health
 {
@@ -21,7 +22,9 @@ namespace PlayerController.Unity.Health
                                 IDamageable,
                                 IHealable,
                                 IHealthComponentProvider,
-                                IInitializable<IGameContext>
+                                IInitializable<IGameContext>,
+                                IHealProvider,
+                                IDamageProvider
     {
         [SerializeField] SerializedInterface<IPlayerView> _playerView;
         [SerializeField] SerializedInterface<IOverrideControls> _overrideControls;
@@ -46,6 +49,9 @@ namespace PlayerController.Unity.Health
         [Header("Init order")]
         [SerializeField] private int _priority = 5;
         public int Priority => _priority;
+
+        public IDamageable Damageable => this;
+        public IHealable Healable => this;
 
         private void Awake()
         {
@@ -86,7 +92,6 @@ namespace PlayerController.Unity.Health
         public void ReceiveDamage(DamageInfo damageInfo)
         {
             Debug.Log($"Taking damage; info: {damageInfo}");
-            Debug.Log($"Health manager: {_healthComponent}");
             // Apply effects
             _knockBack.KnockBack(damageInfo.KnockBackApex, damageInfo.KnockBackVelocity);
             _stun.Stun(damageInfo.StunTime);

@@ -2,6 +2,7 @@ using UnityEngine;
 using Movement.Core.Movement.Abstractions;
 using NPC.Core.Effects;
 using Movement.Core.Movement.DataStructures;
+using PlayerController.Core.Effects.DataStructures;
 
 namespace NPC.Unity.Effects
 {
@@ -35,6 +36,11 @@ namespace NPC.Unity.Effects
                 case LungeResult lunge:
                     {
                         _effectResults.Add(new LungeEffect());
+                        break;
+                    }
+                case BiteResult bite:
+                    {
+                        _effectResults.Add(new BiteEffect());
                         break;
                     }
             }

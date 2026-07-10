@@ -24,6 +24,8 @@ namespace Unity.NPC.Inputs
 
         public bool LungePressed { get; private set; }
 
+        public bool BitePressed { get; private set; }
+
         private bool _faceLeftHeld;
 
         private void Awake()
@@ -40,12 +42,12 @@ namespace Unity.NPC.Inputs
         public void SetMove(Vector2 input)
         {
             _move = input;
-            SendRequest(new RunRequest(false, _move));
+            SendRequest(new RunRequest(false, _move, true));
         }
         public void SetBackUp(Vector2 input)
         {
             _move = input;
-            SendRequest(new RunRequest(true, _move));
+            SendRequest(new RunRequest(true, _move, true));
         }
         public void SetJumpPressed(bool input)
         {
@@ -76,6 +78,11 @@ namespace Unity.NPC.Inputs
             if (_printDebug) Debug.Log($"Ai sent request: {request}");
 
             _requestSink.EnqueueActionRequest(request);
+        }
+
+        public void Bite()
+        {
+            SendRequest(new BiteRequest());
         }
     }
 }

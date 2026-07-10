@@ -49,7 +49,7 @@ namespace AI.Application.BehaviorTreeNodes
 
         public void Reset(T context)
         {
-            Debug.Log($"Resetting Stalk");
+            // Debug.Log($"Resetting Stalk");
         }
 
         private void NotifyPack(T context)

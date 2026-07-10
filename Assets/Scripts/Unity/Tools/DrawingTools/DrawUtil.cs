@@ -18,5 +18,18 @@ namespace Unity.Tools.DrawingTools
                 prevPoint = nextPoint;
             }
         }
+
+        public static void DrawRectangle(Vector2 center, Vector2 extent, Color color)
+        {
+            Vector2 bottomLeft = new Vector2(center.x - extent.x, center.y - extent.y);
+            Vector2 bottomRight = new Vector2(center.x + extent.x, center.y - extent.y);
+            Vector2 topLeft = new Vector2(center.x - extent.x, center.y + extent.y);
+            Vector2 topRight = new Vector2(center.x + extent.x, center.y + extent.y);
+
+            Debug.DrawLine(bottomLeft, bottomRight, color, 1f);
+            Debug.DrawLine(bottomLeft, topLeft, color, 1f);
+            Debug.DrawLine(bottomRight, topRight, color, 1f);
+            Debug.DrawLine(topLeft, topRight, color, 1f);
+        }
     }
 }

@@ -20,7 +20,7 @@ namespace Application.Ai.BehaviorTreeNodes.Actions
 
         public void Reset(T context)
         {
-            Debug.Log($"Resetting Chase behavior");
+            // Debug.Log($"Resetting Chase behavior");
         }
         public NodeResult Tick(T context)
         {

@@ -27,7 +27,7 @@ namespace Application.Ai.BehaviorTreeNodes.Actions
         private float _stuckTimer = 1f; // seconds before declaring stuck
         public void Reset(T context)
         {
-            Debug.Log($"Resetting MoveToTarget behavior");
+            // Debug.Log($"Resetting MoveToTarget behavior");
             // context.AiInput.SetMove(Vector2.zero);
             _stuckCounter = 0;
             _lastPosition = Vector2.zero;

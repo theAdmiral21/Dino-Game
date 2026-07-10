@@ -28,7 +28,7 @@ namespace AI.Application.BehaviorTreeNodes
 
         public void Reset(T context)
         {
-            Debug.Log($"Resetting Flush");
+            // Debug.Log($"Resetting Flush");
         }
     }
 }
