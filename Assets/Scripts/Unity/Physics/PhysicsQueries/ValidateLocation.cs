@@ -1,6 +1,5 @@
 using Core.Physics.PhysicsQueries;
 using UnityEngine;
-using UnityEngine.AI;
 
 namespace Unity.Physics.PhysicsQueries
 {

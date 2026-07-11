@@ -6172,6 +6172,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: NpcSpawnPoint
       objectReference: {fileID: 0}
+    - target: {fileID: 6688190013562301103, guid: c356fd051e9e1914799c0351b539ea30, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

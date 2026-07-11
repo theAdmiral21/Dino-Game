@@ -1,7 +1,6 @@
 using Gameplay.Common.Core.DataStructures;
 using Primitives.Damage;
 using UnityEngine;
-using Infrastructure.Unity;
 using Unity.Common.Unity;
 using PlayerController.Application.Health;
 using Game.Core.Execution;
@@ -15,6 +14,8 @@ using Infrastructure.Unity.Registries;
 using Unity.Common;
 using Unity.Infrastructure.Providers;
 using Core.Game.HealthSystem.Damage;
+using Movement.Core.Stats;
+using Primitives.Stats.DataStructures;
 
 namespace PlayerController.Unity.Health
 {
@@ -29,8 +30,6 @@ namespace PlayerController.Unity.Health
         [SerializeField] SerializedInterface<IPlayerView> _playerView;
         [SerializeField] SerializedInterface<IOverrideControls> _overrideControls;
 
-        [Header("Health Amount")]
-        [SerializeField] private int _maxHealth;
 
         [SerializeField] private SerializedInterface<IKnockBackable> _knockBackMono;
         public IKnockBackable KnockBack => _knockBack;
@@ -45,6 +44,9 @@ namespace PlayerController.Unity.Health
         public int CurrentHealth => _healthComponent.CurrentHealth;
         public bool IsAlive => _healthComponent.IsAlive;
         private IPlayerInfo _playerInfo;
+
+        [Header("Debug")]
+        [SerializeField] int _currentHealth;
 
         [Header("Init order")]
         [SerializeField] private int _priority = 5;
@@ -75,8 +77,11 @@ namespace PlayerController.Unity.Health
         {
             var provider = ProviderLookUp.Require<PlayerDataProvider>(this);
             _playerInfo = provider.PlayerInfo;
+            IStatCollection statCollection = provider.StatSheet.StatCollection;
+            statCollection.TryGet<HealthStats>(out var healthStats);
+            int maxHealth = (int)healthStats.TotalHealth.Value;
 
-            _healthComponent = new PlayerHealthComponent(_maxHealth,
+            _healthComponent = new PlayerHealthComponent(maxHealth,
                                                 context.EventBus,
                                                 _playerInfo,
                                                 _playerView.Interface,
@@ -108,6 +113,11 @@ namespace PlayerController.Unity.Health
         public void Heal(HealInfo info)
         {
             _healthComponent.HandleHealing(info);
+        }
+
+        private void LateUpdate()
+        {
+            _currentHealth = HealthComponent.CurrentHealth;
         }
     }
 }

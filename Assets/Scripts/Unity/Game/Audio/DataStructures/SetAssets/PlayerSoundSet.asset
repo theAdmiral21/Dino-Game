@@ -9,26 +9,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a9afeaffcd188f46b384ac84671149a, type: 3}
+  m_Script: {fileID: 11500000, guid: 1047307eebd754e408b43cad793d44c7, type: 3}
   m_Name: PlayerSoundSet
-  m_EditorClassIdentifier: 
-  Barks:
-  - {fileID: 8300000, guid: 6b2f36ffe6d3bc848b29a3207da8c78f, type: 3}
-  - {fileID: 8300000, guid: 15353f749f8348145bdbdd8b034f8647, type: 3}
-  - {fileID: 8300000, guid: b510f3b0a47dc81478402d9fbcabf657, type: 3}
-  - {fileID: 8300000, guid: d24e62cc556d3054284f9cb81db31ba9, type: 3}
-  Howls:
-  - {fileID: 8300000, guid: 8c213a9878d571a4c8a28cef55df4871, type: 3}
-  - {fileID: 8300000, guid: d810d0fa74655df4bb3f06e48cef16f0, type: 3}
-  - {fileID: 8300000, guid: 9bf10acdc660cf841a3e77329fb664cd, type: 3}
-  Attack: []
-  Hurt: []
-  Talk: []
-  Scent: []
-  DoubleJump:
-  - {fileID: 8300000, guid: bcf89f842621cf94baee2a4311ad16e7, type: 3}
-  EnterZoomies: {fileID: 8300000, guid: ca3ef67a14694c14285aebf241d111e5, type: 3}
-  ZoomiesTwinkle: {fileID: 8300000, guid: 8621978a68f8c2945950513932648248, type: 3}
-  ExitZoomies: {fileID: 8300000, guid: ef10e9a1bfb0b1645ac7466c03b2fbe6, type: 3}
-  VolumeRange: {x: 0.95, y: 1.05}
-  PitchRange: {x: 0.95, y: 1.05}
+  m_EditorClassIdentifier: Unity::Game.Unity.Audio.DataStructures.EntitySoundSet
+  _entity: 0
+  _entries:
+  - ActionKey: 8
+    Clips:
+    - {fileID: 8300000, guid: 08d779a20cf34c247bb5e75933dba6ed, type: 3}
+    - {fileID: 8300000, guid: 6346ee96f525da24aa11b0e508cf35de, type: 3}
+  - ActionKey: 2
+    Clips:
+    - {fileID: 8300000, guid: d15f7338d693f0343843a6b9096d27f6, type: 3}
+  - ActionKey: 3
+    Clips:
+    - {fileID: 8300000, guid: 062aac8f0463d7945a5a16732efbea51, type: 3}

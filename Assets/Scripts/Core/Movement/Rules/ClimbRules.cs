@@ -3,10 +3,8 @@ using Movement.Core.Movement.DataStructures;
 using Primitives.Physics;
 using Core.Movement.Inputs;
 using UnityEngine;
-using Movement.Core.Enums;
 using Movement.Core.Abstractions;
 using Primitives.Physics.Enums;
-using System.Linq.Expressions;
 
 namespace Movement.Core.Rules
 {

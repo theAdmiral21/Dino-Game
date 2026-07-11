@@ -1,18 +1,16 @@
 using System;
 using System.Collections;
+using Application.Game.Audio.DataStructures;
 using Application.Inventory;
 using Core.Detection.Audio;
 using Core.Equipment;
-using Game.Application.Audio.DataStructures;
 using Game.Core.Audio;
 using Game.Core.Execution;
-using NUnit.Framework.Constraints;
 using Primitives.Audio.EntityKeys;
 using Primitives.Audio.SoundKeys;
 using Primitives.Damage;
 using Primitives.Items;
 using Unity.Common.Unity;
-using UnityEditor;
 using UnityEngine;
 
 namespace Unity.Equipment
@@ -98,15 +96,15 @@ namespace Unity.Equipment
             OnFire?.Invoke(_magazine.RoundCount);
 
             _audioService.PlaySFX(
-                new LevelObjectSoundRequest(
-                    LevelObjectEntityKey.Shotgun,
+                new SoundRequest(
+                    EntityKey.Shotgun,
                     ActionSoundKey.Attack));
             DamageCast();
             _gunShotSound.EmitSound();
             yield return new WaitForSeconds(Stats.FireRate);
             _audioService.PlaySFX(
-                new LevelObjectSoundRequest(
-                    LevelObjectEntityKey.Shotgun,
+                new SoundRequest(
+                    EntityKey.Shotgun,
                     ActionSoundKey.PickUp));
             yield return new WaitForSeconds(0.5f);
             // After firing, wait then reload

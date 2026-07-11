@@ -1,4 +1,4 @@
-using Primitives.Audio.SoundKeys;
+using Primitives.Audio.EntityKeys;
 using UnityEngine;
 
 namespace Game.Unity.Audio.DataStructures
@@ -6,7 +6,7 @@ namespace Game.Unity.Audio.DataStructures
     [System.Serializable]
     public class ItemSoundEntry
     {
-        public ItemSoundKey Key;
+        public EntityKey Key;
         public AudioClip Clip;
     }
 }

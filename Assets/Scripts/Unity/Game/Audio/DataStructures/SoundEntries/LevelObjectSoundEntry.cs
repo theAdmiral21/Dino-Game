@@ -10,7 +10,7 @@ namespace Game.Unity.Audio.DataStructures
     [System.Serializable]
     public class LevelObjectSoundEntry
     {
-        public LevelObjectEntityKey Key;
+        public EntityKey Key;
         public ActionSoundKey ActionKey;
         public bool ModulatePitch;
         public bool ModulateVolume;

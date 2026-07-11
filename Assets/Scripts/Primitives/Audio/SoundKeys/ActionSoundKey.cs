@@ -16,6 +16,7 @@ namespace Primitives.Audio.SoundKeys
         PickUp,
         Talk,
         WarCry,
+        Roar,
         AreaEnter,
         Spawn,
         Explode,
@@ -29,5 +30,17 @@ namespace Primitives.Audio.SoundKeys
         Interact,
         Open,
         Close,
+        Crouch,
+        Dodge,
+
+        // Menu actions
+        Start,
+        Select,
+        Submit,
+        Back,
+        Cancel,
+
+        // Fall back enum
+        None,
     }
 }

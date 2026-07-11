@@ -1,7 +1,6 @@
 using Core.Environment.Interactions;
 using Environment.Core.Interactions;
 using Game.Unity.Events;
-using NUnit.Framework;
 using UnityEngine;
 
 namespace Unity.Environment

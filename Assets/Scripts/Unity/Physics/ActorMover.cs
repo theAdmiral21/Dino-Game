@@ -1,5 +1,4 @@
 using System;
-using Codice.Client.BaseCommands.CheckIn;
 using Physics.Application.Abstractions;
 using Physics.Core.PhysicsActors;
 using Unity.Common.Unity;

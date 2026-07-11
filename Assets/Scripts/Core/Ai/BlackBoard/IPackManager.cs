@@ -1,5 +1,3 @@
-using System.Collections.Generic;
-
 namespace Core.Ai.BlackBoard
 {
     public interface IPackManager : IPackDataProvider

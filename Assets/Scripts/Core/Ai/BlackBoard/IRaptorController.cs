@@ -1,4 +1,3 @@
-using AI.Core.Behavior;
 using Core.Ai.Behavior.Visualization;
 
 namespace Core.Ai.BlackBoard

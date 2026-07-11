@@ -1,8 +1,12 @@
-using System;
 using Application.NPC.Attacks;
 using Core.Game.HealthSystem.Damage;
-using Core.Game.HealthSystem.Health;
 using Core.NPC.Attacks;
+using Game.Core.Audio;
+using Game.Core.Execution;
+using Infrastructure.Unity.Registries;
+using NPC.Unity.Effects;
+using Primitives.Audio.EntityKeys;
+using Primitives.Audio.SoundKeys;
 using Primitives.Damage;
 using Unity.Tools.DrawingTools;
 using UnityEngine;
@@ -14,6 +18,9 @@ namespace Unity.NPC.Attacks
         [SerializeField] BoxCollider2D _hitBox;
 
         public IFrameAttack FrameAttack { get; private set; }
+
+        [SerializeField] AudioBridge _audioBridge;
+
         public DamageType DamageType;
         public Vector2 KnockBackVelocity;
         public float KnockBackApex;
@@ -29,10 +36,12 @@ namespace Unity.NPC.Attacks
 
         public void Swing()
         {
-            Debug.Log($"Swing called");
+            // Debug.Log($"Swing called");
             IDamageable damageable = GetDamageable();
-            Debug.Log($"Found damageable: {damageable != null}");
+            _audioBridge.PlaySound(EntityKey.Raptor, ActionSoundKey.Attack);
+            // Debug.Log($"Found damageable: {damageable != null}");
             FrameAttack.TryAttack(damageable);
+
         }
 
         private IDamageable GetDamageable()
@@ -43,7 +52,7 @@ namespace Unity.NPC.Attacks
             DrawUtil.DrawRectangle(center, size / 2, Color.red);
             if (overlap != null)
             {
-                Debug.Log($"Found collider: {overlap.name}");
+                // Debug.Log($"Found collider: {overlap.name}");
                 overlap.TryGetComponent<IDamageProvider>(out var damageProvider);
                 if (damageProvider != null)
                 {
@@ -52,6 +61,5 @@ namespace Unity.NPC.Attacks
             }
             return null;
         }
-
     }
 }

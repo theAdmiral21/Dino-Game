@@ -8,11 +8,8 @@ using Core.Ai.State.BehaviorContext;
 using Core.Ai.BlackBoard;
 using Core.Ai.BlackBoard.DataStructures;
 using Primitives.Health;
-using PlayerController.Application.Physics.DataStructures;
 using Primitives.Detection;
-using AI.Core.State.BehaviorContext;
 using Movement.Core.Movement.DataStructures;
-using Core.Movement.Inputs;
 using Movement.Core.Abstractions;
 using AI.Core.State;
 

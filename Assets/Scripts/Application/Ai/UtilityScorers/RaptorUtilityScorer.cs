@@ -1,11 +1,7 @@
 using System.Collections.Generic;
-using Codice.Client.Common.GameUI;
 using Core.Ai.Behavior;
 using Core.Ai.WorldState;
-using NPC.Core.Effects;
-using Unity.VisualScripting.YamlDotNet.Core;
 using UnityEngine;
-using UnityEngine.SocialPlatforms.Impl;
 
 namespace Application.Ai.UtilityScorers
 {

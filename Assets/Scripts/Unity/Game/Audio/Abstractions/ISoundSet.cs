@@ -3,8 +3,8 @@ using Game.Unity.Audio.DataStructures;
 
 namespace Game.Unity.Audio.Abstractions
 {
-    public interface ISoundSet<T> where T : IAudioRequest
+    public interface ISoundSet
     {
-        public AudioClipSettings GetClip(T request);
+        public AudioClipSettings GetClip(IAudioRequest request);
     }
 }

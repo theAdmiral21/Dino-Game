@@ -1,7 +1,6 @@
 
 using Movement.Application.Abstractions;
 using Movement.Core.Rules;
-using Movement.Core.Movement.DataStructures;
 using Primitives.GameState;
 using Primitives.Physics;
 using Core.Movement.Inputs;

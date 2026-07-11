@@ -2,7 +2,6 @@
 using Movement.Core.Movement.DataStructures;
 using Primitives.Physics;
 using Movement.Core.Abstractions;
-using UnityEngine;
 using Core.Movement.Inputs;
 
 namespace Movement.Core.Rules

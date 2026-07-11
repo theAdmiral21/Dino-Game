@@ -1,10 +1,6 @@
-using System.Collections.Generic;
 using Application.Ai.BlackBoard;
 using Core.Ai.BlackBoard;
 using Core.Ai.BlackBoard.DataStructures;
-using Core.NPC.Services;
-using Game.Core.Execution;
-using Infrastructure.Unity.Registries;
 using UnityEngine;
 
 namespace Unity.Ai.BlackBoard

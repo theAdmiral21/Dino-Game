@@ -1,12 +1,8 @@
-using System;
 using Core.Ai.BlackBoard;
 using Core.Ai.State.BehaviorContext;
 using Core.Detection.Audio.DataStructures;
 using Core.Detection.DataStructures;
 using Core.Detection.Olfactory.DataStructures;
-using Core.Detection.Visual;
-using Core.Detection.Visual.DataStructures;
-using UnityEngine;
 
 namespace Core.Detection
 {

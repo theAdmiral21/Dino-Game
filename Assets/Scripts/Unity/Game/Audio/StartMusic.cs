@@ -3,7 +3,6 @@ using Infrastructure.Unity.Registries;
 using Game.Core.Execution;
 using Game.Core.Audio;
 using Gameplay.Common.Unity;
-using Game.Application.Audio.DataStructures;
 using Physics.Core.PhysicsActors;
 
 namespace Game.Unity.Audio
@@ -37,7 +36,8 @@ namespace Game.Unity.Audio
 
         private void PlayMusic(IPhysicsActor actor)
         {
-            _audioService.PlayMusic(new SongSoundRequest(SongSoundKey.Factory));
+            Debug.LogError($"HEY THis shit doesn't play music either");
+            // _audioService.PlayMusic(new SoundRequest(SongSoundKey.Factory));
         }
     }
 }

@@ -7,7 +7,6 @@ using PlayerController.Core.Events;
 using PlayerController.Core.Info;
 using Primitives.EventBus.Abstractions;
 using Primitives.Players;
-using Unity.Game.GameLoop;
 using UnityEngine;
 
 namespace Infrastructure.Unity.Players

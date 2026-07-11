@@ -89,7 +89,7 @@ namespace PlayerController.Unity.Effects
                     {
                         StepEffect effect = _stepDetector.TryStep(_physicsContext, _stepDistance);
                         _effectResults.Add(effect);
-                        // Debug.Log($"Adding step effect");
+                        Debug.Log($"Adding step effect");
                         _effectResults.Add(new RunEffect(true, run.Value.x));
                         break;
                     }
@@ -124,32 +124,6 @@ namespace PlayerController.Unity.Effects
             _effectResults.AddRange(_visualStateEffects.EvaluateStateEffects(actorRuleState, _physicsContext));
 
             _effectResults.AddRange(_audioStateEffects.EvaluateStateEffects(actorRuleState, _physicsContext));
-
-            // actorRuleState.TryGet<IInvincibleState>(out var invincible);
-            // actorRuleState.TryGet<IStunState>(out var stun);
-            // actorRuleState.TryGet<IZoomiesState>(out var zoomies);
-            // if (invincible.IsInvincible || stun.IsStunned)
-            // {
-            //     _effectResults.Add(new IFrameEffect(true));
-            // }
-            // else
-            // {
-            //     _effectResults.Add(new IFrameEffect(false));
-            // }
-
-            // // Evaluate Zoomies effect
-            // if (zoomies.IsZooming)
-            // {
-            //     _effectResults.Add(new ZoomiesEffect(true));
-            // }
-            // else
-            // {
-            //     _effectResults.Add(new ZoomiesEffect(false));
-            // }
-
-            // // Evaluate physics effects
-            // _effectResults.Add(new WallSlideEffect(_physicsContext.IsWallSliding, _physicsContext.Surface));
-
 
             _effectDriver.EnqueueEffectResults(_effectResults);
             _effectResults.Clear();

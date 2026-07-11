@@ -11,11 +11,11 @@ namespace Unity.NPC.Spawners
 {
     public struct DelayedSpawn
     {
-        public readonly EnemyEntityKey Prefab;
+        public readonly EntityKey Prefab;
         public readonly Vector3 Location;
         public readonly Quaternion Rotation;
 
-        public DelayedSpawn(EnemyEntityKey prefab, Vector3 location, Quaternion rotation)
+        public DelayedSpawn(EntityKey prefab, Vector3 location, Quaternion rotation)
         {
             Prefab = prefab;
             Location = location;
@@ -26,8 +26,9 @@ namespace Unity.NPC.Spawners
                                IInitializable<IGameContext>,
                                ISpawnNpcService
     {
+        [Header("Npc Library")]
         [SerializeField] private NpcLibrarySO _npcLibrary;
-        private Dictionary<EnemyEntityKey, GameObject> _npcDict = new();
+        private Dictionary<EntityKey, GameObject> _npcDict = new();
 
         [Header("Init Priority")]
         [SerializeField] private int _priority;
@@ -55,7 +56,7 @@ namespace Unity.NPC.Spawners
             SpawnQueued();
         }
 
-        public GameObject RequestNpcSpawn(EnemyEntityKey key, Vector3 location, Quaternion rotation = default)
+        public GameObject RequestNpcSpawn(EntityKey key, Vector3 location, Quaternion rotation = default)
         {
             // If we aren't ready just hold on to the request
             if (!IsInitialized)
@@ -82,7 +83,7 @@ namespace Unity.NPC.Spawners
             }
         }
 
-        private GameObject SpawnNpc(EnemyEntityKey key, Vector3 location, Quaternion rotation = default)
+        private GameObject SpawnNpc(EntityKey key, Vector3 location, Quaternion rotation = default)
         {
             GameObject prefab = GetPrefab(key);
             GameObject instance = Instantiate(prefab, location, rotation);
@@ -92,7 +93,7 @@ namespace Unity.NPC.Spawners
             return instance;
         }
 
-        private GameObject GetPrefab(EnemyEntityKey key)
+        private GameObject GetPrefab(EntityKey key)
         {
             return _npcDict[key];
         }

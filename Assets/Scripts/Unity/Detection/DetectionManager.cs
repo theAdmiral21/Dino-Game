@@ -1,7 +1,5 @@
-using Codice.Utils;
 using Core.Detection;
 using Core.Detection.Olfactory;
-using Unity.Common.Unity;
 using UnityEngine;
 
 namespace Unity.Detection.DetectionManager.cs

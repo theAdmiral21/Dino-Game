@@ -4,7 +4,6 @@ using UnityEngine;
 using System.Collections.Generic;
 using Core.Ai.Behavior.Visualization;
 using System;
-using Core.Movement.Inputs;
 using Movement.Core.Abstractions;
 
 namespace AI.Application.BehaviorTreeNodes

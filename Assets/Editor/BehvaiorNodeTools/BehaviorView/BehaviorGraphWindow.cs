@@ -1,4 +1,3 @@
-using System;
 using AI.Core.Behavior;
 using Core.Ai.Behavior.Visualization;
 using Editor.BehaviorNodeTools.BehaviorView.Elements;

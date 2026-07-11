@@ -1,4 +1,3 @@
-using Physics.Core.Abstractions;
 using Physics.Core.DataStructures;
 
 namespace Core.Environment.Interactions

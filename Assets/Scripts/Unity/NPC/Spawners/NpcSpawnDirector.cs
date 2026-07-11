@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using Core.Ai.BlackBoard;
 using Core.NPC;
@@ -51,7 +50,7 @@ namespace Unity.NPC.Spawners
             foreach (var spawnPoint in NpcSpawnPoints)
             {
                 // spawn a dino!
-                var npc = _spawnNpcService.RequestNpcSpawn(EnemyEntityKey.Raptor, spawnPoint.Position);
+                var npc = _spawnNpcService.RequestNpcSpawn(EntityKey.Raptor, spawnPoint.Position);
                 // for now we only spawn raptors, so make sure they have a pack
                 IPackMember packMember = npc.GetComponent<IPackMember>();
                 _packManager.AddMember(packMember);

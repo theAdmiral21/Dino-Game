@@ -60,7 +60,7 @@ namespace NPC.Unity.Effects
 
         public void HandleAudio(IEffectResult audioEffect)
         {
-            _audioBridge.HandleSound(audioEffect);
+            // _audioBridge.PlaySound(audioEffect);
         }
 
         // Can this just be moved to the base class or would that be too confusing in future implementations? <.<

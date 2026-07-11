@@ -1,12 +1,9 @@
 using Core.Equipment;
-using Core.Inventory;
 using Game.Core.Execution;
 using Infrastructure.Unity.Registries;
 using Movement.Core.Movement.DataStructures;
 using Physics.Core.PhysicsActors;
 using Unity.Common;
-using Unity.Common.Unity;
-using UnityEditor.VersionControl;
 using UnityEngine;
 
 namespace Unity.Equipment

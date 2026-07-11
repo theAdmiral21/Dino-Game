@@ -114,6 +114,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 7dae715ac7b08b34f92e10df59a06437, type: 2}
   - {fileID: 11400000, guid: ca6883337765f1a4a97c6ea6e74c5b4d, type: 2}
   - {fileID: 11400000, guid: 3b29b1762057e524298a6dba5e226c30, type: 2}
+  - {fileID: 11400000, guid: 375452d1e0b0f8a47846069367593d85, type: 2}
 --- !u!114 &5123753718159855905
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -555,6 +556,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Unity::Unity.NPC.Attacks.Bite
   _hitBox: {fileID: 6124017568687286402}
+  _audioBridge: {fileID: 4163788977372438513}
   DamageType: 0
   KnockBackVelocity: {x: 0, y: 0}
   KnockBackApex: 0
@@ -685,8 +687,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d30f9c47651add347aa01b4412753ffc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxHealth: 100
   _priority: 1
+  _currentHealth: 0
 --- !u!1 &6626706514870710666
 GameObject:
   m_ObjectHideFlags: 0
@@ -783,9 +785,9 @@ GameObject:
   m_Component:
   - component: {fileID: 884783381777007510}
   - component: {fileID: 3946994559372827821}
-  - component: {fileID: 261772156354204720}
   - component: {fileID: 1219006616773937655}
   - component: {fileID: 2313714383482377182}
+  - component: {fileID: 4163788977372438513}
   m_Layer: 7
   m_Name: Effects
   m_TagString: Untagged
@@ -833,20 +835,6 @@ MonoBehaviour:
   _effectOrchestratorMono:
     _monoScript: {fileID: 1219006616773937655}
   _priority: 2
---- !u!114 &261772156354204720
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7405074034416881185}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 39e4df2f7cc0b5241b87625e939fda74, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _priority: 2
-  _entityKey: 0
 --- !u!114 &1219006616773937655
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -864,7 +852,7 @@ MonoBehaviour:
   _particleBridgeMono:
     _monoScript: {fileID: 2313714383482377182}
   _audioBridgeMono:
-    _monoScript: {fileID: 261772156354204720}
+    _monoScript: {fileID: 0}
   _physicsActorMono:
     _monoScript: {fileID: 7516074191666959453}
   _ruleStateViewMono:
@@ -884,6 +872,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _particleSystems: []
+--- !u!114 &4163788977372438513
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7405074034416881185}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4673898e7d27d1428dff660de954097, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity::NPC.Unity.Effects.AudioBridge
+  _priority: 0
 --- !u!1 &7443469854774378722
 GameObject:
   m_ObjectHideFlags: 0

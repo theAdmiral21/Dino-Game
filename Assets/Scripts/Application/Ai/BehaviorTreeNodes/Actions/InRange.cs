@@ -6,7 +6,6 @@ using Core.Ai.Behavior.Visualization;
 using System;
 using Core.Ai.State.BehaviorContext;
 using Movement.Core.Movement.DataStructures;
-using Movement.Core.Stats;
 using Movement.Core.Abstractions;
 using Primitives.Stats.DataStructures;
 

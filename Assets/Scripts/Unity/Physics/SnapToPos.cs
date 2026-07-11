@@ -1,19 +1,15 @@
-using System;
 using Core.Environment.Interactions;
 using Core.Physics.PhysicsQueries;
 using Game.Core.Execution;
 using Infrastructure.Unity.Registries;
-using Movement.Core.Abstractions;
 using Movement.Core.Movement.Abstractions;
 using Movement.Core.Movement.DataStructures;
-using Physics.Application.Abstractions;
 using Physics.Core.PhysicsActors;
 using Physics.Core.Services;
 using Unity.Common;
 using Unity.Common.Unity;
 using Unity.Infrastructure.Providers;
 using UnityEngine;
-using UnityEngine.PlayerLoop;
 
 namespace Unity.Physics
 {

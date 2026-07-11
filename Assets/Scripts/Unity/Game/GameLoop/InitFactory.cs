@@ -1,8 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using Game.Core.Execution;
-using Infrastructure.Unity;
-using Primitives.Stats;
 using UnityEngine;
 
 namespace Unity.Game.GameLoop

@@ -1,6 +1,5 @@
 using Core.PlayerController.Info;
 using Infrastructure.Unity.DataStructures;
-using PlayerController.Core.Info;
 using Primitives.Players;
 using UnityEngine;
 

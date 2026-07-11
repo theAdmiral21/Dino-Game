@@ -1,10 +1,14 @@
 using System.Collections.Generic;
 using Game.Core.Audio;
 using Game.Core.Effects;
+using NPC.Core.Effects;
+using NPC.Unity.Effects;
 using PlayerController.Application.Abstractions;
 using PlayerController.Core.Effects.DataStructures;
 using PlayerController.Unity.Animations;
+using Primitives.Audio.EntityKeys;
 using Primitives.Audio.Enums;
+using Primitives.Audio.SoundKeys;
 using Unity.Common.Unity;
 using UnityEngine;
 
@@ -13,8 +17,7 @@ namespace PlayerController.Unity.Physics
     public class EffectDriver : MonoBehaviour, IEffectDriver
     {
         // [SerializeField] private AudioEffectBridge _audioBridge;
-        [SerializeField] private SerializedInterface<IPlayerAudioPlayer> _audioBridgeMono;
-        private IPlayerAudioPlayer _audioBridge => _audioBridgeMono.Interface;
+        [SerializeField] private AudioBridge _audioBridge;
         [SerializeField] private AnimatorEffectBridge _animatorBridge;
 
         [SerializeField] private SerializedInterface<IEffectPlayer> _zoomiesPlayerMono;
@@ -56,45 +59,16 @@ namespace PlayerController.Unity.Physics
 
             switch (audioEffect)
             {
-                case DodgeEffect bark:
+                case DodgeEffect dodge:
                     {
                         Debug.Log("Playing dodge sound");
-                        _audioBridge.PlayBark();
-                        break;
-                    }
-                case HowlEffect howl:
-                    {
-                        // Debug.Log("Playing howl");
-                        _audioBridge.PlayHowl();
+                        _audioBridge.PlaySound(EntityKey.Player, ActionSoundKey.Dodge);
                         break;
                     }
                 case JumpEffect jump:
                     {
                         // Debug.Log("Playing jump");
-                        _audioBridge.PlayJump(jump.Surface);
-                        break;
-                    }
-                case DoubleJumpEffect doubleJump:
-                    {
-                        // Debug.Log("Playing double jump audio");
-                        _audioBridge.PlayDoubleJump();
-                        break;
-                    }
-                case WallJumpEffect wallJump:
-                    {
-                        _audioBridge.PlayJump(wallJump.Surface);
-                        break;
-                    }
-                case WallSlideEffect wallSlide:
-                    {
-                        if (wallSlide.Approved)
-                        {
-                            _audioBridge.PlayWallSlide(wallSlide.Surface);
-                        }
-                        else
-                        {
-                            _audioBridge.StopWallSlide();
-                        }
+                        _audioBridge.PlaySound(EntityKey.Player, ActionSoundKey.Jump, jump.Surface);
                         break;
                     }
                 case StepEffect step:
@@ -104,11 +78,11 @@ namespace PlayerController.Unity.Physics
                             // Debug.Log($"Playing step audio");
                             if (step.SoundKey == PlayerSoundKey.Run)
                             {
-                                _audioBridge.PlayRun(step.Surface);
+                                _audioBridge.PlaySound(EntityKey.Player, ActionSoundKey.Run, step.Surface);
                             }
                             else
                             {
-                                _audioBridge.PlayWalk(step.Surface);
+                                _audioBridge.PlaySound(EntityKey.Player, ActionSoundKey.Walk, step.Surface);
                             }
                         }
                         break;
@@ -116,48 +90,27 @@ namespace PlayerController.Unity.Physics
                 case LandEffect landing:
                     {
                         // Debug.Log("Playing landing");
-                        _audioBridge.PlayLanding(landing.Surface);
+                        _audioBridge.PlaySound(EntityKey.Player, ActionSoundKey.Walk, landing.Surface);
                         break;
                     }
                 case CrouchEffect crouching:
                     {
                         // Debug.Log("Playing landing");
-                        _audioBridge.PlayCrouch();
+                        _audioBridge.PlaySound(EntityKey.Player, ActionSoundKey.Crouch);
                         break;
                     }
-                case ScentEffect scent:
+                case HurtEffect hurt:
                     {
-                        if (scent.Approved)
-                        {
-                            _audioBridge.PlayCrouch();
-                        }
-                        else
-                        {
-                            _audioBridge.StopScent();
-                        }
+                        // Debug.Log("Playing landing");
+                        _audioBridge.PlaySound(EntityKey.Player, ActionSoundKey.Hurt);
                         break;
                     }
-                case ZoomiesEffect zoomies:
+                case DeathEffect death:
                     {
-                        _zoomiesPlayer.Play(zoomies);
+                        // Debug.Log("Playing landing");
+                        _audioBridge.PlaySound(EntityKey.Player, ActionSoundKey.Die);
                         break;
                     }
-                    // case ZoomiesEnterEffect zoomies:
-                    //     {
-                    //         _audioBridge.PlayZoomiesStart();
-
-                    //         break;
-                    //     }
-                    // case ZoomiesTwinkleEffect zoomies:
-                    //     {
-                    //         _audioBridge.PlayZoomiesTwinkle();
-                    //         break;
-                    //     }
-                    // case ZoomiesExitEffect zoomies:
-                    //     {
-                    //         _audioBridge.PlayZoomiesEnd();
-                    //         break;
-                    //     }
             }
         }
 

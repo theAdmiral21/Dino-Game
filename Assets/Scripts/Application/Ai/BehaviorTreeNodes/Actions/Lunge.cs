@@ -7,9 +7,6 @@ using System;
 using Movement.Core.Abstractions;
 using Core.Ai.State.BehaviorContext;
 using Movement.Core.Movement.DataStructures;
-using Movement.Core.Rules;
-using Core.Movement.Inputs;
-using Primitives.Stats.DataStructures;
 
 namespace AI.Application.BehaviorTreeNodes
 {

@@ -33,7 +33,6 @@ using Application.Detection.Services;
 using Core.Detection.Olfactory;
 using Unity.Detection.DetectionManager.cs;
 using Core.NPC.Services;
-using Unity.NPC;
 using Unity.NPC.Spawners;
 
 namespace Game.Unity

@@ -1,12 +1,9 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using AI.Core.Behavior;
-using Codice.Client.Common.TreeGrouper;
 using Core.Ai.Behavior.Visualization;
 using Core.Ai.BlackBoard;
 using Core.Ai.BlackBoard.DataStructures;
-using Game.Application.UI.Menus.UICommands;
 using Unity.Ai.BlackBoard;
 using UnityEditor;
 using UnityEngine;

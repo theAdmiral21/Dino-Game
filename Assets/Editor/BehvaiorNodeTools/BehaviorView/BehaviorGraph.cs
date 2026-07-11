@@ -1,14 +1,9 @@
-using System;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine.UIElements;
 using UnityEngine;
 using System.Collections.Generic;
 using Editor.BehaviorNodeTools.BehaviorView.Elements;
-using System.Drawing;
 using Unity.AI.BehaviorTree;
-using NPC.Application.BehaviorContexts;
-using System.Linq;
-using Core.Ai.Behavior.Visualization;
 
 namespace Editor.BehaviorNodeTools.BehaviorView
 {

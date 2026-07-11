@@ -13,8 +13,6 @@ using Physics.Core.DataStructures;
 using Physics.Core.PhysicsActors;
 using Primitives.Physics;
 using Unity.Common;
-using Unity.Common.Unity;
-using Unity.Infrastructure.Providers;
 using UnityEngine;
 
 namespace Physics.Unity.Actors

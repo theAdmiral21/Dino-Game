@@ -1,12 +1,8 @@
 using System.Collections.Generic;
-using Codice.Client.Common.GameUI;
 using Core.Detection.Audio;
 using Core.Detection.Audio.DataStructures;
 using Core.Equipment;
-using Physics.Core.DataStructures;
-using Physics.Core.PhysicsActors;
 using Primitives.Items;
-using Unity.Common.Unity;
 using UnityEngine;
 
 namespace Unity.Detection.Emitters

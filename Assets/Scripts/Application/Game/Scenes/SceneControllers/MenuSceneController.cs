@@ -3,8 +3,6 @@ using Game.Application.Scenes.Abstractions;
 using Game.Core.Execution;
 using Game.Core.Scenes;
 using Game.Core.Audio;
-using Game.Application.Audio.DataStructures;
-using Primitives.Audio;
 
 namespace Game.Application.Scenes
 {
@@ -29,7 +27,8 @@ namespace Game.Application.Scenes
         public override void OnSceneLoaded()
         {
             Debug.Log($"Scene menu controller loaded");
-            _audioService.PlayMusic(new SongSoundRequest(SongSoundKey.MainMenu, AudioBehavior.SingleShot));
+            Debug.LogError($"HEY this doesn't actually play music anymore. FIX IT");
+            // _audioService.PlayMusic(new SongSoundRequest(SongSoundKey.MainMenu, AudioBehavior.SingleShot));
         }
 
         public override void OnSceneUnloaded()

@@ -5679,10 +5679,10 @@ GameObject:
   - component: {fileID: 68117693140633933}
   - component: {fileID: 4954414116081644503}
   - component: {fileID: 1529720174517458335}
-  - component: {fileID: 75439782826278025}
   - component: {fileID: 7043942589256413278}
   - component: {fileID: 2332003861364235005}
   - component: {fileID: 5367316220842460289}
+  - component: {fileID: 6521311917324512739}
   m_Layer: 6
   m_Name: Effects
   m_TagString: Untagged
@@ -5717,8 +5717,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40e0f8fe99b5b734a875ff2faa7c0ef7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _audioBridgeMono:
-    _monoScript: {fileID: 75439782826278025}
+  _audioBridge: {fileID: 6521311917324512739}
   _animatorBridge: {fileID: 4954414116081644503}
   _zoomiesPlayerMono:
     _monoScript: {fileID: 0}
@@ -5759,19 +5758,6 @@ MonoBehaviour:
     _monoScript: {fileID: 7043942589256413278}
   _stepDistance: 3
   _priority: 5
---- !u!114 &75439782826278025
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3145761066575147408}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a61039609b93e994892e6a1029a4a238, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _priority: 1
 --- !u!114 &7043942589256413278
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5809,6 +5795,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerLight: {fileID: 3458420072834703630}
+--- !u!114 &6521311917324512739
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3145761066575147408}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4673898e7d27d1428dff660de954097, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity::NPC.Unity.Effects.AudioBridge
+  _priority: 0
 --- !u!1 &3258614153716115019
 GameObject:
   m_ObjectHideFlags: 0
@@ -6064,12 +6063,12 @@ MonoBehaviour:
     _monoScript: {fileID: 3957615128236227869}
   _overrideControls:
     _monoScript: {fileID: 1014122250239838178}
-  _maxHealth: 10
   _knockBackMono:
     _monoScript: {fileID: 1431672147824395412}
   _stunMono:
     _monoScript: {fileID: 1431672147824395412}
-  _priority: 1
+  _currentHealth: 0
+  _priority: 10
 --- !u!1 &7119522534278711034
 GameObject:
   m_ObjectHideFlags: 0
@@ -6252,6 +6251,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: af8084c29d940a642937458d9a65706b, type: 2}
   - {fileID: 11400000, guid: 969e3ae706a17344a861fa0a9df745bd, type: 2}
   - {fileID: 11400000, guid: dbe406dc4a2b777488f0efa13f1fabbc, type: 2}
+  - {fileID: 11400000, guid: 7f84330bc1b019c4c9a065317be6654b, type: 2}
 --- !u!1 &8478692204791979029
 GameObject:
   m_ObjectHideFlags: 0

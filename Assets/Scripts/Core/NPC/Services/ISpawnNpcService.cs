@@ -5,6 +5,6 @@ namespace Core.NPC.Services
 {
     public interface ISpawnNpcService
     {
-        public GameObject RequestNpcSpawn(EnemyEntityKey npcKey, Vector3 location, Quaternion rotation = default);
+        public GameObject RequestNpcSpawn(EntityKey npcKey, Vector3 location, Quaternion rotation = default);
     }
 }

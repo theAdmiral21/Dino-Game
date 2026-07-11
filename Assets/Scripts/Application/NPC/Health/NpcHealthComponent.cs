@@ -1,8 +1,6 @@
 using System;
-using Core.Common.Abstractions;
 using Game.Core.Health;
 using Primitives.Damage;
-using Primitives.EventBus.Abstractions;
 using Primitives.Health;
 using UnityEngine;
 

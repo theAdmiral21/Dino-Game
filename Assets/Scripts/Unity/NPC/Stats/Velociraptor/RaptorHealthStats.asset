@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ecf397fdf841a6543ab6501547be0fcb, type: 3}
   m_Name: RaptorHealthStats
   m_EditorClassIdentifier: Unity::Movement.Unity.Stats.HealthStatSO
-  _totalHealth: 0
+  _totalHealth: 100

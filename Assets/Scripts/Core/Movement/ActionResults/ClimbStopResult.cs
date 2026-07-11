@@ -1,7 +1,6 @@
 using System;
 using Movement.Core.Enums;
 using Movement.Core.Movement.Abstractions;
-using Primitives.Physics;
 using Primitives.Physics.Enums;
 
 namespace Movement.Core.Movement.DataStructures

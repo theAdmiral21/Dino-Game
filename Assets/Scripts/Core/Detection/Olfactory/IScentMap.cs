@@ -1,7 +1,4 @@
-using System.Collections.Generic;
-using Core.Detection.Olfactory.DataStructures;
 using Core.Detection.Services;
-using UnityEngine;
 
 namespace Core.Detection.Olfactory
 {

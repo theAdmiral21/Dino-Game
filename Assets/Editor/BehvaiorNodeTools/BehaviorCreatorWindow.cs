@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using Core.Ai.Behavior;
-using TMPro;
 using UnityEditor;
 using UnityEngine;
 

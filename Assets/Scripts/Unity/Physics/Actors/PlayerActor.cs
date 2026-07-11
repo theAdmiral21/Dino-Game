@@ -1,15 +1,12 @@
 using Core.Environment.Interactions;
 using Core.Equipment;
-using Core.Movement.Abstractions;
 using Core.Movement.Inputs;
-using Core.Physics.Collisions;
 using Core.Physics.PhysicsQueries;
 using Game.Core.Execution;
 using Movement.Core.Abstractions;
 using Movement.Core.Movement.DataStructures;
 using Movement.Core.Rules;
 using Movement.Core.Stats;
-using Movement.Unity.Abstractions;
 using Physics.Application.DataStructures;
 using Physics.Application.Orchestrators;
 using Physics.Core.DataStructures;
@@ -18,7 +15,6 @@ using Primitives.Physics.Enums;
 using Unity.Common;
 using Unity.Common.Unity;
 using Unity.Infrastructure.Providers;
-using Unity.PlayerController.Interactions;
 using UnityEngine;
 
 namespace Physics.Unity.Actors

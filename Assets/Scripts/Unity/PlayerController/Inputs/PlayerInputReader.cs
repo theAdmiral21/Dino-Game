@@ -8,7 +8,6 @@ using UnityEngine.InputSystem;
 using Primitives.Physics;
 using Core.Movement.Inputs;
 using PlayerController.Core.Movement.DataStructures;
-using System.Net.Mime;
 
 /*
 Optional actions to add later:

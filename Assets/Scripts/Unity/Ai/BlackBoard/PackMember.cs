@@ -1,4 +1,3 @@
-using System;
 using Core.Ai.BlackBoard;
 using Core.Detection;
 using Core.Game.HealthSystem.Health;
@@ -7,7 +6,6 @@ using Unity.Common;
 using Unity.Common.Unity;
 using Unity.Infrastructure.Providers;
 using Unity.NPC.Controllers;
-using UnityEditor.VersionControl;
 using UnityEngine;
 
 namespace Unity.Ai.BlackBoard

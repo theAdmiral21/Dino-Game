@@ -1,4 +1,4 @@
-using Game.Application.Audio.DataStructures;
+using Application.Game.Audio.DataStructures;
 using Game.Core.Audio;
 using Game.Core.Events;
 using Game.Core.Execution;
@@ -14,7 +14,7 @@ namespace Game.Unity.Events
     /// </summary>
     public class AudioFeedBack : SelfRegister<IInitializable<IGameContext>>, IEventFeedBack, IInitializable<IGameContext>
     {
-        [SerializeField] private LevelObjectEntityKey _entityKey;
+        [SerializeField] private EntityKey _entityKey;
         [SerializeField] private ActionSoundKey _actionKey;
         [SerializeField] private bool _allowPolyphony = false;
         private IAudioService _audioService;
@@ -31,7 +31,7 @@ namespace Game.Unity.Events
             if (_allowPolyphony)
             {
                 // Debug.Log($"Playing with polyphony.");
-                _audioService.PlaySFX(new LevelObjectSoundRequest(_entityKey, _actionKey));
+                _audioService.PlaySFX(new SoundRequest(_entityKey, _actionKey));
             }
             else
             {
@@ -39,7 +39,7 @@ namespace Game.Unity.Events
                 {
                     _isPlaying = true;
                     // Debug.Log($"playing without polyphony");
-                    _audioService.PlaySFX(new LevelObjectSoundRequest(_entityKey, _actionKey));
+                    _audioService.PlaySFX(new SoundRequest(_entityKey, _actionKey));
                     _isPlaying = false;
                 }
             }

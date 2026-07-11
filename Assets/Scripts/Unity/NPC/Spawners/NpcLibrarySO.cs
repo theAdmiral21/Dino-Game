@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using Primitives.Audio.EntityKeys;
-using Primitives.Items;
 using UnityEngine;
 
 namespace Unity.Equipment.DataStructures
@@ -8,7 +7,7 @@ namespace Unity.Equipment.DataStructures
     [System.Serializable]
     public class NpcEntry
     {
-        public EnemyEntityKey Key;
+        public EntityKey Key;
         public GameObject Data;
     }
 
@@ -16,12 +15,12 @@ namespace Unity.Equipment.DataStructures
     public class NpcLibrarySO : ScriptableObject
     {
         [SerializeField] private List<NpcEntry> _entries;
-        private Dictionary<EnemyEntityKey, GameObject> _npcDict = new();
+        private Dictionary<EntityKey, GameObject> _npcDict = new();
         private void OnEnable()
         {
             BuildDictionary();
         }
-        public Dictionary<EnemyEntityKey, GameObject> GetDict()
+        public Dictionary<EntityKey, GameObject> GetDict()
         {
             if (_npcDict.Keys.Count == 0)
             {

@@ -2,10 +2,8 @@ using System.Collections.Generic;
 using Core.Detection.Visual;
 using Core.Detection.Visual.DataStructures;
 using Core.Light;
-using Primitives.Health;
 using Unity.Common.Unity;
 using Unity.Detection.Detectors.DataStructures;
-using UnityEditor;
 using UnityEngine;
 
 namespace Unity.Detection.Detectors

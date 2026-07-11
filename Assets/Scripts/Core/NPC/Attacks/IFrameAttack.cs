@@ -1,5 +1,4 @@
 using Primitives.Damage;
-using Primitives.Physics;
 
 namespace Core.NPC.Attacks
 {

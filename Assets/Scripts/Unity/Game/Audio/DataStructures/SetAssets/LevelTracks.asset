@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7e18b14dcf449146b619add90b0fed8, type: 3}
   m_Name: LevelTracks
   m_EditorClassIdentifier: 
-  TrackList:
-  - {fileID: 11400000, guid: b414311c3a283c248b3c85c41218b901, type: 2}
-  - {fileID: 11400000, guid: df13ea5693ecefd49a2b521bdf95da67, type: 2}
+  _entries:
+  - TrackKey: 1
+    Clip: {fileID: 8300000, guid: 9c15ca5dafd2ef84389f5810ef956883, type: 3}

@@ -1,6 +1,5 @@
 using PlayerController.Core.Effects.Abstractions;
 using PlayerController.Core.Info;
-using Unity.Common.Unity;
 using UnityEngine;
 
 namespace PlayerController.Unity.Info

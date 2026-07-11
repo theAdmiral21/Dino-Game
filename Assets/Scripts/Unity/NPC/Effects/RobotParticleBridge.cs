@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using Game.Core.Effects;
 using NPC.Core.Effects;

@@ -1,6 +1,4 @@
 using UnityEngine;
-using Primitives.Detection;
-using Primitives.Health;
 
 namespace Core.Detection.Olfactory.DataStructures
 {

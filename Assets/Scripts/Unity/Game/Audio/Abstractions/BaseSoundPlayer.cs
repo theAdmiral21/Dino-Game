@@ -43,21 +43,21 @@ namespace Game.Unity.Audio.Abstractions
 
         protected AudioSource PlayOneShot(AudioClipSettings clipSettings, IAudioRequest request)
         {
-            return PlaySFX(clipSettings, request.Volume, false);
+            return PlaySFX(clipSettings, request.VolumeRange, false);
         }
 
         protected AudioSource PlayLooping(AudioClipSettings clipSettings, IAudioRequest request)
         {
-            return PlaySFX(clipSettings, request.Volume, true);
+            return PlaySFX(clipSettings, request.VolumeRange, true);
         }
 
         protected AudioSource PlayMusic(AudioClipSettings clipSettings, IAudioRequest request)
         {
             if (request.Behavior == Primitives.Audio.AudioBehavior.Music)
             {
-                return PlaySFX(clipSettings, request.Volume, true);
+                return PlaySFX(clipSettings, request.VolumeRange, true);
             }
-            return PlaySFX(clipSettings, request.Volume, false);
+            return PlaySFX(clipSettings, request.VolumeRange, false);
         }
 
         protected AudioSource PlayAmbient(AudioClipSettings clipSettings, IAudioRequest request)
@@ -72,7 +72,7 @@ namespace Game.Unity.Audio.Abstractions
         /// <param name="volume"></param>
         /// <param name="loop"></param>
         /// <returns>AudioSource</returns>
-        private AudioSource PlaySFX(AudioClipSettings clipSettings, float volume = 1f, bool loop = false)
+        private AudioSource PlaySFX(AudioClipSettings clipSettings, Vector2 volumeRange, bool loop = false)
         {
             if (clipSettings == null || _queuedSources.Count == 0) return null;
             // Get the audio source from the queue

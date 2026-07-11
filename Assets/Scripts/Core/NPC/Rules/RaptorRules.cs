@@ -1,4 +1,3 @@
-using System;
 using Core.Movement.Inputs;
 using Enemy.Core.Rules;
 using Movement.Core.Abstractions;

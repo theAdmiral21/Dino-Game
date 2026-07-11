@@ -8,7 +8,6 @@ using Core.Ai.State.BehaviorContext;
 using Core.Ai.BlackBoard;
 using Application.Utility;
 using Movement.Core.Abstractions;
-using Core.Ai.BlackBoard.DataStructures;
 using System.Collections.Generic;
 using Core.Ai.Behavior.Visualization;
 using System;

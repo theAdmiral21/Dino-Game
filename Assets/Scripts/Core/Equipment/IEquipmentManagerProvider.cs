@@ -1,5 +1,3 @@
-using Core.Equipment;
-
 namespace Core.Equipment
 {
     public interface IEquipmentManagerProvider

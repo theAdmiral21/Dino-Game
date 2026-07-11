@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: NpcLibrary
   m_EditorClassIdentifier: 
   _entries:
-  - Key: 0
+  - Key: 2
     Data: {fileID: 614233289889581336, guid: bbb0bfd250f06fe4b80725695ddc694f, type: 3}

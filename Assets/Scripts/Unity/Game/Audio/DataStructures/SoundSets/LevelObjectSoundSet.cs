@@ -10,10 +10,11 @@ namespace Game.Unity.Audio.DataStructures
 {
 
     [CreateAssetMenu(menuName = "Game/Audio/Level Object Sound Set")]
-    public class LevelObjectSoundSet : ScriptableObject, ISoundSet<ILevelObjectAudioRequest>
+    public class LevelObjectSoundSet : ScriptableObject, ISoundSet
     {
+        public List<LevelObjectSoundEntry> Entries => _entries;
         [SerializeField] private List<LevelObjectSoundEntry> _entries = new();
-        private Dictionary<ValueTuple<LevelObjectEntityKey, ActionSoundKey>, LevelObjectSoundEntry> _audioDict = new();
+        private Dictionary<ValueTuple<EntityKey, ActionSoundKey>, LevelObjectSoundEntry> _audioDict = new();
         public Vector2 VolumeRange = new Vector2(0.95f, 1.05f);
         public Vector2 PitchRange = new Vector2(0.95f, 1.05f);
         private void OnEnable()
@@ -21,22 +22,25 @@ namespace Game.Unity.Audio.DataStructures
             BuildDictionary();
         }
 
-        public AudioClipSettings GetClip(ILevelObjectAudioRequest request)
+        public AudioClipSettings GetClip(IAudioRequest request)
         {
-            var entry = _audioDict[(request.EntityKey, request.ActionKey)];
-
-            Vector2 pitchRange = PitchRange;
-            Vector2 volumeRange = VolumeRange;
-
-            if (!entry.ModulatePitch)
+            if (_audioDict.TryGetValue((request.Entity, request.ActionKey), out LevelObjectSoundEntry entry))
             {
-                pitchRange = Vector2.one;
+                Vector2 pitchRange = PitchRange;
+                Vector2 volumeRange = VolumeRange;
+
+                if (!entry.ModulatePitch)
+                {
+                    pitchRange = Vector2.one;
+                }
+                if (!entry.ModulateVolume)
+                {
+                    volumeRange = Vector2.one;
+                }
+                return new AudioClipSettings(entry.Clip, volumeRange, pitchRange);
             }
-            if (!entry.ModulateVolume)
-            {
-                volumeRange = Vector2.one;
-            }
-            return new AudioClipSettings(entry.Clip, volumeRange, pitchRange);
+            Debug.LogError($"{name} could not map {(request.Entity, request.ActionKey)} to a sound.");
+            return null;
         }
 
         private void BuildDictionary()

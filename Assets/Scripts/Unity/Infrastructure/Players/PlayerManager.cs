@@ -8,7 +8,6 @@ using Infrastructure.Core.Lifecycle;
 using Infrastructure.Unity.Registries;
 using Infrastructure.Unity.Status;
 using PlayerController.Core.Config;
-using PlayerController.Core.Info;
 using Primitives.Characters;
 using Primitives.EventBus.Abstractions;
 using Primitives.Players;

@@ -7,7 +7,6 @@ using Primitives.Input;
 using Movement.Core.Rules;
 using Core.Movement.Inputs;
 using Primitives.Physics.Enums;
-using System;
 
 namespace Movement.Core.State.DataStructures
 {

@@ -12,7 +12,7 @@ using Game.Core.Execution;
 namespace Primitives.UI.Menus.Unity
 {
     [RequireComponent(typeof(MenuRouter))]
-    [RequireComponent(typeof(MenuAudioBridge))]
+    // [RequireComponent(typeof(MenuAudioBridge))]
     public class MenuOrchestrator : SelfRegister<IInitializable<IGameContext>>, IUICommandHandler, IInitializable<IGameContext>
     {
         [SerializeField] private int _priority = 0;

@@ -5,7 +5,6 @@ using Core.Game.HealthSystem.Health;
 using Game.Core.Execution;
 using Game.Core.Health;
 using Infrastructure.Unity.Registries;
-using Primitives.Detection;
 using Primitives.Health;
 using Unity.Common.Unity;
 using UnityEngine;

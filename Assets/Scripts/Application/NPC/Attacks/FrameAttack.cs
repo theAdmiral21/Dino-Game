@@ -1,6 +1,5 @@
 using Core.NPC.Attacks;
 using Primitives.Damage;
-using Primitives.Physics;
 
 namespace Application.NPC.Attacks
 {
@@ -16,9 +15,9 @@ namespace Application.NPC.Attacks
         public bool TryAttack(IDamageable target)
         {
             if (target == null) return false;
-            if (_fired) return false;
+            // if (_fired) return false;
             target.ReceiveDamage(Damage);
-            _fired = true;
+            // _fired = true;
             // We made contact
             return true;
         }

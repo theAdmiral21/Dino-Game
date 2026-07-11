@@ -13,33 +13,33 @@ MonoBehaviour:
   m_Name: LevelObjectSoundSet
   m_EditorClassIdentifier: 
   _entries:
-  - Key: 0
+  - Key: 8
     ActionKey: 10
     ModulatePitch: 1
     ModulateVolume: 1
     Clip: {fileID: 8300000, guid: 785d452c731694940bbb838e59a92be7, type: 3}
-  - Key: 1
+  - Key: 9
     ActionKey: 10
     ModulatePitch: 0
     ModulateVolume: 0
     Clip: {fileID: 8300000, guid: 53d1532db5793a841b65ee58ad1e3221, type: 3}
-  - Key: 1
+  - Key: 9
     ActionKey: 7
     ModulatePitch: 1
     ModulateVolume: 1
     Clip: {fileID: 8300000, guid: 310a6ee86eccddf468a0b288f81dceb8, type: 3}
-  - Key: 9
+  - Key: 17
     ActionKey: 10
     ModulatePitch: 1
     ModulateVolume: 1
     Clip: {fileID: 8300000, guid: 4869df69d14b0824394e563c97193f78, type: 3}
-  - Key: 10
-    ActionKey: 24
+  - Key: 18
+    ActionKey: 25
     ModulatePitch: 0
     ModulateVolume: 1
     Clip: {fileID: 8300000, guid: 60c002bd55d056742a3aef47f3f86267, type: 3}
-  - Key: 10
-    ActionKey: 25
+  - Key: 18
+    ActionKey: 26
     ModulatePitch: 0
     ModulateVolume: 1
     Clip: {fileID: 8300000, guid: cda17e02eb57dbd4eabe32851c4273c9, type: 3}

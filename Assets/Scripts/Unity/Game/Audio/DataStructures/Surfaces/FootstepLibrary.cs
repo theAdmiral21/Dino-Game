@@ -8,7 +8,7 @@ namespace Game.Unity.Audio.DataStructures
 {
 
     [CreateAssetMenu(menuName = "Game/Audio/Footstep Library")]
-    public class FootstepLibrary : ScriptableObject, ISoundSet<ISurfaceAudioRequest>
+    public class FootstepLibrary : ScriptableObject, ISoundSet
     {
         public SurfaceSoundSet DirtyGround;
         public SurfaceSoundSet Grass;
@@ -141,7 +141,7 @@ namespace Game.Unity.Audio.DataStructures
             return null;
         }
 
-        public AudioClipSettings GetClip(ISurfaceAudioRequest request)
+        public AudioClipSettings GetClip(IAudioRequest request)
         {
             SurfaceType surface = request.Surface;
             ActionSoundKey action = request.ActionKey;

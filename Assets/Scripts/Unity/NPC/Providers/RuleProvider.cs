@@ -1,6 +1,5 @@
 using Core.Movement.Abstractions;
 using Core.WeaponRules;
-using Enemy.Core.Rules;
 using Game.Core.Execution;
 using Infrastructure.Unity.Registries;
 using Movement.Core.Abstractions;
@@ -8,7 +7,6 @@ using Movement.Unity.Abstractions;
 using NPC.Core.Rules;
 using Primitives.Rules;
 using Unity.Common;
-using Unity.Common.Unity;
 using UnityEngine;
 
 namespace NPC.Unity.Providers

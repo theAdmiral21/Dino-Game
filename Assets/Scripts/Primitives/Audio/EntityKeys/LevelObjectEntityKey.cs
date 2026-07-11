@@ -13,5 +13,9 @@ namespace Primitives.Audio.EntityKeys
         SmokeGrenade,
         Flashlight,
         InteriorDoor,
+
+        // Menus
+        MainMenu,
+        Pause,
     }
 }
