@@ -8,6 +8,7 @@ using Game.Core.Health;
 using PlayerController.Core.Info;
 using Primitives.Health;
 using Primitives.Players;
+using Core.Game;
 
 namespace PlayerController.Application.Health
 {
@@ -81,8 +82,8 @@ namespace PlayerController.Application.Health
                     case DamageType.Stun:
                         {
                             // Insta kill
-                            Debug.Log($"Was killed - Frame: {Time.frameCount}");
-                            DecrementHealth(CurrentHealth);
+                            Debug.Log($"Was Stunned - Frame: {Time.frameCount}");
+                            // DecrementHealth(CurrentHealth);
                             break;
                         }
                     case DamageType.None:
@@ -111,12 +112,14 @@ namespace PlayerController.Application.Health
             CurrentHealth = MaxHealth;
             SetHealthState();
             OnHealed?.Invoke();
+            RaiseHealthChangedEvent();
         }
         private void DecrementHealth(int damage)
         {
             CurrentHealth -= damage;
             SetHealthState();
             OnDamaged?.Invoke();
+            RaiseHealthChangedEvent();
         }
         private void IncrementHealth(int healing)
         {
@@ -124,6 +127,7 @@ namespace PlayerController.Application.Health
             CurrentHealth += healing;
             SetHealthState();
             OnHealed?.Invoke();
+            RaiseHealthChangedEvent();
         }
 
         private void SetHealthState()
@@ -148,6 +152,15 @@ namespace PlayerController.Application.Health
             {
                 StateOfHealth = HealthState.Dead;
             }
+        }
+
+        private void RaiseHealthChangedEvent()
+        {
+            _eventBus.Publish(new OnHealthChanged
+            {
+                HealthAmount = CurrentHealth,
+                State = StateOfHealth,
+            });
         }
 
 

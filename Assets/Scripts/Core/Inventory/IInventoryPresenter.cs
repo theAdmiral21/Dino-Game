@@ -1,11 +1,12 @@
+using Core.Common.Abstractions;
 using Core.Game;
 using Primitives.EventBus.Abstractions;
 
 namespace Core.Inventory
 {
-    public interface IInventoryPresenter
+    public interface IHudPresenter : IInitObject<IEventBus>
     {
-        public void SetEventBus(IEventBus eventBusProvider);
+        // public void SetEventBus(IEventBus eventBusProvider);
         public void UpdateEquipped(CurrentEquipmentChanged evt);
         public void UpdateEquippedQuantity(int quantity);
         public void UpdateEquippedQuantity(EquipmentQuantityChanged evt);

@@ -6,10 +6,15 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
+using Core.Common.Abstractions;
+using Infrastructure.Application.EventBus;
+using Unity.Game.UI.Hud;
+using Core.Game.UI.Menus.Hud;
+using Unity.Common.Unity;
 
 namespace Unity.Inventory
 {
-    public class InventoryPresenter : MonoBehaviour, IInventoryPresenter
+    public class HudPresenter : MonoBehaviour, IHudPresenter
     {
         [SerializeField] private Image _equippedImage;
         [SerializeField] private TextMeshProUGUI _magQuantity;
@@ -19,6 +24,9 @@ namespace Unity.Inventory
         [SerializeField] private Image _healthBar;
         [SerializeField] private TextMeshProUGUI _medkitQuantity;
         [SerializeField] private EquipmentAssets _equipmentAssets;
+
+        [SerializeField] private SerializedInterface<IDamageOverlay> _damageOverlayMono;
+        private IDamageOverlay _damageOverlay => _damageOverlayMono.Interface;
 
         private IEventBus _eventBus;
         private ItemType _currentlyEquipped = ItemType.None;
@@ -51,7 +59,7 @@ namespace Unity.Inventory
 
         public void UpdateHealth(OnHealthChanged evt)
         {
-            throw new System.NotImplementedException();
+            _damageOverlay.UpdateOverlay(evt.State);
         }
 
         public void UpdateMedkitQuantity(MedkitQuantityChanged evt)
@@ -78,7 +86,8 @@ namespace Unity.Inventory
         {
             _magQuantity.text = $"{evt.CurrentQuantity}";
         }
-        public void SetEventBus(IEventBus eventBus)
+
+        public void Init(IEventBus eventBus)
         {
             if (_eventBus == null)
             {

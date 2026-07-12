@@ -1,6 +1,7 @@
 using Core.Inventory;
 using Infrastructure.Unity.DataStructures;
 using Unity.Cinemachine;
+using Unity.Game.UI.Hud;
 using UnityEngine;
 
 namespace Infrastructure.Unity.Players
@@ -21,9 +22,9 @@ namespace Infrastructure.Unity.Players
             data.CameraObject = cameraObject;
 
             // While you're here setup the inventory presenter
-            var presenter = cameraObject.GetComponentInChildren<IInventoryPresenter>();
+            var presenter = cameraObject.GetComponentInChildren<IHudPresenter>();
             var playerInventory = data.PlayerObject.GetComponentInChildren<IInventory>();
-            presenter.SetEventBus(playerInventory.InventoryEventBus);
+            presenter.Init(playerInventory.InventoryEventBus);
 
             return data;
         }

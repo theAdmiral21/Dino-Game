@@ -10,10 +10,12 @@ using Unity.Inventory.DataStructures;
 using Core.Inventory.Requests;
 using Core.Equipment;
 using Unity.Common.Unity;
+using Infrastructure.Unity.Registries;
+using Game.Core.Execution;
 
 namespace Unity.Inventory
 {
-    public class Inventory : MonoBehaviour, IInventory
+    public class Inventory : SelfRegister<IInitializable<IGameContext>>, IInventory, IInitializable<IGameContext>
     {
         [SerializeField] private InventoryLimitSO _inventoryLimits;
         private Dictionary<ItemType, int> _limitMap = new();
@@ -31,12 +33,26 @@ namespace Unity.Inventory
         public IInventorySystem InventorySystem { get; private set; }
         public IEquipment CurrentlyEquipped => _equipmentManager.ActiveEquipment;
 
+
+        [SerializeField] private int _priority;
+        public int Priority => _priority;
+
+
         private void Awake()
         {
             _limitMap = _inventoryLimits.GetLimitMap();
-            InventoryEventBus = new EventBus();
-            InventorySystem = ConfigureInventory();
 
+        }
+
+        public void Initialize(IGameContext context)
+        {
+            InventoryEventBus = context.EventBus;
+        }
+
+        public void PostInitialize(IGameContext context)
+        {
+            // This class doesn't provide anything other classes need during initialize, so configure it in post initialize
+            InventorySystem = ConfigureInventory();
             // Init the equipment manager
             _equipmentManager.Init(InventoryEventBus, InventorySystem);
         }
