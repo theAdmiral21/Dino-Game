@@ -4,8 +4,7 @@ using Game.Core.Effects;
 using Gameplay.Common.Unity.VisualEffects;
 using Movement.Core.Abstractions;
 using Movement.Core.Rules;
-using PlayerController.Application.Effects.Abstractions;
-using PlayerController.Application.Effects.DataStructures;
+using PlayerController.Core.Effects.Abstractions;
 using PlayerController.Core.Effects.DataStructures;
 using Primitives.Physics;
 using UnityEngine;
@@ -31,8 +30,8 @@ namespace PlayerController.Unity.Animations
         [SerializeField] private DamageFlash _damageFlash;
         [SerializeField] private IFramesAlpha _iFramesAlpha;
         private Vector3 _transformCache = Vector3.one;
-        public PlayerAnimatorState CurrentState => _currentState;
-        private PlayerAnimatorState _currentState;
+        // public PlayerAnimatorState CurrentState => _currentState;
+        // private PlayerAnimatorState _currentState;
 
         private bool _fallTriggered;
         private bool _jumpTriggered;

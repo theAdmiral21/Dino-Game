@@ -333,7 +333,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6981302665189072424, guid: c9b5af2e600af4042a4556d8fbbcea2a, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -10
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6981302665189072424, guid: c9b5af2e600af4042a4556d8fbbcea2a, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1165,6 +1165,71 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e5a7d9a03f6c2364185f6c250c2a4071, type: 3}
+--- !u!1 &1656174839
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1656174842}
+  - component: {fileID: 1656174841}
+  - component: {fileID: 1656174840}
+  m_Layer: 0
+  m_Name: SaveManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1656174840
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1656174839}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0a97ea9e22763544ae8ce9da7495436, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity::Unity.Infrastructure.Registries.SaveRegistry
+  _resetables:
+    debugEntities: []
+  _snapShotables:
+    debugEntities: []
+  _revertables:
+    debugEntities: []
+--- !u!114 &1656174841
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1656174839}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99cd66c30343b5445a42f6f3bc36e721, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity::Unity.Infrastructure.Lifecycle.SaveManager
+  _saveRegistryMono:
+    _monoScript: {fileID: 1656174840}
+--- !u!4 &1656174842
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1656174839}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1794194810
 GameObject:
   m_ObjectHideFlags: 0
@@ -5987,11 +6052,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2610839924921469739, guid: c356fd051e9e1914799c0351b539ea30, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -42.45
+      value: -15.97
       objectReference: {fileID: 0}
     - target: {fileID: 2610839924921469739, guid: c356fd051e9e1914799c0351b539ea30, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.63
+      value: 3.81
       objectReference: {fileID: 0}
     - target: {fileID: 2610839924921469739, guid: c356fd051e9e1914799c0351b539ea30, type: 3}
       propertyPath: m_LocalPosition.z
@@ -6316,3 +6381,4 @@ SceneRoots:
   - {fileID: 377945869}
   - {fileID: 7297424175701063733}
   - {fileID: 1573572573567355905}
+  - {fileID: 1656174842}

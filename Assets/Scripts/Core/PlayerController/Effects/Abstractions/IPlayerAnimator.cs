@@ -1,14 +1,13 @@
 using Core.Movement.Inputs;
 using Game.Core.Effects;
 using Movement.Core.Abstractions;
-using PlayerController.Application.Effects.DataStructures;
 using Primitives.Physics;
 
-namespace PlayerController.Application.Effects.Abstractions
+namespace PlayerController.Core.Effects.Abstractions
 {
     public interface IPlayerAnimator
     {
-        public PlayerAnimatorState CurrentState { get; }
+        // public PlayerAnimatorState CurrentState { get; }
 
         /// <summary>
         /// Method for animating continuous movement. Think running, falling, idle, etc.

@@ -14,6 +14,7 @@ namespace Infrastructure.Unity.Registries
 
 
         public IReadOnlyCollection<ITriggerVolume> Triggers => _triggers.Entities;
+        [SerializeField]
         private Registry<ITriggerVolume> _triggers = new();
 
         public void Awake()
