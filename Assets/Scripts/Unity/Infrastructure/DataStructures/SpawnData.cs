@@ -1,5 +1,6 @@
 using System;
 using Primitives.Characters;
+using Primitives.SaveData;
 using UnityEngine;
 
 namespace Infrastructure.Unity.DataStructures
@@ -35,6 +36,9 @@ namespace Infrastructure.Unity.DataStructures
         /// </summary>
         public int ProfileId;
 
-        // Save data would also go here
+        /// <summary>
+        /// The save data for this player
+        /// </summary>
+        public PlayerSaveData SaveData;
     }
 }

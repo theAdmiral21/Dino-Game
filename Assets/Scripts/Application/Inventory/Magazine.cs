@@ -37,6 +37,11 @@ namespace Application.Inventory
             return false;
         }
 
+        public void SetRounds(int amount)
+        {
+            _rounds = amount;
+        }
+
         public void DecrementQuantity(int amount)
         {
             _rounds -= amount;
@@ -56,6 +61,5 @@ namespace Application.Inventory
                 return;
             }
         }
-
     }
 }

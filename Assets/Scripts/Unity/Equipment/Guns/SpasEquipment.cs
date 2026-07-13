@@ -11,11 +11,12 @@ using Primitives.Audio.SoundKeys;
 using Primitives.Damage;
 using Primitives.Items;
 using Unity.Common.Unity;
+using Unity.Equipment.Abstractions;
 using UnityEngine;
 
 namespace Unity.Equipment
 {
-    public class SpasEquipment : MonoBehaviour, IEquipment, IAllowInfiniteAmmo, IDamageDealer
+    public class SpasEquipment : BaseEquipment, IDamageDealer
     {
         [Header("Bullet Collision Layers")]
         [SerializeField] private LayerMask _layerMask;
@@ -24,22 +25,22 @@ namespace Unity.Equipment
         [SerializeField] private SerializedInterface<ISoundEmitter> _gunShotSoundMono;
         private ISoundEmitter _gunShotSound => _gunShotSoundMono.Interface;
 
-        public ItemType EquipmentType => ItemType.Shotgun;
+        public override ItemType EquipmentType => ItemType.Shotgun;
 
-        public EquipmentStats Stats { get; private set; }
+        // public EquipmentStats Stats { get; private set; }
 
 
         // How many rounds are in your current magazine
-        public int RoundCount => _magazine.RoundCount;
+        // public int RoundCount => _magazine.RoundCount;
 
-        public event Action<int> OnFire;
-        public event Action<int, Action<int>> OnReload;
+        // public event Action<int> OnFire;
+        // public event Action<int, Action<int>> OnReload;
 
-        private IMagazine _magazine;
-        private bool _weaponRaised;
+        // private IMagazine _magazine;
+        // private bool _weaponRaised;
         [SerializeField] private Transform _barrelEnd;
         private Vector2 _barrelPos => _barrelEnd.position;
-        private Vector2 _aimPos;
+        // private Vector2 _aimPos;
         private Vector2 _playerPos => new Vector2(transform.position.x, transform.position.y);
 
         private DamageInfo _damageInfo;
@@ -48,39 +49,50 @@ namespace Unity.Equipment
         [SerializeField] private bool _debug;
 
 
-        [Header("Cheats")]
-        [SerializeField] private bool _hasInfiniteAmmo;
-        public bool HasInfiniteAmmo => _hasInfiniteAmmo;
+        // [Header("Cheats")]
+        // [SerializeField] private bool _hasInfiniteAmmo;
+        // public bool HasInfiniteAmmo => _hasInfiniteAmmo;
 
         [SerializeField] private int _priority = 0;
         public int Priority => _priority;
 
 
-        private IGameContext _gameContext;
-        private ProjectileStats _projectileStats;
+        // private IGameContext _gameContext;
+        // private ProjectileStats _projectileStats;
         private IAudioService _audioService;
 
-        public void Init(EquipmentStats equipmentStats, IGameContext gameContext)
+        //         public void Init(EquipmentStats equipmentStats, IGameContext gameContext)
+        //         {
+        //             Stats = equipmentStats;
+        //             _magazine = new Magazine(equipmentStats.MagazineSize);
+        //             _projectileStats = Stats.Projectile;
+        //             _gameContext = gameContext;
+        //             _audioService = gameContext.AudioService;
+        //             gameObject.GetComponentInChildren<IInitStats<EquipmentStats>>().Init(Stats);
+
+        // #if !UNITY_EDITOR
+        //             _hasInfiniteAmmo = false;
+        // #endif
+        //         }
+
+        public override void PostInit(EquipmentStats equipmentStats, IGameContext gameContext)
         {
-            Stats = equipmentStats;
-            _magazine = new Magazine(equipmentStats.MagazineSize);
-            _projectileStats = Stats.Projectile;
-            _gameContext = gameContext;
             _audioService = gameContext.AudioService;
             gameObject.GetComponentInChildren<IInitStats<EquipmentStats>>().Init(Stats);
 
 #if !UNITY_EDITOR
-            _hasInfiniteAmmo = false;
+                    _hasInfiniteAmmo = false;
 #endif
         }
 
-        public void Aim(Vector2 mosPos)
+
+        public override void Aim(Vector2 mosPos)
         {
             // Draw a cross hair
             _aimPos = Camera.main.ScreenToWorldPoint(mosPos);
         }
 
-        public void Fire()
+        public override void Fire()
         {
             if (_magazine.ConsumeRound())
             {
@@ -93,7 +105,8 @@ namespace Unity.Equipment
         }
         private IEnumerator FireRoutine()
         {
-            OnFire?.Invoke(_magazine.RoundCount);
+            // OnFire?.Invoke(_magazine.RoundCount);
+            RaiseOnFire(_magazine.RoundCount);
 
             _audioService.PlaySFX(
                 new SoundRequest(
@@ -156,19 +169,19 @@ namespace Unity.Equipment
                 v.x * sin + v.y * cos
             );
         }
-        public void RaiseWeapon(bool raiseWeapon)
-        {
-            _weaponRaised = raiseWeapon;
-            if (_weaponRaised)
-            {
+        // public void RaiseWeapon(bool raiseWeapon)
+        // {
+        //     _weaponRaised = raiseWeapon;
+        //     if (_weaponRaised)
+        //     {
 
-            }
-            else
-            {
+        //     }
+        //     else
+        //     {
 
-            }
-        }
-        public void RequestReload()
+        //     }
+        // }
+        public override void RequestReload()
         {
             int requestAmount = _magazine.Capacity - _magazine.RoundCount;
             // Debug.Log($"Requesting: {requestAmount} rocks");
@@ -178,21 +191,22 @@ namespace Unity.Equipment
             }
             else
             {
-                OnReload?.Invoke(requestAmount, _magazine.ReplenishRounds);
+                // OnReload?.Invoke(requestAmount, _magazine.ReplenishRounds);
+                RaiseOnReload(requestAmount, _magazine.ReplenishRounds);
             }
         }
 
-        private void DrawCrossHair()
-        {
-            Debug.DrawLine(_barrelEnd.position, _aimPos);
-        }
+        // private void DrawCrossHair()
+        // {
+        //     Debug.DrawLine(_barrelEnd.position, _aimPos);
+        // }
 
-        private void Update()
-        {
-            if (_weaponRaised)
-            {
-                DrawCrossHair();
-            }
-        }
+        // private void Update()
+        // {
+        //     if (_weaponRaised)
+        //     {
+        //         DrawCrossHair();
+        //     }
+        // }
     }
 }

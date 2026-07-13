@@ -4,6 +4,7 @@ Okay I know how this looks. I've put an interface in primitives which is against
 
 using System;
 using Primitives.Characters;
+using Primitives.SaveData;
 
 namespace Primitives.Players
 {
@@ -11,5 +12,6 @@ namespace Primitives.Players
     {
         public Guid PlayerId { get; }
         public CharacterID CharacterId { get; }
+        public PlayerSaveData SaveData { get; }
     }
 }

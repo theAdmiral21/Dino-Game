@@ -87,6 +87,10 @@ namespace NPC.Application.Health
             SetHealthState();
             OnHealed?.Invoke();
         }
+        public void SetHealth(int health)
+        {
+            CurrentHealth = health;
+        }
         private void DecrementHealth(int damage)
         {
             CurrentHealth -= damage;

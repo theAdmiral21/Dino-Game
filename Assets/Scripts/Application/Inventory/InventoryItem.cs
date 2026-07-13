@@ -22,7 +22,10 @@ namespace Application.Inventory
             _inventoryEventBus = inventoryEventBus;
 
         }
-
+        public void SetQuantity(int quantity)
+        {
+            Quantity = quantity;
+        }
         public void HandleFire(int amount)
         {
             _inventoryEventBus.Publish(new MagazineQuantityChanged

@@ -6,5 +6,6 @@ namespace Core.Equipment
         public int Capacity { get; }
         public void ReplenishRounds(int bulletCount);
         public bool ConsumeRound();
+        public void SetRounds(int amount);
     }
 }

@@ -16,6 +16,9 @@ using Unity.Infrastructure.Providers;
 using Core.Game.HealthSystem.Damage;
 using Movement.Core.Stats;
 using Primitives.Stats.DataStructures;
+using Core.Game.Lifecycle;
+using Primitives.SaveData;
+using Infrastructure.Unity;
 
 namespace PlayerController.Unity.Health
 {
@@ -25,7 +28,8 @@ namespace PlayerController.Unity.Health
                                 IHealthComponentProvider,
                                 IInitializable<IGameContext>,
                                 IHealProvider,
-                                IDamageProvider
+                                IDamageProvider,
+                                IRevertable
     {
         [SerializeField] SerializedInterface<IPlayerView> _playerView;
         [SerializeField] SerializedInterface<IOverrideControls> _overrideControls;
@@ -45,6 +49,9 @@ namespace PlayerController.Unity.Health
         public bool IsAlive => _healthComponent.IsAlive;
         private IPlayerInfo _playerInfo;
 
+        // Save Data
+        private HealthSaveData? _saveData;
+
         [Header("Debug")]
         [SerializeField] int _currentHealth;
 
@@ -58,6 +65,7 @@ namespace PlayerController.Unity.Health
         private void Awake()
         {
             base.Awake();
+            RegistryGateway.Register<IRevertable>(this);
 
             if (_knockBack == null)
             {
@@ -118,6 +126,31 @@ namespace PlayerController.Unity.Health
         private void LateUpdate()
         {
             _currentHealth = HealthComponent.CurrentHealth;
+        }
+
+        public void Revert()
+        {
+            if (_saveData.HasValue)
+            {
+                _healthComponent.SetHealth(_saveData.Value.CurrentHealth);
+            }
+            else
+            {
+                Debug.LogError($"Implement fetching saved health data");
+            }
+        }
+
+        public void TakeSnapShot()
+        {
+            _saveData = new HealthSaveData
+            {
+                CurrentHealth = _currentHealth,
+            };
+        }
+
+        public void SerializeSnapShot()
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

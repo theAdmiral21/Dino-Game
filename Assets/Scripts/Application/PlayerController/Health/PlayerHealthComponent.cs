@@ -114,6 +114,12 @@ namespace PlayerController.Application.Health
             OnHealed?.Invoke();
             RaiseHealthChangedEvent();
         }
+        public void SetHealth(int health)
+        {
+            CurrentHealth = health;
+            SetHealthState();
+            RaiseHealthChangedEvent();
+        }
         private void DecrementHealth(int damage)
         {
             CurrentHealth -= damage;

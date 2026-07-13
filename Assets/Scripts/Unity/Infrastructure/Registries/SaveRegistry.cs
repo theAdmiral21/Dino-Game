@@ -13,10 +13,10 @@ namespace Unity.Infrastructure.Registries
         private Registry<IResetable> _resetables = new();
         public IReadOnlyCollection<IResetable> Resetables => _resetables.Entities;
 
-        [Header("SnapShotables")]
-        [SerializeField]
-        private Registry<ISnapShotable> _snapShotables = new();
-        public IReadOnlyCollection<ISnapShotable> SnapShotables => _snapShotables.Entities;
+        // [Header("SnapShotables")]
+        // [SerializeField]
+        // private Registry<ISnapShotable> _snapShotables = new();
+        // public IReadOnlyCollection<ISnapShotable> SnapShotables => _snapShotables.Entities;
 
         [Header("Revertables")]
         [SerializeField]
@@ -26,7 +26,7 @@ namespace Unity.Infrastructure.Registries
         private void Awake()
         {
             RegistryGateway.SetRegistry(_resetables);
-            RegistryGateway.SetRegistry(_snapShotables);
+            // RegistryGateway.SetRegistry(_snapShotables);
             RegistryGateway.SetRegistry(_revertables);
         }
     }

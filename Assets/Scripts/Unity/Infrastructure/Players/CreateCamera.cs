@@ -24,7 +24,7 @@ namespace Infrastructure.Unity.Players
             // While you're here setup the inventory presenter
             var presenter = cameraObject.GetComponentInChildren<IHudPresenter>();
             var playerInventory = data.PlayerObject.GetComponentInChildren<IInventory>();
-            presenter.Init(playerInventory.InventoryEventBus);
+            presenter.Init(playerInventory.EventBus);
 
             return data;
         }

@@ -32,6 +32,7 @@ namespace Unity.Infrastructure.Providers
                                         IEquipmentManagerProvider,
                                         IPlayerInfoProvider
     {
+
         [SerializeField] private SerializedInterface<IStatSheet> _statSheetMono;
         public IStatSheet StatSheet => _statSheetMono.Interface;
 

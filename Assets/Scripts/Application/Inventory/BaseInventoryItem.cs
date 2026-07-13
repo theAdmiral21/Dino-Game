@@ -68,7 +68,10 @@ namespace Application.Inventory
 
             return withdrawn;
         }
-
+        public void SetQuantity(int quantity)
+        {
+            Quantity = quantity;
+        }
         private void DecrementQuantity(int amount)
         {
             Quantity -= amount;

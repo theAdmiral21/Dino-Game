@@ -15,5 +15,6 @@ namespace Game.Core.Health
         public event Action OnDamaged;
         public void HandleHealing(HealInfo info);
         public void HandleDamage(DamageInfo damageInfo);
+        public void SetHealth(int health);
     }
 }

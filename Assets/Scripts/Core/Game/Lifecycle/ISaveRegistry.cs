@@ -6,7 +6,7 @@ namespace Core.Game.Lifecycle
     public interface ISaveRegistry
     {
         public IReadOnlyCollection<IResetable> Resetables { get; }
-        public IReadOnlyCollection<ISnapShotable> SnapShotables { get; }
+        // public IReadOnlyCollection<ISnapShotable> SnapShotables { get; }
         public IReadOnlyCollection<IRevertable> Revertables { get; }
     }
 }

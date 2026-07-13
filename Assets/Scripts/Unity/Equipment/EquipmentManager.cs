@@ -1,13 +1,16 @@
 using Core.Equipment;
+using Core.Game.Lifecycle;
 using Core.Inventory;
+using Infrastructure.Unity.Registries;
 using Movement.Core.Movement.DataStructures;
 using Primitives.EventBus.Abstractions;
+using Primitives.SaveData;
 using Unity.Common.Unity;
 using UnityEngine;
 
 namespace Unity.Equipment
 {
-    public class EquipmentManager : MonoBehaviour, IEquipmentManager
+    public class EquipmentManager : SelfRegister<IRevertable>, IEquipmentManager, IRevertable
     {
         [SerializeField] private Transform _facingTransform;
         [SerializeField] private Transform _equipmentAnchor;
@@ -27,6 +30,7 @@ namespace Unity.Equipment
         [SerializeField] private EquipmentFactory _equipmentFactory;
         private IEventBus _inventoryEventBus;
         private IInventorySystem _inventorySystem;
+        protected EquipmentSaveData? _saveData;
 
         [Header("Debug")]
         [SerializeField] private string _currentEquipment;
@@ -34,6 +38,7 @@ namespace Unity.Equipment
 
         private void Awake()
         {
+            base.Awake();
             _flashLightObject.SetActive(true);
             _flashLight = _flashLightObject.GetComponentInChildren<IFlashlight>();
             Debug.Assert(_flashLight != null, $"Unable to set _flashlight");
@@ -43,6 +48,7 @@ namespace Unity.Equipment
         private void OnDestroy()
         {
             UnsubToEvents();
+            base.OnDestroy();
         }
 
         public void HandleEquipmentChanged(CurrentEquipmentChanged evt)
@@ -107,6 +113,31 @@ namespace Unity.Equipment
             SubToEvents();
 
             _inventorySystem = inventorySystem;
+        }
+
+        public void Revert()
+        {
+            if (_saveData.HasValue)
+            {
+                ActiveEquipment.Magazine.SetRounds(_saveData.Value.RoundsInMagazine);
+            }
+            else
+            {
+                throw new System.NotImplementedException();
+            }
+        }
+
+        public void TakeSnapShot()
+        {
+            _saveData = new EquipmentSaveData
+            {
+                RoundsInMagazine = ActiveEquipment != null ? ActiveEquipment.RoundCount : 0,
+            };
+        }
+
+        public void SerializeSnapShot()
+        {
+            throw new System.NotImplementedException();
         }
 
         private void SubToEvents()

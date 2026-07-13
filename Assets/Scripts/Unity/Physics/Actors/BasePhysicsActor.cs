@@ -1,3 +1,4 @@
+using Core.Game.Lifecycle;
 using Core.Physics.Collisions;
 using Game.Core.Execution;
 using Gameplay.Common.Unity;
@@ -8,6 +9,7 @@ using Movement.Core.Movement.DataStructures;
 using Physics.Core.Abstractions;
 using Physics.Core.PhysicsActors;
 using Primitives.Physics;
+using Primitives.SaveData;
 using UnityEngine;
 
 namespace Physics.Unity.Actors
@@ -17,7 +19,8 @@ namespace Physics.Unity.Actors
                                             IInitializable<IGameContext>,
                                             IPhysicsActor,
                                             IActorEventBusProvider,
-                                            IExternalForceReceiver
+                                            IExternalForceReceiver,
+                                            IRevertable
     {
         public ActorType Actor => _actor;
         [SerializeField] private ActorType _actor;
@@ -45,10 +48,13 @@ namespace Physics.Unity.Actors
         protected LayerMask _collisionLayer;
         protected IBoundsProvider _bounds;
         protected ITransformProvider _transformProvider;
+
+        private KinematicSaveData? _saveData;
         protected virtual void Awake()
         {
             base.Awake();
             RegistryGateway.Register<IPhysicsActor>(this);
+            RegistryGateway.Register<IRevertable>(this);
 
             Collider2D collider = GetComponent<Collider2D>();
             _bounds = new UnityColliderBoundsProvider(collider);
@@ -126,6 +132,30 @@ namespace Physics.Unity.Actors
         public void ReceiveContinuous(IActionRequest result)
         {
             EnqueueActionRequest(result);
+        }
+
+        public void Revert()
+        {
+            if (_saveData.HasValue)
+            {
+                Debug.LogError($"Implement reverting for the physics actor.");
+            }
+        }
+
+        public void TakeSnapShot()
+        {
+            _saveData = new KinematicSaveData
+            {
+                Position = Brain.FrameData.PhysicsContext.GlobalPosition,
+                // Velocity = Brain.FrameData.CurrentState.Velocity,
+                // ExternalVelocity = Brain.FrameData.CurrentState.Velocity,
+                // Gravity = Brain.FrameData.CurrentState.Gravity,
+            };
+        }
+
+        public void SerializeSnapShot()
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

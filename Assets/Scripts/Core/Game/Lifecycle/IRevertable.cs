@@ -1,6 +1,6 @@
 namespace Core.Game.Lifecycle
 {
-    public interface IRevertable
+    public interface IRevertable : ISnapShotable
     {
         public void Revert();
     }

@@ -5,6 +5,7 @@ using Core.Inventory.Requests;
 using Primitives.Items;
 using Primitives.EventBus.Abstractions;
 using Movement.Core.Movement.DataStructures;
+using Primitives.SaveData;
 
 namespace Application.Inventory
 {
@@ -43,6 +44,8 @@ namespace Application.Inventory
         private IInventoryItem _currentItem;
 
         private IEventBus _inventoryEventBus;
+
+
         public InventorySystem(IEventBus inventoryEventBus, Dictionary<ItemType, int> limitMap)
         {
             _inventoryEventBus = inventoryEventBus;
@@ -51,6 +54,24 @@ namespace Application.Inventory
 
             // Assign a default piece of equipment
             // RestockItem(new TaserProvider(0));
+        }
+        public InventorySystem(IEventBus inventoryEventBus, Dictionary<ItemType, int> limitMap, InventorySaveData saveData)
+        {
+            _inventoryEventBus = inventoryEventBus;
+            _itemLimits = limitMap;
+            SubToEvents();
+
+            // Equip the item
+            TryEquip(saveData.CurrentItem);
+            // Rebuild the inventory data
+            Dictionary<ItemType, IInventoryItem> itemDict = new();
+            for (int i = 0; i < saveData.Items.Count; i++)
+            {
+                ItemType key = saveData.Items[i].Item;
+                itemDict[key] = BuildNewInventoryItem(key);
+            }
+            // Overwrite the current dict
+            _items = itemDict;
         }
         private void SubToEvents()
         {

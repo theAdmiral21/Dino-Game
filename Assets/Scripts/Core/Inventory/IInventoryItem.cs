@@ -11,5 +11,6 @@ namespace Core.Inventory
         public int Withdraw(int amount);
         public void HandleFire(int amount);
         public void HandleReload(int requestedAmount, Action<int> replenishCallback);
+        public void SetQuantity(int quantity);
     }
 }

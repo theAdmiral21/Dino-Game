@@ -1,6 +1,7 @@
 using System;
 using Primitives.Characters;
 using Primitives.Players;
+using Primitives.SaveData;
 
 namespace PlayerController.Core.Config
 {
@@ -9,6 +10,7 @@ namespace PlayerController.Core.Config
     {
         public Guid PlayerId { get; private set; }
         public CharacterID CharacterId { get; private set; }
+        public PlayerSaveData SaveData { get; private set; }
 
         public PlayerInfo(Guid playerId, CharacterID characterID)
         {

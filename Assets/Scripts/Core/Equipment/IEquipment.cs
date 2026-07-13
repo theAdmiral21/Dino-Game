@@ -16,6 +16,8 @@ namespace Core.Equipment
         // Equipment state information
         public int RoundCount { get; }
 
+        // Magazine getter
+        public IMagazine Magazine { get; }
 
         // Effect notification
         public event Action<int> OnFire;

@@ -1,51 +1,55 @@
-using System;
 using System.Collections;
 using System.Linq;
-using Application.Inventory;
 using Core.Equipment;
 using Game.Core.Execution;
 using Movement.Core.Movement.DataStructures;
 using Physics.Core.PhysicsActors;
 using Primitives.Items;
+using Unity.Equipment.Abstractions;
 using Unity.Game.GameLoop;
 using UnityEngine;
 
 namespace Unity.Equipment
 {
-    public class RockEquipment : MonoBehaviour, IEquipment
+    public class RockEquipment : BaseEquipment
     {
         [SerializeField] private GameObject _rockPrefab;
-        public ItemType EquipmentType => ItemType.Rock;
+        public override ItemType EquipmentType => ItemType.Rock;
 
-        public EquipmentStats Stats { get; private set; }
+        // public EquipmentStats Stats { get; private set; }
 
 
         // How many rounds are in your current magazine
-        public int RoundCount => _magazine.RoundCount;
+        // public int RoundCount => _magazine.RoundCount;
 
 
-        public event Action<int> OnFire;
-        public event Action<int, Action<int>> OnReload;
+        // public event Action<int> OnFire;
+        // public event Action<int, Action<int>> OnReload;
 
-        private IMagazine _magazine;
+        // private IMagazine _magazine;
 
-        private bool _weaponRaised;
-        private Vector2 _aimPos;
+        // private bool _weaponRaised;
+        // private Vector2 _aimPos;
         private Vector2 _playerPos => new Vector2(transform.position.x, transform.position.y);
-        private IGameContext _gameContext;
-        private ProjectileStats _projectileStats;
+        // private IGameContext _gameContext;
+        // private ProjectileStats _projectileStats;
 
-        public void Init(EquipmentStats equipmentStats, IGameContext gameContext)
+        // public void Init(EquipmentStats equipmentStats, IGameContext gameContext)
+        // {
+        //     Stats = equipmentStats;
+        //     _magazine = new Magazine(equipmentStats.MagazineSize);
+        //     _projectileStats = Stats.Projectile;
+        //     _gameContext = gameContext;
+        //     // Debug.Log($"Rock initialized");
+
+        // }
+
+        public override void PostInit(EquipmentStats equipmentStats, IGameContext gameContext)
         {
-            Stats = equipmentStats;
-            _magazine = new Magazine(equipmentStats.MagazineSize);
-            _projectileStats = Stats.Projectile;
-            _gameContext = gameContext;
-            // Debug.Log($"Rock initialized");
 
         }
 
-        public void Aim(Vector2 mosPos)
+        public override void Aim(Vector2 mosPos)
         {
             // Draw a cross hair
 
@@ -57,20 +61,20 @@ namespace Unity.Equipment
             // Debug.Log($"mouse position: {mosPos}; mouse world position: {_aimPos}");
         }
 
-        private void DrawCrossHair()
-        {
-            Debug.DrawLine(transform.position, _aimPos);
-        }
+        // private void DrawCrossHair()
+        // {
+        //     Debug.DrawLine(transform.position, _aimPos);
+        // }
 
-        private void Update()
-        {
-            if (_weaponRaised)
-            {
-                DrawCrossHair();
-            }
-        }
+        // private void Update()
+        // {
+        //     if (_weaponRaised)
+        //     {
+        //         DrawCrossHair();
+        //     }
+        // }
 
-        public void Fire()
+        public override void Fire()
         {
             // Debug.Log($"Attempting to throw rock!");
             // try to consume a rock
@@ -107,42 +111,44 @@ namespace Unity.Equipment
 
         private IEnumerator FireRoutine()
         {
-            OnFire?.Invoke(_magazine.RoundCount);
+            // OnFire?.Invoke(_magazine.RoundCount);
+            RaiseOnFire(_magazine.RoundCount);
             // After firing, wait then reload
             yield return new WaitForSeconds(Stats.ReloadTime);
             RequestReload();
         }
 
-        public void RaiseWeapon(bool raiseWeapon)
-        {
-            _weaponRaised = raiseWeapon;
-            if (_weaponRaised)
-            {
-                // Debug.Log($"Raising rock!");
-                // if you have rocks
+        // public void RaiseWeapon(bool raiseWeapon)
+        // {
+        //     _weaponRaised = raiseWeapon;
+        //     if (_weaponRaised)
+        //     {
+        //         // Debug.Log($"Raising rock!");
+        //         // if you have rocks
 
-                // Other wise reload
-                if (_magazine.RoundCount == 0)
-                {
-                    RequestReload();
-                }
+        //         // Other wise reload
+        //         if (_magazine.RoundCount == 0)
+        //         {
+        //             RequestReload();
+        //         }
 
-                // cock your arm back
+        //         // cock your arm back
 
-                // allow aiming
-            }
-            else
-            {
-                // lower the weapon
-                // Debug.Log($"Lowering rock!");
-            }
-        }
+        //         // allow aiming
+        //     }
+        //     else
+        //     {
+        //         // lower the weapon
+        //         // Debug.Log($"Lowering rock!");
+        //     }
+        // }
 
-        public void RequestReload()
+        public override void RequestReload()
         {
             int requestAmount = _magazine.Capacity - _magazine.RoundCount;
             // Debug.Log($"Requesting: {requestAmount} rocks");
-            OnReload?.Invoke(requestAmount, _magazine.ReplenishRounds);
+            // OnReload?.Invoke(requestAmount, _magazine.ReplenishRounds);
+            RaiseOnReload(requestAmount, _magazine.ReplenishRounds);
         }
 
 
