@@ -10,15 +10,16 @@ namespace Game.Application.Scenes
 
         public SceneId CurrentScene => _currentScene;
         // Default to boot scene
-        private SceneId _currentScene = SceneId.Boot;
+        private SceneId _currentScene;
 
         private ISceneEvents _sceneEventService;
 
         private ISceneTransitionPolicy _sceneChangePolicy = new SceneTransitionPolicy();
 
-        public SceneStateManager(ISceneEvents sceneEvents)
+        public SceneStateManager(ISceneEvents sceneEvents, SceneId currentScene)
         {
             _sceneEventService = sceneEvents;
+            _currentScene = currentScene;
         }
 
         public bool RequestSceneChange(ISceneChangeRequest request)

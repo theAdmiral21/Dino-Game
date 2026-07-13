@@ -48,6 +48,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _runner: {fileID: 7170841781767036898}
+  _priority: 0
 --- !u!114 &3152180294712428880
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -60,7 +61,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22883869526bfd042ae2396b76fa749c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sceneLibrary: {fileID: 11400000, guid: 8195ca8bbf6b6a247967ac0d1c04e1ea, type: 2}
+  _sceneMap: {fileID: 11400000, guid: 94fc76e4564842244ab4b70739a04404, type: 2}
 --- !u!114 &7170841781767036898
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -6,13 +6,15 @@ using Game.Core.Scenes.Enums;
 using Game.Unity.Scenes.DataStructures;
 using Infrastructure.Unity.Registries;
 using Primitives.Common.Scenes;
+using Unity.Game.Scenes.DataStructures;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Game.Unity.GameLoop
 {
     public class GamePlayLoop : SelfRegister<IInitializable<IGameContext>>, IInitializable<IGameContext>
     {
-        [SerializeField] private BaseSceneContext _sceneContext;
+        private ISceneDefinition _sceneDef;
         private ISceneRunTimeController _sceneController;
 
         [SerializeField] private int _priority = 0;
@@ -26,8 +28,11 @@ namespace Game.Unity.GameLoop
 
         public void Initialize(IGameContext gameContext)
         {
-            // Debug.Log($"GamePlayLoop Initialize; Frame-{Time.frameCount}");
-            _sceneController = CreateController(_sceneContext, gameContext);
+            // Get the current scene's name
+            string sceneName = SceneManager.GetActiveScene().name;
+            // Get the scene definition
+            _sceneDef = gameContext.SceneServices.SceneDefinitionProvider.ResolveScene(sceneName);
+            _sceneController = CreateController(_sceneDef, gameContext);
             Debug.Log($"Running game loop with scene controller: {_sceneController}");
         }
 
@@ -35,11 +40,12 @@ namespace Game.Unity.GameLoop
         {
             // Debug.Log($"GamePlayLoop Post Initialize; Frame-{Time.frameCount}");
             // Ensure we're in the correct scene
+            Debug.Log($"[SceneManager] Active scene: {SceneManager.GetActiveScene().name}");
             SceneId currentScene = gameContext.SceneServices.CurrentSceneService.CurrentScene;
-            if (currentScene != _sceneContext.Tag.Id)
+            if (currentScene != _sceneDef.Id)
             {
-                Debug.LogError($"Current scene did not match actual scene. Updating...");
-                gameContext.SceneServices.SyncSceneService.SyncScene(_sceneContext.Tag.Id);
+                Debug.LogError($"Current scene ({currentScene}) did not match actual scene {_sceneDef.Id}. Updating...");
+                gameContext.SceneServices.SyncSceneService.SyncScene(_sceneDef.Id);
             }
         }
         private void Update()
@@ -54,9 +60,9 @@ namespace Game.Unity.GameLoop
             base.OnDestroy();
         }
 
-        private ISceneRunTimeController CreateController(BaseSceneContext sceneContext, IGameContext gameContext)
+        private ISceneRunTimeController CreateController(ISceneDefinition sceneContext, IGameContext gameContext)
         {
-            return sceneContext.LevelType switch
+            return sceneContext.TypeOfScene switch
             {
                 SceneType.Gameplay => new GameplaySceneController(sceneContext, gameContext),
                 SceneType.Cinematic => new CinematicOnlyController(sceneContext, gameContext),

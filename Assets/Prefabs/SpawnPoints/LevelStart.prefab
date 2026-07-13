@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 78218785701767117}
   - component: {fileID: 558349680886588602}
-  - component: {fileID: 8988282460094620648}
   - component: {fileID: 7170695651543996924}
-  m_Layer: 0
+  - component: {fileID: 4246289027865138659}
+  m_Layer: 9
   m_Name: LevelStart
   m_TagString: Untagged
   m_Icon: {fileID: 2488908585195742037, guid: 0000000000000000d000000000000000, type: 0}
@@ -80,19 +80,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 5, y: 5}
   m_EdgeRadius: 0
---- !u!114 &8988282460094620648
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3414323088077482845}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4a70f08c1f52ff44ab87d62bf202f6b5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _triggerCollider: {fileID: 7170695651543996924}
 --- !u!114 &7170695651543996924
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -108,3 +95,22 @@ MonoBehaviour:
   _isSingleUse: 0
   _collider: {fileID: 558349680886588602}
   _triggerTarget: Player
+--- !u!114 &4246289027865138659
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3414323088077482845}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a17e82b4ea160784e9ef98a85d540106, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity::Environment.Unity.Checkpoints.CheckPoint
+  _jingleFeedBack:
+    _monoScript: {fileID: 0}
+  _particleFeedBack: {fileID: 0}
+  _waterFeedBack: {fileID: 0}
+  _triggerCollider: {fileID: 7170695651543996924}
+  _checkpointId: 0
+  _priority: 0

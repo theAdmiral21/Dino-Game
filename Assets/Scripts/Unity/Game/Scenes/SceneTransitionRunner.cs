@@ -64,10 +64,10 @@ namespace Game.Unity.Scenes
             onComplete?.Invoke();
         }
 
-        private SceneContext GetSceneContext()
-        {
-            Debug.LogError($"You don't have you scene context fully defined. Either define it or remove it.");
-            return new SceneContext();
-        }
+        // private SceneContext GetSceneContext()
+        // {
+        //     Debug.LogError($"You don't have you scene context fully defined. Either define it or remove it.");
+        //     return new SceneContext();
+        // }
     }
 }

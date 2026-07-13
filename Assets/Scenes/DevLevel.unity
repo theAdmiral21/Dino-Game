@@ -974,6 +974,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity::Game.Unity.Events.AnimationFeedBack
   _animator: {fileID: 1020930925}
   _triggerParameter: OpenTrigger
+--- !u!114 &1027484958 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3964305839837497467, guid: cbdc44df1e4dd9e4aa9efb46dc6b9c08, type: 3}
+  m_PrefabInstance: {fileID: 1143208185}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea92e359948482a43b42b070983ffb59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1143208185
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1022,6 +1033,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2409575720488319771, guid: cbdc44df1e4dd9e4aa9efb46dc6b9c08, type: 3}
+      propertyPath: _checkpointId
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2409575720488319771, guid: cbdc44df1e4dd9e4aa9efb46dc6b9c08, type: 3}
+      propertyPath: _triggerCollider
+      value: 
+      objectReference: {fileID: 1027484958}
     - target: {fileID: 4271873116202391552, guid: cbdc44df1e4dd9e4aa9efb46dc6b9c08, type: 3}
       propertyPath: m_Name
       value: DebugStartZone
@@ -1144,21 +1163,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 558349680886588602, guid: e5a7d9a03f6c2364185f6c250c2a4071, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3414323088077482845, guid: e5a7d9a03f6c2364185f6c250c2a4071, type: 3}
       propertyPath: m_Name
       value: LevelStart
       objectReference: {fileID: 0}
-    - target: {fileID: 3414323088077482845, guid: e5a7d9a03f6c2364185f6c250c2a4071, type: 3}
-      propertyPath: m_Layer
-      value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 3414323088077482845, guid: e5a7d9a03f6c2364185f6c250c2a4071, type: 3}
-      propertyPath: m_IsActive
-      value: 1
+    - target: {fileID: 4246289027865138659, guid: e5a7d9a03f6c2364185f6c250c2a4071, type: 3}
+      propertyPath: _checkpointId
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1196,8 +1207,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Unity::Unity.Infrastructure.Registries.SaveRegistry
   _resetables:
-    debugEntities: []
-  _snapShotables:
     debugEntities: []
   _revertables:
     debugEntities: []

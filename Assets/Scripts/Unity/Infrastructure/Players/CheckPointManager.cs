@@ -5,24 +5,32 @@ using Environment.Core.Level;
 using Game.Core.Events;
 using Game.Core.Execution;
 using Game.Core.Lifecycle;
+using Game.Unity.Scenes.DataStructures;
 using Infrastructure.Unity.Registries;
+using Primitives.Checkpoints;
+using Primitives.Common.Scenes;
 using Primitives.EventBus.Abstractions;
 using Primitives.Infrastructure;
 using Unity.Common.Unity;
+using Unity.Environment.Checkpoints.DataStructures;
 using UnityEngine;
 
 namespace Infrastructure.Unity.Players
 {
     public class CheckPointManager : SelfRegister<IInitializable<IGameContext>>, IInitializable<IGameContext>, ICheckPointDataProvider
     {
+        [SerializeField] private CheckpointMapSO _checkpointSceneLookUp;
         [SerializeField] private SerializedInterface<ICheckpointRegistry> _checkpoints;
         public IReadOnlyCollection<ICheckpoint> Checkpoints => _checkpoints.Interface.Checkpoints;
         private IEventBus _eventBus;
         private Dictionary<Guid, CheckPointData> _checkpointMap = new();
+        private SceneId _currentScene;
+
         [SerializeField] private int _priority = 0;
         public int Priority => _priority;
         public void Initialize(IGameContext context)
         {
+            _currentScene = context.SceneServices.CurrentSceneService.CurrentScene;
             _eventBus = context.EventBus;
         }
 
@@ -64,13 +72,11 @@ namespace Infrastructure.Unity.Players
 
         private CheckPointData? GetLevelStart()
         {
-            Debug.Log($"Fetching level start");
+            CheckpointId targetId = _checkpointSceneLookUp.GetStart(_currentScene);
             foreach (var checkpoint in Checkpoints)
             {
-                if (checkpoint.IsLevelStart)
-                {
+                if (checkpoint.Data.Id == targetId)
                     return checkpoint.Data;
-                }
             }
             return null;
         }
@@ -78,12 +84,11 @@ namespace Infrastructure.Unity.Players
         private CheckPointData? GetDebugStart()
         {
             Debug.Log($"Fetching debug start");
+            CheckpointId targetId = _checkpointSceneLookUp.GetDebugStart(_currentScene);
             foreach (var checkpoint in Checkpoints)
             {
-                if (checkpoint.IsDebugStart)
-                {
+                if (checkpoint.Data.Id == targetId)
                     return checkpoint.Data;
-                }
             }
             return null;
         }

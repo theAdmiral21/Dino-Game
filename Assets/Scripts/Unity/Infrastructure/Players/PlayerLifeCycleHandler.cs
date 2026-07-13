@@ -123,7 +123,7 @@ namespace Infrastructure.Unity.Status
         private IEnumerator PlayTransitionRoutine(IPlayerView playerView)
         {
             // Fade Out
-            if (_sceneContext.LevelType == SceneType.Dolphin)
+            if (_sceneContext.TypeOfScene == SceneType.Dolphin)
             {
                 yield return playerView.TransitionView.PlayOutTransition(ScreenTransitions.Dolphin);
             }

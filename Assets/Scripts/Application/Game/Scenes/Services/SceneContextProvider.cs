@@ -15,5 +15,10 @@ namespace Game.Application.Scenes
         {
             return _contextProvider.ResolveScene(sceneId);
         }
+
+        public ISceneDefinition ResolveScene(string sceneName)
+        {
+            return _contextProvider.ResolveScene(sceneName);
+        }
     }
 }

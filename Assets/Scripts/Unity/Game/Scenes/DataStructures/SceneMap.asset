@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0614c4e88dab46842a01eb378fd27a56, type: 3}
+  m_Name: SceneMap
+  m_EditorClassIdentifier: Unity::Unity.Environment.Checkpoints.DataStructures.SceneMapSO
+  _entries:
+  - Id: 8
+    StartState: 1
+    TypeOfScene: 2
+    SceneAsset: {fileID: 102900000, guid: 8c9cfa26abfee488c85f1582747f6a02, type: 3}
+    _sceneName: DevLevel
+  - Id: 4
+    StartState: 1
+    TypeOfScene: 2
+    SceneAsset: {fileID: 102900000, guid: dc5ece23e2d38d943a695083e4888c51, type: 3}
+    _sceneName: Power Up

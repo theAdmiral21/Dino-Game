@@ -34,6 +34,7 @@ using Core.Detection.Olfactory;
 using Unity.Detection.DetectionManager.cs;
 using Core.NPC.Services;
 using Unity.NPC.Spawners;
+using Primitives.Common.Scenes;
 
 namespace Game.Unity
 {
@@ -97,9 +98,15 @@ namespace Game.Unity
 
             // Scene Services
             SceneEventService sceneEvents = new SceneEventService();
-            SceneStateManager sceneManager = new(sceneEvents);
+
             var sceneLoader = GetComponentInChildren<ISceneDefinitionProvider>();
             var sceneContextProvider = new SceneContextProvider(sceneLoader);
+            // Get the active scene
+            string sceneName = SceneManager.GetActiveScene().name;
+            SceneId sceneId = sceneContextProvider.ResolveScene(sceneName).Id;
+
+            SceneStateManager sceneManager = new SceneStateManager(sceneEvents, sceneId);
+
             _sceneServices = new SceneServices(
                 sceneManager,
                 sceneEvents,

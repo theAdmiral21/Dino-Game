@@ -6,14 +6,10 @@ namespace Primitives.Common.Scenes
         Intro,
         MainMenu,
         Jungle,
-        PowerStation,
+        PowerUp,
         ControlCenter,
         Credits,
         None,
-
-
-#if UNITY_EDITOR
         DevLevel,
-#endif
     }
 }

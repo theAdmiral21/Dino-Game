@@ -7,6 +7,7 @@ using Infrastructure.Unity;
 using Infrastructure.Unity.Registries;
 using Physics.Core.PhysicsActors;
 using PlayerController.Core.Info;
+using Primitives.Checkpoints;
 using Primitives.EventBus.Abstractions;
 using Primitives.Infrastructure;
 using Unity.Common.Unity;
@@ -18,14 +19,13 @@ namespace Environment.Unity.Checkpoints
     {
         [Header("Audio and Animation")]
         // NOTE I only have on serialized reference because if there are multiple on the same object, when I go to add it here, I can only add the top most interface... which is weird.
-        [SerializeField] private SerializedInterface<IEventFeedBack> _jingleFeedBack;
+        [SerializeField] private AudioFeedBack _jingleFeedBack;
         [SerializeField] private ParticleFeedBack _particleFeedBack;
         [SerializeField] private AudioFeedBack _waterFeedBack;
 
         [Header("Collision Zones")]
         [SerializeField] private TriggerVolume _triggerCollider;
-        public bool IsDebugStart => false;
-        public bool IsLevelStart => false;
+        [SerializeField] private CheckpointId _checkpointId;
         public CheckPointData Data => _data;
         private CheckPointData _data;
         private IEventBus _eventBus;
@@ -42,9 +42,8 @@ namespace Environment.Unity.Checkpoints
 
             _data = new CheckPointData
             {
-                LevelStart = IsLevelStart,
                 Position = transform.position,
-                CheckPointId = GetHashCode(),
+                Id = _checkpointId,
             };
         }
         public void OnDestroy()
@@ -52,6 +51,8 @@ namespace Environment.Unity.Checkpoints
             RegistryGateway.Deregister<ICheckpoint>(this);
 
             if (_triggerCollider != null) _triggerCollider.OnVolumeEntered -= UpdateCheckPoint;
+
+            base.OnDestroy();
         }
 
         public void Initialize(IGameContext context)
@@ -73,7 +74,7 @@ namespace Environment.Unity.Checkpoints
             _eventBus.Publish(new CheckPointTriggeredEvent(_data, playerInfo.PlayerInfo.PlayerId));
 
             // Play audio
-            if (_jingleFeedBack != null) _jingleFeedBack.Interface.React();
+            if (_jingleFeedBack != null) _jingleFeedBack.React();
             if (_waterFeedBack != null) _waterFeedBack.React();
             // Animate the bounce
             if (_particleFeedBack != null) _particleFeedBack.React();

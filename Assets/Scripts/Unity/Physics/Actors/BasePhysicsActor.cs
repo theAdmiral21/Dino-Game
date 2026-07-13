@@ -146,7 +146,7 @@ namespace Physics.Unity.Actors
         {
             _saveData = new KinematicSaveData
             {
-                Position = Brain.FrameData.PhysicsContext.GlobalPosition,
+                ReloadPosition = Brain.FrameData.PhysicsContext.GlobalPosition,
                 // Velocity = Brain.FrameData.CurrentState.Velocity,
                 // ExternalVelocity = Brain.FrameData.CurrentState.Velocity,
                 // Gravity = Brain.FrameData.CurrentState.Gravity,

@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 468984793859189365}
   - component: {fileID: 1571973861918775172}
-  - component: {fileID: 293470112309577142}
   - component: {fileID: 3964305839837497467}
   - component: {fileID: 4966126706873782643}
+  - component: {fileID: 2409575720488319771}
   m_Layer: 0
   m_Name: DebugStartZone
   m_TagString: Untagged
@@ -37,6 +37,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1571973861918775172
 SpriteRenderer:
+  serializedVersion: 3
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -55,6 +56,8 @@ SpriteRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -76,9 +79,11 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 75f5f34dc1b5347e0b8351032682f224, type: 3}
   m_Color: {r: 0.25727153, g: 1, b: 0, a: 1}
   m_FlipX: 0
@@ -88,21 +93,8 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &293470112309577142
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4271873116202391552}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 21bdc4dfaa23bf94f86a91a178a2fe37, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _triggerCollider: {fileID: 3964305839837497467}
+  m_BlendShapeWeights: []
 --- !u!114 &3964305839837497467
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -164,3 +156,22 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 5, y: 5}
   m_EdgeRadius: 0
+--- !u!114 &2409575720488319771
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4271873116202391552}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a17e82b4ea160784e9ef98a85d540106, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity::Environment.Unity.Checkpoints.CheckPoint
+  _jingleFeedBack:
+    _monoScript: {fileID: 0}
+  _particleFeedBack: {fileID: 0}
+  _waterFeedBack: {fileID: 0}
+  _triggerCollider: {fileID: 3964305839837497467}
+  _checkpointId: 0
+  _priority: 0

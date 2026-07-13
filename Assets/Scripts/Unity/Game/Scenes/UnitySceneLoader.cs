@@ -5,29 +5,30 @@ using Game.Unity.Scenes.DataStructures;
 using Game.Scenes.Application;
 using Primitives.Common.Scenes;
 using Game.Core.Scenes;
+using Unity.Environment.Checkpoints.DataStructures;
 
 namespace Game.Unity.Scenes
 {
     public sealed class UnitySceneLoader : MonoBehaviour, ISceneLoader
     {
-        [SerializeField] private SceneLibrary _sceneLibrary;
-        private SceneRegistry _sceneRegistry;
-        private void Awake()
-        {
-            _sceneRegistry = new SceneRegistry(_sceneLibrary);
+        [SerializeField] private SceneMapSO _sceneMap;
 
-        }
         public ISceneDefinition ResolveScene(SceneId sceneId)
         {
-            ISceneDefinition sceneData = _sceneRegistry.Resolve(sceneId);
+            ISceneDefinition sceneData = _sceneMap.GetSceneDefinition(sceneId);
             // Debug.Log($"Resolved {sceneId} to {sceneData.Tag.LevelName}");
             return sceneData;
         }
-
+        public ISceneDefinition ResolveScene(string sceneName)
+        {
+            ISceneDefinition sceneData = _sceneMap.GetSceneDefinition(sceneName);
+            // Debug.Log($"Resolved {sceneId} to {sceneData.Tag.LevelName}");
+            return sceneData;
+        }
         public IEnumerator LoadSceneRoutine(ISceneDefinition sceneData)
         {
             // Start async load
-            AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(sceneData.Tag.LevelName);
+            AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(sceneData.SceneName);
             asyncLoad.allowSceneActivation = false;
 
             // Wait until load is ready
