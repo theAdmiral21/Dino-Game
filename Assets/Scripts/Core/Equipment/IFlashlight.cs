@@ -6,5 +6,6 @@ namespace Core.Equipment
         public float DischargeRate { get; }
         public float ChargeRate { get; }
         public void ToggleFlashlight();
+        public void SetFlashlight(bool on);
     }
 }

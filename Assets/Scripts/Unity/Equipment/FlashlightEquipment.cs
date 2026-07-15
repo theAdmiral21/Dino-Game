@@ -55,5 +55,11 @@ namespace Unity.Equipment
             _facingScale.x = Mathf.Sign(_facingTransform.localScale.x);
             _rootTransform.localScale = _facingScale;
         }
+
+        public void SetFlashlight(bool on)
+        {
+            IsOn = on;
+            SetLightIntensity();
+        }
     }
 }

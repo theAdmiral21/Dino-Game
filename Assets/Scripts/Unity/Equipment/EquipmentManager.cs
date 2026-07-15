@@ -164,6 +164,7 @@ namespace Unity.Equipment
                 if (_saveData.Value.HasFlashLight)
                 {
                     AllowFlashLight();
+                    _flashLight.SetFlashlight(_saveData.Value.FlashLightIsOn);
                 }
             }
             else
@@ -177,6 +178,7 @@ namespace Unity.Equipment
             {
                 RoundsInMagazine = ActiveEquipment != null ? ActiveEquipment.RoundCount : 0,
                 HasFlashLight = _allowFlashLight,
+                FlashLightIsOn = _flashLight.IsOn,
             };
             Debug.Log($"[EquipmentManager] save data: {_saveData}");
         }

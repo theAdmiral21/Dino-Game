@@ -6,5 +6,6 @@ namespace Primitives.SaveData
     {
         public int RoundsInMagazine;
         public bool HasFlashLight;
+        public bool FlashLightIsOn;
     }
 }
