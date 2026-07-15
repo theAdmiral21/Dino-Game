@@ -1,6 +1,8 @@
 using System.Collections.Generic;
 using System.Linq;
+using Core.Common.Abstractions;
 using Game.Core.Execution;
+using Primitives.SaveData;
 using UnityEngine;
 
 namespace Unity.Game.GameLoop
@@ -51,6 +53,21 @@ namespace Unity.Game.GameLoop
             }
 
             return systems;
+        }
+
+        public static bool InitSavedData(GameObject playerObject, PlayerSaveData saveData)
+        {
+            // Find the data, the save orchestrator is busy anyways
+            var healthObject = playerObject.GetComponentInChildren<IInitObject<HealthSaveData>>();
+            healthObject.Init(saveData.HealthData);
+
+            var inventoryObject = playerObject.GetComponentInChildren<IInitObject<InventorySaveData>>();
+            inventoryObject.Init(saveData.InventoryData);
+
+            var equipmentObject = playerObject.GetComponentInChildren<IInitObject<EquipmentSaveData>>();
+            equipmentObject.Init(saveData.EquipmentData);
+
+            return healthObject != null && inventoryObject != null && equipmentObject != null;
         }
     }
 }

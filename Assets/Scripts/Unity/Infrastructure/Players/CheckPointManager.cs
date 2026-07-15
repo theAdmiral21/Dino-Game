@@ -70,6 +70,20 @@ namespace Infrastructure.Unity.Players
             return _checkpointMap.TryAdd(playerId, data);
         }
 
+        public bool SetCheckpoint(Guid playerId, CheckpointId id)
+        {
+            // Look up the check point using the given Id
+            foreach (ICheckpoint checkpoint in Checkpoints)
+            {
+                if (checkpoint.Data.Id == id)
+                {
+                    return _checkpointMap.TryAdd(playerId, checkpoint.Data);
+                }
+            }
+            Debug.LogError($"Failed to look up checkpoint with id: {id}");
+            return false;
+        }
+
         private CheckPointData? GetLevelStart()
         {
             CheckpointId targetId = _checkpointSceneLookUp.GetStart(_currentScene);

@@ -17,8 +17,11 @@ namespace Infrastructure.Unity.Players
         public SpawnData GetSpawnPoint(ref SpawnData data)
         {
             Debug.Log($"Be sure to extend this with save data later.");
-            var checkpointData = _checkpointMapper.GetCheckPoint(data.PlayerId);
-            data.SpawnPoint = checkpointData.Position;
+            if (!data.SpawnPoint.HasValue)
+            {
+                var checkpointData = _checkpointMapper.GetCheckPoint(data.PlayerId);
+                data.SpawnPoint = checkpointData.Position;
+            }
             Debug.Log($"Got spawn point: {data.SpawnPoint}");
             return data;
         }

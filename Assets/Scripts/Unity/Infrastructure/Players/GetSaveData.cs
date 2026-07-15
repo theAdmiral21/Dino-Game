@@ -1,7 +1,9 @@
 using Core.Common.Abstractions;
 using Game.Core.Health;
+using Game.Core.Lifecycle;
 using Infrastructure.Unity.DataStructures;
 using Primitives.SaveData;
+using Unity.Common.Unity;
 using Unity.Game.SaveData;
 using UnityEngine;
 
@@ -10,6 +12,10 @@ namespace Infrastructure.Unity.Players
     public class GetSaveData : MonoBehaviour
     {
         [SerializeField] DefaultPlayerDataSO _defaultPlayerDataSO;
+
+        [SerializeField] private SerializedInterface<ICheckPointDataProvider> _checkpointMapperMono;
+        private ICheckPointDataProvider _checkpointMapper => _checkpointMapperMono.Interface;
+
         public SpawnData Fetch(ref SpawnData data)
         {
             bool isFreshSpawn = IsNewSpawn();
@@ -19,20 +25,14 @@ namespace Infrastructure.Unity.Players
                 // Get the default data
                 PlayerSaveData defaultValues = _defaultPlayerDataSO.GetPlayerDefaults();
 
-                // or lord do I go through and find everything that needs pieces of player data? Or do I add a method to the save orchestrator to sort it out? 
-
-                // Find the data, the save orchestrator is busy anyways
-                data.PlayerObject.GetComponentInChildren<IInitObject<HealthSaveData>>().Init(defaultValues.HealthData);
-
-                data.PlayerObject.GetComponentInChildren<IInitObject<InventorySaveData>>().Init(defaultValues.InventoryData);
-
-                data.PlayerObject.GetComponentInChildren<IInitObject<EquipmentSaveData>>().Init(defaultValues.EquipmentData);
 
 
                 // Does checkpoint and position data go here or some where else? 
-                // data.PlayerObject.GetComponent<IInitObject<HealthSaveData>>().Init(defaultValues.HealthData);
+                _checkpointMapper.SetCheckpoint(data.PlayerId, defaultValues.CheckpointData.Id);
 
-                // data.PlayerObject.GetComponent<IInitObject<HealthSaveData>>().Init(defaultValues.HealthData);
+                data.SpawnPoint = null;
+
+                data.SaveData = defaultValues;
             }
             else
             {

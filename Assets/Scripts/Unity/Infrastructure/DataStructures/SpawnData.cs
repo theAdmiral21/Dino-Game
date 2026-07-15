@@ -18,7 +18,7 @@ namespace Infrastructure.Unity.DataStructures
         /// <summary>
         /// The location to spawn the player at
         /// </summary>
-        public Vector2 SpawnPoint;
+        public Vector2? SpawnPoint;
         /// <summary>
         /// Struct containing costume and stat data for the given character
         /// </summary>

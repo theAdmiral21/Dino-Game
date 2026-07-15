@@ -1,4 +1,5 @@
 using System;
+using Primitives.Checkpoints;
 using Primitives.Infrastructure;
 
 namespace Game.Core.Lifecycle
@@ -7,5 +8,6 @@ namespace Game.Core.Lifecycle
     {
         public CheckPointData GetCheckPoint(Guid PlayerId);
         public bool SetCheckpoint(Guid playerId, CheckPointData data);
+        public bool SetCheckpoint(Guid playerId, CheckpointId id);
     }
 }

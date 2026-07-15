@@ -21,7 +21,6 @@ namespace Infrastructure.Unity.Players
         [SerializeField] private BuildPlayer _playerBuilder;
         [SerializeField] private MakePlayerInfo _makePlayerInfo;
         [SerializeField] private AddPlayerInfo _addPlayerInfo;
-        // [SerializeField] private InitializeObject _initializeObject;
         [SerializeField] private SetTransitionView _setTransitionView;
         private IEventBus _eventBus;
         [SerializeField] private int _priority = 0;
@@ -100,8 +99,6 @@ namespace Infrastructure.Unity.Players
                 PlayerId = playerInfo.PlayerId,
                 Id = playerInfo.CharacterId,
             };
-            // Resolve the spawn point
-            data = _spawnPoint.GetSpawnPoint(ref data);
 
             IPlayerView view = RunPipeline(data, playerInfo);
 
@@ -127,9 +124,12 @@ namespace Infrastructure.Unity.Players
 
         private IPlayerView RunPipeline(SpawnData data, IPlayerInfo playerInfo)
         {
-
-            // Add the player object
             Debug.Log($"Spawning new player - frame {Time.frameCount}");
+            // Get the save data
+            data = _getSaveData.Fetch(ref data);
+            // Resolve the spawn point
+            data = _spawnPoint.GetSpawnPoint(ref data);
+            // Add the player object
             data = _factory.InstantiateObject(playerInfo, ref data);
             // Set the player info
             data = _addPlayerInfo.AddInfo(playerInfo, ref data);
@@ -137,8 +137,7 @@ namespace Infrastructure.Unity.Players
             data = _cameraCreator.InstantiateObject(ref data);
             // Set the transition view
             data = _setTransitionView.SetView(ref data);
-            // Get the save data
-            data = _getSaveData.Fetch(ref data);
+
             // Get the character config
             data = _getCharacterConfig.GetCharacterData(ref data);
             // Build the player

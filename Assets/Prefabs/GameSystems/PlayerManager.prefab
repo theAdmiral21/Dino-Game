@@ -131,6 +131,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _defaultPlayerDataSO: {fileID: 11400000, guid: 116292ade6c7fe046ae80a1077c7b8b1, type: 2}
+  _checkpointMapperMono:
+    _monoScript: {fileID: 4449357256369700015}
 --- !u!114 &2800867384165719604
 MonoBehaviour:
   m_ObjectHideFlags: 0
