@@ -10,7 +10,7 @@ using UnityEngine;
 
 namespace Unity.Equipment
 {
-    public class EquipmentManager : SelfRegister<IRevertable>, IEquipmentManager, IRevertable
+    public class EquipmentManager : MonoBehaviour, IEquipmentManager, IRevertable
     {
         [SerializeField] private Transform _facingTransform;
         [SerializeField] private Transform _equipmentAnchor;
@@ -30,6 +30,7 @@ namespace Unity.Equipment
         [SerializeField] private EquipmentFactory _equipmentFactory;
         private IEventBus _inventoryEventBus;
         private IInventorySystem _inventorySystem;
+
         protected EquipmentSaveData? _saveData;
 
         [Header("Debug")]
@@ -38,7 +39,6 @@ namespace Unity.Equipment
 
         private void Awake()
         {
-            base.Awake();
             _flashLightObject.SetActive(true);
             _flashLight = _flashLightObject.GetComponentInChildren<IFlashlight>();
             Debug.Assert(_flashLight != null, $"Unable to set _flashlight");
@@ -48,7 +48,6 @@ namespace Unity.Equipment
         private void OnDestroy()
         {
             UnsubToEvents();
-            base.OnDestroy();
         }
 
         public void HandleEquipmentChanged(CurrentEquipmentChanged evt)
@@ -115,31 +114,6 @@ namespace Unity.Equipment
             _inventorySystem = inventorySystem;
         }
 
-        public void Revert()
-        {
-            if (_saveData.HasValue)
-            {
-                ActiveEquipment.Magazine.SetRounds(_saveData.Value.RoundsInMagazine);
-            }
-            else
-            {
-                throw new System.NotImplementedException();
-            }
-        }
-
-        public void TakeSnapShot()
-        {
-            _saveData = new EquipmentSaveData
-            {
-                RoundsInMagazine = ActiveEquipment != null ? ActiveEquipment.RoundCount : 0,
-            };
-        }
-
-        public void SerializeSnapShot()
-        {
-            throw new System.NotImplementedException();
-        }
-
         private void SubToEvents()
         {
             _inventoryEventBus.Subscribe<CurrentEquipmentChanged>(HandleEquipmentChanged);
@@ -178,6 +152,37 @@ namespace Unity.Equipment
         {
             if (!_allowFlashLight) return;
             _flashLight.ToggleFlashlight();
+        }
+
+
+        // Save Methods
+        public void Revert()
+        {
+            if (_saveData.HasValue)
+            {
+                ActiveEquipment.Magazine.SetRounds(_saveData.Value.RoundsInMagazine);
+            }
+            else
+            {
+                throw new System.NotImplementedException();
+            }
+        }
+        public void TakeSnapShot()
+        {
+            _saveData = new EquipmentSaveData
+            {
+                RoundsInMagazine = ActiveEquipment != null ? ActiveEquipment.RoundCount : 0,
+            };
+            Debug.Log($"[EquipmentManager] save data: {_saveData}");
+        }
+        public string SerializeSnapShot()
+        {
+            return JsonUtility.ToJson(_saveData);
+        }
+        public void LoadSnapShot(string json)
+        {
+            _saveData = JsonUtility.FromJson<EquipmentSaveData>(json);
+            Debug.Assert(_saveData != null, $"Failed to load serialized data: {json}");
         }
     }
 }

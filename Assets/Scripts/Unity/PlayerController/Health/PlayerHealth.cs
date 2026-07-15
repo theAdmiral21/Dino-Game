@@ -65,7 +65,6 @@ namespace PlayerController.Unity.Health
         private void Awake()
         {
             base.Awake();
-            RegistryGateway.Register<IRevertable>(this);
 
             if (_knockBack == null)
             {
@@ -146,11 +145,18 @@ namespace PlayerController.Unity.Health
             {
                 CurrentHealth = _currentHealth,
             };
+            Debug.Log($"[PlayerHealth] save data: {_saveData}; has value: {_saveData.HasValue}, CurrentHealth: {_saveData.Value.CurrentHealth}");
         }
 
-        public void SerializeSnapShot()
+        public string SerializeSnapShot()
         {
-            throw new System.NotImplementedException();
+            return JsonUtility.ToJson(_saveData);
+        }
+
+        public void LoadSnapShot(string json)
+        {
+            _saveData = JsonUtility.FromJson<HealthSaveData>(json);
+            Debug.Assert(_saveData != null, $"Failed to load serialized data: {json}");
         }
     }
 }

@@ -18,16 +18,16 @@ namespace Unity.Infrastructure.Registries
         // private Registry<ISnapShotable> _snapShotables = new();
         // public IReadOnlyCollection<ISnapShotable> SnapShotables => _snapShotables.Entities;
 
-        [Header("Revertables")]
+        [Header("Save Orchestrators")]
         [SerializeField]
-        private Registry<IRevertable> _revertables = new();
-        public IReadOnlyCollection<IRevertable> Revertables => _revertables.Entities;
+        private Registry<ISaveOrchestrator> _saveOrchestrators = new();
+        public IReadOnlyCollection<ISaveOrchestrator> SaveOrchestrators => _saveOrchestrators.Entities;
 
         private void Awake()
         {
             RegistryGateway.SetRegistry(_resetables);
             // RegistryGateway.SetRegistry(_snapShotables);
-            RegistryGateway.SetRegistry(_revertables);
+            RegistryGateway.SetRegistry(_saveOrchestrators);
         }
     }
 }

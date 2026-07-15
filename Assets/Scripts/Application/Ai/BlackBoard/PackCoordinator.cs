@@ -47,12 +47,15 @@ namespace Application.Ai.BlackBoard
                 Data.LastKnownLocation = null;
             }
 
-            // Aggregate confidence
-            Data.BestGuessConfidence = PackMembers.Max(m => m.Status.Perception.ConfidenceLevel);
+            if (PackMembers.Count > 0)
+            {
+                // Aggregate confidence
+                Data.BestGuessConfidence = PackMembers.Max(m => m.Status.Perception.ConfidenceLevel);
+            }
         }
         public void Triangulate()
         {
-            // Debug.Log($"Triangulating the player's location!");
+            Debug.Log($"Implement triangulating the player's location!");
         }
 
         public void UpdateMemberStatus()

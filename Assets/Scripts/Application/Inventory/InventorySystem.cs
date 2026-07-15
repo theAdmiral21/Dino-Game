@@ -6,6 +6,8 @@ using Primitives.Items;
 using Primitives.EventBus.Abstractions;
 using Movement.Core.Movement.DataStructures;
 using Primitives.SaveData;
+using UnityEngine.InputSystem.EnhancedTouch;
+using System;
 
 namespace Application.Inventory
 {
@@ -55,14 +57,8 @@ namespace Application.Inventory
             // Assign a default piece of equipment
             // RestockItem(new TaserProvider(0));
         }
-        public InventorySystem(IEventBus inventoryEventBus, Dictionary<ItemType, int> limitMap, InventorySaveData saveData)
+        public void UpdateInventoryContents(InventorySaveData saveData)
         {
-            _inventoryEventBus = inventoryEventBus;
-            _itemLimits = limitMap;
-            SubToEvents();
-
-            // Equip the item
-            TryEquip(saveData.CurrentItem);
             // Rebuild the inventory data
             Dictionary<ItemType, IInventoryItem> itemDict = new();
             for (int i = 0; i < saveData.Items.Count; i++)
@@ -72,10 +68,23 @@ namespace Application.Inventory
             }
             // Overwrite the current dict
             _items = itemDict;
+            // Equip the item
+            bool res = TryEquip(saveData.CurrentItem);
+            Debug.Assert(res == true, $"Failed to equip equipment after revert.");
         }
+        public void Dispose()
+        {
+            Debug.Log($"Destroying InventorySystem: {GetHashCode()}");
+            UnSubToEvents();
+        }
+
         private void SubToEvents()
         {
             _inventoryEventBus.Subscribe<CurrentEquipmentChanged>(HandleEquipmentChange);
+        }
+        private void UnSubToEvents()
+        {
+            _inventoryEventBus.Unsubscribe<CurrentEquipmentChanged>(HandleEquipmentChange);
         }
 
 
@@ -108,6 +117,9 @@ namespace Application.Inventory
         public void IndexEquipment(IndexEquipmentResult indexEquipment)
         {
             int direction = indexEquipment.DeltaNdx >= 0 ? 1 : -1;
+            Debug.Assert(_indexMapReverse != null, "_indexMapReverse is null");
+            Debug.Assert(_indexMap != null, "_indexMap is null");
+            Debug.Assert(_currentItem != null, $"_currentItem is null for {GetHashCode()}");
             int startIndex = _currentIndex;
 
             for (int attempt = 1; attempt <= 7; attempt++)
@@ -144,6 +156,8 @@ namespace Application.Inventory
                 // Equip the item
                 _currentItem = inventoryItem;
 
+                Debug.Log($"Current item: {_currentItem.Item} for {GetHashCode()}");
+                Debug.Log($"Current Index: {_currentIndex}");
                 // Let everyone know you equipped a new item
                 _inventoryEventBus.Publish(new CurrentEquipmentChanged { NewItem = _items[item] });
                 return true;

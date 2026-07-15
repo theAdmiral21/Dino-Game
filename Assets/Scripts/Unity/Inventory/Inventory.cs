@@ -46,7 +46,6 @@ namespace Unity.Inventory
         {
             base.Awake();
             _limitMap = _inventoryLimits.GetLimitMap();
-            RegistryGateway.Register<IRevertable>(this);
         }
 
         public void Initialize(IGameContext context)
@@ -103,7 +102,7 @@ namespace Unity.Inventory
         {
             if (_saveData.HasValue)
             {
-                InventorySystem = new InventorySystem(EventBus, _limitMap, _saveData.Value);
+                InventorySystem.UpdateInventoryContents(_saveData.Value);
             }
             else
             {
@@ -120,17 +119,24 @@ namespace Unity.Inventory
             {
                 items.Add(new ItemStock { Item = keys[i], Amount = InventorySystem.Items[keys[i]].Quantity });
             }
-
+            IInventoryItem currentItem = InventorySystem.CurrentlyEquipped;
             _saveData = new InventorySaveData
             {
-                CurrentItem = InventorySystem.CurrentlyEquipped.Item,
+                CurrentItem = currentItem == null ? ItemType.None : currentItem.Item,
                 Items = items
             };
+            Debug.Log($"[Inventory] save data: {_saveData}");
         }
 
-        public void SerializeSnapShot()
+        public string SerializeSnapShot()
         {
-            throw new System.NotImplementedException();
+            return JsonUtility.ToJson(_saveData);
+        }
+
+        public void LoadSnapShot(string json)
+        {
+            _saveData = JsonUtility.FromJson<InventorySaveData>(json);
+            Debug.Assert(_saveData != null, $"Failed to load serialized data: {json}");
         }
     }
 }

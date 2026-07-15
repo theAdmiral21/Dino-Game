@@ -9,8 +9,24 @@ namespace Infrastructure.Unity.Players
         [SerializeField] DefaultPlayerDataSO _defaultValues;
         public SpawnData Fetch(ref SpawnData data)
         {
-            Debug.Log($"Implement fetching save data");
+            bool isFreshSpawn = IsNewSpawn();
+
+            if (isFreshSpawn)
+            {
+
+            }
+            else
+            {
+                Debug.LogError($"Implement fetching save data");
+            }
+
             return data;
+        }
+
+        private bool IsNewSpawn()
+        {
+            Debug.Log($"Implement checking for new spawns");
+            return true;
         }
     }
 }

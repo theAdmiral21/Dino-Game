@@ -7,6 +7,6 @@ namespace Core.Game.Lifecycle
     {
         public IReadOnlyCollection<IResetable> Resetables { get; }
         // public IReadOnlyCollection<ISnapShotable> SnapShotables { get; }
-        public IReadOnlyCollection<IRevertable> Revertables { get; }
+        public IReadOnlyCollection<ISaveOrchestrator> SaveOrchestrators { get; }
     }
 }

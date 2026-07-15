@@ -54,7 +54,6 @@ namespace Physics.Unity.Actors
         {
             base.Awake();
             RegistryGateway.Register<IPhysicsActor>(this);
-            RegistryGateway.Register<IRevertable>(this);
 
             Collider2D collider = GetComponent<Collider2D>();
             _bounds = new UnityColliderBoundsProvider(collider);
@@ -151,11 +150,18 @@ namespace Physics.Unity.Actors
                 // ExternalVelocity = Brain.FrameData.CurrentState.Velocity,
                 // Gravity = Brain.FrameData.CurrentState.Gravity,
             };
+            Debug.Log($"[BasePhysicsActor] save data: {_saveData}");
         }
 
-        public void SerializeSnapShot()
+        public string SerializeSnapShot()
         {
-            throw new System.NotImplementedException();
+            return JsonUtility.ToJson(_saveData);
+        }
+
+        public void LoadSnapShot(string json)
+        {
+            _saveData = JsonUtility.FromJson<KinematicSaveData>(json);
+            Debug.Assert(_saveData != null, $"Failed to load serialized data: {json}");
         }
     }
 }

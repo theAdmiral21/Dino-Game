@@ -1,0 +1,2925 @@
+fileFormatVersion: 2
+guid: ea8a8a5e14b72d841855a7b326451d16
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 7381981037618368973
+    second: Sega Genesis - Jurassic Park - Playable Characters - Raptor_0
+  - first:
+      213: 2733129596138269249
+    second: Sega Genesis - Jurassic Park - Playable Characters - Raptor_1
+  - first:
+      213: 6287033557352704377
+    second: Sega Genesis - Jurassic Park - Playable Characters - Raptor_2
+  - first:
+      213: -437429182633959360
+    second: Sega Genesis - Jurassic Park - Playable Characters - Raptor_3
+  - first:
+      213: 3081636884236029382
+    second: Sega Genesis - Jurassic Park - Playable Characters - Raptor_4
+  - first:
+      213: 8561950665064730314
+    second: Sega Genesis - Jurassic Park - Playable Characters - Raptor_5
+  - first:
+      213: -62976909519441079
+    second: Sega Genesis - Jurassic Park - Playable Characters - Raptor_6
+  - first:
+      213: 6950596995458007741
+    second: Sega Genesis - Jurassic Park - Playable Characters - Raptor_7
+  - first:
+      213: -4972665108485647661
+    second: Sega Genesis - Jurassic Park - Playable Characters - Raptor_8
+  - first:
+      213: -1745325512816503810
+    second: Sega Genesis - Jurassic Park - Playable Characters - Raptor_9
+  - first:
+      213: 7440187808579005291
+    second: Sega Genesis - Jurassic Park - Playable Characters - Raptor_10
+  - first:
+      213: 8249664469335277662
+    second: Sega Genesis - Jurassic Park - Playable Characters - Raptor_11
+  - first:
+      213: 7586057142734804918
+    second: Sega Genesis - Jurassic Park - Playable Characters - Raptor_12
+  - first:
+      213: -911850884553959834
+    second: Sega Genesis - Jurassic Park - Playable Characters - Raptor_13
+  - first:
+      213: 7852944123825230975
+    second: Sega Genesis - Jurassic Park - Playable Characters - Raptor_14
+  - first:
+      213: -9046538960581150992
+    second: Sega Genesis - Jurassic Park - Playable Characters - Raptor_15
+  - first:
+      213: 5034850667809125511
+    second: Sega Genesis - Jurassic Park - Playable Characters - Raptor_16
+  - first:
+      213: -3351473348699135579
+    second: Sega Genesis - Jurassic Park - Playable Characters - Raptor_17
+  - first:
+      213: -5959587143372061644
+    second: Sega Genesis - Jurassic Park - Playable Characters - Raptor_18
+  - first:
+      213: -4346777223584755542
+    second: Sega Genesis - Jurassic Park - Playable Characters - Raptor_19
+  - first:
+      213: 9218509282984173512
+    second: Sega Genesis - Jurassic Park - Playable Characters - Raptor_20
+  - first:
+      213: 8764297533427256972
+    second: Sega Genesis - Jurassic Park - Playable Characters - Raptor_21
+  - first:
+      213: 4237661619398387770
+    second: Sega Genesis - Jurassic Park - Playable Characters - Raptor_22
+  - first:
+      213: 4748732700393885246
+    second: Sega Genesis - Jurassic Park - Playable Characters - Raptor_23
+  - first:
+      213: 7800886585068759479
+    second: Sega Genesis - Jurassic Park - Playable Characters - Raptor_24
+  - first:
+      213: -7428012795614088597
+    second: Sega Genesis - Jurassic Park - Playable Characters - Raptor_25
+  - first:
+      213: -164570288211635455
+    second: Sega Genesis - Jurassic Park - Playable Characters - Raptor_26
+  - first:
+      213: -8798971651394070634
+    second: Sega Genesis - Jurassic Park - Playable Characters - Raptor_27
+  - first:
+      213: 297006294006909978
+    second: Sega Genesis - Jurassic Park - Playable Characters - Raptor_28
+  - first:
+      213: 9019333481830347481
+    second: Sega Genesis - Jurassic Park - Playable Characters - Raptor_29
+  - first:
+      213: -4169479555292220287
+    second: Sega Genesis - Jurassic Park - Playable Characters - Raptor_30
+  - first:
+      213: 2250624564377372373
+    second: Sega Genesis - Jurassic Park - Playable Characters - Raptor_31
+  - first:
+      213: 7165281480170662074
+    second: Sega Genesis - Jurassic Park - Playable Characters - Raptor_32
+  - first:
+      213: 8482389266051660486
+    second: Sega Genesis - Jurassic Park - Playable Characters - Raptor_33
+  - first:
+      213: -6101470260069523585
+    second: Sega Genesis - Jurassic Park - Playable Characters - Raptor_34
+  - first:
+      213: 6910235230051325654
+    second: Sega Genesis - Jurassic Park - Playable Characters - Raptor_35
+  - first:
+      213: 5386878329165460026
+    second: Sega Genesis - Jurassic Park - Playable Characters - Raptor_36
+  - first:
+      213: 1658625590088477734
+    second: Sega Genesis - Jurassic Park - Playable Characters - Raptor_37
+  - first:
+      213: 5061622838028908084
+    second: Sega Genesis - Jurassic Park - Playable Characters - Raptor_38
+  - first:
+      213: -8407988267313681967
+    second: Sega Genesis - Jurassic Park - Playable Characters - Raptor_39
+  - first:
+      213: 1753212608903555144
+    second: Sega Genesis - Jurassic Park - Playable Characters - Raptor_40
+  - first:
+      213: -6026542449219292265
+    second: Sega Genesis - Jurassic Park - Playable Characters - Raptor_41
+  - first:
+      213: -1415302292656604397
+    second: Sega Genesis - Jurassic Park - Playable Characters - Raptor_42
+  - first:
+      213: -1066175809726166941
+    second: Sega Genesis - Jurassic Park - Playable Characters - Raptor_43
+  - first:
+      213: 1563057238632154487
+    second: Sega Genesis - Jurassic Park - Playable Characters - Raptor_44
+  - first:
+      213: -7096888763221740963
+    second: Sega Genesis - Jurassic Park - Playable Characters - Raptor_45
+  - first:
+      213: -1771502226001584557
+    second: Sega Genesis - Jurassic Park - Playable Characters - Raptor_46
+  - first:
+      213: -5109735976869014112
+    second: Sega Genesis - Jurassic Park - Playable Characters - Raptor_47
+  - first:
+      213: 3605046746117029566
+    second: Sega Genesis - Jurassic Park - Playable Characters - Raptor_48
+  - first:
+      213: -6872770710030634540
+    second: Sega Genesis - Jurassic Park - Playable Characters - Raptor_49
+  - first:
+      213: 3977941462753367704
+    second: Sega Genesis - Jurassic Park - Playable Characters - Raptor_50
+  - first:
+      213: 3988026147920414456
+    second: Sega Genesis - Jurassic Park - Playable Characters - Raptor_51
+  - first:
+      213: -8371558946945586955
+    second: Sega Genesis - Jurassic Park - Playable Characters - Raptor_52
+  - first:
+      213: -6872511260589682286
+    second: Sega Genesis - Jurassic Park - Playable Characters - Raptor_53
+  - first:
+      213: -8623670409546082504
+    second: Sega Genesis - Jurassic Park - Playable Characters - Raptor_54
+  - first:
+      213: 1551000557475747256
+    second: Sega Genesis - Jurassic Park - Playable Characters - Raptor_55
+  - first:
+      213: 7184949270163114690
+    second: Sega Genesis - Jurassic Park - Playable Characters - Raptor_56
+  - first:
+      213: 7094567754936178998
+    second: Sega Genesis - Jurassic Park - Playable Characters - Raptor_57
+  - first:
+      213: 6012051192328368258
+    second: Sega Genesis - Jurassic Park - Playable Characters - Raptor_58
+  - first:
+      213: 8357786076072444739
+    second: Sega Genesis - Jurassic Park - Playable Characters - Raptor_59
+  - first:
+      213: 4363594153091812545
+    second: Sega Genesis - Jurassic Park - Playable Characters - Raptor_60
+  - first:
+      213: 1222745799902617730
+    second: Sega Genesis - Jurassic Park - Playable Characters - Raptor_61
+  - first:
+      213: -4111157035556877240
+    second: Sega Genesis - Jurassic Park - Playable Characters - Raptor_62
+  - first:
+      213: 4909467649039508859
+    second: Sega Genesis - Jurassic Park - Playable Characters - Raptor_63
+  - first:
+      213: 6400389398877686184
+    second: Sega Genesis - Jurassic Park - Playable Characters - Raptor_64
+  - first:
+      213: 5401394351207348943
+    second: Sega Genesis - Jurassic Park - Playable Characters - Raptor_65
+  - first:
+      213: 5772872136819131090
+    second: Sega Genesis - Jurassic Park - Playable Characters - Raptor_66
+  - first:
+      213: -4079528980944962975
+    second: Sega Genesis - Jurassic Park - Playable Characters - Raptor_67
+  - first:
+      213: 6694676657467348735
+    second: Sega Genesis - Jurassic Park - Playable Characters - Raptor_68
+  - first:
+      213: 3325290168070317543
+    second: Sega Genesis - Jurassic Park - Playable Characters - Raptor_69
+  - first:
+      213: 1113900543207997293
+    second: Sega Genesis - Jurassic Park - Playable Characters - Raptor_70
+  - first:
+      213: -3377068054054168338
+    second: Sega Genesis - Jurassic Park - Playable Characters - Raptor_71
+  - first:
+      213: -8302646411460292295
+    second: Sega Genesis - Jurassic Park - Playable Characters - Raptor_72
+  - first:
+      213: -6105302421137266993
+    second: Sega Genesis - Jurassic Park - Playable Characters - Raptor_73
+  - first:
+      213: -513226848136438628
+    second: Sega Genesis - Jurassic Park - Playable Characters - Raptor_74
+  - first:
+      213: -4415256815233243597
+    second: Sega Genesis - Jurassic Park - Playable Characters - Raptor_75
+  - first:
+      213: 3258854913575031388
+    second: Sega Genesis - Jurassic Park - Playable Characters - Raptor_76
+  - first:
+      213: 2790396496338185747
+    second: Sega Genesis - Jurassic Park - Playable Characters - Raptor_77
+  - first:
+      213: -5994701415529075639
+    second: Sega Genesis - Jurassic Park - Playable Characters - Raptor_78
+  - first:
+      213: -6040031628396254317
+    second: Sega Genesis - Jurassic Park - Playable Characters - Raptor_79
+  - first:
+      213: 169047155163751366
+    second: Sega Genesis - Jurassic Park - Playable Characters - Raptor_80
+  - first:
+      213: 4254345668287536478
+    second: Sega Genesis - Jurassic Park - Playable Characters - Raptor_81
+  - first:
+      213: 7924521831568308694
+    second: Sega Genesis - Jurassic Park - Playable Characters - Raptor_82
+  - first:
+      213: 937560886477948836
+    second: Sega Genesis - Jurassic Park - Playable Characters - Raptor_83
+  - first:
+      213: 7834655903875908754
+    second: Sega Genesis - Jurassic Park - Playable Characters - Raptor_84
+  - first:
+      213: -7615561584446482803
+    second: Sega Genesis - Jurassic Park - Playable Characters - Raptor_85
+  - first:
+      213: -8609705728683635938
+    second: Sega Genesis - Jurassic Park - Playable Characters - Raptor_86
+  - first:
+      213: -4290496961716510976
+    second: Sega Genesis - Jurassic Park - Playable Characters - Raptor_87
+  - first:
+      213: -9184336821847414642
+    second: Sega Genesis - Jurassic Park - Playable Characters - Raptor_88
+  - first:
+      213: -4491457448401729974
+    second: Sega Genesis - Jurassic Park - Playable Characters - Raptor_89
+  - first:
+      213: -7226508991654244542
+    second: Sega Genesis - Jurassic Park - Playable Characters - Raptor_90
+  - first:
+      213: -2571961317023718382
+    second: Sega Genesis - Jurassic Park - Playable Characters - Raptor_91
+  - first:
+      213: -3726643760768737244
+    second: Sega Genesis - Jurassic Park - Playable Characters - Raptor_92
+  - first:
+      213: -1954992889692671009
+    second: Sega Genesis - Jurassic Park - Playable Characters - Raptor_93
+  - first:
+      213: -7258572722541389698
+    second: Sega Genesis - Jurassic Park - Playable Characters - Raptor_94
+  - first:
+      213: 408270678625247190
+    second: Sega Genesis - Jurassic Park - Playable Characters - Raptor_95
+  - first:
+      213: -3161880872940424889
+    second: Sega Genesis - Jurassic Park - Playable Characters - Raptor_96
+  - first:
+      213: 8808632019820385168
+    second: Sega Genesis - Jurassic Park - Playable Characters - Raptor_97
+  - first:
+      213: -5422590054838472411
+    second: Sega Genesis - Jurassic Park - Playable Characters - Raptor_98
+  - first:
+      213: 750798036221906627
+    second: Sega Genesis - Jurassic Park - Playable Characters - Raptor_99
+  - first:
+      213: 1967784453351250941
+    second: Sega Genesis - Jurassic Park - Playable Characters - Raptor_100
+  - first:
+      213: 7230928680323644223
+    second: Sega Genesis - Jurassic Park - Playable Characters - Raptor_101
+  - first:
+      213: -4025240058439616765
+    second: Sega Genesis - Jurassic Park - Playable Characters - Raptor_102
+  - first:
+      213: 4390275959984144912
+    second: Sega Genesis - Jurassic Park - Playable Characters - Raptor_103
+  - first:
+      213: -1405171695126048123
+    second: Sega Genesis - Jurassic Park - Playable Characters - Raptor_104
+  - first:
+      213: 3941019103729594537
+    second: Sega Genesis - Jurassic Park - Playable Characters - Raptor_105
+  - first:
+      213: 4916574425311408978
+    second: Sega Genesis - Jurassic Park - Playable Characters - Raptor_106
+  - first:
+      213: -1330965822810288123
+    second: Sega Genesis - Jurassic Park - Playable Characters - Raptor_107
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Sega Genesis - Jurassic Park - Playable Characters - Raptor_0
+      rect:
+        serializedVersion: 2
+        x: 25
+        y: 1362
+        width: 118
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dc199ed64a0127660800000000000000
+      internalID: 7381981037618368973
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sega Genesis - Jurassic Park - Playable Characters - Raptor_1
+      rect:
+        serializedVersion: 2
+        x: 189
+        y: 1371
+        width: 64
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 14aadee03e60ee520800000000000000
+      internalID: 2733129596138269249
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sega Genesis - Jurassic Park - Playable Characters - Raptor_2
+      rect:
+        serializedVersion: 2
+        x: 297
+        y: 1371
+        width: 82
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 979e7f4d5b7004750800000000000000
+      internalID: 6287033557352704377
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sega Genesis - Jurassic Park - Playable Characters - Raptor_3
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 1368
+        width: 106
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 040a6bad970fde9f0800000000000000
+      internalID: -437429182633959360
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sega Genesis - Jurassic Park - Playable Characters - Raptor_4
+      rect:
+        serializedVersion: 2
+        x: 553
+        y: 1369
+        width: 57
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6cd41a34b6c24ca20800000000000000
+      internalID: 3081636884236029382
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sega Genesis - Jurassic Park - Playable Characters - Raptor_5
+      rect:
+        serializedVersion: 2
+        x: 652
+        y: 1375
+        width: 126
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ace4a9744c822d670800000000000000
+      internalID: 8561950665064730314
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sega Genesis - Jurassic Park - Playable Characters - Raptor_6
+      rect:
+        serializedVersion: 2
+        x: 19
+        y: 1279
+        width: 119
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 943ba0f95d2402ff0800000000000000
+      internalID: -62976909519441079
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sega Genesis - Jurassic Park - Playable Characters - Raptor_7
+      rect:
+        serializedVersion: 2
+        x: 163
+        y: 1274
+        width: 122
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: db20c2b342b757060800000000000000
+      internalID: 6950596995458007741
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sega Genesis - Jurassic Park - Playable Characters - Raptor_8
+      rect:
+        serializedVersion: 2
+        x: 314
+        y: 1275
+        width: 121
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3d2dbbd1e6b8dfab0800000000000000
+      internalID: -4972665108485647661
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sega Genesis - Jurassic Park - Playable Characters - Raptor_9
+      rect:
+        serializedVersion: 2
+        x: 458
+        y: 1276
+        width: 120
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ef3552771bb57c7e0800000000000000
+      internalID: -1745325512816503810
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sega Genesis - Jurassic Park - Playable Characters - Raptor_10
+      rect:
+        serializedVersion: 2
+        x: 598
+        y: 1276
+        width: 119
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b6b2b80646bd04760800000000000000
+      internalID: 7440187808579005291
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sega Genesis - Jurassic Park - Playable Characters - Raptor_11
+      rect:
+        serializedVersion: 2
+        x: 730
+        y: 1284
+        width: 120
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e5004e25022bc7270800000000000000
+      internalID: 8249664469335277662
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sega Genesis - Jurassic Park - Playable Characters - Raptor_12
+      rect:
+        serializedVersion: 2
+        x: 872
+        y: 1288
+        width: 117
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6b7d58657c6174960800000000000000
+      internalID: 7586057142734804918
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sega Genesis - Jurassic Park - Playable Characters - Raptor_13
+      rect:
+        serializedVersion: 2
+        x: 1017
+        y: 1291
+        width: 116
+        height: 55
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6661902a3747853f0800000000000000
+      internalID: -911850884553959834
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sega Genesis - Jurassic Park - Playable Characters - Raptor_14
+      rect:
+        serializedVersion: 2
+        x: 26
+        y: 1194
+        width: 117
+        height: 55
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f74189de2134bfc60800000000000000
+      internalID: 7852944123825230975
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sega Genesis - Jurassic Park - Playable Characters - Raptor_15
+      rect:
+        serializedVersion: 2
+        x: 182
+        y: 1194
+        width: 118
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0f634d7febc347280800000000000000
+      internalID: -9046538960581150992
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sega Genesis - Jurassic Park - Playable Characters - Raptor_16
+      rect:
+        serializedVersion: 2
+        x: 316
+        y: 1196
+        width: 120
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 784b6efa1026fd540800000000000000
+      internalID: 5034850667809125511
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sega Genesis - Jurassic Park - Playable Characters - Raptor_17
+      rect:
+        serializedVersion: 2
+        x: 454
+        y: 1200
+        width: 121
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5a169980fbc2d71d0800000000000000
+      internalID: -3351473348699135579
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sega Genesis - Jurassic Park - Playable Characters - Raptor_18
+      rect:
+        serializedVersion: 2
+        x: 23
+        y: 1106
+        width: 123
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 434c25f711b4b4da0800000000000000
+      internalID: -5959587143372061644
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sega Genesis - Jurassic Park - Playable Characters - Raptor_19
+      rect:
+        serializedVersion: 2
+        x: 175
+        y: 1112
+        width: 127
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aa0d87635252da3c0800000000000000
+      internalID: -4346777223584755542
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sega Genesis - Jurassic Park - Playable Characters - Raptor_20
+      rect:
+        serializedVersion: 2
+        x: 323
+        y: 1117
+        width: 128
+        height: 55
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8cf99e2e959beef70800000000000000
+      internalID: 9218509282984173512
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sega Genesis - Jurassic Park - Playable Characters - Raptor_21
+      rect:
+        serializedVersion: 2
+        x: 467
+        y: 1120
+        width: 128
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c8e83c1eb2a01a970800000000000000
+      internalID: 8764297533427256972
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sega Genesis - Jurassic Park - Playable Characters - Raptor_22
+      rect:
+        serializedVersion: 2
+        x: 613
+        y: 1120
+        width: 128
+        height: 55
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a382c8e6ac23fca30800000000000000
+      internalID: 4237661619398387770
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sega Genesis - Jurassic Park - Playable Characters - Raptor_23
+      rect:
+        serializedVersion: 2
+        x: 760
+        y: 1116
+        width: 109
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e3e424c2b33e6e140800000000000000
+      internalID: 4748732700393885246
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sega Genesis - Jurassic Park - Playable Characters - Raptor_24
+      rect:
+        serializedVersion: 2
+        x: 883
+        y: 1115
+        width: 107
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7b9222ca401524c60800000000000000
+      internalID: 7800886585068759479
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sega Genesis - Jurassic Park - Playable Characters - Raptor_25
+      rect:
+        serializedVersion: 2
+        x: 26
+        y: 1026
+        width: 105
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b62bd5ab7b56ae890800000000000000
+      internalID: -7428012795614088597
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sega Genesis - Jurassic Park - Playable Characters - Raptor_26
+      rect:
+        serializedVersion: 2
+        x: 158
+        y: 1026
+        width: 105
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 103df8ed13457bdf0800000000000000
+      internalID: -164570288211635455
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sega Genesis - Jurassic Park - Playable Characters - Raptor_27
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 1029
+        width: 108
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6979ce9e6e5c3e580800000000000000
+      internalID: -8798971651394070634
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sega Genesis - Jurassic Park - Playable Characters - Raptor_28
+      rect:
+        serializedVersion: 2
+        x: 412
+        y: 1032
+        width: 115
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a1c465a96ad2f1400800000000000000
+      internalID: 297006294006909978
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sega Genesis - Jurassic Park - Playable Characters - Raptor_29
+      rect:
+        serializedVersion: 2
+        x: 550
+        y: 1030
+        width: 114
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9d2f847e30c1b2d70800000000000000
+      internalID: 9019333481830347481
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sega Genesis - Jurassic Park - Playable Characters - Raptor_30
+      rect:
+        serializedVersion: 2
+        x: 683
+        y: 1030
+        width: 115
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 184bd807f680326c0800000000000000
+      internalID: -4169479555292220287
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sega Genesis - Jurassic Park - Playable Characters - Raptor_31
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 956
+        width: 116
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5d64b72fd13db3f10800000000000000
+      internalID: 2250624564377372373
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sega Genesis - Jurassic Park - Playable Characters - Raptor_32
+      rect:
+        serializedVersion: 2
+        x: 163
+        y: 956
+        width: 116
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ab8e14dfa81307360800000000000000
+      internalID: 7165281480170662074
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sega Genesis - Jurassic Park - Playable Characters - Raptor_33
+      rect:
+        serializedVersion: 2
+        x: 293
+        y: 946
+        width: 126
+        height: 65
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6ca7899881087b570800000000000000
+      internalID: 8482389266051660486
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sega Genesis - Jurassic Park - Playable Characters - Raptor_34
+      rect:
+        serializedVersion: 2
+        x: 430
+        y: 952
+        width: 126
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f7f12fc1029335ba0800000000000000
+      internalID: -6101470260069523585
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sega Genesis - Jurassic Park - Playable Characters - Raptor_35
+      rect:
+        serializedVersion: 2
+        x: 562
+        y: 946
+        width: 126
+        height: 65
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6d65999645616ef50800000000000000
+      internalID: 6910235230051325654
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sega Genesis - Jurassic Park - Playable Characters - Raptor_36
+      rect:
+        serializedVersion: 2
+        x: 693
+        y: 945
+        width: 122
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a32382aac4902ca40800000000000000
+      internalID: 5386878329165460026
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sega Genesis - Jurassic Park - Playable Characters - Raptor_37
+      rect:
+        serializedVersion: 2
+        x: 27
+        y: 861
+        width: 112
+        height: 71
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 62ca898bf2f940710800000000000000
+      internalID: 1658625590088477734
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sega Genesis - Jurassic Park - Playable Characters - Raptor_38
+      rect:
+        serializedVersion: 2
+        x: 156
+        y: 863
+        width: 111
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 436b7bf472f7e3640800000000000000
+      internalID: 5061622838028908084
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sega Genesis - Jurassic Park - Playable Characters - Raptor_39
+      rect:
+        serializedVersion: 2
+        x: 290
+        y: 861
+        width: 97
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1d9ad13e733d05b80800000000000000
+      internalID: -8407988267313681967
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sega Genesis - Jurassic Park - Playable Characters - Raptor_40
+      rect:
+        serializedVersion: 2
+        x: 411
+        y: 870
+        width: 118
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 848ae613499a45810800000000000000
+      internalID: 1753212608903555144
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sega Genesis - Jurassic Park - Playable Characters - Raptor_41
+      rect:
+        serializedVersion: 2
+        x: 541
+        y: 865
+        width: 113
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 793b87a829b6d5ca0800000000000000
+      internalID: -6026542449219292265
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sega Genesis - Jurassic Park - Playable Characters - Raptor_42
+      rect:
+        serializedVersion: 2
+        x: 672
+        y: 865
+        width: 114
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 31b386c3016db5ce0800000000000000
+      internalID: -1415302292656604397
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sega Genesis - Jurassic Park - Playable Characters - Raptor_43
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 785
+        width: 117
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3684829ffbe2431f0800000000000000
+      internalID: -1066175809726166941
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sega Genesis - Jurassic Park - Playable Characters - Raptor_44
+      rect:
+        serializedVersion: 2
+        x: 159
+        y: 790
+        width: 124
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 775c540f64811b510800000000000000
+      internalID: 1563057238632154487
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sega Genesis - Jurassic Park - Playable Characters - Raptor_45
+      rect:
+        serializedVersion: 2
+        x: 307
+        y: 781
+        width: 119
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d52f4b15549c28d90800000000000000
+      internalID: -7096888763221740963
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sega Genesis - Jurassic Park - Playable Characters - Raptor_46
+      rect:
+        serializedVersion: 2
+        x: 430
+        y: 776
+        width: 105
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 35e9c5c7c1c5a67e0800000000000000
+      internalID: -1771502226001584557
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sega Genesis - Jurassic Park - Playable Characters - Raptor_47
+      rect:
+        serializedVersion: 2
+        x: 563
+        y: 788
+        width: 109
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0a550ba93329619b0800000000000000
+      internalID: -5109735976869014112
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sega Genesis - Jurassic Park - Playable Characters - Raptor_48
+      rect:
+        serializedVersion: 2
+        x: 698
+        y: 787
+        width: 115
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ebebbfc4ae2b70230800000000000000
+      internalID: 3605046746117029566
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sega Genesis - Jurassic Park - Playable Characters - Raptor_49
+      rect:
+        serializedVersion: 2
+        x: 833
+        y: 797
+        width: 125
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4d13ae5e3730f90a0800000000000000
+      internalID: -6872770710030634540
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sega Genesis - Jurassic Park - Playable Characters - Raptor_50
+      rect:
+        serializedVersion: 2
+        x: 971
+        y: 794
+        width: 129
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 89656b03fac743730800000000000000
+      internalID: 3977941462753367704
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sega Genesis - Jurassic Park - Playable Characters - Raptor_51
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 692
+        width: 109
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8f604cde6a0585730800000000000000
+      internalID: 3988026147920414456
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sega Genesis - Jurassic Park - Playable Characters - Raptor_52
+      rect:
+        serializedVersion: 2
+        x: 173
+        y: 688
+        width: 110
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5f8a01ffd7f32db80800000000000000
+      internalID: -8371558946945586955
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sega Genesis - Jurassic Park - Playable Characters - Raptor_53
+      rect:
+        serializedVersion: 2
+        x: 310
+        y: 692
+        width: 119
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2911eadab6fef90a0800000000000000
+      internalID: -6872511260589682286
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sega Genesis - Jurassic Park - Playable Characters - Raptor_54
+      rect:
+        serializedVersion: 2
+        x: 445
+        y: 698
+        width: 108
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 83755f2e371925880800000000000000
+      internalID: -8623670409546082504
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sega Genesis - Jurassic Park - Playable Characters - Raptor_55
+      rect:
+        serializedVersion: 2
+        x: 590
+        y: 692
+        width: 116
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8b556ca1ac2468510800000000000000
+      internalID: 1551000557475747256
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sega Genesis - Jurassic Park - Playable Characters - Raptor_56
+      rect:
+        serializedVersion: 2
+        x: 728
+        y: 694
+        width: 125
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2ca46413b4116b360800000000000000
+      internalID: 7184949270163114690
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sega Genesis - Jurassic Park - Playable Characters - Raptor_57
+      rect:
+        serializedVersion: 2
+        x: 869
+        y: 694
+        width: 127
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 63959e3d8c7f47260800000000000000
+      internalID: 7094567754936178998
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sega Genesis - Jurassic Park - Playable Characters - Raptor_58
+      rect:
+        serializedVersion: 2
+        x: 26
+        y: 579
+        width: 117
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 280323ac4b81f6350800000000000000
+      internalID: 6012051192328368258
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sega Genesis - Jurassic Park - Playable Characters - Raptor_59
+      rect:
+        serializedVersion: 2
+        x: 185
+        y: 582
+        width: 120
+        height: 55
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 343010d9722dcf370800000000000000
+      internalID: 8357786076072444739
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sega Genesis - Jurassic Park - Playable Characters - Raptor_60
+      rect:
+        serializedVersion: 2
+        x: 335
+        y: 583
+        width: 114
+        height: 55
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1cc420f43c99e8c30800000000000000
+      internalID: 4363594153091812545
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sega Genesis - Jurassic Park - Playable Characters - Raptor_61
+      rect:
+        serializedVersion: 2
+        x: 474
+        y: 585
+        width: 104
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 280ebcd93d018f010800000000000000
+      internalID: 1222745799902617730
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sega Genesis - Jurassic Park - Playable Characters - Raptor_62
+      rect:
+        serializedVersion: 2
+        x: 605
+        y: 590
+        width: 98
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 84cc8cf357c32f6c0800000000000000
+      internalID: -4111157035556877240
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sega Genesis - Jurassic Park - Playable Characters - Raptor_63
+      rect:
+        serializedVersion: 2
+        x: 738
+        y: 592
+        width: 116
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b75a549b0dee12440800000000000000
+      internalID: 4909467649039508859
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sega Genesis - Jurassic Park - Playable Characters - Raptor_64
+      rect:
+        serializedVersion: 2
+        x: 877
+        y: 597
+        width: 117
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8a9c7406f30c2d850800000000000000
+      internalID: 6400389398877686184
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sega Genesis - Jurassic Park - Playable Characters - Raptor_65
+      rect:
+        serializedVersion: 2
+        x: 1019
+        y: 599
+        width: 123
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fcaf38b6b8b95fa40800000000000000
+      internalID: 5401394351207348943
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sega Genesis - Jurassic Park - Playable Characters - Raptor_66
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 508
+        width: 121
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2d2cad85f9c5d1050800000000000000
+      internalID: 5772872136819131090
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sega Genesis - Jurassic Park - Playable Characters - Raptor_67
+      rect:
+        serializedVersion: 2
+        x: 177
+        y: 515
+        width: 122
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 16a3ddf810a9267c0800000000000000
+      internalID: -4079528980944962975
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sega Genesis - Jurassic Park - Playable Characters - Raptor_68
+      rect:
+        serializedVersion: 2
+        x: 327
+        y: 519
+        width: 122
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ff6d07633f448ec50800000000000000
+      internalID: 6694676657467348735
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sega Genesis - Jurassic Park - Playable Characters - Raptor_69
+      rect:
+        serializedVersion: 2
+        x: 475
+        y: 510
+        width: 124
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7e52eea2acdc52e20800000000000000
+      internalID: 3325290168070317543
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sega Genesis - Jurassic Park - Playable Characters - Raptor_70
+      rect:
+        serializedVersion: 2
+        x: 641
+        y: 517
+        width: 125
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d6ff60174ae557f00800000000000000
+      internalID: 1113900543207997293
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sega Genesis - Jurassic Park - Playable Characters - Raptor_71
+      rect:
+        serializedVersion: 2
+        x: 805
+        y: 517
+        width: 125
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ee818cf4f7e3221d0800000000000000
+      internalID: -3377068054054168338
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sega Genesis - Jurassic Park - Playable Characters - Raptor_72
+      rect:
+        serializedVersion: 2
+        x: 969
+        y: 506
+        width: 123
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 931dc3df31317cc80800000000000000
+      internalID: -8302646411460292295
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sega Genesis - Jurassic Park - Playable Characters - Raptor_73
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 413
+        width: 125
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fc6e7c59bcb954ba0800000000000000
+      internalID: -6105302421137266993
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sega Genesis - Jurassic Park - Playable Characters - Raptor_74
+      rect:
+        serializedVersion: 2
+        x: 179
+        y: 427
+        width: 125
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c9c52ab96e6a0e8f0800000000000000
+      internalID: -513226848136438628
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sega Genesis - Jurassic Park - Playable Characters - Raptor_75
+      rect:
+        serializedVersion: 2
+        x: 337
+        y: 428
+        width: 129
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 33666efc15bd9b2c0800000000000000
+      internalID: -4415256815233243597
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sega Genesis - Jurassic Park - Playable Characters - Raptor_76
+      rect:
+        serializedVersion: 2
+        x: 519
+        y: 416
+        width: 100
+        height: 67
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c521d2a1747c93d20800000000000000
+      internalID: 3258854913575031388
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sega Genesis - Jurassic Park - Playable Characters - Raptor_77
+      rect:
+        serializedVersion: 2
+        x: 653
+        y: 424
+        width: 88
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 31e6bba44da79b620800000000000000
+      internalID: 2790396496338185747
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sega Genesis - Jurassic Park - Playable Characters - Raptor_78
+      rect:
+        serializedVersion: 2
+        x: 774
+        y: 422
+        width: 43
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 94cabd8e2da8ecca0800000000000000
+      internalID: -5994701415529075639
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sega Genesis - Jurassic Park - Playable Characters - Raptor_79
+      rect:
+        serializedVersion: 2
+        x: 26
+        y: 326
+        width: 112
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 39b21554c3f7d2ca0800000000000000
+      internalID: -6040031628396254317
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sega Genesis - Jurassic Park - Playable Characters - Raptor_80
+      rect:
+        serializedVersion: 2
+        x: 155
+        y: 333
+        width: 109
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6c363d1fd73985200800000000000000
+      internalID: 169047155163751366
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sega Genesis - Jurassic Park - Playable Characters - Raptor_81
+      rect:
+        serializedVersion: 2
+        x: 290
+        y: 334
+        width: 122
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e5d100648d87a0b30800000000000000
+      internalID: 4254345668287536478
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sega Genesis - Jurassic Park - Playable Characters - Raptor_82
+      rect:
+        serializedVersion: 2
+        x: 425
+        y: 340
+        width: 125
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6d9f471be9e89fd60800000000000000
+      internalID: 7924521831568308694
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sega Genesis - Jurassic Park - Playable Characters - Raptor_83
+      rect:
+        serializedVersion: 2
+        x: 569
+        y: 341
+        width: 129
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4a781d9a8a2e20d00800000000000000
+      internalID: 937560886477948836
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sega Genesis - Jurassic Park - Playable Characters - Raptor_84
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 243
+        width: 102
+        height: 74
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 294c0f7e80a4abc60800000000000000
+      internalID: 7834655903875908754
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sega Genesis - Jurassic Park - Playable Characters - Raptor_85
+      rect:
+        serializedVersion: 2
+        x: 121
+        y: 250
+        width: 49
+        height: 67
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d86d4f18617105690800000000000000
+      internalID: -7615561584446482803
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sega Genesis - Jurassic Park - Playable Characters - Raptor_86
+      rect:
+        serializedVersion: 2
+        x: 188
+        y: 251
+        width: 48
+        height: 65
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e1b8a25814e248880800000000000000
+      internalID: -8609705728683635938
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sega Genesis - Jurassic Park - Playable Characters - Raptor_87
+      rect:
+        serializedVersion: 2
+        x: 252
+        y: 249
+        width: 74
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 00f9efeceb71574c0800000000000000
+      internalID: -4290496961716510976
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sega Genesis - Jurassic Park - Playable Characters - Raptor_88
+      rect:
+        serializedVersion: 2
+        x: 334
+        y: 250
+        width: 88
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e88ae3c325eaa8080800000000000000
+      internalID: -9184336821847414642
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sega Genesis - Jurassic Park - Playable Characters - Raptor_89
+      rect:
+        serializedVersion: 2
+        x: 433
+        y: 248
+        width: 114
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a468b385f332ba1c0800000000000000
+      internalID: -4491457448401729974
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sega Genesis - Jurassic Park - Playable Characters - Raptor_90
+      rect:
+        serializedVersion: 2
+        x: 552
+        y: 249
+        width: 125
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 24f484a1c5846bb90800000000000000
+      internalID: -7226508991654244542
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sega Genesis - Jurassic Park - Playable Characters - Raptor_91
+      rect:
+        serializedVersion: 2
+        x: 688
+        y: 246
+        width: 129
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 21461ca1fce8e4cd0800000000000000
+      internalID: -2571961317023718382
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sega Genesis - Jurassic Park - Playable Characters - Raptor_92
+      rect:
+        serializedVersion: 2
+        x: 23
+        y: 174
+        width: 127
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 42024f28e3d484cc0800000000000000
+      internalID: -3726643760768737244
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sega Genesis - Jurassic Park - Playable Characters - Raptor_93
+      rect:
+        serializedVersion: 2
+        x: 169
+        y: 176
+        width: 127
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fd3347723587ed4e0800000000000000
+      internalID: -1954992889692671009
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sega Genesis - Jurassic Park - Playable Characters - Raptor_94
+      rect:
+        serializedVersion: 2
+        x: 333
+        y: 178
+        width: 126
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e789490019e544b90800000000000000
+      internalID: -7258572722541389698
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sega Genesis - Jurassic Park - Playable Characters - Raptor_95
+      rect:
+        serializedVersion: 2
+        x: 493
+        y: 174
+        width: 126
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6df5aa3e4087aa500800000000000000
+      internalID: 408270678625247190
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sega Genesis - Jurassic Park - Playable Characters - Raptor_96
+      rect:
+        serializedVersion: 2
+        x: 656
+        y: 173
+        width: 124
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 741b842391ebe14d0800000000000000
+      internalID: -3161880872940424889
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sega Genesis - Jurassic Park - Playable Characters - Raptor_97
+      rect:
+        serializedVersion: 2
+        x: 27
+        y: 90
+        width: 122
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0939682e62c8e3a70800000000000000
+      internalID: 8808632019820385168
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sega Genesis - Jurassic Park - Playable Characters - Raptor_98
+      rect:
+        serializedVersion: 2
+        x: 177
+        y: 91
+        width: 127
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 52179c243171fb4b0800000000000000
+      internalID: -5422590054838472411
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sega Genesis - Jurassic Park - Playable Characters - Raptor_99
+      rect:
+        serializedVersion: 2
+        x: 334
+        y: 94
+        width: 121
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3ce411706de5b6a00800000000000000
+      internalID: 750798036221906627
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sega Genesis - Jurassic Park - Playable Characters - Raptor_100
+      rect:
+        serializedVersion: 2
+        x: 487
+        y: 100
+        width: 128
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dfb9988d889fe4b10800000000000000
+      internalID: 1967784453351250941
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sega Genesis - Jurassic Park - Playable Characters - Raptor_101
+      rect:
+        serializedVersion: 2
+        x: 651
+        y: 100
+        width: 127
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f3bffdad25b695460800000000000000
+      internalID: 7230928680323644223
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sega Genesis - Jurassic Park - Playable Characters - Raptor_102
+      rect:
+        serializedVersion: 2
+        x: 21
+        y: 17
+        width: 126
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 307b8055e797328c0800000000000000
+      internalID: -4025240058439616765
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sega Genesis - Jurassic Park - Playable Characters - Raptor_103
+      rect:
+        serializedVersion: 2
+        x: 175
+        y: 16
+        width: 127
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 012cac499b46dec30800000000000000
+      internalID: 4390275959984144912
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sega Genesis - Jurassic Park - Playable Characters - Raptor_104
+      rect:
+        serializedVersion: 2
+        x: 334
+        y: 13
+        width: 127
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5821497c9c3df7ce0800000000000000
+      internalID: -1405171695126048123
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sega Genesis - Jurassic Park - Playable Characters - Raptor_105
+      rect:
+        serializedVersion: 2
+        x: 476
+        y: 20
+        width: 129
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9a0b4d29eff41b630800000000000000
+      internalID: 3941019103729594537
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sega Genesis - Jurassic Park - Playable Characters - Raptor_106
+      rect:
+        serializedVersion: 2
+        x: 628
+        y: 18
+        width: 127
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 253f474046e2b3440800000000000000
+      internalID: 4916574425311408978
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sega Genesis - Jurassic Park - Playable Characters - Raptor_107
+      rect:
+        serializedVersion: 2
+        x: 785
+        y: 20
+        width: 123
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 500153bc2a5778de0800000000000000
+      internalID: -1330965822810288123
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Sega Genesis - Jurassic Park - Playable Characters - Raptor_0: 7381981037618368973
+      Sega Genesis - Jurassic Park - Playable Characters - Raptor_1: 2733129596138269249
+      Sega Genesis - Jurassic Park - Playable Characters - Raptor_10: 7440187808579005291
+      Sega Genesis - Jurassic Park - Playable Characters - Raptor_100: 1967784453351250941
+      Sega Genesis - Jurassic Park - Playable Characters - Raptor_101: 7230928680323644223
+      Sega Genesis - Jurassic Park - Playable Characters - Raptor_102: -4025240058439616765
+      Sega Genesis - Jurassic Park - Playable Characters - Raptor_103: 4390275959984144912
+      Sega Genesis - Jurassic Park - Playable Characters - Raptor_104: -1405171695126048123
+      Sega Genesis - Jurassic Park - Playable Characters - Raptor_105: 3941019103729594537
+      Sega Genesis - Jurassic Park - Playable Characters - Raptor_106: 4916574425311408978
+      Sega Genesis - Jurassic Park - Playable Characters - Raptor_107: -1330965822810288123
+      Sega Genesis - Jurassic Park - Playable Characters - Raptor_11: 8249664469335277662
+      Sega Genesis - Jurassic Park - Playable Characters - Raptor_12: 7586057142734804918
+      Sega Genesis - Jurassic Park - Playable Characters - Raptor_13: -911850884553959834
+      Sega Genesis - Jurassic Park - Playable Characters - Raptor_14: 7852944123825230975
+      Sega Genesis - Jurassic Park - Playable Characters - Raptor_15: -9046538960581150992
+      Sega Genesis - Jurassic Park - Playable Characters - Raptor_16: 5034850667809125511
+      Sega Genesis - Jurassic Park - Playable Characters - Raptor_17: -3351473348699135579
+      Sega Genesis - Jurassic Park - Playable Characters - Raptor_18: -5959587143372061644
+      Sega Genesis - Jurassic Park - Playable Characters - Raptor_19: -4346777223584755542
+      Sega Genesis - Jurassic Park - Playable Characters - Raptor_2: 6287033557352704377
+      Sega Genesis - Jurassic Park - Playable Characters - Raptor_20: 9218509282984173512
+      Sega Genesis - Jurassic Park - Playable Characters - Raptor_21: 8764297533427256972
+      Sega Genesis - Jurassic Park - Playable Characters - Raptor_22: 4237661619398387770
+      Sega Genesis - Jurassic Park - Playable Characters - Raptor_23: 4748732700393885246
+      Sega Genesis - Jurassic Park - Playable Characters - Raptor_24: 7800886585068759479
+      Sega Genesis - Jurassic Park - Playable Characters - Raptor_25: -7428012795614088597
+      Sega Genesis - Jurassic Park - Playable Characters - Raptor_26: -164570288211635455
+      Sega Genesis - Jurassic Park - Playable Characters - Raptor_27: -8798971651394070634
+      Sega Genesis - Jurassic Park - Playable Characters - Raptor_28: 297006294006909978
+      Sega Genesis - Jurassic Park - Playable Characters - Raptor_29: 9019333481830347481
+      Sega Genesis - Jurassic Park - Playable Characters - Raptor_3: -437429182633959360
+      Sega Genesis - Jurassic Park - Playable Characters - Raptor_30: -4169479555292220287
+      Sega Genesis - Jurassic Park - Playable Characters - Raptor_31: 2250624564377372373
+      Sega Genesis - Jurassic Park - Playable Characters - Raptor_32: 7165281480170662074
+      Sega Genesis - Jurassic Park - Playable Characters - Raptor_33: 8482389266051660486
+      Sega Genesis - Jurassic Park - Playable Characters - Raptor_34: -6101470260069523585
+      Sega Genesis - Jurassic Park - Playable Characters - Raptor_35: 6910235230051325654
+      Sega Genesis - Jurassic Park - Playable Characters - Raptor_36: 5386878329165460026
+      Sega Genesis - Jurassic Park - Playable Characters - Raptor_37: 1658625590088477734
+      Sega Genesis - Jurassic Park - Playable Characters - Raptor_38: 5061622838028908084
+      Sega Genesis - Jurassic Park - Playable Characters - Raptor_39: -8407988267313681967
+      Sega Genesis - Jurassic Park - Playable Characters - Raptor_4: 3081636884236029382
+      Sega Genesis - Jurassic Park - Playable Characters - Raptor_40: 1753212608903555144
+      Sega Genesis - Jurassic Park - Playable Characters - Raptor_41: -6026542449219292265
+      Sega Genesis - Jurassic Park - Playable Characters - Raptor_42: -1415302292656604397
+      Sega Genesis - Jurassic Park - Playable Characters - Raptor_43: -1066175809726166941
+      Sega Genesis - Jurassic Park - Playable Characters - Raptor_44: 1563057238632154487
+      Sega Genesis - Jurassic Park - Playable Characters - Raptor_45: -7096888763221740963
+      Sega Genesis - Jurassic Park - Playable Characters - Raptor_46: -1771502226001584557
+      Sega Genesis - Jurassic Park - Playable Characters - Raptor_47: -5109735976869014112
+      Sega Genesis - Jurassic Park - Playable Characters - Raptor_48: 3605046746117029566
+      Sega Genesis - Jurassic Park - Playable Characters - Raptor_49: -6872770710030634540
+      Sega Genesis - Jurassic Park - Playable Characters - Raptor_5: 8561950665064730314
+      Sega Genesis - Jurassic Park - Playable Characters - Raptor_50: 3977941462753367704
+      Sega Genesis - Jurassic Park - Playable Characters - Raptor_51: 3988026147920414456
+      Sega Genesis - Jurassic Park - Playable Characters - Raptor_52: -8371558946945586955
+      Sega Genesis - Jurassic Park - Playable Characters - Raptor_53: -6872511260589682286
+      Sega Genesis - Jurassic Park - Playable Characters - Raptor_54: -8623670409546082504
+      Sega Genesis - Jurassic Park - Playable Characters - Raptor_55: 1551000557475747256
+      Sega Genesis - Jurassic Park - Playable Characters - Raptor_56: 7184949270163114690
+      Sega Genesis - Jurassic Park - Playable Characters - Raptor_57: 7094567754936178998
+      Sega Genesis - Jurassic Park - Playable Characters - Raptor_58: 6012051192328368258
+      Sega Genesis - Jurassic Park - Playable Characters - Raptor_59: 8357786076072444739
+      Sega Genesis - Jurassic Park - Playable Characters - Raptor_6: -62976909519441079
+      Sega Genesis - Jurassic Park - Playable Characters - Raptor_60: 4363594153091812545
+      Sega Genesis - Jurassic Park - Playable Characters - Raptor_61: 1222745799902617730
+      Sega Genesis - Jurassic Park - Playable Characters - Raptor_62: -4111157035556877240
+      Sega Genesis - Jurassic Park - Playable Characters - Raptor_63: 4909467649039508859
+      Sega Genesis - Jurassic Park - Playable Characters - Raptor_64: 6400389398877686184
+      Sega Genesis - Jurassic Park - Playable Characters - Raptor_65: 5401394351207348943
+      Sega Genesis - Jurassic Park - Playable Characters - Raptor_66: 5772872136819131090
+      Sega Genesis - Jurassic Park - Playable Characters - Raptor_67: -4079528980944962975
+      Sega Genesis - Jurassic Park - Playable Characters - Raptor_68: 6694676657467348735
+      Sega Genesis - Jurassic Park - Playable Characters - Raptor_69: 3325290168070317543
+      Sega Genesis - Jurassic Park - Playable Characters - Raptor_7: 6950596995458007741
+      Sega Genesis - Jurassic Park - Playable Characters - Raptor_70: 1113900543207997293
+      Sega Genesis - Jurassic Park - Playable Characters - Raptor_71: -3377068054054168338
+      Sega Genesis - Jurassic Park - Playable Characters - Raptor_72: -8302646411460292295
+      Sega Genesis - Jurassic Park - Playable Characters - Raptor_73: -6105302421137266993
+      Sega Genesis - Jurassic Park - Playable Characters - Raptor_74: -513226848136438628
+      Sega Genesis - Jurassic Park - Playable Characters - Raptor_75: -4415256815233243597
+      Sega Genesis - Jurassic Park - Playable Characters - Raptor_76: 3258854913575031388
+      Sega Genesis - Jurassic Park - Playable Characters - Raptor_77: 2790396496338185747
+      Sega Genesis - Jurassic Park - Playable Characters - Raptor_78: -5994701415529075639
+      Sega Genesis - Jurassic Park - Playable Characters - Raptor_79: -6040031628396254317
+      Sega Genesis - Jurassic Park - Playable Characters - Raptor_8: -4972665108485647661
+      Sega Genesis - Jurassic Park - Playable Characters - Raptor_80: 169047155163751366
+      Sega Genesis - Jurassic Park - Playable Characters - Raptor_81: 4254345668287536478
+      Sega Genesis - Jurassic Park - Playable Characters - Raptor_82: 7924521831568308694
+      Sega Genesis - Jurassic Park - Playable Characters - Raptor_83: 937560886477948836
+      Sega Genesis - Jurassic Park - Playable Characters - Raptor_84: 7834655903875908754
+      Sega Genesis - Jurassic Park - Playable Characters - Raptor_85: -7615561584446482803
+      Sega Genesis - Jurassic Park - Playable Characters - Raptor_86: -8609705728683635938
+      Sega Genesis - Jurassic Park - Playable Characters - Raptor_87: -4290496961716510976
+      Sega Genesis - Jurassic Park - Playable Characters - Raptor_88: -9184336821847414642
+      Sega Genesis - Jurassic Park - Playable Characters - Raptor_89: -4491457448401729974
+      Sega Genesis - Jurassic Park - Playable Characters - Raptor_9: -1745325512816503810
+      Sega Genesis - Jurassic Park - Playable Characters - Raptor_90: -7226508991654244542
+      Sega Genesis - Jurassic Park - Playable Characters - Raptor_91: -2571961317023718382
+      Sega Genesis - Jurassic Park - Playable Characters - Raptor_92: -3726643760768737244
+      Sega Genesis - Jurassic Park - Playable Characters - Raptor_93: -1954992889692671009
+      Sega Genesis - Jurassic Park - Playable Characters - Raptor_94: -7258572722541389698
+      Sega Genesis - Jurassic Park - Playable Characters - Raptor_95: 408270678625247190
+      Sega Genesis - Jurassic Park - Playable Characters - Raptor_96: -3161880872940424889
+      Sega Genesis - Jurassic Park - Playable Characters - Raptor_97: 8808632019820385168
+      Sega Genesis - Jurassic Park - Playable Characters - Raptor_98: -5422590054838472411
+      Sega Genesis - Jurassic Park - Playable Characters - Raptor_99: 750798036221906627
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
