@@ -1,3 +1,4 @@
+using Core.Common.Abstractions;
 using Core.Equipment;
 using Core.Game.Lifecycle;
 using Core.Inventory;
@@ -10,7 +11,7 @@ using UnityEngine;
 
 namespace Unity.Equipment
 {
-    public class EquipmentManager : MonoBehaviour, IEquipmentManager, IRevertable
+    public class EquipmentManager : MonoBehaviour, IEquipmentManager, IRevertable, IInitObject<EquipmentSaveData>
     {
         [SerializeField] private Transform _facingTransform;
         [SerializeField] private Transform _equipmentAnchor;
@@ -155,12 +156,26 @@ namespace Unity.Equipment
         }
 
 
+        public void Init(EquipmentSaveData val)
+        {
+            _saveData = val;
+            Debug.Log($"[EquipmentManager] save data: {_saveData}");
+            Revert();
+        }
+
+
+
+
         // Save Methods
         public void Revert()
         {
             if (_saveData.HasValue)
             {
-                ActiveEquipment.Magazine.SetRounds(_saveData.Value.RoundsInMagazine);
+                if (ActiveEquipment != null)
+                {
+                    ActiveEquipment.Magazine.SetRounds(_saveData.Value.RoundsInMagazine);
+                }
+
                 if (_saveData.Value.HasFlashLight)
                 {
                     AllowFlashLight();

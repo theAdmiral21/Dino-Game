@@ -12,24 +12,24 @@ namespace Unity.Game.SaveData
     {
         [Header("Health Data")]
         public int StartingHealth;
+
         [Header("Kinematic Data")]
         public Vector2 ReloadPosition;
+
         [Header("Inventory Data")]
         public ItemType EquippedItem;
         public List<ItemStock> FoundItems;
-        [Header("Inventory Data")]
+
+        [Header("Equipment Data")]
         public int RoundsInMagazine;
+        public bool HasFlashLight;
+        public bool FlashLightIsOn;
+
         [Header("Checkpoint Data")]
         public CheckpointId Id;
 
         public PlayerSaveData GetPlayerDefaults()
         {
-            HealthSaveData HealthData;
-            KinematicSaveData FrameData;
-            InventorySaveData InventoryData;
-            EquipmentSaveData EquipmentData;
-            CheckpointSaveData CheckpointData;
-
             // make the structs and make sure things are copasetic
             bool healthIsValid = false;
             if (StartingHealth > 0 && StartingHealth <= 100)
@@ -37,10 +37,11 @@ namespace Unity.Game.SaveData
                 healthIsValid = true;
             }
             if (!healthIsValid) throw new InvalidDataException($"Starting health must be greater than zero and less than 100.");
-            HealthData = new HealthSaveData { CurrentHealth = StartingHealth };
+            HealthSaveData HealthData = new HealthSaveData { CurrentHealth = StartingHealth };
+            Debug.Log($"Starting health: {HealthData.CurrentHealth}");
 
             // Hmm the level tells you where to start.. does this make sense?
-            FrameData = new KinematicSaveData { ReloadPosition = ReloadPosition };
+            KinematicSaveData FrameData = new KinematicSaveData { ReloadPosition = ReloadPosition };
 
             bool equippedItemIsValid = false;
             foreach (var item in FoundItems)
@@ -52,21 +53,26 @@ namespace Unity.Game.SaveData
                     break;
                 }
             }
-            if (!equippedItemIsValid)
+            if (!equippedItemIsValid && EquippedItem != ItemType.None)
             {
                 throw new InvalidDataException($"Equipped item is not in the FoundItems list.");
             }
-            InventoryData = new InventorySaveData
+            InventorySaveData InventoryData = new InventorySaveData
             {
                 CurrentItem = EquippedItem,
                 Items = FoundItems
             };
 
             // Checking the magazine is hard. Just don't fuck it up
-            EquipmentData = new EquipmentSaveData { RoundsInMagazine = RoundsInMagazine };
+            EquipmentSaveData EquipmentData = new EquipmentSaveData
+            {
+                RoundsInMagazine = RoundsInMagazine,
+                HasFlashLight = HasFlashLight,
+                FlashLightIsOn = FlashLightIsOn,
+            };
 
             // Checkpoints are also weird because their id changes every time the game runs...
-            CheckpointData = new CheckpointSaveData { Id = Id };
+            CheckpointSaveData CheckpointData = new CheckpointSaveData { Id = Id };
 
 
             return new PlayerSaveData

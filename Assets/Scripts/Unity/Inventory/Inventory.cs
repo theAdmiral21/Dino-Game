@@ -16,10 +16,11 @@ using Core.Game.Lifecycle;
 using Primitives.SaveData;
 using Infrastructure.Unity;
 using System.Linq;
+using Core.Common.Abstractions;
 
 namespace Unity.Inventory
 {
-    public class Inventory : SelfRegister<IInitializable<IGameContext>>, IInventory, IInitializable<IGameContext>, IRevertable
+    public class Inventory : SelfRegister<IInitializable<IGameContext>>, IInventory, IInitializable<IGameContext>, IRevertable, IInitObject<InventorySaveData>
     {
         [SerializeField] private InventoryLimitSO _inventoryLimits;
         private Dictionary<ItemType, int> _limitMap = new();
@@ -137,6 +138,12 @@ namespace Unity.Inventory
         {
             _saveData = JsonUtility.FromJson<InventorySaveData>(json);
             Debug.Assert(_saveData != null, $"Failed to load serialized data: {json}");
+        }
+
+        public void Init(InventorySaveData val)
+        {
+            _saveData = val;
+            Revert();
         }
     }
 }

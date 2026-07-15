@@ -19,6 +19,7 @@ using Primitives.Stats.DataStructures;
 using Core.Game.Lifecycle;
 using Primitives.SaveData;
 using Infrastructure.Unity;
+using Core.Common.Abstractions;
 
 namespace PlayerController.Unity.Health
 {
@@ -29,7 +30,8 @@ namespace PlayerController.Unity.Health
                                 IInitializable<IGameContext>,
                                 IHealProvider,
                                 IDamageProvider,
-                                IRevertable
+                                IRevertable,
+                                IInitObject<HealthSaveData>
     {
         [SerializeField] SerializedInterface<IPlayerView> _playerView;
         [SerializeField] SerializedInterface<IOverrideControls> _overrideControls;
@@ -157,6 +159,12 @@ namespace PlayerController.Unity.Health
         {
             _saveData = JsonUtility.FromJson<HealthSaveData>(json);
             Debug.Assert(_saveData != null, $"Failed to load serialized data: {json}");
+        }
+
+        public void Init(HealthSaveData val)
+        {
+            _saveData = val;
+            Revert();
         }
     }
 }

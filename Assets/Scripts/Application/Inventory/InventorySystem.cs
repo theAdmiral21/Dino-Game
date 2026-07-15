@@ -146,6 +146,7 @@ namespace Application.Inventory
 
         private bool TryEquip(ItemType item)
         {
+            if (item == ItemType.None) return true; // dont do anything
             // try to get the proposed item
             if (!Items.TryGetValue(item, out var inventoryItem))
             {

@@ -1,3 +1,4 @@
+using Core.Common.Abstractions;
 using Core.Game.Lifecycle;
 using Core.Physics.Collisions;
 using Game.Core.Execution;
@@ -20,7 +21,8 @@ namespace Physics.Unity.Actors
                                             IPhysicsActor,
                                             IActorEventBusProvider,
                                             IExternalForceReceiver,
-                                            IRevertable
+                                            IRevertable,
+                                            IInitObject<KinematicSaveData>
     {
         public ActorType Actor => _actor;
         [SerializeField] private ActorType _actor;
@@ -162,6 +164,12 @@ namespace Physics.Unity.Actors
         {
             _saveData = JsonUtility.FromJson<KinematicSaveData>(json);
             Debug.Assert(_saveData != null, $"Failed to load serialized data: {json}");
+        }
+
+        public void Init(KinematicSaveData val)
+        {
+            _saveData = val;
+            Revert();
         }
     }
 }
