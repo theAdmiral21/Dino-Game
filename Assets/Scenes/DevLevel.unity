@@ -995,7 +995,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 468984793859189365, guid: cbdc44df1e4dd9e4aa9efb46dc6b9c08, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5.73
+      value: -5.66
       objectReference: {fileID: 0}
     - target: {fileID: 468984793859189365, guid: cbdc44df1e4dd9e4aa9efb46dc6b9c08, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1208,7 +1208,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity::Unity.Infrastructure.Registries.SaveRegistry
   _resetables:
     debugEntities: []
-  _revertables:
+  _saveOrchestrators:
     debugEntities: []
 --- !u!114 &1656174841
 MonoBehaviour:
@@ -1224,6 +1224,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity::Unity.Infrastructure.Lifecycle.SaveManager
   _saveRegistryMono:
     _monoScript: {fileID: 1656174840}
+  _fileName: save.json
 --- !u!4 &1656174842
 Transform:
   m_ObjectHideFlags: 0

@@ -5,5 +5,6 @@ namespace Primitives.SaveData
     public struct EquipmentSaveData
     {
         public int RoundsInMagazine;
+        public bool HasFlashLight;
     }
 }
