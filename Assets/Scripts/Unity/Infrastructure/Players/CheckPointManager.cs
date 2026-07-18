@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Core.Game.Lifecycle;
 using Environment.Core.Abstractions;
 using Environment.Core.Level;
 using Game.Core.Events;
@@ -7,17 +8,19 @@ using Game.Core.Execution;
 using Game.Core.Lifecycle;
 using Game.Unity.Scenes.DataStructures;
 using Infrastructure.Unity.Registries;
+using Primitives.Audio.EntityKeys;
 using Primitives.Checkpoints;
 using Primitives.Common.Scenes;
 using Primitives.EventBus.Abstractions;
 using Primitives.Infrastructure;
+using Primitives.SaveData;
 using Unity.Common.Unity;
 using Unity.Environment.Checkpoints.DataStructures;
 using UnityEngine;
 
 namespace Infrastructure.Unity.Players
 {
-    public class CheckPointManager : SelfRegister<IInitializable<IGameContext>>, IInitializable<IGameContext>, ICheckPointDataProvider
+    public class CheckPointManager : SelfRegister<IInitializable<IGameContext>>, IInitializable<IGameContext>, ICheckPointDataProvider, IRevertable
     {
         [SerializeField] private CheckpointMapSO _checkpointSceneLookUp;
         [SerializeField] private SerializedInterface<ICheckpointRegistry> _checkpoints;
@@ -28,6 +31,13 @@ namespace Infrastructure.Unity.Players
 
         [SerializeField] private int _priority = 0;
         public int Priority => _priority;
+
+        public int Id => throw new NotImplementedException();
+
+        public EntityKey Key => EntityKey.CheckpointManager;
+
+        private CheckpointSaveData _saveData;
+
         public void Initialize(IGameContext context)
         {
             _currentScene = context.SceneServices.CurrentSceneService.CurrentScene;
@@ -46,8 +56,15 @@ namespace Infrastructure.Unity.Players
             // Update the checkpoint for the player that triggered it
             _checkpointMap[checkPointTriggered.PlayerId] = checkPointTriggered.Data;
         }
-
-        public CheckPointData GetCheckPoint(Guid PlayerId)
+        public CheckPointData GetCheckPointData(CheckpointId id)
+        {
+            foreach (var checkpoint in Checkpoints)
+            {
+                if (checkpoint.Id == id) return checkpoint.Data;
+            }
+            throw new KeyNotFoundException($"Id: {id} does not correlate with a checkpoint in the current scene: {_currentScene}");
+        }
+        public CheckPointData GetPlayerCheckPoint(Guid PlayerId)
         {
             if (_checkpointMap.TryGetValue(PlayerId, out CheckPointData data))
             {
@@ -65,12 +82,12 @@ namespace Infrastructure.Unity.Players
             throw new KeyNotFoundException("Could not find level start checkpoint.");
         }
 
-        public bool SetCheckpoint(Guid playerId, CheckPointData data)
+        public bool SetPlayerCheckpoint(Guid playerId, CheckPointData data)
         {
             return _checkpointMap.TryAdd(playerId, data);
         }
 
-        public bool SetCheckpoint(Guid playerId, CheckpointId id)
+        public bool SetPlayerCheckpoint(Guid playerId, CheckpointId id)
         {
             // Look up the check point using the given Id
             foreach (ICheckpoint checkpoint in Checkpoints)
@@ -105,6 +122,26 @@ namespace Infrastructure.Unity.Players
                     return checkpoint.Data;
             }
             return null;
+        }
+
+        public void Revert()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void TakeSnapShot()
+        {
+            throw new NotImplementedException();
+        }
+
+        public string SerializeSnapShot()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void LoadSnapShot(string json)
+        {
+            throw new NotImplementedException();
         }
     }
 }

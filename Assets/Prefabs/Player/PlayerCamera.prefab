@@ -1296,7 +1296,7 @@ MonoBehaviour:
     CustomLookAtTarget: 0
   Lens:
     FieldOfView: 60
-    OrthographicSize: 10
+    OrthographicSize: 5
     NearClipPlane: 0.3
     FarClipPlane: 1000
     Dutch: 0
@@ -1338,7 +1338,7 @@ MonoBehaviour:
       Size: {x: 0.15, y: 0.15}
       Offset: {x: 0, y: 0}
   CenterOnActivate: 1
-  TargetOffset: {x: 0, y: 2, z: -3}
+  TargetOffset: {x: 3, y: 1, z: -3}
   Damping: {x: 1, y: 1, z: 1}
   Lookahead:
     Enabled: 1

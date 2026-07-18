@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4246289027865138659}
   m_Layer: 9
   m_Name: LevelStart
-  m_TagString: Untagged
+  m_TagString: SpawnPoint
   m_Icon: {fileID: 2488908585195742037, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -107,8 +107,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a17e82b4ea160784e9ef98a85d540106, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity::Environment.Unity.Checkpoints.CheckPoint
-  _jingleFeedBack:
-    _monoScript: {fileID: 0}
+  _jingleFeedBack: {fileID: 0}
   _particleFeedBack: {fileID: 0}
   _waterFeedBack: {fileID: 0}
   _triggerCollider: {fileID: 7170695651543996924}

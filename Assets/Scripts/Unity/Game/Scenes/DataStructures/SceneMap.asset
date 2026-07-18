@@ -23,3 +23,8 @@ MonoBehaviour:
     TypeOfScene: 2
     SceneAsset: {fileID: 102900000, guid: dc5ece23e2d38d943a695083e4888c51, type: 3}
     _sceneName: Power Up
+  - Id: 3
+    StartState: 1
+    TypeOfScene: 2
+    SceneAsset: {fileID: 102900000, guid: 091cc075bf8928b4f995a729842eedf0, type: 3}
+    _sceneName: Jungle

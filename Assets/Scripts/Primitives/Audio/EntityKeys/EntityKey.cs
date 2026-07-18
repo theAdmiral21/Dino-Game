@@ -31,5 +31,8 @@ namespace Primitives.Audio.EntityKeys
 
         // Songs
         Song,
+
+        // Classes
+        CheckpointManager,
     }
 }

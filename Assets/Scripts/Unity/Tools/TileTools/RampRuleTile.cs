@@ -1,0 +1,25 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.Tilemaps;
+
+[CreateAssetMenu(fileName = "RampRuleTile", menuName = "Tiles/Ramp Rule Tile")]
+public class RampRuleTile : RuleTile
+{
+    public RuleTile PartnerRuleTile;
+
+    public class Neighbor : RuleTile.TilingRule.Neighbor
+    {
+        public const int Null = 3;
+        public const int NotNull = 4;
+    }
+
+    public override bool RuleMatch(int neighbor, TileBase tile)
+    {
+        if (tile == PartnerRuleTile)
+        {
+            return base.RuleMatch(neighbor, this);
+        }
+        return base.RuleMatch(neighbor, tile);
+    }
+}

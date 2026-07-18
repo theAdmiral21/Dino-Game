@@ -10,7 +10,6 @@ using PlayerController.Core.Info;
 using Primitives.Checkpoints;
 using Primitives.EventBus.Abstractions;
 using Primitives.Infrastructure;
-using Unity.Common.Unity;
 using UnityEngine;
 
 namespace Environment.Unity.Checkpoints
@@ -25,6 +24,7 @@ namespace Environment.Unity.Checkpoints
 
         [Header("Collision Zones")]
         [SerializeField] private TriggerVolume _triggerCollider;
+        public CheckpointId Id => _checkpointId;
         [SerializeField] private CheckpointId _checkpointId;
         public CheckPointData Data => _data;
         private CheckPointData _data;

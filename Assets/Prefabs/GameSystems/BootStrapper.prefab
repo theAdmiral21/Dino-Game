@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5480227603750743228}
   - component: {fileID: 2021235604529318489}
   - component: {fileID: 1126534426928203193}
+  - component: {fileID: 7506990911824473013}
   m_Layer: 0
   m_Name: BootStrapper
   m_TagString: Untagged
@@ -64,7 +65,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37716d1a519cb1f4eb582948b79b791a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sceneContext: {fileID: 11400000, guid: 924372c52055d514e89c10b270178804, type: 2}
+  _priority: 0
 --- !u!114 &1126534426928203193
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -79,6 +80,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _systems:
     debugEntities: []
+--- !u!114 &7506990911824473013
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2160671938162221663}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0064bc3f5d762bd43bc8f424b67fab31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity::Unity.Tools.DebugTools.SpawnAt
+  SpawnDebug: 0
+  SelectedSpawn: 0
 --- !u!1 &8560295147042118345
 GameObject:
   m_ObjectHideFlags: 0

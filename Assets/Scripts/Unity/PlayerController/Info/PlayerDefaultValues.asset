@@ -17,4 +17,6 @@ MonoBehaviour:
   EquippedItem: 12
   FoundItems: []
   RoundsInMagazine: 0
+  HasFlashLight: 0
+  FlashLightIsOn: 0
   Id: 7

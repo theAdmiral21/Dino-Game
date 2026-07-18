@@ -1,0 +1,533 @@
+fileFormatVersion: 2
+guid: d91d361eadf9b5941b720dc54efa609f
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -4081743254231161118
+    second: deadtrees-sheet_0
+  - first:
+      213: -5976466411020743334
+    second: deadtrees-sheet_1
+  - first:
+      213: 2532889843334254621
+    second: deadtrees-sheet_2
+  - first:
+      213: 8183949754615806564
+    second: deadtrees-sheet_3
+  - first:
+      213: -4211564187287662773
+    second: deadtrees-sheet_4
+  - first:
+      213: -1238797716243313344
+    second: deadtrees-sheet_5
+  - first:
+      213: -8752329894638223967
+    second: deadtrees-sheet_6
+  - first:
+      213: 5242231140775627655
+    second: deadtrees-sheet_7
+  - first:
+      213: 1834231349214867798
+    second: deadtrees-sheet_8
+  - first:
+      213: 3421953072362543773
+    second: deadtrees-sheet_9
+  - first:
+      213: 6859557497099303722
+    second: deadtrees-sheet_10
+  - first:
+      213: -7909344410675777912
+    second: deadtrees-sheet_11
+  - first:
+      213: -2222291965086336760
+    second: deadtrees-sheet_12
+  - first:
+      213: -5367932364350384765
+    second: deadtrees-sheet_13
+  - first:
+      213: -7362034136900139245
+    second: deadtrees-sheet_14
+  - first:
+      213: 901124936674208721
+    second: deadtrees-sheet_15
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: deadtrees-sheet_0
+      rect:
+        serializedVersion: 2
+        x: 51
+        y: 1589
+        width: 664
+        height: 658
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2e66433e22cba57c0800000000000000
+      internalID: -4081743254231161118
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deadtrees-sheet_1
+      rect:
+        serializedVersion: 2
+        x: 809
+        y: 1575
+        width: 678
+        height: 676
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a5d0e0fb6735f0da0800000000000000
+      internalID: -5976466411020743334
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deadtrees-sheet_2
+      rect:
+        serializedVersion: 2
+        x: 1575
+        y: 1559
+        width: 690
+        height: 706
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d10122784e1a62320800000000000000
+      internalID: 2532889843334254621
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deadtrees-sheet_3
+      rect:
+        serializedVersion: 2
+        x: 2363
+        y: 1587
+        width: 648
+        height: 664
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 46a358ff0fa339170800000000000000
+      internalID: 8183949754615806564
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deadtrees-sheet_4
+      rect:
+        serializedVersion: 2
+        x: 65
+        y: 835
+        width: 648
+        height: 618
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b4f46fb7fa48d85c0800000000000000
+      internalID: -4211564187287662773
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deadtrees-sheet_5
+      rect:
+        serializedVersion: 2
+        x: 813
+        y: 829
+        width: 680
+        height: 624
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 04d80ce5a08eecee0800000000000000
+      internalID: -1238797716243313344
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deadtrees-sheet_6
+      rect:
+        serializedVersion: 2
+        x: 1581
+        y: 817
+        width: 684
+        height: 678
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1ad7e09255a798680800000000000000
+      internalID: -8752329894638223967
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deadtrees-sheet_7
+      rect:
+        serializedVersion: 2
+        x: 2343
+        y: 799
+        width: 696
+        height: 704
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 78b0c60b27520c840800000000000000
+      internalID: 5242231140775627655
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deadtrees-sheet_8
+      rect:
+        serializedVersion: 2
+        x: 23
+        y: 17
+        width: 722
+        height: 710
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 65176d5a1bf747910800000000000000
+      internalID: 1834231349214867798
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deadtrees-sheet_9
+      rect:
+        serializedVersion: 2
+        x: 215
+        y: 717
+        width: 24
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d9ad93460383d7f20800000000000000
+      internalID: 3421953072362543773
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deadtrees-sheet_10
+      rect:
+        serializedVersion: 2
+        x: 841
+        y: 35
+        width: 614
+        height: 694
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a2bb8fa333b023f50800000000000000
+      internalID: 6859557497099303722
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deadtrees-sheet_11
+      rect:
+        serializedVersion: 2
+        x: 1567
+        y: 29
+        width: 710
+        height: 686
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 88ee27bf92d5c3290800000000000000
+      internalID: -7909344410675777912
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deadtrees-sheet_12
+      rect:
+        serializedVersion: 2
+        x: 2361
+        y: 33
+        width: 642
+        height: 656
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 809f2d16b35d821e0800000000000000
+      internalID: -2222291965086336760
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deadtrees-sheet_13
+      rect:
+        serializedVersion: 2
+        x: 2495
+        y: 679
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 385929484f54185b0800000000000000
+      internalID: -5367932364350384765
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deadtrees-sheet_14
+      rect:
+        serializedVersion: 2
+        x: 1433
+        y: 435
+        width: 34
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 31784cd45fcc4d990800000000000000
+      internalID: -7362034136900139245
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deadtrees-sheet_15
+      rect:
+        serializedVersion: 2
+        x: 2031
+        y: 27
+        width: 22
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1db66b40b50718c00800000000000000
+      internalID: 901124936674208721
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      deadtrees-sheet_0: -4081743254231161118
+      deadtrees-sheet_1: -5976466411020743334
+      deadtrees-sheet_10: 6859557497099303722
+      deadtrees-sheet_11: -7909344410675777912
+      deadtrees-sheet_12: -2222291965086336760
+      deadtrees-sheet_13: -5367932364350384765
+      deadtrees-sheet_14: -7362034136900139245
+      deadtrees-sheet_15: 901124936674208721
+      deadtrees-sheet_2: 2532889843334254621
+      deadtrees-sheet_3: 8183949754615806564
+      deadtrees-sheet_4: -4211564187287662773
+      deadtrees-sheet_5: -1238797716243313344
+      deadtrees-sheet_6: -8752329894638223967
+      deadtrees-sheet_7: 5242231140775627655
+      deadtrees-sheet_8: 1834231349214867798
+      deadtrees-sheet_9: 3421953072362543773
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -20,6 +20,7 @@ namespace Primitives.Checkpoints
         // Dev level
         DevLevel_Start,
         DevLevel_DebugStart,
+        DevLevel_Checkpoint1,
 
         None
     }

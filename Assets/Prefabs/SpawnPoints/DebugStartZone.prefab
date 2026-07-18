@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 2409575720488319771}
   m_Layer: 0
   m_Name: DebugStartZone
-  m_TagString: Untagged
+  m_TagString: SpawnPoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -168,10 +168,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a17e82b4ea160784e9ef98a85d540106, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity::Environment.Unity.Checkpoints.CheckPoint
-  _jingleFeedBack:
-    _monoScript: {fileID: 0}
+  _jingleFeedBack: {fileID: 0}
   _particleFeedBack: {fileID: 0}
   _waterFeedBack: {fileID: 0}
   _triggerCollider: {fileID: 3964305839837497467}
-  _checkpointId: 0
+  _checkpointId: 9
   _priority: 0

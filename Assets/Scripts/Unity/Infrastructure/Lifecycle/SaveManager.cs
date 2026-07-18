@@ -4,9 +4,14 @@ using System.Collections.ObjectModel;
 using System.IO;
 using System.Reflection.Metadata.Ecma335;
 using AI.Core.Behavior;
+using Codice.CM.Common.Merge;
 using Core.Game.Lifecycle;
+using Game.Core.Events;
+using Game.Core.Execution;
+using Infrastructure.Unity.Registries;
 using NUnit.Framework.Constraints;
 using Primitives.Audio.EntityKeys;
+using Primitives.EventBus.Abstractions;
 using Primitives.SaveData;
 using Unity.Common.Unity;
 using Unity.Utility;
@@ -14,7 +19,7 @@ using UnityEngine;
 
 namespace Unity.Infrastructure.Lifecycle
 {
-    public class SaveManager : MonoBehaviour, ISaveManager
+    public class SaveManager : SelfRegister<IInitializable<IGameContext>>, ISaveManager, IInitializable<IGameContext>
     {
         [SerializeField] private SerializedInterface<ISaveRegistry> _saveRegistryMono;
         private ISaveRegistry _saveRegistry => _saveRegistryMono.Interface;
@@ -23,10 +28,16 @@ namespace Unity.Infrastructure.Lifecycle
         [SerializeField] private string _fileName = "save.json";
         private string _savePath => Path.Combine(UnityEngine.Application.persistentDataPath, _fileName);
 
+        private IEventBus _eventBus;
+
+        [SerializeField] private int _priority;
+        public int Priority => _priority;
+
         public static SaveManager Instance { get; private set; }
 
         private void Awake()
         {
+            base.Awake();
             if (Instance != null)
             {
                 Destroy(gameObject);
@@ -43,6 +54,19 @@ namespace Unity.Infrastructure.Lifecycle
             {
                 Instance = null;
             }
+            UnSubToEvents();
+            base.OnDestroy();
+        }
+
+        public void Initialize(IGameContext context)
+        {
+            _eventBus = context.EventBus;
+            Debug.Assert(_eventBus != null, $"Failed to initialize event bus from game context");
+        }
+
+        public void PostInitialize(IGameContext context)
+        {
+            SubToEvents();
         }
 
         public void SerializeEntities()
@@ -139,6 +163,19 @@ namespace Unity.Infrastructure.Lifecycle
             if (saveData.Value.Data == null || saveData.Value.Data.Count <= 0) return false;
 
             return true;
+        }
+        private void HandleCheckPointTriggered(CheckPointTriggeredEvent evt)
+        {
+            // When a checkpoint is triggered generate some save data in memory
+            SnapShotEntities();
+        }
+        private void SubToEvents()
+        {
+            _eventBus.Subscribe<CheckPointTriggeredEvent>(HandleCheckPointTriggered);
+        }
+        private void UnSubToEvents()
+        {
+            _eventBus.Unsubscribe<CheckPointTriggeredEvent>(HandleCheckPointTriggered);
         }
     }
 }

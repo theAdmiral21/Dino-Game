@@ -28,7 +28,7 @@ namespace Infrastructure.Unity.Players
 
 
                 // Does checkpoint and position data go here or some where else? 
-                _checkpointMapper.SetCheckpoint(data.PlayerId, defaultValues.CheckpointData.Id);
+                // _checkpointMapper.SetPlayerCheckpoint(data.PlayerId, defaultValues.CheckpointData.Id);
 
                 data.SpawnPoint = null;
 
