@@ -8,6 +8,11 @@ namespace Primitives.Checkpoints
         // Level 1 jungle
         Jungle_Start,
         Jungle_DebugStart,
+        Jungle_TRex,
+        Jungle_Bridge,
+        Jungle_FlashLight,
+        Jungle_CarCrash,
+        Jungle_OutsidePowerPlant,
 
         // Power station
         PowerUp_Start,
