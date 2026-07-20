@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using Environment.Core.Interactions;
 using Game.Core.Execution;
+using Game.Core.Inputs;
 using Infrastructure.Core.Inputs;
 using Infrastructure.Unity.Registries;
 using Movement.Core.Movement.Abstractions;
@@ -32,6 +33,10 @@ namespace PlayerController.Unity.Interactions
         private IPlayerActionMapManager _playerActionMap => _actionMapManagerMono.Interface;
         [SerializeField] private SerializedInterface<IConversationInputReader> _conversationMono;
         private IConversationInputReader _conversationReader => _conversationMono.Interface;
+
+        [SerializeField] private SerializedInterface<IUIInputProvider> _menuInputReaderMono;
+        private IUIInputProvider _menuInputReader => _menuInputReaderMono.Interface;
+
         private ContactFilter2D _contactFilter;
         private Vector2 _parentPosition => transform.parent.position;
         private InteractContext _context
@@ -40,7 +45,12 @@ namespace PlayerController.Unity.Interactions
             {
                 if (_cachedContext == null)
                 {
-                    _cachedContext = new InteractContext(_playerInfo.PlayerInfo.CharacterId, _playerActionMap, _conversationReader, transform.parent.position);
+                    _cachedContext = new InteractContext(
+                        _playerInfo.PlayerInfo.CharacterId,
+                        _playerActionMap,
+                        _conversationReader,
+                        _menuInputReader,
+                        transform.parent.position);
                 }
                 return _cachedContext;
             }

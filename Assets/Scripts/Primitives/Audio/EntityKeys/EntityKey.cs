@@ -24,10 +24,16 @@ namespace Primitives.Audio.EntityKeys
         SmokeGrenade,
         Flashlight,
         InteriorDoor,
+        KeypadDoor,
+        Keypad,
 
         // Menus
         MainMenu,
         Pause,
+
+        // UI 
+        MenuButton,
+        KeypadButton,
 
         // Songs
         Song,

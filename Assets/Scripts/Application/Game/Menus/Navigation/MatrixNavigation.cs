@@ -21,13 +21,13 @@ namespace Game.Application.UI.Menus.Navigation
         {
             int row = currentNdx / _colCount;
             int col = currentNdx % _colCount;
-            if (input == UIInput.Up) col--;
+            if (input == UIInput.Up) row--;
 
-            if (input == UIInput.Down) col++;
+            if (input == UIInput.Down) row++;
 
-            if (input == UIInput.Left) row--;
+            if (input == UIInput.Left) col--;
 
-            if (input == UIInput.Right) row++;
+            if (input == UIInput.Right) col++;
 
             if (input == UIInput.Back || input == UIInput.Select || input == UIInput.None) return currentNdx;
 

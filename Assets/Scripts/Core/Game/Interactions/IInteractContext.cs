@@ -1,6 +1,7 @@
 using UnityEngine;
 using Infrastructure.Core.Inputs;
 using Primitives.Characters;
+using Game.Core.Inputs;
 
 namespace Game.Core.Interactions
 {
@@ -10,5 +11,6 @@ namespace Game.Core.Interactions
         public CharacterID PlayerCharacter { get; }
         public IPlayerActionMapManager PlayerActionMapManager { get; }
         public IConversationInputReader ConversationInputReader { get; }
+        public IUIInputProvider MenuInputReader { get; }
     }
 }

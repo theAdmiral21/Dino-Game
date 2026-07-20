@@ -28,10 +28,14 @@ namespace Primitives.Audio.SoundKeys
         Pump,
         Lunge,
         Interact,
-        Open,
-        Close,
         Crouch,
         Dodge,
+
+        // Doors
+        Open,
+        Close,
+        Unlock,
+        Lock,
 
         // Menu actions
         Start,
@@ -39,6 +43,10 @@ namespace Primitives.Audio.SoundKeys
         Submit,
         Back,
         Cancel,
+
+        // Results
+        Success,
+        Failure,
 
         // Fall back enum
         None,

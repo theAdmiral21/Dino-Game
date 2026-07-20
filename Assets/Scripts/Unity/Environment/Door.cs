@@ -9,6 +9,8 @@ namespace Unity.Environment
     public class Door : MonoBehaviour, IInteractable, IDoor
     {
         [Header("Option feedback components")]
+        [SerializeField] private AudioFeedBack _unlockAudio;
+        [SerializeField] private AudioFeedBack _lockAudio;
         [SerializeField] private AudioFeedBack _openAudio;
         [SerializeField] private AudioFeedBack _closeAudio;
         [SerializeField] private AnimationFeedBack _openAnimation;
@@ -29,6 +31,8 @@ namespace Unity.Environment
         {
             IsOpen = _isOpen;
             IsLocked = _isLocked;
+
+            _interactionCollider.enabled = !IsLocked;
         }
 
         public bool CanInteract()
@@ -60,7 +64,22 @@ namespace Unity.Environment
 
         public void SetLocked(bool val)
         {
+            if (val == IsLocked) return;
+
             IsLocked = val;
+
+            if (IsLocked)
+            {
+                Debug.Log($"Locking door");
+                _lockAudio.React();
+                _interactionCollider.enabled = false;
+            }
+            else
+            {
+                Debug.Log($"Unlocking door");
+                _unlockAudio.React();
+                _interactionCollider.enabled = true;
+            }
         }
 
         private void OpenDoor()

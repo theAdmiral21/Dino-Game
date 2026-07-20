@@ -4,6 +4,7 @@ using UnityEngine.InputSystem;
 using Game.UI.Menus.Core.Enums;
 using Game.Core.UI.Menus.Abstractions;
 using Primitives.Input.Enums;
+using Game.Core.Inputs;
 
 namespace Primitives.UI.Menus.Unity.InputProviders
 {

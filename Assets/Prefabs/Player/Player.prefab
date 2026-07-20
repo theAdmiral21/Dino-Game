@@ -640,6 +640,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3422abd741f6b3941be00bd076c04e96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity::Unity.Infrastructure.Lifecycle.SaveOrchestrator
+  _key: 0
 --- !u!1 &1546334948991769612
 GameObject:
   m_ObjectHideFlags: 0
@@ -6022,11 +6023,13 @@ MonoBehaviour:
   _actorEventBusMono:
     _monoScript: {fileID: 1431672147824395412}
   _playerInfoMono:
-    _monoScript: {fileID: 0}
+    _monoScript: {fileID: 5497312129400346936}
   _actionMapManagerMono:
     _monoScript: {fileID: 1486530974112161528}
   _conversationMono:
-    _monoScript: {fileID: 0}
+    _monoScript: {fileID: 4024238517656534691}
+  _menuInputReaderMono:
+    _monoScript: {fileID: 2018943408405542221}
   _priority: 5
 --- !u!1 &5620355803064655488
 GameObject:
@@ -6280,6 +6283,7 @@ GameObject:
   - component: {fileID: 8168095775703450329}
   - component: {fileID: 2018943408405542221}
   - component: {fileID: 7053444242166276677}
+  - component: {fileID: 4024238517656534691}
   m_Layer: 6
   m_Name: Inputs
   m_TagString: Untagged
@@ -6366,6 +6370,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fbec59d2d6bbbc41af2b7810290ffe1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &4024238517656534691
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8478692204791979029}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea9abdabb8844b24782a49cf049961fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity::Unity.PlayerController.Inputs.ConversationInputReader
 --- !u!1 &8974325393712812152
 GameObject:
   m_ObjectHideFlags: 0

@@ -7,6 +7,7 @@ using Game.Application.UI.Menus.UICommands;
 using Game.UI.Menus.Unity.Effects.Abstractions;
 using Primitives.Menus.Commands;
 using Game.UI.Menus.Core.Enums;
+using Primitives.Menus;
 
 namespace Game.UI.Menus.Unity.Presenters.Abstractions
 {
@@ -19,8 +20,10 @@ namespace Game.UI.Menus.Unity.Presenters.Abstractions
     {
         [SerializeField] protected Button _button;
         [SerializeField] private MonoBehaviour _commandProviderMono;
+
         private IUIElementEffect[] _effects;
         private ICommandProvider _commandProvider;
+        private Sprite _originalSprite;
 
         public event Action<IUICommand> OnSubmit;
         public event Action<IUICommand> OnFocus;
@@ -47,6 +50,7 @@ namespace Game.UI.Menus.Unity.Presenters.Abstractions
                 }
             }
             _effects = GetComponents<IUIElementEffect>();
+            _originalSprite = _button.image.sprite;
 
             // foreach (var effect in _effects)
             // {
@@ -83,8 +87,15 @@ namespace Game.UI.Menus.Unity.Presenters.Abstractions
         {
             if (_button != null)
             {
-                // Highlight button
-                _button.targetGraphic.color = _button.colors.highlightedColor;
+                if (_button.transition == Selectable.Transition.ColorTint)
+                {
+                    // Highlight button
+                    _button.targetGraphic.color = _button.colors.highlightedColor;
+                }
+                else if (_button.transition == Selectable.Transition.SpriteSwap)
+                {
+                    _button.image.sprite = _button.spriteState.highlightedSprite;
+                }
                 // Play tweens
                 PlayEffects(e => e.OnSelect());
             }
@@ -93,8 +104,16 @@ namespace Game.UI.Menus.Unity.Presenters.Abstractions
         {
             if (_button != null)
             {
-                // Remove highlight
-                _button.targetGraphic.color = _button.colors.normalColor;
+                if (_button.transition == Selectable.Transition.ColorTint)
+                {
+                    // Remove highlight
+                    _button.targetGraphic.color = _button.colors.normalColor;
+                }
+                else if (_button.transition == Selectable.Transition.SpriteSwap)
+                {
+                    _button.image.sprite = _originalSprite;
+                }
+
                 // Play tweens
                 PlayEffects(e => e.OnDeselect());
             }
@@ -163,5 +182,7 @@ namespace Game.UI.Menus.Unity.Presenters.Abstractions
         {
             Submit();
         }
+
+
     }
 }

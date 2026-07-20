@@ -8,6 +8,7 @@ using Game.Core.UI.Menus.Abstractions;
 using Game.Core.Execution;
 using Primitives.Input.Enums;
 using Infrastructure.Unity.Registries;
+using Game.Core.Inputs;
 
 namespace Primitives.Unity.UI.Menus
 {
@@ -48,29 +49,45 @@ namespace Primitives.Unity.UI.Menus
 
         public void Initialize(IGameContext context)
         {
-            _inputProvider.Select += DebounceInput;
-            _inputProvider.Back += DebounceInput;
+            if (_inputProvider != null) ConnectInputProvider(_inputProvider);
         }
 
         public void PostInitialize(IGameContext context)
         {
             // throw new NotImplementedException();
         }
+
+        public void ConnectInputProvider(IUIInputProvider inputProvider)
+        {
+            _inputProvider = inputProvider;
+            _inputProvider.Select += DebounceInput;
+            _inputProvider.Back += DebounceInput;
+        }
+        public void DisconnectInputProvider()
+        {
+            if (_inputProvider != null)
+            {
+                _inputProvider.Select -= DebounceInput;
+                _inputProvider.Back -= DebounceInput;
+                _inputProvider = null;
+            }
+        }
         private void OnDestroy()
         {
-            _inputProvider.Select -= DebounceInput;
-            _inputProvider.Back -= DebounceInput;
+            DisconnectInputProvider();
             base.OnDestroy();
         }
 
         private void Update()
         {
+            if (_inputProvider == null) return;
             // Debounce analog inputs
             AnalogDebounce();
 
         }
         private void AnalogDebounce()
         {
+            Debug.Log($"Input dir: {_inputProvider.Navigate}");
             Vector2 dir = _inputProvider.Navigate;
             // If the magnitude of the input is small ignore it
             if (dir.magnitude < 0.5f)
@@ -98,6 +115,7 @@ namespace Primitives.Unity.UI.Menus
             UIInput input = MapAnalogStick(discrete);
             if (input != UIInput.None)
             {
+                Debug.Log($"Emitting dir: {input}");
                 Emit(new LocalNavigationCommand(input));
             }
 

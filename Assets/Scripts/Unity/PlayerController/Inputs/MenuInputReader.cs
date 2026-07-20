@@ -4,10 +4,11 @@ using Primitives.Input;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Primitives.Input.Enums;
+using Game.Core.Inputs;
 
 namespace PlayerController.Unity.Inputs
 {
-    public class MenuInputReader : BaseInputReader, GameInputs.IInMenuActions
+    public class MenuInputReader : BaseInputReader, GameInputs.IInMenuActions, IUIInputProvider
     {
         public override InputContext Type => InputContext.Menu;
         // Menu Actions

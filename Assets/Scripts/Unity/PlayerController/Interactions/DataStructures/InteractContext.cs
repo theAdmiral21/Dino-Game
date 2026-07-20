@@ -1,3 +1,4 @@
+using Game.Core.Inputs;
 using Game.Core.Interactions;
 using Infrastructure.Core.Inputs;
 using Primitives.Characters;
@@ -14,14 +15,18 @@ namespace PlayerController.Unity.Interactions
 
         public Vector2 PlayerLocation { get; private set; }
 
+        public IUIInputProvider MenuInputReader { get; private set; }
+
         public InteractContext(CharacterID id,
                                 IPlayerActionMapManager playerActionMapManager,
                                 IConversationInputReader conversationInputReader,
+                                IUIInputProvider menuInputReader,
                                 Vector2 playerLocation)
         {
             PlayerCharacter = id;
             PlayerActionMapManager = playerActionMapManager;
             ConversationInputReader = conversationInputReader;
+            MenuInputReader = menuInputReader;
             PlayerLocation = playerLocation;
         }
     }

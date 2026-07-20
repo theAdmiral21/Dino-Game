@@ -135,6 +135,11 @@ namespace Game.Application.UI.Menus
                         _requestQuitService.RequestQuit();
                         break;
                     }
+                case InputIntCommand cmd:
+                    {
+                        Debug.Log($"How do I route {cmd.IntValue} back to the display?");
+                        break;
+                    }
             }
         }
 

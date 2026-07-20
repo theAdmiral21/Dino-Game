@@ -1663,6 +1663,109 @@ namespace PlayerController.Unity.Inputs
                     ""isPartOfComposite"": true
                 }
             ]
+        },
+        {
+            ""name"": ""InKeypad"",
+            ""id"": ""f0d81caf-05c9-4f46-8277-39eb0fdd41ef"",
+            ""actions"": [
+                {
+                    ""name"": ""Move"",
+                    ""type"": ""Value"",
+                    ""id"": ""c6831f05-533f-4cb3-aae2-53cf13827e5a"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Accept"",
+                    ""type"": ""Button"",
+                    ""id"": ""10a03f46-473a-4043-b857-f819899ec881"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": ""2D Vector"",
+                    ""id"": ""0808df72-cfd6-4802-9d75-940d1ac944c7"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""218cbeef-0a47-4ea9-924d-3d85b96768a9"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""43b4a20c-2207-4ed1-8c85-1b420e99d332"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""846c7b10-95a0-43cb-afae-ad7d53701076"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""3c32a575-e0e3-4c0e-a7ec-0e8c85d4aefe"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e0f64b28-5fa1-42b0-a1e5-57df26f36a15"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""Accept"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9a8c2c88-884f-49b0-a6ea-fb6ba9a3637d"",
+                    ""path"": ""<Keyboard>/enter"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""Accept"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": [
@@ -1741,6 +1844,10 @@ namespace PlayerController.Unity.Inputs
             m_InConversation_CompleteDialog = m_InConversation.FindAction("CompleteDialog", throwIfNotFound: true);
             m_InConversation_SelectDialog = m_InConversation.FindAction("SelectDialog", throwIfNotFound: true);
             m_InConversation_Navigate = m_InConversation.FindAction("Navigate", throwIfNotFound: true);
+            // InKeypad
+            m_InKeypad = asset.FindActionMap("InKeypad", throwIfNotFound: true);
+            m_InKeypad_Move = m_InKeypad.FindAction("Move", throwIfNotFound: true);
+            m_InKeypad_Accept = m_InKeypad.FindAction("Accept", throwIfNotFound: true);
         }
 
         ~@GameInputs()
@@ -1750,6 +1857,7 @@ namespace PlayerController.Unity.Inputs
             UnityEngine.Debug.Assert(!m_InMenu.enabled, "This will cause a leak and performance issues, GameInputs.InMenu.Disable() has not been called.");
             UnityEngine.Debug.Assert(!m_InPause.enabled, "This will cause a leak and performance issues, GameInputs.InPause.Disable() has not been called.");
             UnityEngine.Debug.Assert(!m_InConversation.enabled, "This will cause a leak and performance issues, GameInputs.InConversation.Disable() has not been called.");
+            UnityEngine.Debug.Assert(!m_InKeypad.enabled, "This will cause a leak and performance issues, GameInputs.InKeypad.Disable() has not been called.");
         }
 
         /// <summary>
@@ -2642,6 +2750,113 @@ namespace PlayerController.Unity.Inputs
         /// Provides a new <see cref="InConversationActions" /> instance referencing this action map.
         /// </summary>
         public InConversationActions @InConversation => new InConversationActions(this);
+
+        // InKeypad
+        private readonly InputActionMap m_InKeypad;
+        private List<IInKeypadActions> m_InKeypadActionsCallbackInterfaces = new List<IInKeypadActions>();
+        private readonly InputAction m_InKeypad_Move;
+        private readonly InputAction m_InKeypad_Accept;
+        /// <summary>
+        /// Provides access to input actions defined in input action map "InKeypad".
+        /// </summary>
+        public struct InKeypadActions
+        {
+            private @GameInputs m_Wrapper;
+
+            /// <summary>
+            /// Construct a new instance of the input action map wrapper class.
+            /// </summary>
+            public InKeypadActions(@GameInputs wrapper) { m_Wrapper = wrapper; }
+            /// <summary>
+            /// Provides access to the underlying input action "InKeypad/Move".
+            /// </summary>
+            public InputAction @Move => m_Wrapper.m_InKeypad_Move;
+            /// <summary>
+            /// Provides access to the underlying input action "InKeypad/Accept".
+            /// </summary>
+            public InputAction @Accept => m_Wrapper.m_InKeypad_Accept;
+            /// <summary>
+            /// Provides access to the underlying input action map instance.
+            /// </summary>
+            public InputActionMap Get() { return m_Wrapper.m_InKeypad; }
+            /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Enable()" />
+            public void Enable() { Get().Enable(); }
+            /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Disable()" />
+            public void Disable() { Get().Disable(); }
+            /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.enabled" />
+            public bool enabled => Get().enabled;
+            /// <summary>
+            /// Implicitly converts an <see ref="InKeypadActions" /> to an <see ref="InputActionMap" /> instance.
+            /// </summary>
+            public static implicit operator InputActionMap(InKeypadActions set) { return set.Get(); }
+            /// <summary>
+            /// Adds <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
+            /// </summary>
+            /// <param name="instance">Callback instance.</param>
+            /// <remarks>
+            /// If <paramref name="instance" /> is <c>null</c> or <paramref name="instance"/> have already been added this method does nothing.
+            /// </remarks>
+            /// <seealso cref="InKeypadActions" />
+            public void AddCallbacks(IInKeypadActions instance)
+            {
+                if (instance == null || m_Wrapper.m_InKeypadActionsCallbackInterfaces.Contains(instance)) return;
+                m_Wrapper.m_InKeypadActionsCallbackInterfaces.Add(instance);
+                @Move.started += instance.OnMove;
+                @Move.performed += instance.OnMove;
+                @Move.canceled += instance.OnMove;
+                @Accept.started += instance.OnAccept;
+                @Accept.performed += instance.OnAccept;
+                @Accept.canceled += instance.OnAccept;
+            }
+
+            /// <summary>
+            /// Removes <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
+            /// </summary>
+            /// <remarks>
+            /// Calling this method when <paramref name="instance" /> have not previously been registered has no side-effects.
+            /// </remarks>
+            /// <seealso cref="InKeypadActions" />
+            private void UnregisterCallbacks(IInKeypadActions instance)
+            {
+                @Move.started -= instance.OnMove;
+                @Move.performed -= instance.OnMove;
+                @Move.canceled -= instance.OnMove;
+                @Accept.started -= instance.OnAccept;
+                @Accept.performed -= instance.OnAccept;
+                @Accept.canceled -= instance.OnAccept;
+            }
+
+            /// <summary>
+            /// Unregisters <param cref="instance" /> and unregisters all input action callbacks via <see cref="InKeypadActions.UnregisterCallbacks(IInKeypadActions)" />.
+            /// </summary>
+            /// <seealso cref="InKeypadActions.UnregisterCallbacks(IInKeypadActions)" />
+            public void RemoveCallbacks(IInKeypadActions instance)
+            {
+                if (m_Wrapper.m_InKeypadActionsCallbackInterfaces.Remove(instance))
+                    UnregisterCallbacks(instance);
+            }
+
+            /// <summary>
+            /// Replaces all existing callback instances and previously registered input action callbacks associated with them with callbacks provided via <param cref="instance" />.
+            /// </summary>
+            /// <remarks>
+            /// If <paramref name="instance" /> is <c>null</c>, calling this method will only unregister all existing callbacks but not register any new callbacks.
+            /// </remarks>
+            /// <seealso cref="InKeypadActions.AddCallbacks(IInKeypadActions)" />
+            /// <seealso cref="InKeypadActions.RemoveCallbacks(IInKeypadActions)" />
+            /// <seealso cref="InKeypadActions.UnregisterCallbacks(IInKeypadActions)" />
+            public void SetCallbacks(IInKeypadActions instance)
+            {
+                foreach (var item in m_Wrapper.m_InKeypadActionsCallbackInterfaces)
+                    UnregisterCallbacks(item);
+                m_Wrapper.m_InKeypadActionsCallbackInterfaces.Clear();
+                AddCallbacks(instance);
+            }
+        }
+        /// <summary>
+        /// Provides a new <see cref="InKeypadActions" /> instance referencing this action map.
+        /// </summary>
+        public InKeypadActions @InKeypad => new InKeypadActions(this);
         private int m_GamepadSchemeIndex = -1;
         /// <summary>
         /// Provides access to the input control scheme.
@@ -2959,6 +3174,28 @@ namespace PlayerController.Unity.Inputs
             /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
             /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
             void OnNavigate(InputAction.CallbackContext context);
+        }
+        /// <summary>
+        /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "InKeypad" which allows adding and removing callbacks.
+        /// </summary>
+        /// <seealso cref="InKeypadActions.AddCallbacks(IInKeypadActions)" />
+        /// <seealso cref="InKeypadActions.RemoveCallbacks(IInKeypadActions)" />
+        public interface IInKeypadActions
+        {
+            /// <summary>
+            /// Method invoked when associated input action "Move" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+            /// </summary>
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+            void OnMove(InputAction.CallbackContext context);
+            /// <summary>
+            /// Method invoked when associated input action "Accept" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+            /// </summary>
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+            void OnAccept(InputAction.CallbackContext context);
         }
     }
 }
