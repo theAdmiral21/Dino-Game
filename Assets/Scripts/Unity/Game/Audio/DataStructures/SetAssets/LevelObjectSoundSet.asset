@@ -47,7 +47,7 @@ MonoBehaviour:
     ActionKey: 33
     ModulatePitch: 0
     ModulateVolume: 1
-    Clip: {fileID: 8300000, guid: 962839c1cf5c95342ac0359761053077, type: 3}
+    Clip: {fileID: 8300000, guid: 96d32b65730df4742ac06b456d1d641a, type: 3}
   - Key: 24
     ActionKey: 32
     ModulatePitch: 0

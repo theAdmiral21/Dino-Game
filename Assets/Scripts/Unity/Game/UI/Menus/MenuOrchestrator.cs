@@ -83,10 +83,11 @@ namespace Primitives.UI.Menus.Unity
                 IPagePresenter pagePresenter = menuPage.PagePresenter;
 
                 // Build the directory
+                Debug.Log($"Adding: {menuPage} with presenter: {pagePresenter.Token.PageName}");
                 pageDict.TryAdd(pagePresenter.Token, menuPage);
 
             }
-            // Debug.Log($"Got {pageDict.Count} pages");
+            Debug.Log($"Got {pageDict.Count} pages");
 
             return pageDict;
         }

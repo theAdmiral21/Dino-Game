@@ -5,6 +5,7 @@ using Game.Core.UI.Menus.Abstractions;
 using Game.UI.Menus.Unity.Presenters.Pages.DataStructures;
 using Game.UI.Menus.Unity.Presenters.Abstractions;
 using DG.Tweening;
+using System.Linq;
 
 namespace Game.UI.Menus.Unity.Presenters.Pages
 {
@@ -57,6 +58,9 @@ namespace Game.UI.Menus.Unity.Presenters.Pages
             _canvasGroup.alpha = 1f;
             _canvasGroup.interactable = true;
             _canvasGroup.blocksRaycasts = true;
+
+            // Select the first or default element
+            _elements.FirstOrDefault().Select();
         }
 
         private void GetUIElements()

@@ -1,14 +1,17 @@
+using System;
 using System.Collections.Generic;
 using Application.Environment;
 using Core.Environment.Abstractions;
 using Core.Environment.Interactions;
 using Environment.Core.Interactions;
+using Game.Application.UI.Menus.UICommands;
 using Game.Core.Cameras;
 using Game.Core.Execution;
 using Game.Core.Interactions;
 using Game.Unity.Events;
 using Infrastructure.Unity.Registries;
 using Primitives.Input;
+using Primitives.Menus.Commands;
 using Primitives.Unity.UI.Menus;
 using Unity.Common.Unity;
 using UnityEngine;
@@ -84,6 +87,10 @@ namespace Unity.Environment
             _currentContext.PlayerActionMapManager.SetActionMap(InputContext.Menu);
             // Sub the events
             _menuRouter.ConnectInputProvider(_currentContext.MenuInputReader);
+            _menuRouter.OnCommand += HandleCommand;
+            // Highlight the current selected index
+
+
         }
 
         public void EndInteraction()
@@ -93,8 +100,9 @@ namespace Unity.Environment
             _cameraChanger.RemoveCamera(_cameraProvider.GetCamera());
             // Change the player's action map
             _currentContext.PlayerActionMapManager.SetActionMap(InputContext.Gameplay);
-            // Sub the events
+            // Unsub the events
             _menuRouter.DisconnectInputProvider();
+            _menuRouter.OnCommand -= HandleCommand;
             _currentContext = null;
         }
 
@@ -136,7 +144,13 @@ namespace Unity.Environment
             _keypadBrain.RemoveLast();
             UpdateDisplay(_keypadBrain.CurrentEntry);
         }
-
+        private void HandleCommand(IUICommand command)
+        {
+            if (command is BackCommand)
+            {
+                EndInteraction();
+            }
+        }
         private void LateUpdate()
         {
             _pin = "";

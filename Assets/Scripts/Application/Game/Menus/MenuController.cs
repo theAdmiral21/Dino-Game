@@ -35,12 +35,12 @@ namespace Game.Application.UI.Menus
             _pageDict = pageDict;
             _rootPage = _pageDict.Values.FirstOrDefault();
             _pageStack.Push(_rootPage);
-            // _rootPage.Enter();
+            Debug.Log($"Root page: {_rootPage}");
             HidePages();
 
             _sbDebug = new StringBuilder();
             _sbDebug.AppendLine($"MenuController has the following pages:");
-            foreach (IPageToken page in pageDict.Keys)
+            foreach (IPageToken page in _pageDict.Keys)
             {
                 _sbDebug.AppendLine($"{pageDict[page].PagePresenter.Token.PageName}");
             }
