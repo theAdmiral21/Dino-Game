@@ -11,6 +11,10 @@ GameObject:
   - component: {fileID: 1029143578767822565}
   - component: {fileID: 3598398262061554470}
   - component: {fileID: 3895281207634706972}
+  - component: {fileID: 1493617672944725097}
+  - component: {fileID: 990096436823243962}
+  - component: {fileID: 5403419850042663806}
+  - component: {fileID: 2108153381584406671}
   m_Layer: 16
   m_Name: Door
   m_TagString: Untagged
@@ -26,7 +30,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7021525129081322834}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -3.5, y: -4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -47,10 +51,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96bd04ce3ca73a145a5ff3d9e6afef50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity::Unity.Environment.Door
-  _openAudio: {fileID: 0}
-  _closeAudio: {fileID: 0}
-  _openAnimation: {fileID: 0}
-  _closeAnimation: {fileID: 0}
+  _unlockAudio: {fileID: 2108153381584406671}
+  _lockAudio: {fileID: 5403419850042663806}
+  _openAudio: {fileID: 1493617672944725097}
+  _closeAudio: {fileID: 990096436823243962}
+  _openAnimation: {fileID: 5836249536390973544}
+  _closeAnimation: {fileID: 1218165597901963570}
   _doorCollider: {fileID: 1031639788453522659}
   _interactionCollider: {fileID: 3895281207634706972}
   _isLocked: 0
@@ -101,6 +107,74 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &1493617672944725097
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7021525129081322834}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 775c107c3fc834c48ae24aca79ca4f42, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity::Game.Unity.Events.AudioFeedBack
+  _entityKey: 18
+  _actionKey: 28
+  _allowPolyphony: 0
+  _loop: 0
+  _priority: 0
+--- !u!114 &990096436823243962
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7021525129081322834}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 775c107c3fc834c48ae24aca79ca4f42, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity::Game.Unity.Events.AudioFeedBack
+  _entityKey: 18
+  _actionKey: 29
+  _allowPolyphony: 0
+  _loop: 0
+  _priority: 0
+--- !u!114 &5403419850042663806
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7021525129081322834}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 775c107c3fc834c48ae24aca79ca4f42, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity::Game.Unity.Events.AudioFeedBack
+  _entityKey: 18
+  _actionKey: 31
+  _allowPolyphony: 0
+  _loop: 0
+  _priority: 0
+--- !u!114 &2108153381584406671
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7021525129081322834}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 775c107c3fc834c48ae24aca79ca4f42, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity::Game.Unity.Events.AudioFeedBack
+  _entityKey: 18
+  _actionKey: 30
+  _allowPolyphony: 0
+  _loop: 0
+  _priority: 0
 --- !u!1 &7240260641493513129
 GameObject:
   m_ObjectHideFlags: 0
@@ -111,6 +185,9 @@ GameObject:
   m_Component:
   - component: {fileID: 468851215218298867}
   - component: {fileID: 524454590330891473}
+  - component: {fileID: 7880459455240705881}
+  - component: {fileID: 5836249536390973544}
+  - component: {fileID: 1218165597901963570}
   m_Layer: 15
   m_Name: VisualRoot
   m_TagString: Untagged
@@ -193,6 +270,56 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
   m_BlendShapeWeights: []
+--- !u!95 &7880459455240705881
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7240260641493513129}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 7be897a7ef53a07478e32046f209b4af, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &5836249536390973544
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7240260641493513129}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33c2712a7457c534181d96f8a0ec643e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity::Game.Unity.Events.AnimationFeedBack
+  _animator: {fileID: 7880459455240705881}
+  _triggerParameter: OpenTrigger
+--- !u!114 &1218165597901963570
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7240260641493513129}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33c2712a7457c534181d96f8a0ec643e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity::Game.Unity.Events.AnimationFeedBack
+  _animator: {fileID: 7880459455240705881}
+  _triggerParameter: CloseTrigger
 --- !u!1 &8661027081055929590
 GameObject:
   m_ObjectHideFlags: 0

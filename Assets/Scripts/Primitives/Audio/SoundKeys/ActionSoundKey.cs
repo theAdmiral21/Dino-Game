@@ -30,6 +30,7 @@ namespace Primitives.Audio.SoundKeys
         Interact,
         Crouch,
         Dodge,
+        Idle,
 
         // Doors
         Open,

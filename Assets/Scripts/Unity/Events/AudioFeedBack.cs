@@ -3,6 +3,7 @@ using Game.Core.Audio;
 using Game.Core.Events;
 using Game.Core.Execution;
 using Infrastructure.Unity.Registries;
+using Primitives.Audio;
 using Primitives.Audio.EntityKeys;
 using Primitives.Audio.SoundKeys;
 using UnityEngine;
@@ -17,6 +18,7 @@ namespace Game.Unity.Events
         [SerializeField] private EntityKey _entityKey;
         [SerializeField] private ActionSoundKey _actionKey;
         [SerializeField] private bool _allowPolyphony = false;
+        [SerializeField] private bool _loop = false;
         private IAudioService _audioService;
         private bool _isPlaying = false;
         [SerializeField] private int _priority = 0;
@@ -28,6 +30,15 @@ namespace Game.Unity.Events
         }
         public void React()
         {
+            if (_loop)
+            {
+                _audioService.PlaySFX(new SoundRequest(
+                                                        _entityKey,
+                                                        _actionKey,
+                                                        SurfaceType.None,
+                                                        AudioBehavior.Looping));
+                return;
+            }
             if (_allowPolyphony)
             {
                 // Debug.Log($"Playing with polyphony.");

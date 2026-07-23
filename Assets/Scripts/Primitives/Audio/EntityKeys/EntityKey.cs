@@ -26,6 +26,7 @@ namespace Primitives.Audio.EntityKeys
         InteriorDoor,
         KeypadDoor,
         Keypad,
+        FluorescentLight,
 
         // Menus
         MainMenu,
