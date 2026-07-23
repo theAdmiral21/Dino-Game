@@ -919,6 +919,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: RockPickUp
       objectReference: {fileID: 0}
+    - target: {fileID: 6057562653565001835, guid: 2cc9d1dff700c29458aa1aa8380fa709, type: 3}
+      propertyPath: _audioMono._target
+      value: 
+      objectReference: {fileID: 2112263905}
     - target: {fileID: 8029624024802653740, guid: 2cc9d1dff700c29458aa1aa8380fa709, type: 3}
       propertyPath: m_LocalPosition.x
       value: -14.551496
@@ -1433,6 +1437,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea92e359948482a43b42b070983ffb59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1028884897 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5230896481393441843, guid: 41a0fc1da3cff6b429c979f7d0d54198, type: 3}
+  m_PrefabInstance: {fileID: 1573572573567355905}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 775c107c3fc834c48ae24aca79ca4f42, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity::Game.Unity.Events.AudioFeedBack
 --- !u!1001 &1143208185
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1732,7 +1747,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Unity::Unity.Infrastructure.Lifecycle.SaveManager
   _saveRegistryMono:
-    _monoScript: {fileID: 1656174840}
+    _target: {fileID: 1656174840}
   _fileName: save.json
   _priority: 0
 --- !u!4 &1656174842
@@ -1805,7 +1820,7 @@ MonoBehaviour:
     m_Bits: 72
   _statsSO: {fileID: 11400000, guid: cf8f3ec021ea1894c8c0d97b0518c254, type: 2}
   _lightContextMono:
-    _monoScript: {fileID: 1794194813}
+    _target: {fileID: 0}
   FOV: 15
   RaycastCount: 6
   _parentTransform: {fileID: 33780128}
@@ -4330,6 +4345,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e35785a2a3642334a82ee50d7d78f0e9, type: 3}
+--- !u!114 &2112263905 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4980913453795031083, guid: 2cc9d1dff700c29458aa1aa8380fa709, type: 3}
+  m_PrefabInstance: {fileID: 869472139}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 775c107c3fc834c48ae24aca79ca4f42, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2118409231
 GameObject:
   m_ObjectHideFlags: 0
@@ -6681,6 +6707,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: FlashlightPickUp
       objectReference: {fileID: 0}
+    - target: {fileID: 8959188769890025112, guid: 41a0fc1da3cff6b429c979f7d0d54198, type: 3}
+      propertyPath: _audioMono._target
+      value: 
+      objectReference: {fileID: 1028884897}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -7418,12 +7448,12 @@ MonoBehaviour:
   _successAudio: {fileID: 7854701265916475624}
   _failureAudio: {fileID: 5312805319295730060}
   _cameraProviderMono:
-    _monoScript: {fileID: 4396796444522808815}
+    _target: {fileID: 4396796444522808815}
   _menuRouter: {fileID: 6134898359714187561}
   _keypadPresenterMono:
-    _monoScript: {fileID: 4925720529690237220}
+    _target: {fileID: 4925720529690237220}
   _doorMono:
-    _monoScript: {fileID: 670049393554560273}
+    _target: {fileID: 670049393554560273}
   _priority: 0
   _pin: 
 --- !u!1 &5432164292110269066
@@ -7843,6 +7873,10 @@ PrefabInstance:
       propertyPath: _packManagerTransform
       value: 
       objectReference: {fileID: 317080528}
+    - target: {fileID: 4754561627433531009, guid: 5f2fc41caca3dd042a980b58e577e438, type: 3}
+      propertyPath: _packManagerMono._target
+      value: 
+      objectReference: {fileID: 317080527}
     - target: {fileID: 4754561627433531009, guid: 5f2fc41caca3dd042a980b58e577e438, type: 3}
       propertyPath: _packManagerMono._monoScript
       value: 

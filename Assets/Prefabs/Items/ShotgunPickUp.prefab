@@ -100,11 +100,11 @@ MonoBehaviour:
   Item: 1
   _quantity: 1
   _audioMono:
-    _monoScript: {fileID: 5635437371352949857}
+    _target: {fileID: 5635437371352949857}
   _visualMono:
-    _monoScript: {fileID: 0}
+    _target: {fileID: 0}
   _particleMono:
-    _monoScript: {fileID: 0}
+    _target: {fileID: 0}
 --- !u!114 &5635437371352949857
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -120,6 +120,7 @@ MonoBehaviour:
   _entityKey: 9
   _actionKey: 10
   _allowPolyphony: 0
+  _loop: 0
   _priority: 2
 --- !u!212 &2911142454724219496
 SpriteRenderer:

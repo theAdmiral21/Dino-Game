@@ -48,9 +48,9 @@ MonoBehaviour:
   _priority: 0
   _packManagerTransform: {fileID: 0}
   _packManagerMono:
-    _monoScript: {fileID: 0}
+    _target: {fileID: 0}
   _npcSpawnRegistryMono:
-    _monoScript: {fileID: 3597547959663726250}
+    _target: {fileID: 3597547959663726250}
 --- !u!114 &3597547959663726250
 MonoBehaviour:
   m_ObjectHideFlags: 0

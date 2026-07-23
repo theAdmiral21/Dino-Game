@@ -48,7 +48,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1024
   _actorMono:
-    _monoScript: {fileID: 3919553722864905571}
+    _target: {fileID: 3919553722864905571}
 --- !u!1 &3284506358383180806
 GameObject:
   m_ObjectHideFlags: 0
@@ -195,15 +195,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Unity::Unity.Infrastructure.Providers.RockDataProvider
   _actorInputMono:
-    _monoScript: {fileID: 3693287123727940436}
+    _target: {fileID: 3693287123727940436}
   _statSheetMono:
-    _monoScript: {fileID: 8521548074278025972}
+    _target: {fileID: 8521548074278025972}
   _ruleStateMono:
-    _monoScript: {fileID: 6920680168449685624}
+    _target: {fileID: 6920680168449685624}
   _actorMono:
-    _monoScript: {fileID: 3919553722864905571}
+    _target: {fileID: 3919553722864905571}
   _actorEventBusMono:
-    _monoScript: {fileID: 5974566888357228924}
+    _target: {fileID: 5974566888357228924}
   _priority: 1
 --- !u!114 &3919553722864905571
 MonoBehaviour:
@@ -292,7 +292,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _soundEmitterMono:
-    _monoScript: {fileID: 8825284988847685691}
+    _target: {fileID: 8825284988847685691}
 --- !u!114 &5974566888357228924
 MonoBehaviour:
   m_ObjectHideFlags: 0

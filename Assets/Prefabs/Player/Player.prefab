@@ -167,7 +167,11 @@ MonoBehaviour:
         m_SelectedSource:
           rid: -2
         m_Provider2DCache:
-          rid: -2
+          rid: 3866173693896163444
+    - rid: 3866173693896163444
+      type: {class: 'Provider2DCache`1[[UnityEngine.Rendering.Universal.Light2DProvider, Unity.RenderPipelines.Universal.2D.Runtime]]', ns: UnityEngine.Rendering.Universal, asm: Unity.RenderPipelines.Universal.2D.Runtime}
+      data:
+        m_Cache: []
 --- !u!1 &1364555057988484178
 GameObject:
   m_ObjectHideFlags: 0
@@ -216,7 +220,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _equipmentManagerMono:
-    _monoScript: {fileID: 2241377017246078206}
+    _target: {fileID: 2241377017246078206}
 --- !u!114 &2241377017246078206
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -232,7 +236,7 @@ MonoBehaviour:
   _facingTransform: {fileID: 8136827835485593910}
   _equipmentAnchor: {fileID: 5786424968761257833}
   _equipmentBridgeMono:
-    _monoScript: {fileID: 3761351669364046573}
+    _target: {fileID: 3761351669364046573}
   _flashLightObject: {fileID: 6882313419462105460}
   _equipmentFactory: {fileID: 996616551983274767}
   _currentEquipment: 
@@ -398,27 +402,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _statSheetMono:
-    _monoScript: {fileID: 708923067542323704}
+    _target: {fileID: 708923067542323704}
   _healthComponentMono:
-    _monoScript: {fileID: 4621714224737221443}
+    _target: {fileID: 4621714224737221443}
   _healProviderMono:
-    _monoScript: {fileID: 4621714224737221443}
+    _target: {fileID: 4621714224737221443}
   _damageProviderMono:
-    _monoScript: {fileID: 4621714224737221443}
+    _target: {fileID: 4621714224737221443}
   _ruleStateMono:
-    _monoScript: {fileID: 2363071656125765436}
+    _target: {fileID: 2363071656125765436}
   _actorMono:
-    _monoScript: {fileID: 1431672147824395412}
+    _target: {fileID: 1431672147824395412}
   _requestSinkMono:
-    _monoScript: {fileID: 1431672147824395412}
+    _target: {fileID: 1431672147824395412}
   _actorEventBusMono:
-    _monoScript: {fileID: 2413756270636934288}
+    _target: {fileID: 2413756270636934288}
   _actorInputMono:
-    _monoScript: {fileID: 8179076763862100779}
+    _target: {fileID: 8179076763862100779}
   _equipmentManagerMono:
-    _monoScript: {fileID: 1675498223401873557}
+    _target: {fileID: 1675498223401873557}
   _playerInfoMono:
-    _monoScript: {fileID: 5497312129400346936}
+    _target: {fileID: 5497312129400346936}
   _priority: 3
 --- !u!114 &6891503663535481657
 MonoBehaviour:
@@ -435,7 +439,7 @@ MonoBehaviour:
   _effectOrchestrator: {fileID: 1529720174517458335}
   _animatorBridge: {fileID: 4954414116081644503}
   _physicsActorMono:
-    _monoScript: {fileID: 1431672147824395412}
+    _target: {fileID: 1431672147824395412}
   _priority: 5
 --- !u!114 &1431672147824395412
 MonoBehaviour:
@@ -453,11 +457,11 @@ MonoBehaviour:
   _name: Player
   _priority: 4
   _getClimbableMono:
-    _monoScript: {fileID: 7724699803452001103}
+    _target: {fileID: 7724699803452001103}
   _crouchControllerMono:
-    _monoScript: {fileID: 458595736447498671}
+    _target: {fileID: 458595736447498671}
   _bridgeMono:
-    _monoScript: {fileID: 3761351669364046573}
+    _target: {fileID: 3761351669364046573}
   _debugState:
     CurrentPosition: {x: 0, y: 0}
     Velocity: {x: 0, y: 0}
@@ -504,7 +508,7 @@ MonoBehaviour:
   _priority: 36
   _actionMapManager: {fileID: 1486530974112161528}
   _physicsActor:
-    _monoScript: {fileID: 1431672147824395412}
+    _target: {fileID: 1431672147824395412}
   _playerActionOrchestrator: {fileID: 6891503663535481657}
   DisableInputs: 0
   DisablePhysics: 0
@@ -564,9 +568,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _healthComponentMono:
-    _monoScript: {fileID: 4621714224737221443}
+    _target: {fileID: 4621714224737221443}
   actorMono:
-    _monoScript: {fileID: 1431672147824395412}
+    _target: {fileID: 1431672147824395412}
   _facingTransform: {fileID: 8136827835485593910}
 --- !u!114 &5497312129400346936
 MonoBehaviour:
@@ -611,7 +615,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _priority: 0
   _getClimbableMono:
-    _monoScript: {fileID: 7724699803452001103}
+    _target: {fileID: 7724699803452001103}
 --- !u!114 &458595736447498671
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5734,7 +5738,7 @@ MonoBehaviour:
   _audioBridge: {fileID: 6521311917324512739}
   _animatorBridge: {fileID: 4954414116081644503}
   _zoomiesPlayerMono:
-    _monoScript: {fileID: 0}
+    _target: {fileID: 0}
 --- !u!114 &4954414116081644503
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5765,11 +5769,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _effectDriver: {fileID: 68117693140633933}
   _actorEventBusMono:
-    _monoScript: {fileID: 1431672147824395412}
+    _target: {fileID: 2413756270636934288}
   _visualStateEffectsMono:
-    _monoScript: {fileID: 7043942589256413278}
+    _target: {fileID: 2332003861364235005}
   _audioStateEffectsMono:
-    _monoScript: {fileID: 7043942589256413278}
+    _target: {fileID: 7043942589256413278}
   _stepDistance: 3
   _priority: 5
 --- !u!114 &7043942589256413278
@@ -5995,7 +5999,7 @@ Transform:
   m_GameObject: {fileID: 5052927198353922353}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1, y: 1, z: 0}
+  m_LocalPosition: {x: 0.5, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6017,19 +6021,19 @@ MonoBehaviour:
   _interactLayer:
     serializedVersion: 2
     m_Bits: 65536
-  _boxSize: {x: 1, y: 1.5}
+  _boxSize: {x: 2, y: 1.5}
   _facingTransform: {fileID: 8136827835485593910}
   _rootTransform: {fileID: 5842030728788521954}
   _actorEventBusMono:
-    _monoScript: {fileID: 1431672147824395412}
+    _target: {fileID: 2413756270636934288}
   _playerInfoMono:
-    _monoScript: {fileID: 5497312129400346936}
+    _target: {fileID: 3087106105510506854}
   _actionMapManagerMono:
-    _monoScript: {fileID: 1486530974112161528}
+    _target: {fileID: 1486530974112161528}
   _conversationMono:
-    _monoScript: {fileID: 4024238517656534691}
+    _target: {fileID: 4024238517656534691}
   _menuInputReaderMono:
-    _monoScript: {fileID: 2018943408405542221}
+    _target: {fileID: 8168095775703450329}
   _priority: 5
 --- !u!1 &5620355803064655488
 GameObject:
@@ -6076,13 +6080,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerView:
-    _monoScript: {fileID: 3957615128236227869}
+    _target: {fileID: 3957615128236227869}
   _overrideControls:
-    _monoScript: {fileID: 1014122250239838178}
+    _target: {fileID: 1014122250239838178}
   _knockBackMono:
-    _monoScript: {fileID: 1431672147824395412}
+    _target: {fileID: 1431672147824395412}
   _stunMono:
-    _monoScript: {fileID: 1431672147824395412}
+    _target: {fileID: 1431672147824395412}
   _currentHealth: 0
   _priority: 10
 --- !u!1 &7119522534278711034
@@ -6131,9 +6135,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _inventoryLimits: {fileID: 11400000, guid: 7ec61f8d48cbd834285e58d18423aebb, type: 2}
   _equipmentManagerMono:
-    _monoScript: {fileID: 2241377017246078206}
+    _target: {fileID: 2241377017246078206}
   _equipmentBridgeMono:
-    _monoScript: {fileID: 3761351669364046573}
+    _target: {fileID: 3761351669364046573}
   _debug: 0
   _priority: 0
 --- !u!1 &7855323941769440743
@@ -6183,7 +6187,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _directionTransform: {fileID: 8136827835485593910}
   _healthComponentMono:
-    _monoScript: {fileID: 4621714224737221443}
+    _target: {fileID: 4621714224737221443}
   _priority: 0
 --- !u!114 &5551349247117847951
 MonoBehaviour:
@@ -6201,7 +6205,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1024
   _actorMono:
-    _monoScript: {fileID: 6891503663535481657}
+    _target: {fileID: 1431672147824395412}
 --- !u!1 &8000268720892259537
 GameObject:
   m_ObjectHideFlags: 0
@@ -6333,7 +6337,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _requestHandlerMono:
-    _monoScript: {fileID: 1431672147824395412}
+    _target: {fileID: 1431672147824395412}
 --- !u!114 &8168095775703450329
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11342,9 +11346,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 775c107c3fc834c48ae24aca79ca4f42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity::Game.Unity.Events.AudioFeedBack
-  _entityKey: 9
-  _actionKey: 0
+  _entityKey: 17
+  _actionKey: 13
   _allowPolyphony: 0
+  _loop: 0
   _priority: 0
 --- !u!114 &4221975388633838295
 MonoBehaviour:
@@ -11358,7 +11363,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 775c107c3fc834c48ae24aca79ca4f42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity::Game.Unity.Events.AudioFeedBack
-  _entityKey: 9
+  _entityKey: 17
   _actionKey: 0
   _allowPolyphony: 0
+  _loop: 0
   _priority: 0

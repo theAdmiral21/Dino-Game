@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _cameraRegistryMono:
-    _monoScript: {fileID: 3246054087413721985}
+    _target: {fileID: 3246054087413721985}
   _cameraSystem: {fileID: 3296530696753548893}
 --- !u!114 &3296530696753548893
 MonoBehaviour:
@@ -62,7 +62,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _cameraManagerMono:
-    _monoScript: {fileID: 278014138158085555}
+    _target: {fileID: 278014138158085555}
 --- !u!114 &3246054087413721985
 MonoBehaviour:
   m_ObjectHideFlags: 0

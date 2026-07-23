@@ -45,8 +45,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7240c734e3149214ca61145f8e714ab8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _checkpointSceneLookUp: {fileID: 11400000, guid: 4790afd78e004d947ad25167c9ec2bcc, type: 2}
   _checkpoints:
-    _monoScript: {fileID: 1467598806633222376}
+    _target: {fileID: 1467598806633222376}
+  _priority: 0
 --- !u!114 &1467598806633222376
 MonoBehaviour:
   m_ObjectHideFlags: 0

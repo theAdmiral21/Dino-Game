@@ -232,27 +232,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _statSheetMono:
-    _monoScript: {fileID: 982088953569660740}
+    _target: {fileID: 982088953569660740}
   _healthComponentMono:
-    _monoScript: {fileID: 8488351186860966257}
+    _target: {fileID: 8488351186860966257}
   _ruleStateMono:
-    _monoScript: {fileID: 3890522784345501913}
+    _target: {fileID: 3890522784345501913}
   _actorMono:
-    _monoScript: {fileID: 7516074191666959453}
+    _target: {fileID: 7516074191666959453}
   _requestSinkMono:
-    _monoScript: {fileID: 7516074191666959453}
+    _target: {fileID: 7516074191666959453}
   _actorEventBusMono:
-    _monoScript: {fileID: 1294869064446591111}
+    _target: {fileID: 1294869064446591111}
   _actorInputMono:
-    _monoScript: {fileID: 5123753718159855905}
+    _target: {fileID: 5123753718159855905}
   _raptorInputMono:
-    _monoScript: {fileID: 5123753718159855905}
+    _target: {fileID: 5123753718159855905}
   _detectorBrainMono:
-    _monoScript: {fileID: 3528326029578573184}
+    _target: {fileID: 3528326029578573184}
   _detectorOrchestratorMono:
-    _monoScript: {fileID: 3528326029578573184}
+    _target: {fileID: 3528326029578573184}
   _raptorControllerMono:
-    _monoScript: {fileID: 6036390399141617228}
+    _target: {fileID: 6036390399141617228}
   _priority: 3
 --- !u!114 &7516074191666959453
 MonoBehaviour:
@@ -347,12 +347,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _healthComponentMono:
-    _monoScript: {fileID: 8488351186860966257}
+    _target: {fileID: 8488351186860966257}
   _detectorOrchestratorMono:
-    _monoScript: {fileID: 3528326029578573184}
+    _target: {fileID: 3528326029578573184}
   _raptorController: {fileID: 6036390399141617228}
   _raptorControllerMono:
-    _monoScript: {fileID: 6036390399141617228}
+    _target: {fileID: 6036390399141617228}
   _debugMemberStatus: 1
   _debugStatus:
     Health: 0
@@ -407,11 +407,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _visualDetectorMono:
-    _monoScript: {fileID: 7916745349292568355}
+    _target: {fileID: 7916745349292568355}
   _soundDetectorMono:
-    _monoScript: {fileID: 7450441895738979760}
+    _target: {fileID: 7450441895738979760}
   _scentDetectorMono:
-    _monoScript: {fileID: 1455933842786240899}
+    _target: {fileID: 1455933842786240899}
 --- !u!1 &2745197555800419785
 GameObject:
   m_ObjectHideFlags: 0
@@ -738,7 +738,7 @@ MonoBehaviour:
     m_Bits: 72
   _statsSO: {fileID: 11400000, guid: cf8f3ec021ea1894c8c0d97b0518c254, type: 2}
   _lightContextMono:
-    _monoScript: {fileID: 6994846599287633704}
+    _target: {fileID: 6994846599287633704}
   FOV: 30
   RaycastCount: 5
   _parentTransform: {fileID: 3539590624401030327}
@@ -823,17 +823,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _physicsActorMono:
-    _monoScript: {fileID: 7516074191666959453}
+    _target: {fileID: 7516074191666959453}
   _actorEventBusMono:
-    _monoScript: {fileID: 7516074191666959453}
+    _target: {fileID: 1294869064446591111}
   _visualStateEffectsMono:
-    _monoScript: {fileID: 0}
+    _target: {fileID: 0}
   _audioStateEffectsMono:
-    _monoScript: {fileID: 0}
+    _target: {fileID: 0}
   _ruleStateViewMono:
-    _monoScript: {fileID: 3890522784345501913}
+    _target: {fileID: 5161551725574931073}
   _effectOrchestratorMono:
-    _monoScript: {fileID: 1219006616773937655}
+    _target: {fileID: 1219006616773937655}
   _priority: 2
 --- !u!114 &1219006616773937655
 MonoBehaviour:
@@ -848,17 +848,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _animatorBridgeMono:
-    _monoScript: {fileID: 2406091603172848976}
+    _target: {fileID: 2406091603172848976}
   _particleBridgeMono:
-    _monoScript: {fileID: 2313714383482377182}
+    _target: {fileID: 0}
   _audioBridgeMono:
-    _monoScript: {fileID: 0}
+    _target: {fileID: 0}
   _physicsActorMono:
-    _monoScript: {fileID: 7516074191666959453}
+    _target: {fileID: 7516074191666959453}
   _ruleStateViewMono:
-    _monoScript: {fileID: 3890522784345501913}
+    _target: {fileID: 5161551725574931073}
   _actorInputMono:
-    _monoScript: {fileID: 5123753718159855905}
+    _target: {fileID: 5123753718159855905}
 --- !u!114 &2313714383482377182
 MonoBehaviour:
   m_ObjectHideFlags: 0

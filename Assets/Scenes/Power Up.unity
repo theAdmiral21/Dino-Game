@@ -20659,17 +20659,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 9038662855729256790, guid: c96bb9cda05551e4cb94ec94a3d6bdc0, type: 3}
   m_PrefabInstance: {fileID: 1651483631}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &384572940 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7279541327100216848, guid: c96bb9cda05551e4cb94ec94a3d6bdc0, type: 3}
-  m_PrefabInstance: {fileID: 1651483631}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 073797afb82c5a1438f328866b10b3f0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.RenderPipelines.Universal.2D.Runtime::UnityEngine.Rendering.Universal.Light2D
 --- !u!1001 &394379473
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -20833,17 +20822,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 9038662855729256790, guid: c96bb9cda05551e4cb94ec94a3d6bdc0, type: 3}
   m_PrefabInstance: {fileID: 124988801}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &525587609 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7279541327100216848, guid: c96bb9cda05551e4cb94ec94a3d6bdc0, type: 3}
-  m_PrefabInstance: {fileID: 124988801}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 073797afb82c5a1438f328866b10b3f0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.RenderPipelines.Universal.2D.Runtime::UnityEngine.Rendering.Universal.Light2D
 --- !u!1 &551692258
 GameObject:
   m_ObjectHideFlags: 0
@@ -23351,11 +23329,11 @@ MonoBehaviour:
   _cues:
   - TriggerObjective: 0
     Effects:
-    - _monoScript: {fileID: 1480718453}
-    - _monoScript: {fileID: 384572940}
-    - _monoScript: {fileID: 1685136406}
-    - _monoScript: {fileID: 525587609}
-    - _monoScript: {fileID: 2087805893}
+    - _target: {fileID: 0}
+    - _target: {fileID: 0}
+    - _target: {fileID: 0}
+    - _target: {fileID: 0}
+    - _target: {fileID: 0}
   _priority: 0
 --- !u!1001 &1131324121
 PrefabInstance:
@@ -112863,17 +112841,6 @@ MonoBehaviour:
           m_Image: {fileID: 2800000, guid: 68e5bb6e60bebc046b26d3c3100a523b, type: 3}
           m_Tooltip: 
           m_TextWithWhitespace: "Freeform\u200B"
---- !u!114 &1480718453 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7279541327100216848, guid: c96bb9cda05551e4cb94ec94a3d6bdc0, type: 3}
-  m_PrefabInstance: {fileID: 3400200030796622312}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 073797afb82c5a1438f328866b10b3f0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.RenderPipelines.Universal.2D.Runtime::UnityEngine.Rendering.Universal.Light2D
 --- !u!4 &1480718454 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9038662855729256790, guid: c96bb9cda05551e4cb94ec94a3d6bdc0, type: 3}
@@ -113183,12 +113150,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Unity::Unity.Environment.Objectives.ObjectiveOrchestrator
   _objectivesMono:
-  - _monoScript: {fileID: 1590202726}
-  - _monoScript: {fileID: 1607881319}
-  - _monoScript: {fileID: 840828730}
-  - _monoScript: {fileID: 551692259}
-  - _monoScript: {fileID: 815700664}
-  - _monoScript: {fileID: 552943724}
+  - _target: {fileID: 1590202726}
+  - _target: {fileID: 1607881319}
+  - _target: {fileID: 840828730}
+  - _target: {fileID: 551692259}
+  - _target: {fileID: 815700664}
+  - _target: {fileID: 552943724}
 --- !u!4 &1578141241
 Transform:
   m_ObjectHideFlags: 0
@@ -113795,17 +113762,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 9038662855729256790, guid: c96bb9cda05551e4cb94ec94a3d6bdc0, type: 3}
   m_PrefabInstance: {fileID: 1204056670}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1685136406 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7279541327100216848, guid: c96bb9cda05551e4cb94ec94a3d6bdc0, type: 3}
-  m_PrefabInstance: {fileID: 1204056670}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 073797afb82c5a1438f328866b10b3f0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.RenderPipelines.Universal.2D.Runtime::UnityEngine.Rendering.Universal.Light2D
 --- !u!1 &1709193515
 GameObject:
   m_ObjectHideFlags: 0
@@ -117772,17 +117728,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 9038662855729256790, guid: c96bb9cda05551e4cb94ec94a3d6bdc0, type: 3}
   m_PrefabInstance: {fileID: 1161536956}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2087805893 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7279541327100216848, guid: c96bb9cda05551e4cb94ec94a3d6bdc0, type: 3}
-  m_PrefabInstance: {fileID: 1161536956}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 073797afb82c5a1438f328866b10b3f0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.RenderPipelines.Universal.2D.Runtime::UnityEngine.Rendering.Universal.Light2D
 --- !u!4 &2096758486 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9041827619029071082, guid: f108f3cdec45ca3458163b627d774428, type: 3}
