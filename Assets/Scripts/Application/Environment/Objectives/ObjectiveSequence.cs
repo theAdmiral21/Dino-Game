@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using UnityEngine;
 using Core.Environment.Objectives;
 
 namespace Application.Environment.Objectives
@@ -21,6 +22,7 @@ namespace Application.Environment.Objectives
         {
             _currentNdx = 0;
             ActivateCurrent();
+            Debug.Log($"Starting mission");
         }
 
         private void ActivateCurrent()

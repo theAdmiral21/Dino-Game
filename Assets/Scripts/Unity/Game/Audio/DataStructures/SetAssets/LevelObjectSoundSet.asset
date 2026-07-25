@@ -83,5 +83,30 @@ MonoBehaviour:
     ModulatePitch: 0
     ModulateVolume: 0
     Clip: {fileID: 8300000, guid: 60c002bd55d056742a3aef47f3f86267, type: 3}
+  - Key: 28
+    ActionKey: 32
+    ModulatePitch: 0
+    ModulateVolume: 0
+    Clip: {fileID: 8300000, guid: 7464bd85167bae6469c1dd8d0b460e61, type: 3}
+  - Key: 28
+    ActionKey: 27
+    ModulatePitch: 0
+    ModulateVolume: 0
+    Clip: {fileID: 8300000, guid: c9ac9f10721f38744baef27e25f51719, type: 3}
+  - Key: 28
+    ActionKey: 31
+    ModulatePitch: 0
+    ModulateVolume: 0
+    Clip: {fileID: 8300000, guid: d406636e3de4bbb4bbbcabc76ca0379c, type: 3}
+  - Key: 18
+    ActionKey: 30
+    ModulatePitch: 1
+    ModulateVolume: 0
+    Clip: {fileID: 8300000, guid: d406636e3de4bbb4bbbcabc76ca0379c, type: 3}
+  - Key: 18
+    ActionKey: 31
+    ModulatePitch: 1
+    ModulateVolume: 0
+    Clip: {fileID: 8300000, guid: d406636e3de4bbb4bbbcabc76ca0379c, type: 3}
   VolumeRange: {x: 0.95, y: 1.05}
   PitchRange: {x: 0.95, y: 1.05}

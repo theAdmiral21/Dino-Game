@@ -46,6 +46,11 @@ namespace Game.Unity.Audio
             _audioPlayer.StopSound(source);
         }
 
+        public AudioClip LookUpSound(IAudioRequest request)
+        {
+            return _audioPlayer.LookUpSound(request);
+        }
+
 
     }
 }

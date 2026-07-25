@@ -14,6 +14,12 @@ namespace Game.Unity.Audio.Services
             }
             _audioManager = audioManager;
         }
+
+        public AudioClip LookUpClip(IAudioRequest request)
+        {
+            return _audioManager.LookUpSound(request);
+        }
+
         public void PlayAmbient(IAudioRequest request)
         {
             throw new System.NotImplementedException();

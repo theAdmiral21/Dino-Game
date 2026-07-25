@@ -34,10 +34,30 @@ namespace Unity.Environment.Objectives
 
 
 
-        [ContextMenu("Test Generator Complete")]
+        [ContextMenu("Test Generators Complete")]
         private void TestGeneratorObjectiveComplete()
         {
             OnObjectiveCompleted?.Invoke(_objectives[0]);
+        }
+        [ContextMenu("Test Water Complete")]
+        private void TestWaterObjectiveComplete()
+        {
+            OnObjectiveCompleted?.Invoke(_objectives[1]);
+        }
+        [ContextMenu("Test Steam 1 Complete")]
+        private void TestSteam2ObjectiveComplete()
+        {
+            OnObjectiveCompleted?.Invoke(_objectives[2]);
+        }
+        [ContextMenu("Test Steam 2 Complete")]
+        private void TestSteam1ObjectiveComplete()
+        {
+            OnObjectiveCompleted?.Invoke(_objectives[3]);
+        }
+        [ContextMenu("Test Turbine Complete")]
+        private void TestTurbineObjectiveComplete()
+        {
+            OnObjectiveCompleted?.Invoke(_objectives[4]);
         }
     }
 }

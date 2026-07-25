@@ -14,6 +14,14 @@ namespace Game.Application.Audio
 
         [SerializeField] private AudioClipLibrary _clipLibrary;
 
+        public AudioClip LookUpSound(IAudioRequest request)
+        {
+            Debug.Log($"_clipLibrary is null: {_clipLibrary == null}");
+            AudioClipSettings clipSettings = _clipLibrary.LookUpClip(request);
+            AudioClip clip = clipSettings.Clip;
+            return clip;
+        }
+
         public AudioSource PlaySound(IAudioRequest request)
         {
 
