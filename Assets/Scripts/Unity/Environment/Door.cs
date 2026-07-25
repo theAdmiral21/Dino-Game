@@ -33,7 +33,7 @@ namespace Unity.Environment
             IsOpen = _isOpen;
             IsLocked = _isLocked;
 
-            _interactionCollider.enabled = !IsLocked;
+            // _interactionCollider.enabled = !IsLocked;
         }
 
         public virtual bool CanInteract()

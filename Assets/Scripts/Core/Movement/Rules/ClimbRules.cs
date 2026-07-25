@@ -19,7 +19,7 @@ namespace Movement.Core.Rules
 
             if (disabledState.IsDisabled || stunState.IsStunned) return Denied();
 
-            Debug.Log($"Requesting climbType: {request.Climb}");
+            // Debug.Log($"Requesting climbType: {request.Climb}");
             climbState.SetClimbingSurface(request.Climb);
             if (request.Climb != ClimbType.None)
             {
@@ -61,13 +61,13 @@ namespace Movement.Core.Rules
 
         private static ClimbResult Approved(ClimbRequest request)
         {
-            Debug.Log("Climb approved");
+            // Debug.Log("Climb approved");
             return new ClimbResult(true, request.InputDir, request.Climb);
         }
 
         private static ClimbResult Denied()
         {
-            Debug.Log("Climb denied");
+            // Debug.Log("Climb denied");
             // Return a result that makes no sense and is denied
             return new ClimbResult(false, Vector2.zero, ClimbType.LadderBottom);
         }

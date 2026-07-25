@@ -10,13 +10,12 @@ namespace Unity.Environment
 
         [Header("Overlap check values")]
         [SerializeField] private Vector2 _castSize;
-        [SerializeField] private float _centerOffsetX;
+        [SerializeField] private Vector2 _offset;
         [SerializeField] private LayerMask _layerMask;
-        private Vector2 _offset;
+
         protected override void Awake()
         {
             base.Awake();
-            _offset = Mathf.Abs(_centerOffsetX) * Vector2.right;
         }
         public override bool CanInteract()
         {
@@ -25,9 +24,9 @@ namespace Unity.Environment
 
         private bool GetInteractDirection()
         {
+            Debug.Log($"Checking direction");
             // Overlap in the direction the door should be opened from
-            Vector2 castSize = 2 * Vector2.one;
-            Vector2 castCenter = transform.position;
+            Vector2 castCenter = (Vector2)transform.position + _offset;
             if (_openFromLeft)
             {
                 castCenter -= _offset;
@@ -37,8 +36,8 @@ namespace Unity.Environment
                 castCenter += _offset;
             }
 
-            Collider2D collider = Physics2D.OverlapBox(castCenter, castSize, 0f, _layerMask);
-            DrawUtil.DrawRectangle(castCenter, castSize / 2, Color.red);
+            Collider2D collider = Physics2D.OverlapBox(castCenter, _castSize, 0f, _layerMask);
+            DrawUtil.DrawRectangle(castCenter, _castSize / 2, Color.red);
             if (collider != null)
             {
                 return collider.CompareTag("Player");

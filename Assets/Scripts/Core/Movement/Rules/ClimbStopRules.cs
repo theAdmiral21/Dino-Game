@@ -32,12 +32,12 @@ namespace Movement.Core.Movement
 
         private static ClimbStopResult Approved(ClimbObject climbingSurface)
         {
-            Debug.Log($"Climb stop approved");
+            // Debug.Log($"Climb stop approved");
             return new ClimbStopResult(true, climbingSurface);
         }
         private static ClimbStopResult Denied(ClimbObject climbingSurface)
         {
-            Debug.Log("Climb stop denied");
+            // Debug.Log("Climb stop denied");
             return new ClimbStopResult(false, climbingSurface);
 
         }

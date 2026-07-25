@@ -224,7 +224,7 @@ namespace Movement.Core.State.DataStructures
 
             SetClimbingLastFrame();
 
-            Debug.Log($"IsClimbing: {IsClimbing}");
+            // Debug.Log($"IsClimbing: {IsClimbing}");
         }
 
         public void StartBlockXTimer()

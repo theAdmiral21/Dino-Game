@@ -10,7 +10,7 @@ namespace NPC.Unity.Effects
     {
         public override void ConvertActionEffects(IActionResult effect)
         {
-            Debug.Log($"Raptor got action result {effect}");
+            // Debug.Log($"Raptor got action result {effect}");
             switch (effect)
             {
                 case AlertResult alert:
