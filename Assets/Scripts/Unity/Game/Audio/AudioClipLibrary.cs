@@ -50,7 +50,7 @@ namespace Game.Unity.Audio
             {
                 return soundSet.GetClip(request);
             }
-            Debug.LogError($"{request} was unhandled");
+            Debug.LogError($"{request.Entity} with action {request.ActionKey} was unhandled");
             return null;
         }
     }

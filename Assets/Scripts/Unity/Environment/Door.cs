@@ -8,11 +8,12 @@ namespace Unity.Environment
     [RequireComponent(typeof(Collider2D))]
     public class Door : MonoBehaviour, IInteractable, IDoor
     {
-        [Header("Option feedback components")]
+        [Header("Feedback components")]
         [SerializeField] private AudioFeedBack _unlockAudio;
         [SerializeField] private AudioFeedBack _lockAudio;
         [SerializeField] private AudioFeedBack _openAudio;
         [SerializeField] private AudioFeedBack _closeAudio;
+        [SerializeField] private AudioFeedBack _jiggleHandleSound;
         [SerializeField] private AnimationFeedBack _openAnimation;
         [SerializeField] private AnimationFeedBack _closeAnimation;
         [Header("Required colliders")]
@@ -27,7 +28,7 @@ namespace Unity.Environment
 
         public bool IsOpen { get; private set; }
 
-        private void Awake()
+        protected virtual void Awake()
         {
             IsOpen = _isOpen;
             IsLocked = _isLocked;
@@ -35,8 +36,9 @@ namespace Unity.Environment
             _interactionCollider.enabled = !IsLocked;
         }
 
-        public bool CanInteract()
+        public virtual bool CanInteract()
         {
+            if (_jiggleHandleSound != null) _jiggleHandleSound.React();
             return !IsLocked;
         }
 
@@ -62,7 +64,7 @@ namespace Unity.Environment
             }
         }
 
-        public void SetLocked(bool val)
+        public virtual void SetLocked(bool val)
         {
             if (val == IsLocked) return;
 

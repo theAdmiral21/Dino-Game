@@ -41,14 +41,14 @@ namespace Unity.Game.GameLoop
             // Do I call this here or some where else? 
             foreach (var system in systems)
             {
-                // if (_printDebug) Debug.Log($"Initializing: {system}");
+                // Debug.Log($"Initializing: {system}");
                 system.Initialize(context);
             }
 
 
             foreach (var system in systems)
             {
-                // if (_printDebug) Debug.Log($"Initializing: {system}");
+                // Debug.Log($"Initializing: {system}");
                 system.PostInitialize(context);
             }
 

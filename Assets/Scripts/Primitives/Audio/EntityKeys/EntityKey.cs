@@ -42,6 +42,7 @@ namespace Primitives.Audio.EntityKeys
         // Classes
         CheckpointManager,
 
-        Generator
+        Generator,
+        Key,
     }
 }
