@@ -572,6 +572,63 @@ MonoBehaviour:
   swipeController: {fileID: 8005533917054978446}
   readerSnapZone: {fileID: 589564136}
   snapDistance: 40
+--- !u!1001 &427813837
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2317875798386674662, guid: c17dc598a9f138d49b0e2f6010ba2830, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2317875798386674662, guid: c17dc598a9f138d49b0e2f6010ba2830, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2317875798386674662, guid: c17dc598a9f138d49b0e2f6010ba2830, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2317875798386674662, guid: c17dc598a9f138d49b0e2f6010ba2830, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2317875798386674662, guid: c17dc598a9f138d49b0e2f6010ba2830, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2317875798386674662, guid: c17dc598a9f138d49b0e2f6010ba2830, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2317875798386674662, guid: c17dc598a9f138d49b0e2f6010ba2830, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2317875798386674662, guid: c17dc598a9f138d49b0e2f6010ba2830, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2317875798386674662, guid: c17dc598a9f138d49b0e2f6010ba2830, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2317875798386674662, guid: c17dc598a9f138d49b0e2f6010ba2830, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3237528118103480744, guid: c17dc598a9f138d49b0e2f6010ba2830, type: 3}
+      propertyPath: m_Name
+      value: OneWayDoor (1)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c17dc598a9f138d49b0e2f6010ba2830, type: 3}
 --- !u!1001 &448981398
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4180,6 +4237,28 @@ MonoBehaviour:
         m_Provider:
           rid: 3866173332598816863
         m_Component: {fileID: 2011224664}
+--- !u!1 &2061142350 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7021525129081322834, guid: 1e1b1f9de1e30b4449f1e1abad34d5f8, type: 3}
+  m_PrefabInstance: {fileID: 853201672702873115}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2061142358
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2061142350}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 775c107c3fc834c48ae24aca79ca4f42, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity::Game.Unity.Events.AudioFeedBack
+  _entityKey: 18
+  _actionKey: 40
+  _allowPolyphony: 0
+  _loop: 0
+  _priority: 0
 --- !u!1001 &2092644201
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6419,6 +6498,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3598398262061554470, guid: 1e1b1f9de1e30b4449f1e1abad34d5f8, type: 3}
+      propertyPath: _jiggleHandleSound
+      value: 
+      objectReference: {fileID: 2061142358}
     - target: {fileID: 7021525129081322834, guid: 1e1b1f9de1e30b4449f1e1abad34d5f8, type: 3}
       propertyPath: m_Name
       value: Door
@@ -6426,7 +6509,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7021525129081322834, guid: 1e1b1f9de1e30b4449f1e1abad34d5f8, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2061142358}
   m_SourcePrefab: {fileID: 100100000, guid: 1e1b1f9de1e30b4449f1e1abad34d5f8, type: 3}
 --- !u!4 &1230954083933883524
 Transform:
@@ -7630,7 +7716,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &5626776237327979861
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8998,3 +9084,4 @@ SceneRoots:
   - {fileID: 7176655621147444738}
   - {fileID: 7404319432859409428}
   - {fileID: 2630593248623205270}
+  - {fileID: 427813837}

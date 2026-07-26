@@ -226,6 +226,7 @@ GameObject:
   - component: {fileID: 283618990890448722}
   - component: {fileID: 6710734511666110008}
   - component: {fileID: 4769123060421858775}
+  - component: {fileID: 8201140892027530189}
   m_Layer: 16
   m_Name: OneWayDoor
   m_TagString: Untagged
@@ -312,16 +313,16 @@ MonoBehaviour:
   _lockAudio: {fileID: 6710734511666110008}
   _openAudio: {fileID: 9043926381871289634}
   _closeAudio: {fileID: 283618990890448722}
-  _jiggleHandleSound: {fileID: 0}
+  _jiggleHandleSound: {fileID: 8201140892027530189}
   _openAnimation: {fileID: 496392976476467739}
   _closeAnimation: {fileID: 7994173646997274502}
   _doorCollider: {fileID: 4523923191493257706}
   _interactionCollider: {fileID: 5798291737837715682}
   _isLocked: 0
   _isOpen: 0
-  _openFromLeft: 0
-  _castSize: {x: 1, y: 1}
-  _offset: {x: 0.5, y: 1.5}
+  _openFromLeft: 1
+  _castSize: {x: 1.5, y: 1}
+  _offset: {x: 1.25, y: 1}
   _layerMask:
     serializedVersion: 2
     m_Bits: 64
@@ -390,6 +391,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity::Game.Unity.Events.AudioFeedBack
   _entityKey: 18
   _actionKey: 30
+  _allowPolyphony: 0
+  _loop: 0
+  _priority: 0
+--- !u!114 &8201140892027530189
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3237528118103480744}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 775c107c3fc834c48ae24aca79ca4f42, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity::Game.Unity.Events.AudioFeedBack
+  _entityKey: 18
+  _actionKey: 40
   _allowPolyphony: 0
   _loop: 0
   _priority: 0

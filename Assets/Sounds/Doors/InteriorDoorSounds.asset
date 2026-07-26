@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1047307eebd754e408b43cad793d44c7, type: 3}
+  m_Name: InteriorDoorSounds
+  m_EditorClassIdentifier: Unity::Game.Unity.Audio.DataStructures.EntitySoundSet
+  _entity: 18
+  _entries:
+  - ActionKey: 40
+    Clips:
+    - {fileID: 8300000, guid: 4328b7b48b10bde4b8e8c92fe1a74d2f, type: 3}
+    - {fileID: 8300000, guid: ce9d1eca4fb06fa4ebe9cdc137eb1c2e, type: 3}
+    - {fileID: 8300000, guid: c5a13af2f98a26342a4e310107f1b550, type: 3}
+    - {fileID: 8300000, guid: 6b991f521d3a49242a7da63d899737e9, type: 3}
+    - {fileID: 8300000, guid: bebf1132a63db7344a1af204023c7256, type: 3}
+  - ActionKey: 31
+    Clips:
+    - {fileID: 8300000, guid: d406636e3de4bbb4bbbcabc76ca0379c, type: 3}
+  - ActionKey: 30
+    Clips:
+    - {fileID: 8300000, guid: d406636e3de4bbb4bbbcabc76ca0379c, type: 3}
+  - ActionKey: 28
+    Clips:
+    - {fileID: 8300000, guid: 60c002bd55d056742a3aef47f3f86267, type: 3}
+  - ActionKey: 29
+    Clips:
+    - {fileID: 8300000, guid: cda17e02eb57dbd4eabe32851c4273c9, type: 3}

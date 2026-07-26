@@ -88,5 +88,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 966ba4eeb439df248a883c1e30802e5e, type: 2}
   - {fileID: 11400000, guid: dcf0fdcabb5a25649bccdf08b3a27cc9, type: 2}
   - {fileID: 11400000, guid: 5860fd7b54d0c0140b16232d6b8a989a, type: 2}
+  - {fileID: 11400000, guid: 90d7e7ebe22339041b2a085a3c7c60a9, type: 2}
   _levelObjectSoundSet: {fileID: 11400000, guid: 1e0d8b45ac777a94f97b41c4d2ce61cb, type: 2}
   _levelTrackSet: {fileID: 11400000, guid: 5f4dcf160878eb6448a3111049b1c1e8, type: 2}

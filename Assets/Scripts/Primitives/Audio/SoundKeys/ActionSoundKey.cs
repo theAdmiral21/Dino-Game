@@ -51,5 +51,8 @@ namespace Primitives.Audio.SoundKeys
 
         // Fall back enum
         None,
+
+        // Don't try and group these, it isn't worth the effort
+        TryInteract,
     }
 }

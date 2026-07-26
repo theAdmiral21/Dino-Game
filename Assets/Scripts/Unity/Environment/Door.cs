@@ -33,19 +33,18 @@ namespace Unity.Environment
             IsOpen = _isOpen;
             IsLocked = _isLocked;
 
-            // _interactionCollider.enabled = !IsLocked;
         }
 
         public virtual bool CanInteract()
         {
-            if (_jiggleHandleSound != null) _jiggleHandleSound.React();
             return !IsLocked;
         }
 
         public void Interact()
         {
             Debug.Log($"Interaction with door");
-            if (CanInteract())
+            bool res = CanInteract();
+            if (res)
             {
                 if (IsOpen)
                 {
@@ -61,6 +60,10 @@ namespace Unity.Environment
 
                     OpenDoor();
                 }
+            }
+            else
+            {
+                _jiggleHandleSound.React();
             }
         }
 

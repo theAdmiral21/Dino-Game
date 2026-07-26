@@ -19,22 +19,25 @@ namespace Unity.Environment
         }
         public override bool CanInteract()
         {
-            return GetInteractDirection();
+            bool res = GetInteractDirection();
+            Debug.Log($"CanInteract: {res}");
+            return res;
         }
 
         private bool GetInteractDirection()
         {
             Debug.Log($"Checking direction");
             // Overlap in the direction the door should be opened from
-            Vector2 castCenter = (Vector2)transform.position + _offset;
+            Vector2 castCenter = (Vector2)transform.position;
             if (_openFromLeft)
             {
-                castCenter -= _offset;
+                castCenter.x -= _offset.x;
             }
             else
             {
-                castCenter += _offset;
+                castCenter.x += _offset.x;
             }
+            castCenter.y += _offset.y;
 
             Collider2D collider = Physics2D.OverlapBox(castCenter, _castSize, 0f, _layerMask);
             DrawUtil.DrawRectangle(castCenter, _castSize / 2, Color.red);

@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 102152334456183908}
   - component: {fileID: 5936559158123247100}
   - component: {fileID: 3955277705898024282}
+  - component: {fileID: 3641910052847484062}
   m_Layer: 16
   m_Name: KeyDoor
   m_TagString: Untagged
@@ -101,7 +102,7 @@ MonoBehaviour:
   _lockAudio: {fileID: 5936559158123247100}
   _openAudio: {fileID: 1900541713260883364}
   _closeAudio: {fileID: 102152334456183908}
-  _jiggleHandleSound: {fileID: 0}
+  _jiggleHandleSound: {fileID: 3641910052847484062}
   _openAnimation: {fileID: 4001000113531065945}
   _closeAnimation: {fileID: 2947712657630753852}
   _doorCollider: {fileID: 1402342768630030630}
@@ -175,6 +176,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity::Game.Unity.Events.AudioFeedBack
   _entityKey: 18
   _actionKey: 30
+  _allowPolyphony: 0
+  _loop: 0
+  _priority: 0
+--- !u!114 &3641910052847484062
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1606836894980713535}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 775c107c3fc834c48ae24aca79ca4f42, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity::Game.Unity.Events.AudioFeedBack
+  _entityKey: 18
+  _actionKey: 40
   _allowPolyphony: 0
   _loop: 0
   _priority: 0
